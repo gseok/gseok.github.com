@@ -1,0 +1,21 @@
+== 참고 ==
+* Javascript <span style="color:red">Timeline library</span>
+** review blog post -  http://okfnlabs.org/blog/2012/12/04/javascript-timeline-libaries-a-review.html
+** '''Timeline.js - http://timeline.verite.co/''', ''' https://github.com/VeriteCo/TimelineJS '''
+** '''timeglider.js - http://timeglider.com/widget/'''
+** '''timeliner.js - http://www.technotarek.com/timeliner/''', '''https://github.com/technotarek/timeliner '''
+** '''Fancy Timeline - http://juanma-aguero.github.com/fancy-timeline/ '''
+** '''jquery timeliner - http://www.csslab.cl/2011/08/18/jquery-timelinr/'''
+** timeline - http://almende.github.com/chap-links-library/timeline.html
+** simple widget - http://www.simile-widgets.org/timeline/
+** chronoline.js - http://stoicloofah.github.com/chronoline.js/
+** TimelineSetter - http://propublica.github.com/timeline-setter/
+<br>
+* javascript good project
+** http://themergency.com/awesome-javascript-projects-to-watch-on-github/
+<br>
+* javascript animation
+** http://fx.inetcat.com/manuals.php#
+<br>
+* javscript bootstrap
+** http://helloworld.naver.com/helloworld/67876
