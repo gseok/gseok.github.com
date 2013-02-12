@@ -19,3 +19,11 @@
 <br>
 * javscript bootstrap
 ** http://helloworld.naver.com/helloworld/67876
+<br>
+* yaml4
+** http://blog.ginader.de/dev/jquery/accessible-tabs/  -- using tab
+** https://github.com/ginader/Accessible-Tabs  -- using tab
+** https://plus.google.com/+yaml/posts/SaAmTcaPcoV  -- vs bootstrap
+** http://www.emergeinteractive.com/whats_new/blog/2012/10/how_i_learned_to_stop_worrying_and_love_css_frameworks - css frameworks
+** http://www.yaml.de/ -- official site ( don't confuse!! www.yaml.org )
+** http://www.thinkintags.com/ - yaml4 gui builder

@@ -1,0 +1,437 @@
+/** Project: Gseok
+ *  Description: 
+ *
+ *  @creator       Thinkin' Tags v0.2 alpha
+ *  @framework     YAML v4.02
+ *  @file          typography.css
+ */
+
+@media all {
+
+	html * {
+		font-size: 100%;
+	}
+
+	textarea,
+	pre,
+	code,
+	kbd,
+	samp,
+	var,
+	tt {
+		font-family: Consolas, "Lucida Console", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", Courier;
+	}
+
+	body {
+		-webkit-text-size-adjust: 100%;
+		color: #444;
+		font-family: "Droid Serif", Georgia, "Times New Roman", Times, serif;
+		font-size: 87.50%;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: #161e21;
+		font-family: "Droid Sans", Arial, Helvetica, sans-serif;
+		font-weight: 400;
+		margin: 0;
+	}
+
+	h1 {
+		font-size: 350%;
+		line-height: 0.8571em;
+		margin: 0.4286em 0 0;
+	}
+
+	h2 {
+		font-size: 250%;
+		line-height: 1.2em;
+		margin: 0.6em 0 0 0;
+	}
+
+	h3 {
+		font-size: 175%;
+		line-height: 0.8571em;
+		margin: 0.8571em 0 0 0;
+	}
+
+	h4 {
+		font-size: 133.33%;
+		line-height: 1.125em;
+		margin: 1.125em 0 0 0;
+	}
+
+	h5 {
+		font-size: 116.67%;
+		line-height: 1.2857em;
+		margin: 1.2857em 0 0 0;
+	}
+
+	h6 {
+		font-size: 100%;
+		font-weight: bold;
+		line-height: 1.5em;
+		margin: 1.5em 0 0 0;
+	}
+
+	ul,
+	ol,
+	dl {
+		font-size: 1em;
+		line-height: 1.5em;
+		margin: 1.5em 0 0 1em;
+	}
+
+	ul {
+		list-style-type: disc;
+	}
+
+	ol {
+		list-style-type: decimal;
+	}
+
+	ul ul {
+		list-style-type: circle;
+		margin-top: 0;
+	}
+
+	ol ol {
+		list-style-type: lower-latin;
+		margin-top: 0;
+	}
+
+	ol ul {
+		list-style-type: circle;
+		margin-top: 0;
+	}
+
+	li {
+		font-size: 1em;
+		line-height: 1.5em;
+		margin-left: 0.8em;
+	}
+
+	dt {
+		font-weight: bold;
+	}
+
+	dd {
+		margin: 0 0 1.5em 0.8em;
+	}
+
+	p {
+		font-size: 1em;
+		line-height: 1.5em;
+		margin: 1.5em 0 0 0;
+	}
+
+	blockquote,
+	cite,
+	q {
+		font-family: Georgia, "Times New Roman", Times, serif;
+		font-style: italic;
+	}
+
+	blockquote {
+		color: #666;
+		margin: 1.5em 0 0 1.5em;
+	}
+
+	strong,
+	b {
+		font-weight: bold;
+	}
+
+	em,
+	i {
+		font-style: italic;
+	}
+
+	big {
+		font-size: 116.667%;
+	}
+
+	small {
+		font-size: 85.71%;
+	}
+
+	pre,
+	code,
+	kbd,
+	tt,
+	samp,
+	var {
+		font-size: 100%;
+	}
+
+	pre {
+		-moz-word-wrap: break-word;
+		-ms-word-wrap: break-word;
+		-o-word-wrap: break-word;
+		-webkit-word-wrap: break-word;
+		line-height: 1.5em;
+		margin: 1.5em 0 0 0;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+	}
+
+	pre,
+	code {
+		color: #800;
+	}
+
+	kbd,
+	samp,
+	var,
+	tt {
+		color: #666;
+		font-weight: bold;
+	}
+
+	var,
+	dfn {
+		font-style: italic;
+	}
+
+	acronym,
+	abbr {
+		border-bottom: 1px #aaa dotted;
+		cursor: help;
+		font-variant: small-caps;
+		letter-spacing: .07em;
+	}
+
+	sub,
+	sup {
+		font-size: 75%;
+		line-height: 0;
+		position: relative;
+		vertical-align: baseline;
+	}
+
+	sup {
+		top: -0.5em;
+	}
+
+	sub {
+		bottom: -0.25em;
+	}
+
+	mark {
+		background: #ff0;
+		color: #000;
+	}
+
+	hr {
+		background: transparent;
+		border: 0;
+		border-bottom: 1px #eee solid;
+		color: #fff;
+		margin: 0 0 0.75em 0;
+		padding: 0 0 0.75em 0;
+	}
+
+	a {
+		background: transparent;
+		color: #4D87C7;
+		text-decoration: none;
+	}
+
+	a:active {
+		outline: none;
+	}
+
+	a:hover,
+	a:focus {
+		background-color: #4D87C7;
+		color: #fff;
+		text-decoration: none;
+	}
+
+	img,
+	figure {
+		margin: 0;
+	}
+
+	.flexible {
+		height: auto;
+		margin-top: 1.5em;
+		max-width: 100%;
+	}
+
+	* html .flexible {
+		width: 98%;
+	}
+
+	.bordered {
+		-moz-box-shadow: 0 0 3px rgba(0,0,0,.25);
+		-webkit-box-shadow: 0 0 3px rgba(0,0,0,.25);
+		border: 2px rgba(255,255,255,1) solid;
+		box-shadow: 0 0 3px rgba(0,0,0,.25);
+		margin-top: 1.5em;
+	}
+
+	.highlight {
+		color: #c30;
+	}
+
+	.dimmed {
+		color: #888;
+	}
+
+	.box {
+		-moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2) inset;
+		-webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2) inset;
+		border-color: rgba(0,0,0,.3);
+		border-radius: 0.3em;
+		border-style: solid;
+		border-width: 1px;
+		box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2) inset;
+		color: rgba(0,0,0,.8);
+		margin: 1.5em 0 0 0;
+		padding: 1.4286em;
+	}
+
+	.box > *:first-child {
+		margin-top: 0;
+	}
+
+	.label {
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		background: #06C;
+		border-radius: 3px;
+		color: #fff;
+		display: inline-block;
+		font-family: Verdana, Geneva, sans-serif;
+		font-size: 10px;
+		letter-spacing: normal;
+		line-height: 12px;
+		padding: 1px 6px 2px;
+		vertical-align: middle;
+		white-space: nowrap;
+	}
+
+	.info {
+		background: #f4f4f4;
+	}
+
+	.success {
+		background: #8c8;
+	}
+
+	.warning {
+		background: #cc8;
+	}
+
+	.error {
+		background: #c88;
+	}
+
+	.float-left {
+		display: inline;
+		float: left;
+		margin: 1.5em 1em 0 0;
+	}
+
+	.float-right {
+		display: inline;
+		float: right;
+		margin: 1.5em 0 0 1em;
+	}
+
+	.center {
+		display: block;
+		margin: 1.5em auto 0 auto;
+		text-align: center;
+	}
+
+	table {
+		border-bottom: 1px #ccc solid;
+		border-collapse: collapse;
+		border-top: 1px #ccc solid;
+		color: #333;
+		margin: 1.3571em 0 0 0;
+		width: 100%;
+	}
+
+	table.narrow {
+		margin: 1.4286em 0 0 0;
+	}
+
+	table.narrow th,
+	table.narrow td {
+		line-height: 1.4286em;
+		padding: 0 0.5em;
+	}
+
+	table.bordertable {
+		border: 1px #ccc solid;
+	}
+
+	table caption {
+		font-variant: small-caps;
+	}
+
+	th,
+	td {
+		line-height: 1.5em;
+		padding: 0.7143em 0.5em;
+		vertical-align: top;
+	}
+
+	th *:first-child,
+	td *:first-child {
+		margin-top: 0;
+	}
+
+	th.nowrap,
+	td.nowrap {
+		white-space: nowrap;
+	}
+
+	thead th {
+		border-bottom: 2px #000 solid;
+		color: #000;
+		text-align: left;
+	}
+
+	.bordertable thead th {
+		background: #e0e0e0;
+		border-bottom: 1px #ccc solid;
+		border-right: 1px #ccc solid;
+	}
+
+	.bordertable tbody th[scope="row"] {
+		background: #f0f0f0;
+	}
+
+	tbody th {
+		border-top: 1px solid #ccc;
+		text-align: left;
+	}
+
+	.bordertable tbody th {
+		border-right: 1px solid #ccc;
+	}
+
+	tbody td {
+		border-top: 1px solid #ccc;
+		text-align: left;
+	}
+
+	.bordertable tbody td {
+		border-right: 1px solid #ccc;
+	}
+
+	tbody tr:hover th,
+	tbody tr:hover td {
+		background: #f8f8f8;
+	}
+
+}
+

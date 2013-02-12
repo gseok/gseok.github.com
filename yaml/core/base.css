@@ -1,0 +1,477 @@
+/** Project: Gseok
+ *  Description: 
+ *
+ *  @creator       Thinkin' Tags v0.2 alpha
+ *  @framework     YAML v4.02
+ *  @file          base.css
+ */
+
+@media all {
+
+	* {
+		margin: 0;
+		padding: 0;
+	}
+
+	option {
+		padding-left: 0.4em;
+	}
+
+	select {
+		padding: 1px;
+	}
+
+	* html body * {
+		overflow: visible;
+	}
+
+	body {
+		background: #fff;
+		color: #000;
+		font-size: 100%;
+		text-align: left;
+	}
+
+	div:target {
+		outline: 0 none;
+	}
+
+	article,
+	aside,
+	details,
+	figcaption,
+	figure,
+	footer,
+	header,
+	hgroup,
+	nav,
+	section {
+		display: block;
+	}
+
+	audio,
+	canvas,
+	video {
+		display: inline-block;
+	}
+
+	audio:not([controls]) {
+		display: none;
+	}
+
+	[hidden] {
+		display: none;
+	}
+
+	input[type="search"] {
+		-webkit-appearance: textfield;
+	}
+
+	input[type="search"]::-webkit-search-decoration {
+		-webkit-appearance: none;
+	}
+
+	fieldset,
+	img {
+		border: 0 solid;
+	}
+
+	ul,
+	ol,
+	dl {
+		margin: 0 0 1em 1em;
+	}
+
+	li {
+		line-height: 1.5em;
+		margin-left: 0.8em;
+	}
+
+	dt {
+		font-weight: bold;
+	}
+
+	dd {
+		margin: 0 0 1em 0.8em;
+	}
+
+	blockquote {
+		margin: 0 0 1em 0.8em;
+	}
+
+	q {
+		quotes: none;
+	}
+
+	blockquote:before,
+	blockquote:after,
+	q:before,
+	q:after {
+		content: none;
+	}
+
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+
+	.ym-clearfix:before {
+		content: "";
+		display: table;
+	}
+
+	.ym-clearfix:after {
+		clear: both;
+		content: ".";
+		display: block;
+		font-size: 0;
+		height: 0;
+		visibility: hidden;
+	}
+
+	.ym-contain-dt {
+		display: table;
+		overflow: visible;
+		width: 100%;
+	}
+
+	.ym-contain-oh {
+		display: block;
+		overflow: hidden;
+		width: 100%;
+	}
+
+	.ym-contain-fl {
+		float: left;
+		width: 100%;
+	}
+
+	.ym-skip,
+	.ym-hideme,
+	.ym-print {
+		left: -32768px;
+		position: absolute;
+		top: -32768px;
+	}
+
+	.ym-skip:focus,
+	.ym-skip:active {
+		left: 0;
+		position: static;
+		top: 0;
+	}
+
+	.ym-skiplinks {
+		left: -32768px;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		top: 0px;
+		width: 100%;
+		z-index: 1000;
+	}
+
+	.ym-skiplinks .ym-skip:focus,
+	.ym-skiplinks .ym-skip:active {
+		left: 32768px;
+		outline: 0 none;
+		position: absolute;
+		width: 100%;
+	}
+
+	.ym-form,
+	.ym-form fieldset {
+		overflow: hidden;
+	}
+
+	.ym-form div {
+		position: relative;
+	}
+
+	.ym-form label,
+	.ym-form .ym-message {
+		display: block;
+		position: relative;
+	}
+
+	.ym-form .ym-fbox-check label {
+		display: inline;
+	}
+
+	.ym-form input,
+	.ym-form textarea {
+		cursor: text;
+	}
+
+	.ym-form input[type="checkbox"],
+	.ym-form input[type="radio"],
+	.ym-form select,
+	.ym-form label {
+		cursor: pointer;
+	}
+
+	.ym-form textarea {
+		overflow: auto;
+	}
+
+	.ym-form input[type=hidden] {
+		display: none !important;
+	}
+
+	.ym-form .ym-fbox-text:before,
+	.ym-form .ym-fbox-select:before,
+	.ym-form .ym-fbox-check:before,
+	.ym-form .ym-fbox-button:before {
+		content: "";
+		display: table;
+	}
+
+	.ym-form .ym-fbox-text:after,
+	.ym-form .ym-fbox-select:after,
+	.ym-form .ym-fbox-check:after,
+	.ym-form .ym-fbox-button:after {
+		clear: both;
+		content: ".";
+		display: block;
+		font-size: 0;
+		height: 0;
+		visibility: hidden;
+	}
+
+	.ym-form select,
+	.ym-form input,
+	.ym-form textarea {
+		display: block;
+		position: relative;
+		width: 58.5%;
+	}
+
+	.ym-form .ym-fbox-check input {
+		display: inline;
+		width: auto;
+	}
+
+	.ym-form .ym-fbox-button input {
+		display: inline;
+		overflow: visible;
+		width: auto;
+	}
+
+	.ym-form .ym-fbox-check input:focus,
+	.ym-form .ym-fbox-check input:hover,
+	.ym-form .ym-fbox-check input:active {
+		border: 0 none;
+	}
+
+	.ym-full .ym-fbox-select select,
+	.ym-full .ym-fbox-text input,
+	.ym-full .ym-fbox-text textarea {
+		margin-right: -3px;
+		width: 94.2%;
+	}
+
+	.ym-columnar .ym-fbox-text label,
+	.ym-columnar .ym-fbox-select label {
+		display: inline;
+		float: left;
+		width: 30%;
+	}
+
+	.ym-columnar .ym-fbox-check {
+		position: relative;
+	}
+
+	.ym-label {
+		display: block;
+	}
+
+	.ym-columnar .ym-fbox-check .ym-label {
+		position: absolute;
+		top: 0;
+	}
+
+	.ym-columnar .ym-fbox-check input,
+	.ym-columnar .ym-error .ym-message {
+		margin-left: 30%;
+	}
+
+	.ym-columnar fieldset .ym-fbox-button,
+	fieldset.ym-columnar .ym-fbox-button {
+		padding-left: 30%;
+	}
+
+	.ym-columnar .ym-fbox-select select,
+	.ym-columnar .ym-fbox-text input,
+	.ym-columnar .ym-fbox-text textarea {
+		float: left;
+		margin-right: -3px;
+		width: 67.2%;
+	}
+
+	.ym-fbox-select select {
+		width: 60%;
+	}
+
+	.ym-full .ym-fbox-select select {
+		width: 94.8%;
+	}
+
+	.ym-columnar .ym-fbox-select select {
+		width: 68.8%;
+	}
+
+}
+
+@media screen, projection {
+
+	.ym-column {
+		display: table;
+		width: 100%;
+	}
+
+	.ym-col1 {
+		float: left;
+		width: 20%;
+	}
+
+	.ym-col2 {
+		float: right;
+		width: 20%;
+	}
+
+	.ym-col3 {
+		margin: 0 20%;
+		width: auto;
+	}
+
+	.ym-cbox {
+		padding: 0 10px;
+	}
+
+	.ym-cbox-left {
+		padding: 0 10px 0 0;
+	}
+
+	.ym-cbox-right {
+		padding: 0 0 0 10px;
+	}
+
+	.ym-ie-clearing {
+		display: none;
+	}
+
+	.ym-grid {
+		display: table;
+		list-style-type: none;
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 0;
+		padding-right: 0;
+		table-layout: fixed;
+		width: 100%;
+	}
+
+	.ym-gl {
+		float: left;
+		margin: 0;
+	}
+
+	.ym-gr {
+		float: right;
+		margin: 0 0 0 -5px;
+	}
+
+	.ym-g20 {
+		width: 20%;
+	}
+
+	.ym-g40 {
+		width: 40%;
+	}
+
+	.ym-g60 {
+		width: 60%;
+	}
+
+	.ym-g80 {
+		width: 80%;
+	}
+
+	.ym-g25 {
+		width: 25%;
+	}
+
+	.ym-g33 {
+		width: 33.333%;
+	}
+
+	.ym-g50 {
+		width: 50%;
+	}
+
+	.ym-g66 {
+		width: 66.666%;
+	}
+
+	.ym-g75 {
+		width: 75%;
+	}
+
+	.ym-g38 {
+		width: 38.2%;
+	}
+
+	.ym-g62 {
+		width: 61.8%;
+	}
+
+	.ym-gbox {
+		padding: 0 10px;
+	}
+
+	.ym-gbox-left {
+		padding: 0 10px 0 0;
+	}
+
+	.ym-gbox-right {
+		padding: 0 0 0 10px;
+	}
+
+	.ym-equalize {
+		overflow: hidden;
+	}
+
+	.ym-equalize > [class*="ym-g"] {
+		display: table-cell;
+		float: none;
+		margin: 0;
+		vertical-align: top;
+	}
+
+	.ym-equalize > [class*="ym-g"] > [class*="ym-gbox"] {
+		margin-bottom: -10000px;
+		padding-bottom: 10000px;
+	}
+
+}
+
+@media print {
+
+	.ym-grid > .ym-gl,
+	.ym-grid > .ym-gr {
+		display: table;
+		overflow: visible;
+	}
+
+	.ym-print {
+		left: 0;
+		position: static;
+	}
+
+	.ym-noprint {
+		display: none !important;
+	}
+
+}
+

@@ -1,0 +1,15 @@
+/** ThinkinTags Project - Rapid Prototyping on a Production Ready Code Basis
+ * (en) central stylesheet
+ * (de) Zentrales Stylesheet
+ *
+ * @creator       [creator]
+ * @file          [filename]
+ * @-yaml-minver  [minversion]
+ */
+
+@import url(../yaml/core/base.css);
+@import url(screen/screen.css);
+@import url(navigation/navigation.css);
+@import url(screen/forms.css);
+@import url(screen/typography.css);
+@import url(print/print.css);

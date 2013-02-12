@@ -1,0 +1,31 @@
+/** Project: Gseok
+ *  Description: 
+ *
+ *  @creator       Thinkin' Tags v0.2 alpha
+ *  @framework     YAML v4.02
+ *  @file          print.css
+ */
+
+@media print {
+
+	body {
+		font-size: 10pt;
+		padding: 0 5px;
+	}
+
+	nav,
+	.ym-searchform {
+		display: none;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		page-break-after: avoid;
+	}
+
+}
+
