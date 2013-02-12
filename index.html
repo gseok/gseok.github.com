@@ -3,11 +3,20 @@
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <title>'GyeongSeok Seo' story</title>
-  <!-- add your meta tags here -->
-  <link href="css/layout.css" rel="stylesheet" type="text/css" />
-  <!--[if lte ie8]>
-  <link href="yaml/core/iehacks.css" rel="stylesheet" type="text/css"/>
-  <![endif]-->
+  	<meta name="description" content="GyeongSeok Seo story">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<!-- add your meta tags here -->
+	<link href="css/layout.css" rel="stylesheet" type="text/css" />
+	<!--[if lte ie8]>
+	<link href="yaml/core/iehacks.css" rel="stylesheet" type="text/css"/>
+	<![endif]-->
+
+	<!-- jQuery -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!-- BEGIN TimelineJS -->
+	<script type="text/javascript" src="js/storyjs-embed.js"></script>
 </head>
 <body class="ui-gridview">
 <ul class="ym-skiplinks">
@@ -37,7 +46,22 @@
 <div id="main">
   <div class="ym-wrapper">
     <div class="ym-wbox">
-      <section class="box info">
+    	<div id="my-timeline"></div>
+    	<script>
+			$(document).ready(function() {
+				createStoryJS({
+					type:		'timeline',
+					// width:		'800',
+					height:		'600',
+					source:		'json/example_json.json',
+					embed_id:	'my-timeline',
+          start_at_end: true,
+          start_zoom_adjust: '3',
+					debug:		true
+				});
+			});
+		</script>
+<!--       <section class="box info">
         <div class="ym-grid linearize-level-1">
           <div class="ym-g66 ym-gl">
             <div class="ym-grid linearize-level-2">
@@ -57,7 +81,7 @@
       <section class="ym-grid linearize-level-1">
         <article class="ym-g66 ym-gl content"></article>
         <aside class="ym-g33 ym-gr"></aside>
-      </section>
+      </section> -->
     </div>
   </div>
 </div>

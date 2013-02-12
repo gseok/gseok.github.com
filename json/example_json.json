@@ -1,0 +1,80 @@
+
+{
+    "timeline":
+    {
+        "headline":"GyeongSeok Seo's profile",
+        "type":"default",
+		"text":"<p>Hello all! let me introduce myself : ). see the my profile timeline!!</p>",
+		"startDate":"2001,1,26",
+        "date": [
+            {
+                "startDate":"2001,3,1",
+                "endDate":"2009,3,1",
+                "headline":"University Life",
+                "text":"<p>student life! software! study! study! study!</p>",
+                "asset":
+                {
+                    "media":"http://www.smu.ac.kr/",
+                    "credit":"",
+                    "caption":""
+                }
+            },
+            {
+                "startDate":"2009,3,1",
+                "endDate":"2010,7,1",
+                "headline":"My first JOB!",
+                "text":"<p>Tmax Soft</p>",
+                "asset":
+                {
+                    "media":"http://www.tmax.co.kr/"
+                }
+            },
+            {
+                "startDate":"2009,3,1",
+				"endDate":"2010,6,27",
+                "headline":"My first Project!",
+                "text":"<p>MFC share library development. working on framework team.</p>",
+                "asset":
+                {
+                    "media":"",
+                    "credit":"",
+                    "caption":""
+                }
+            },
+            {
+                "startDate":"2010,7,1",
+                "headline":"Change company",
+                "text":"<p>S-Core</p>",
+                "asset":
+                {
+                    "media":"http://www.tmaxcore.co.kr/",
+                    "credit":"",
+                    "caption":""
+                }
+            },
+            {
+                "startDate":"2010,7,1",
+                "endDate":"2011,2,27",
+                "headline":"WAC",
+                "text":"<p>WAC project</p>",
+                "asset":
+                {
+                    "media":"http://www.wacapps.net/",
+                    "credit":"",
+                    "caption":""
+                }
+            },
+            {
+                "startDate":"2011,3,1",
+                "headline":"TIZEN",
+                "text":"<p>TIZEN project</p>",
+                "asset":
+                {
+                    "media":"http://www.tizen.org/",
+                    "credit":"",
+                    "caption":""
+                }
+            }
+        ]
+    }
+}
