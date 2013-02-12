@@ -1,96 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-  <title>'GyeongSeok Seo' story</title>
-  	<meta name="description" content="GyeongSeok Seo story">
-	<meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>'GyeongSeok Seo' story</title>
+    <meta name="description" content="GyeongSeok Seo story">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-	<!-- add your meta tags here -->
-	<link href="css/layout.css" rel="stylesheet" type="text/css" />
-	<!--[if lte ie8]>
-	<link href="yaml/core/iehacks.css" rel="stylesheet" type="text/css"/>
-	<![endif]-->
-
-	<!-- jQuery -->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<!-- BEGIN TimelineJS -->
-	<script type="text/javascript" src="js/storyjs-embed.js"></script>
+    <!-- add your meta tags here -->
+    <link href="css/layout.css" rel="stylesheet" type="text/css" />
+    <!--[if lte ie8]>
+    <link href="yaml/core/iehacks.css" rel="stylesheet" type="text/css"/>
+    <![endif]-->
+    <link rel="stylesheet" href="yaml/add-ons/accessible-tabs/tabs.css" type="text/css"/>
 </head>
 <body class="ui-gridview">
-<ul class="ym-skiplinks">
-  <li><a class="ym-skip" href="#nav">Skip to navigation (Press Enter)</a></li>
-  <li><a class="ym-skip" href="#main">Skip to main content (Press Enter)</a></li>
-</ul>
-<header>
-  <div class="ym-wrapper">
-    <div class="ym-wbox">
-      <h3 style="color:white">'GyeongSeok Seo' story</h3>
-    </div>
-  </div>
-</header>
-<nav id="nav">
-  <div class="ym-wrapper">
-    <div class="ym-hlist">
-      <ul>
-        <li class="active"><strong>Home</strong></li>
-        <li><a href="#">Interest</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Print</a></li>
-        <li><a href="#">About</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<div id="main">
-  <div class="ym-wrapper">
-    <div class="ym-wbox">
-    	<div id="my-timeline"></div>
-    	<script>
-			$(document).ready(function() {
-				createStoryJS({
-					type:		'timeline',
-					// width:		'800',
-					height:		'600',
-					source:		'json/example_json.json',
-					embed_id:	'my-timeline',
-          start_at_end: true,
-          start_zoom_adjust: '3',
-					debug:		true
-				});
-			});
-		</script>
-<!--       <section class="box info">
-        <div class="ym-grid linearize-level-1">
-          <div class="ym-g66 ym-gl">
-            <div class="ym-grid linearize-level-2">
-              <article class="ym-g50 ym-gl">
-                <div class="ym-gbox-left"></div>
-              </article>
-              <article class="ym-g50 ym-gr">
-                <div class="ym-gbox"></div>
-              </article>
+    <ul class="ym-skiplinks">
+    <li><a class="ym-skip" href="#nav">Skip to navigation (Press Enter)</a></li>
+    <li><a class="ym-skip" href="#main">Skip to main content (Press Enter)</a></li>
+    </ul>
+
+    <header>
+        <div class="ym-wrapper">
+            <div class="ym-wbox">
+                <h3 style="color:white">'GyeongSeok Seo' story</h3>
             </div>
-          </div>
-          <article class="ym-g33 ym-gr">
-            <div class="ym-gbox-right secondary"></div>
-          </article>
         </div>
-      </section>
-      <section class="ym-grid linearize-level-1">
-        <article class="ym-g66 ym-gl content"></article>
-        <aside class="ym-g33 ym-gr"></aside>
-      </section> -->
+    </header>
+
+    <nav id="nav">
+        <div class="ym-wrapper">
+            <div class="ym-hlist">
+                <ul>
+                    <li class="active"><strong>Home</strong></li>
+                    <li><a href="#Interest">Interest</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Print</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="main">
+        <!-- time line -->
+        <div class="ym-wrapper">
+            <div class="ym-wbox" id="my-timelinebox">
+                <div id="my-timeline"></div>
+            </div>
+        </div>
+
+        <!-- interest -->
+        <div class="ym-wrapper" id="Interest">
+            <div class="ym-wbox">
+                <h4>Interest</h4>
+                <div class="jquery_tabs">
+                    <h4>My PPT</h4>
+                        <p class="tabbody">
+                            <div class="ym-grid">
+                                <a href="http://gseok.github.com/ppt/nodejs/index.html" class="ym-g33">
+                                    <img src=""/>
+                                </a>
+                                <p class="ym-g66">Node.js</p>
+                            </div>
+                            <div class="ym-g50 ym-gl">
+                                <a href="http://gseok.github.com/ppt/canvas/index.html"  class="ym-g33">
+                                </a>
+                                <p class="ym-g66">HTML5 Canvas</p>
+                            </div>
+                        </p>
+                    <h4>Book Marks</h4>
+                        <p class="tabbody">
+                        </p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-<footer>
-  <div class="ym-wrapper">
-    <div class="ym-wbox">
-      <p>© GyeongSeok Seo 2013 – Layout based on <a href="http://www.yaml.de">YAML</a></p>
-    </div>
-  </div>
-</footer>
+
+    <footer>
+        <div class="ym-wrapper">
+            <div class="ym-wbox">
+                <p>© GyeongSeok Seo 2013 – Layout based on <a href="http://www.yaml.de">YAML</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+    <!-- TimelineJS -->
+    <script type="text/javascript" src="js/storyjs-embed.js"></script>
+
+    <!-- accessible-tabs in yaml add-on -->
+    <script type="text/javascript" src="yaml/add-ons/accessible-tabs/jquery.tabs.js"></script>
+
+    <!-- main.js-->
+    <script type="text/javascript" src="js/main.js"></script>
+
 </body>
 </html>
