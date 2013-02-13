@@ -33,6 +33,7 @@
             <div class="ym-hlist">
                 <ul>
                     <li class="active"><strong>Home</strong></li>
+                    <li><a href="#Profile">Profile</a></li>
                     <li><a href="#Interest">Interest</a></li>
                     <li><a href="#">Blog</a></li>
                     <li><a href="#">Print</a></li>
@@ -42,46 +43,118 @@
         </div>
     </nav>
 
-    <div id="main">
-        <!-- time line -->
+    <div id="main" class="ym-clearfix" role="main">
         <div class="ym-wrapper">
-            <div class="ym-wbox" id="my-timelinebox">
-                <div id="my-timeline"></div>
-            </div>
-        </div>
-
-        <!-- interest -->
-        <div class="ym-wrapper" id="Interest">
             <div class="ym-wbox">
-                <h4>Interest</h4>
-                <div class="jquery_tabs">
-                    <h4>My PPT</h4>
-                    <div class="tabbody ym-grid linearize-level-1">
-                        <div class="ym-grid linearize-level-1">
-                        <a href="http://gseok.github.com/ppt/nodejs" class="ym-g33 ym-gl mythumb">
-                            <img class="flexible bordered"></img>
-                        </a>
-                        <p class="ym-g66 ym-gr"><h5>Node.js</h5></p>
-                        </div>
-
-                        <div class="ym-grid linearize-level-1">
-                        <a href="http://gseok.github.com/ppt/canvas" class="ym-g33 ym-gl mythumb">
-                            <img class="flexible bordered"></img>
-                        </a>
-                        <p class="ym-g66 ym-gr"><h5>HTML5 Canvas<h5></p>
-                        </div>
-                    </div>
-                    <h4>Book Marks</h4>
-                    <div class="tabbody ym-grid linearize-level-1">
+                <!-- time line -->
+                <div class="ym-grid linearize-level-1">
+                    <div class="ym-gbox">
+                        <div id="my-timeline"></div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <footer>
+                <br>
+                <br>
+                <!-- profile -->
+                <div id="Profile" class="ym-grid linearize-level-1">
+                    <h4>Profile</h4>
+                    <div class="ym-g25 ym-gl">
+                        <div class="ym-gbox-left">
+                            <img class="flexible bordered float-left" src="res/gyeongseok.seo01.jpg" width="140" height="100"></img>
+                        </div>
+                    </div>
+                    <div class="ym-g75 ym-gr">
+                        <div class="ym-gbox-right">
+                            <div class="ym-fbox-text">
+                                <p>My name is Gyeong-seok Seo, And I’m working for S-core corporation. Currently, I have been assigned the Tizen project. It’s wonderful! charge of the web ide in Tizen project. in specifically run, debug, cli tools, etc … modules.</p>
+                                <p>I’m very interested in ALL web technology!! specially….recently node.js is interested looking on. : )  Added..!! of course, I like all computer world! if you are interested in Tizen project, feel free to enjoy with us!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <!-- interest -->
+                <div id="Interest" class="ym-grid linearize-level-1">
+                    <h4>Interest</h4>
+                    <div class="jquery_tabs">
+                        <h4>My PPT</h4>
+                        <div class="tabbody">
+                            <div class="ym-grid linearize-level-1">
+                                <div class="ym-g25 ym-gl">
+                                    <div class="ym-gbox-left">
+                                        <a href="http://gseok.github.com/ppt/nodejs" class="mythumb">
+                                            <img class="flexible bordered center"></img>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ym-g75 ym-gr">
+                                    <div class="ym-gbox-right">
+                                        <p><h5>Node.js</h5></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ym-grid linearize-level-1">
+                                <div class="ym-g25 ym-gl">
+                                    <div class="ym-gbox-left">
+                                        <a href="http://gseok.github.com/ppt/canvas" class="mythumb">
+                                            <img class="flexible bordered center"></img>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ym-g75 ym-gr">
+                                    <div class="ym-gbox-right">
+                                        <p><h5>HTML5 Canvas</h5></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- tabbody -->
+                        <h4>Book Marks</h4>
+                        <div class="tabbody">
+                            <div class="ym-grid linearize-level-1">
+                                <div class="ym-g25 ym-gl">
+                                    <div class="ym-gbox-left">
+                                        <a href="http://www.tizen.org" class="mythumb">
+                                            <img class="flexible bordered center"></img>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ym-g75 ym-gr">
+                                    <div class="ym-gbox-right">
+                                        <p><h5>Tizen</h5></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ym-grid linearize-level-1">
+                                <div class="ym-g25 ym-gl">
+                                    <div class="ym-gbox-left">
+                                        <a href="http://tizenschools.com" class="mythumb">
+                                            <img class="flexible bordered center"></img>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ym-g75 ym-gr">
+                                    <div class="ym-gbox-right">
+                                        <p><h5>Tizen Schools</h5></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> <!-- tabbody -->
+                    </div> <!-- jquery tabs -->
+                </div> <!-- interest -->
+                <br>
+                <br>
+
+            </div> <!-- ym-wbox -->
+        </div> <!-- ym-wrapper -->
+    </div> <!-- main -->
+
+    <footer role="contentinfo">
         <div class="ym-wrapper">
             <div class="ym-wbox">
-                <p>© GyeongSeok Seo 2013 – Layout based on <a href="http://www.yaml.de">YAML</a></p>
+                <div class="ym-grid linearize-level-2">
+                    <p>© GyeongSeok Seo 2013 – Layout based on <a href="http://www.yaml.de">YAML</a></p>
+                </div>
             </div>
         </div>
     </footer>
@@ -94,6 +167,9 @@
 
     <!-- accessible-tabs in yaml add-on -->
     <script type="text/javascript" src="yaml/add-ons/accessible-tabs/jquery.tabs.js"></script>
+
+    <!-- SyncHeight jQuery Plugin in yaml add-on -->
+    <script type="text/javascript" src="yaml/add-ons/syncheight/jquery.syncheight.js"></script>
 
     <!-- thumbnail -->
     <script type="text/javascript" src="http://www.websnapr.com/js/websnapr.js"></script>

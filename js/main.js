@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	// accessible tabs control
-	$('.jquery_tabs').accessibleTabs();
+	$('.jquery_tabs').accessibleTabs( { syncheight: true } );
 
 	// timeline control
 	createStoryJS({
