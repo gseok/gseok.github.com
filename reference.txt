@@ -27,3 +27,9 @@
 ** http://www.emergeinteractive.com/whats_new/blog/2012/10/how_i_learned_to_stop_worrying_and_love_css_frameworks - css frameworks
 ** http://www.yaml.de/ -- official site ( don't confuse!! www.yaml.org )
 ** http://www.thinkintags.com/ - yaml4 gui builder
+<br>
+* Javascript Thumbnail, Dynamic! ( and tooltip plugin - jquery )
+** http://craigsworks.com/projects/qtip/demos/content/thumbnail
+** http://www.webresourcesdepot.com/10-free-website-thumbnail-generation-services/
+** http://www.manuel-strehl.de/dev/website_thumbnails.en.html
+** https://developer.mozilla.org/en-US/docs/Code_snippets/Canvas

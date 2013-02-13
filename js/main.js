@@ -9,11 +9,12 @@ $(document).ready(function() {
 		source:		'json/example_json.json',
 		embed_id:	'my-timeline',
         start_at_end: true,
-        start_zoom_adjust: '3'
+        start_zoom_adjust: '2'
 		// debug:		true
 	});
 
 	timelineControl();
+	dynamicThumbnail();
 });
 
 $(window).resize(function() {
@@ -27,4 +28,22 @@ function timelineControl() {
 	} else {
 		//$('#my-timeline').show();
 	}
+}
+
+function dynamicThumbnail() {
+	 /*
+     * You'll need your own API key, don't abuse mine please!
+     * Get yours here: http://www.websnapr.com/free_services/
+     */
+    var apiKey = 'DX49GqwGtIvn';
+	$('.mythumb').each( function() {
+    	var url = encodeURIComponent( $(this).attr('href') );
+    	console.log( url );
+    	var thumbnail = $(this).find( 'img' ).attr({
+        	    src: 'http://images.websnapr.com/?url=' + url + '&key=' + apiKey + '&hash=' + encodeURIComponent(websnapr_hash),
+            	alt: 'Loading thumbnail...',
+            	width: 202,
+            	height: 152
+		});
+	});	
 }
