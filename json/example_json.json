@@ -11,7 +11,7 @@
                 "startDate":"2001,3,1",
                 "endDate":"2009,3,1",
                 "headline":"University Life",
-                "text":"<p>student life! software! study! study! study!</p>",
+                "text":"<p>student life! software! study! study! study!<br><small>I got bachelor's degree in software engineering from Sangmyeong University. in this time.. Intensively studied in the following areas : embedded software and C language. </small></p>",
                 "asset":
                 {
                     "media":"http://www.smu.ac.kr/",
@@ -20,10 +20,22 @@
                 }
             },
             {
+                "startDate":"2003,3,1",
+                "endDate":"2005,9,1",
+                "headline":"Army",
+                "text":"<p>South Korea has adopted the conscription system. so every man go to army and two and half year! so... I also go to army, and completed own duty.</p>",
+                "asset":
+                {
+                    "media":"",
+                    "credit":"",
+                    "caption":""
+                }
+            },
+            {
                 "startDate":"2009,3,1",
                 "endDate":"2010,7,1",
                 "headline":"My first JOB!",
-                "text":"<p>Tmax Soft</p>",
+                "text":"<p>I join a company of Tmax Soft<br><small>TmaxSoft is a South Korea-based multinational corporation specializing in enterprise software system. It was founded in 1997 by former KAIST professor Daeyeon Park. Its notable products include the ProFrame application framework and Tmax transaction process monitoring solution.</small></p>",
                 "asset":
                 {
                     "media":"http://www.tmax.co.kr/"
@@ -33,7 +45,7 @@
                 "startDate":"2009,3,1",
 				"endDate":"2010,6,27",
                 "headline":"My first Project!",
-                "text":"<p>MFC share library development. working on framework team.</p>",
+                "text":"<p>MFC share library development. working on framework team.<br><small>These library's purpose is compatibility provides to tmaxwindow. easy talk. Window's software  run on tmaxWindow.</small></p>",
                 "asset":
                 {
                     "media":"",
@@ -65,8 +77,38 @@
                 }
             },
             {
+                "startDate":"2012,3,1",
+                "endDate":"2012,3,1",
+                "headline":"Promotion",
+                "text":"<p></p>"
+            },
+            {
                 "startDate":"2011,3,1",
-                "headline":"TIZEN",
+                "endDate":"2012,4,30",
+                "headline":"TIZEN 1.0",
+                "text":"<p>TIZEN 1.0 project</p>",
+                "asset":
+                {
+                    "media":"http://www.tizen.org/",
+                    "credit":"",
+                    "caption":""
+                }
+            },
+            {
+                "startDate":"2012,4,30",
+                "endDate":"2012,9,25",
+                "headline":"TIZEN 2.0 alpha",
+                "text":"<p>TIZEN project</p>",
+                "asset":
+                {
+                    "media":"http://www.tizen.org/",
+                    "credit":"",
+                    "caption":""
+                }
+            },
+            {
+                "startDate":"2012,9,25",
+                "headline":"TIZEN 2.0",
                 "text":"<p>TIZEN project</p>",
                 "asset":
                 {
