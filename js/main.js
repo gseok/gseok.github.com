@@ -29,6 +29,12 @@ function eventBind() {
 	$('#main').dblclick(function() {
 		$(location).attr('href','#nav');
 	});
+
+	// popup
+	$('a[rel*=facebox]').facebox({
+        loadingImage : 'facebox/loading.gif',
+        closeImage   : 'facebox/closelabel.png'
+    });
 }
 
 function timelineStartZoomLevel() {
