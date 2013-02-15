@@ -3,13 +3,15 @@ $(document).ready(function() {
 	$('.jquery_tabs').accessibleTabs( { syncheight: true } );
 
 	// timeline control
+	var zoom = timelineStartZoomLevel();
+	console.log( 'Start zoom : ' + zoom );
 	createStoryJS({
 		type:		'timeline',
 		height:		'600',
 		source:		'json/example_json.json',
 		embed_id:	'my-timeline',
         start_at_end: true,
-        start_zoom_adjust: '2'
+        start_zoom_adjust: zoom
 		// debug:		true
 	});
 
@@ -20,6 +22,19 @@ $(document).ready(function() {
 $(window).resize(function() {
 	timelineControl();
 });
+
+function timelineStartZoomLevel() {
+	var level = 0;
+	var window_width = $(window).width();
+	if ( window_width > 1024 ) {
+		level = 3;
+	} else if ( window_width > 700 ) {
+		level = 2;
+	} else if ( window_width > 500 ) {
+		level = 1;
+	}
+	return level;
+}
 
 function timelineControl() {
 	if ( $(window).width() < 740 ) {
