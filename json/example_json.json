@@ -35,7 +35,7 @@
                 "startDate":"2009,3,1",
                 "endDate":"2010,7,1",
                 "headline":"My first JOB!",
-                "text":"<p>I join a company of Tmax Soft<br><small>TmaxSoft is a South Korea-based multinational corporation specializing in enterprise software system. It was founded in 1997 by former KAIST professor Daeyeon Park. Its notable products include the ProFrame application framework and Tmax transaction process monitoring solution.</small></p>",
+                "text":"<p>I join a company of Tmax Soft. my first job grading is Associate Research Engineer. <br><small>TmaxSoft is a South Korea-based multinational corporation specializing in enterprise software system. It was founded in 1997 by former KAIST professor Daeyeon Park. Its notable products include the ProFrame application framework and Tmax transaction process monitoring solution.</small></p>",
                 "asset":
                 {
                     "media":"http://www.tmax.co.kr/"
@@ -48,7 +48,7 @@
                 "text":"<p>MFC share library development. working on framework team.<br><small>These library's purpose is compatibility provides to tmaxwindow. easy talk. Window's software  run on tmaxWindow.</small></p>",
                 "asset":
                 {
-                    "media":"",
+                    "media":"http://www.todaysppc.com/mbzine/bbs/data/free/tmaxwindow.jpg.thumb",
                     "credit":"",
                     "caption":""
                 }
@@ -56,7 +56,7 @@
             {
                 "startDate":"2010,7,1",
                 "headline":"Change company",
-                "text":"<p>S-Core</p>",
+                "text":"<p>S-Core, I'm working on this company.<br><small>Samsung SDS was acquired TmaxCore. so S-Core is a subsidiary company and change the name TmaxCore to S-Core.</small></p>",
                 "asset":
                 {
                     "media":"http://www.tmaxcore.co.kr/",
@@ -68,7 +68,7 @@
                 "startDate":"2010,7,1",
                 "endDate":"2011,2,27",
                 "headline":"WAC",
-                "text":"<p>WAC project</p>",
+                "text":"<p>WAC project, I'm join the web technology world!!</p>",
                 "asset":
                 {
                     "media":"http://www.wacapps.net/",
@@ -80,16 +80,16 @@
                 "startDate":"2012,3,1",
                 "endDate":"2012,3,1",
                 "headline":"Promotion",
-                "text":"<p></p>"
+                "text":"<p>I was promoted to Advisor Engineer. very happy to me! : )</p>"
             },
             {
                 "startDate":"2011,3,1",
                 "endDate":"2012,4,30",
                 "headline":"TIZEN 1.0",
-                "text":"<p>TIZEN 1.0 project</p>",
+                "text":"<p>TIZEN 1.0 project, I was assigned IDE project. Tizen IDE based on Eclipse FW.<br><small>Tizen released version 1.0, code-named Larkspur.</small></p>",
                 "asset":
                 {
-                    "media":"http://www.tizen.org/",
+                    "media":"http://source.tizen.org/release/tizen-1.0-larkspur",
                     "credit":"",
                     "caption":""
                 }
@@ -98,10 +98,10 @@
                 "startDate":"2012,4,30",
                 "endDate":"2012,9,25",
                 "headline":"TIZEN 2.0 alpha",
-                "text":"<p>TIZEN project</p>",
+                "text":"<p>TIZEN 2.0 alpha project</p>",
                 "asset":
                 {
-                    "media":"http://www.tizen.org/",
+                    "media":"http://source.tizen.org/release/tizen-2.0-alpha",
                     "credit":"",
                     "caption":""
                 }
@@ -109,7 +109,7 @@
             {
                 "startDate":"2012,9,25",
                 "headline":"TIZEN 2.0",
-                "text":"<p>TIZEN project</p>",
+                "text":"<p>TIZEN 2.0 project</p>",
                 "asset":
                 {
                     "media":"http://www.tizen.org/",
