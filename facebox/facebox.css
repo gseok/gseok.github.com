@@ -11,7 +11,7 @@
 
 #facebox .popup{
   position:relative;
-  width: 620px;
+  width: 320px;
   border:3px solid rgba(0,0,0,0);
   -webkit-border-radius:5px;
   -moz-border-radius:5px;
@@ -23,7 +23,7 @@
 
 #facebox .content {
   display:table;
-  width: 600px;
+  width: 300px;
   padding: 10px;
   background: #fff;
   -webkit-border-radius:4px;
