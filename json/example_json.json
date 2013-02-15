@@ -98,7 +98,7 @@
                 "startDate":"2012,4,30",
                 "endDate":"2012,9,25",
                 "headline":"TIZEN 2.0 alpha",
-                "text":"<p>TIZEN 2.0 alpha project</p>",
+                "text":"<p>TIZEN 2.0 alpha project, I was assigned IDE project.<br><small>Tizen released version 2.0 alpha, code-named Magnolia.</small></p>",
                 "asset":
                 {
                     "media":"http://source.tizen.org/release/tizen-2.0-alpha",
@@ -109,7 +109,7 @@
             {
                 "startDate":"2012,9,25",
                 "headline":"TIZEN 2.0",
-                "text":"<p>TIZEN 2.0 project</p>",
+                "text":"<p>TIZEN 2.0 project, I was assigned IDE project.<br><small>This project is currently underway. we are working for successfully Tizen2.0 release.</small></p>",
                 "asset":
                 {
                     "media":"http://www.tizen.org/",
