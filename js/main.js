@@ -17,11 +17,19 @@ $(document).ready(function() {
 
 	timelineControl();
 	dynamicThumbnail();
+	eventBind();
 });
 
-$(window).resize(function() {
-	timelineControl();
-});
+function eventBind() {
+	$(window).resize(function() {
+		timelineControl();
+	});
+
+	// bind mouse double click event - goto on the top
+	$('#main').dblclick(function() {
+		$(location).attr('href','#nav');
+	});
+}
 
 function timelineStartZoomLevel() {
 	var level = 0;
