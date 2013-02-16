@@ -13,7 +13,10 @@
     <link href="yaml/core/iehacks.css" rel="stylesheet" type="text/css"/>
     <![endif]-->
     <link rel="stylesheet" href="yaml/add-ons/accessible-tabs/tabs.css" type="text/css"/>
+    <!--
     <link rel="stylesheet" href="facebox/facebox.css" media="screen" type="text/css"/>
+    -->
+    <link rel="stylesheet" type="text/css" href="lightview-3.2.7/css/lightview/lightview.css"/>
 </head>
 <body class="ui-gridview">
     <ul class="ym-skiplinks">
@@ -274,11 +277,11 @@
         <div class="ym-wrapper">
             <div class="ym-wbox">
                 <div class="ym-grid linearize-level-1">
-                    <div class="ym-g25 ym-gl">
+                    <div class="ym-g75 ym-gl">
                         <div class="ym-gbox-left">
                             <p>
                             <small>
-                                © 2013 by <a rel="facebox" href="contact.html">GyeongSeok Seo</a> created. code and documentation licensed under
+                                © 2013 by <a href="contact" class="lightview" data-lightview-type="inline" data-lightview-options="skin: 'light'">GyeongSeok Seo</a> created. code and documentation licensed under
                             </small>
                             <a rel="license" href="http://creativecommons.org/licenses/by/2.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/2.0/80x15.png" /></a>
                             </p>
@@ -289,10 +292,32 @@
                             </p>
                         </div>
                     </div>
-                    <div class="ym-g25 ym-gl">
-                        <div class="ym-gbox-left">
+
+                    <!-- contact -->
+                    <div id="contact" style="display:none">
+                        <div class="ym-g50 ym-gl">
+                            <div class="ym-gbox-left">
+                                <img class="flexible left" src="http://www.tmaxcore.co.kr/resources/images/common/logo.jpg"></img><br>
+                                <small>www.s-core.co.kr</small>
+                                <br>
+                            </div>
                         </div>
-                    </div>
+                        <div class="ym-g50 ym-gr">
+                            <div class="ym-gbox-right">
+                                <p>
+                                    <b>GyeongSeok Seo</b><br>
+                                    <small>
+                                        Advisor Engineer, IDE Part
+                                    </small>
+                                </p>
+                                    <span class="label">T</span><small>&nbsp;&nbsp;+82 70 7125 5150</small><br>
+                                    <span class="label">F</span><small>&nbsp;&nbsp;+82 31 711 9115</small><br>
+                                    <span class="label">M</span><small>&nbsp;+82 10 8728 1781</small><br>
+                                    <span class="label">E</span><small>&nbsp;&nbsp;gyeongseok.seo@samsung.com</small><br>
+                            </div>
+                        </div>
+                    </div> <!-- contact -->
+
                 </div>
             </div>
         </div>
@@ -316,8 +341,15 @@
     <!-- thumbnail -->
     <script type="text/javascript" src="http://www.websnapr.com/js/websnapr.js"></script>
 
-    <!-- popup - facebox -->
+    <!-- popup - facebox
     <script type="text/javascript" src="facebox/facebox.js"></script>
+     -->
+
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="lightview-3.2.7/js/excanvas/excanvas.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="lightview-3.2.7/js/spinners/spinners.min.js"></script>
+    <script type="text/javascript" src="lightview-3.2.7/js/lightview/lightview.js"></script>
 
     <!-- main.js-->
     <script type="text/javascript" src="js/main.js"></script>

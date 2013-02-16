@@ -35,5 +35,6 @@
 ** https://developer.mozilla.org/en-US/docs/Code_snippets/Canvas
 <br>
 * JQuery popup box - simple
+** http://www.designlabelblog.com/2009/03/20-ways-to-create-javascript-modal.html
 ** http://www.jquery4u.com/windows/10-jquery-popup-window-image-slider-plugins/
 ** http://smashingspy.com/32-best-jquery-popup-window-dialog-box-example/

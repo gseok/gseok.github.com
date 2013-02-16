@@ -31,10 +31,10 @@ function eventBind() {
 	});
 
 	// popup
-	$('a[rel*=facebox]').facebox({
-        loadingImage : 'facebox/loading.gif',
-        closeImage   : 'facebox/closelabel.png'
-    });
+	// $('a[rel*=facebox]').facebox({
+ //        loadingImage : 'facebox/loading.gif',
+ //        closeImage   : 'facebox/closelabel.png'
+ //    });
 }
 
 function timelineStartZoomLevel() {
