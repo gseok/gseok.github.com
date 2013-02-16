@@ -17,12 +17,14 @@ $(document).ready(function() {
 
 	timelineControl();
 	dynamicThumbnail();
+	resizeContactPopup();
 	eventBind();
 });
 
 function eventBind() {
 	$(window).resize(function() {
 		timelineControl();
+		resizeContactPopup();
 	});
 
 	// bind mouse double click event - goto on the top
@@ -31,10 +33,13 @@ function eventBind() {
 	});
 
 	// popup
-	// $('a[rel*=facebox]').facebox({
- //        loadingImage : 'facebox/loading.gif',
- //        closeImage   : 'facebox/closelabel.png'
- //    });
+	$('#contactlink').click(function() {
+		Lightview.show({
+			url: 'contact',
+			type: 'inline',
+			options: { skin: 'light' }
+		});
+	});
 }
 
 function timelineStartZoomLevel() {
@@ -75,4 +80,17 @@ function dynamicThumbnail() {
             	height: 152
 		});
 	});	
+}
+
+function resizeContactPopup() {
+		if ( $(window).width() > 760 ) {
+			$('#contact').width(440);
+		} else if ( $(window).width() > 370 && $(window).width() <= 760) {
+			$('#contact').width(220);
+		} else if ( $(window).width() > 230 && $(window).width() <= 370 ) {
+			$('#contact').width( $(window).width() - 150 );
+		} else if ( $(window).width() <= 230 ) {
+			$('#contact').width( 80 );
+		}
+		Lightview.refresh();
 }
