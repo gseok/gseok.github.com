@@ -18,6 +18,7 @@ $(document).ready(function() {
 	timelineControl();
 	dynamicThumbnail();
 	resizeContactPopup();
+	// visitHitControl(); - not use, not pretty
 	eventBind();
 });
 
@@ -93,4 +94,11 @@ function resizeContactPopup() {
 			$('#contact').width( 80 );
 		}
 		Lightview.refresh();
+}
+
+function visitHitControl() {
+	var totalhit = $( '#totalhit' ).text().split(":")[1].trim();
+	$( '#totalhit' ).flipCounter( {
+		number: Number(totalhit)
+	});
 }
