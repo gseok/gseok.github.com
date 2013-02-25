@@ -41,6 +41,19 @@ function eventBind() {
 			options: { skin: 'light' }
 		});
 	});
+
+	// wedding invitation - rererence : http://www.w3schools.com/jsref/met_win_open.asp
+	$( 'header > div > div > h3' ).click( function() {
+		var w = 405;
+		var h = 535;
+		var left = Number(($(window).width()/2)-(w/2));
+		var top = Number(($(window).height()/2)-(h/2));
+		var weddingWnd = window.open(
+			'http://mcard.bhandscard.com/ttarot', // url
+			'GyeongSeok & Mira wedding', // name
+			'location=no,toolbar=no,menubar=no,resizable=no,status=no,width='+w+',height='+h+',left='+left+',top='+top // options
+		);
+	});
 }
 
 function timelineStartZoomLevel() {
