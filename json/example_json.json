@@ -108,8 +108,31 @@
             },
             {
                 "startDate":"2012,9,25",
+                "endDate":"2013,2,18",
                 "headline":"TIZEN 2.0",
-                "text":"<p>TIZEN 2.0 project, I was assigned IDE project.<br><small>This project is currently underway. we are working for successfully Tizen2.0 release.</small></p>",
+                "text":"<p>TIZEN 2.0 project, I was assigned IDE project. It's released!!!<br><small>This project is completed. Tizen2.0 released. This release includes many new features and improvements over Tizen 1.0 released in April, and Tizen 2.0 alpha in September, 2012. As a Tizen 2.0 developer, you will find strong HTML5/W3C APIs and a new native framework. </small></p>",
+                "asset":
+                {
+                    "media":"http://source.tizen.org/release/tizen-2.0-magnolia",
+                    "credit":"",
+                    "caption":""
+                }
+            },
+            {
+                "startDate":"2013,1,18",
+                "headline":"TIZEN Air project",
+                "text":"<p>TIZEN Air project<br><small>This project is currently underway. I'm working on this project. using technology list - node.js, V8 and Javascript bind, basic web tech ( html5, css, javascript ), and tizen native api.</small></p>",
+                "asset":
+                {
+                    "media":"http://github.com/tizenschools/cantata-web",
+                    "credit":"",
+                    "caption":""
+                }
+            },
+            {
+                "startDate":"2013,2,18",
+                "headline":"TIZEN 2.1",
+                "text":"<p>TIZEN 2.1 project, I was assigned IDE project.<br><small>This project is currently underway. we are working for successfully Tizen2.1 release.</small></p>",
                 "asset":
                 {
                     "media":"http://www.tizen.org/",
