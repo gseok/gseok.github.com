@@ -41,3 +41,6 @@
 <br>
 * JQuery counter
 ** http://www.tripwiremagazine.com/2012/11/jquery-countdown-scripts.html
+<br>
+* fold, flip effect
+** http://www.turnjs.com/
