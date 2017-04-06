@@ -1,14 +1,12 @@
 {
-  "name": "so-simple-theme",
+  "name": "gseok-homepage",
+  "description": "gseok homepage, this page made jekyll and using so-simple-theme",
   "version": "2.0.0",
-  "author": "Michael Rose <michael@mademistakes.com>",
-  "homepage": "http://mmistakes.github.io/so-simple-theme/",
+  "author": "gyeongseok.seo <gseok.seo@gmail.com>",
+  "homepage": "http://gseok.github.io/",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mmistakes/so-simple-theme.git"
-  },
-  "bugs": {
-    "url": "https://github.com/mmistakes/so-simple-theme/issues"
+    "url": "git://github.com/gseok/gseok.github.com.git"
   },
   "engines": {
     "node": ">= 0.10.0"
