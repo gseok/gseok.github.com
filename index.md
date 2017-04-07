@@ -5,4 +5,4 @@ showSiteTitle: true
 ---
 
 <div id='about-react-root'></div>
-<script type="text/babel" src="{{ site.url }}/assets/js/reactComponents/about.js"></script>
+<script type="text/babel" src="{{ site.url }}/assets/js/reactComponents/About.js"></script>

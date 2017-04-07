@@ -1,21 +1,68 @@
-/*
-    our about.js using react from 'in browser' style
-    so do not need import 'react' and 'react-dom'
-    we can directly using React.reactFuntion
-*/
+'use strict';
 
-// import React from 'react';
-// import ReactDOM from 'react-dom';
+class Test extends React.Component {
+    render() {
+        return (
+            <div>Test</div>
+        );
+    }
+}
 
-class App extends React.Component {
-    render(){
+class IntroPane extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div class='intro-pane'>
+                <div class='label'>
+                    {this.props.label}
+                </div>
+                <div class='contents'>
+                    {this.props.contents}
+                </div>
+            </div>
+        );
+    }
+}
+IntroPane.propTypes = {
+    label: React.PropTypes.string,
+    contents: React.PropTypes.element
+};
+
+class AboutMe extends React.Component {
+    getInitialState() {
+        return {
+            label: 'About Me'
+        }
+    }
+
+    render() {
+        let label = this.state.label;
+        console.log(label + '......');
 
         return (
-                <h1>Hello React</h1>
+            <IntroPane label={this.state.label}
+                       contents={this.state.contents}/>
+        );
+    }
+}
+
+class App extends React.Component {
+    render() {
+        return (
+            <div>
+                <AboutMe/>
+                <IntroPane label='Time Line'/>
+                <IntroPane label='Career'/>
+                <IntroPane label='Tech Skill'/>
+                <IntroPane label='Tech PPT'/>
+            </div>
         );
     }
 }
 
 
-const rootElement = document.getElementById('about-react-root');
-ReactDOM.render(<App />, rootElement);
+const aboutRoot = document.getElementById('about-react-root');
+ReactDOM.render(<App />, aboutRoot);
