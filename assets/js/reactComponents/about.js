@@ -1,4 +1,5 @@
-'use strict';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 class Test extends React.Component {
     render() {
@@ -63,6 +64,6 @@ class App extends React.Component {
     }
 }
 
-
+console.log('tes1111t3433465');
 const aboutRoot = document.getElementById('about-react-root');
 ReactDOM.render(<App />, aboutRoot);
