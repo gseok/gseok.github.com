@@ -4,4 +4,5 @@ title: About Me
 showSiteTitle: true
 ---
 
-<div> Here React.js </div>
+<div id='about-react-root'></div>
+<script type="text/babel" src="{{ site.url }}/assets/js/reactComponents/about.js"></script>
