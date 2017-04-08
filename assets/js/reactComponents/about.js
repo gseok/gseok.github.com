@@ -16,11 +16,11 @@ class IntroPane extends React.Component {
 
     render() {
         return (
-            <div class='intro-pane'>
-                <div class='label'>
+            <div className='intro-pane'>
+                <div className='label'>
                     {this.props.label}
                 </div>
-                <div class='contents'>
+                <div className='contents'>
                     {this.props.contents}
                 </div>
             </div>
@@ -33,19 +33,24 @@ IntroPane.propTypes = {
 };
 
 class AboutMe extends React.Component {
-    getInitialState() {
-        return {
+    constructor(props) {
+        super(props);
+
+        this.state = {
             label: 'About Me'
         }
     }
 
+    createAboutContents() {
+        return <Test />;
+    }
+
     render() {
-        let label = this.state.label;
-        console.log(label + '......');
+        let contents = this.createAboutContents();
 
         return (
             <IntroPane label={this.state.label}
-                       contents={this.state.contents}/>
+                       contents={contents}/>
         );
     }
 }
@@ -64,6 +69,5 @@ class App extends React.Component {
     }
 }
 
-console.log('tes1111t3433465');
-const aboutRoot = document.getElementById('about-react-root');
+const aboutRoot = document.getElementById('root');
 ReactDOM.render(<App />, aboutRoot);
