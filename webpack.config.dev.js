@@ -16,14 +16,6 @@ module.exports = {
     },
 
     plugins: [
-        /*
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        }),
-        */
-
         // webpack-dev-server enhancement plugins
         new webpack.HotModuleReplacementPlugin()
     ],
