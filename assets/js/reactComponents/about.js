@@ -43,7 +43,22 @@ class AboutMe extends React.Component {
     }
 
     createAboutContents() {
-        return <Test />;
+        let label = 'Introduction';
+        let title = 'intro me';
+        let text = 'hi all~~~';
+
+        return (
+            <div>
+                <img src='./images/gseok.jpg'/>
+                <div className='textdesc'>
+                    <label className='textdesc-label'>{label}</label>
+                    <div>
+                        <div className='textdesc-title'>{title}</div>
+                        <div className='textdesc-text'>{text}</div>
+                    </div>
+                </div>
+            </div>
+        );
     }
 
     render() {
