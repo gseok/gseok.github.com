@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 class Test extends React.Component {
     render() {
@@ -28,8 +29,8 @@ class IntroPane extends React.Component {
     }
 }
 IntroPane.propTypes = {
-    label: React.PropTypes.string,
-    contents: React.PropTypes.element
+    label: PropTypes.string,
+    contents: PropTypes.element
 };
 
 class AboutMe extends React.Component {
