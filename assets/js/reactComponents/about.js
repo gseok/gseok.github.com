@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import { DatePicker } from 'antd';
 
 class TextDesc extends React.Component {
     constructor(props) {
@@ -109,6 +110,7 @@ class AboutMe extends React.Component {
             <div>
                 <img src='./images/gseok.jpg'/>
                 <TextDesc/>
+                <DatePicker />
             </div>
         );
     }
