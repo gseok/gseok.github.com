@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import SyntaxHighlighter from 'react-syntax-highlighter';
+import QRCode from 'qrcode.react';
 import { github } from 'react-syntax-highlighter/dist/styles';
 import koKR from 'antd/lib/locale-provider/ko_KR';
 import { LocaleProvider, Card, Icon, Tooltip, Row, Col } from 'antd';
@@ -93,8 +94,9 @@ Hello All !!!! My name is Gyeong-seok Seo, And I’m working for S-core corporat
 I’m very interested in ALL web technology!! specially….recently node.js is interested looking on. : ) Added..!! of course, I like all computer world! if you are interested in Tizen project, feel free to enjoy with us!
 `;
 const aboutMeLikesString =
-`stamp, movies, books, startrek, starwas,
-baseball, trip
+`stamp, movies, books, startrek,
+starwas, baseball, trip,
+family(son & wife)
 `;
 
 class AboutMe extends React.Component {
@@ -138,8 +140,15 @@ class AboutMe extends React.Component {
                     <div>
                         <Icon type='heart'/>
                         <Tooltip placement='rightTop' title={aboutMeLikesString}>
-                            <span>&nbsp;&nbsp;Likes</span>
+                            <span>&nbsp;&nbsp;Like & Love</span>
                         </Tooltip>
+                    </div>
+                    <div>
+                        <Icon type='barcode'/>
+                        <span>&nbsp;&nbsp;QRCode</span>
+                        <div>
+                            <QRCode size='64' value='http://gseok.github.io' level='L'/>
+                        </div>
                     </div>
                 </Col>
                 <Col span={16} order={1}>
