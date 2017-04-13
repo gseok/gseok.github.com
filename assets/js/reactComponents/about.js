@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { github } from 'react-syntax-highlighter/dist/styles';
 import koKR from 'antd/lib/locale-provider/ko_KR';
-import { LocaleProvider, Card, Row, Col } from 'antd';
+import { LocaleProvider, Card, Icon, Tooltip, Row, Col } from 'antd';
 
 class TextDesc extends React.Component {
     constructor(props) {
@@ -87,6 +87,15 @@ const aboutMeString =
 우리가 생각하는 모든것을 웹에서 모두 다 할 수 있다고 생각합니다.
 요새 React에 관심이 생겨 이 페이지를 React로 작성해 보았습니다.
 `;
+const aboutMeStringEn =
+`
+Hello All !!!! My name is Gyeong-seok Seo, And I’m working for S-core corporation. Currently, I have been assigned the Tizen project. It’s wonderful! charge of the web ide in Tizen project. in specifically run, debug, cli tools, etc … modules.
+I’m very interested in ALL web technology!! specially….recently node.js is interested looking on. : ) Added..!! of course, I like all computer world! if you are interested in Tizen project, feel free to enjoy with us!
+`;
+const aboutMeLikesString =
+`stamp, movies, books, startrek, starwas,
+baseball, trip
+`;
 
 class AboutMe extends React.Component {
     constructor(props) {
@@ -100,10 +109,40 @@ class AboutMe extends React.Component {
     createContents() {
         return (
             <Row gutter={4}>
-                <Col span={8}>
+                <Col span={8} order={0}>
                     <img src='./images/gseok.jpg' alt='gyeongseok seo'/>
+                    <div>
+                        <Icon type='mail'/>
+                        <a href="mailto:gseok.seo@gmail.com">
+                            &nbsp;&nbsp;gseok.seo@gmail.com
+                        </a>
+                    </div>
+                    <div>
+                        <Icon type='home'/>
+                        <a href="http://gseok.tistory.com">
+                            &nbsp;&nbsp;Blog
+                        </a>
+                    </div>
+                    <div>
+                        <Icon type='github'/>
+                        <a href="https://github.com/gseok">
+                            &nbsp;&nbsp;Github
+                        </a>
+                    </div>
+                    <div>
+                        <Icon type='book'/>
+                        <a href="https://www.gitbook.com/@gseok">
+                            &nbsp;&nbsp;GitBook
+                        </a>
+                    </div>
+                    <div>
+                        <Icon type='heart'/>
+                        <Tooltip placement='rightTop' title={aboutMeLikesString}>
+                            <span>&nbsp;&nbsp;Likes</span>
+                        </Tooltip>
+                    </div>
                 </Col>
-                <Col span={16}>
+                <Col span={16} order={1}>
                     <li>Introduction</li>
                     <SyntaxHighlighter language='javascript' style={github}>
                         {aboutMeCodeString}
