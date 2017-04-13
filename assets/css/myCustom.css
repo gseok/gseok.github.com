@@ -2,3 +2,14 @@
     max-width: 77.5em;
 }
 
+.my-ant-row {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    margin-bottom: 20px !important;
+}
+
+.my-ant-card .ant-card-head-title {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 48px !important;
+}

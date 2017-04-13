@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { github } from 'react-syntax-highlighter/dist/styles';
 import koKR from 'antd/lib/locale-provider/ko_KR';
-import { LocaleProvider, Card } from 'antd';
+import { LocaleProvider, Card, Row, Col } from 'antd';
 
 class TextDesc extends React.Component {
     constructor(props) {
@@ -70,6 +72,22 @@ TextDesc.defaultProps = {
     text: 'No Text'
 };
 
+const aboutMeCodeString =
+`() => {
+    let i = 'Web Developer.';
+    let say = 'I am thinking about everything can do in Web.';
+    let hello = 'And hello everyone~';
+
+    console.log(i, say, hello);
+}`;
+const aboutMeString =
+`안녕하세요, 저는 웹 개발자 입니다.
+웹 개발을 좋아하고, 재미있어합니다.
+웹의 새로운 기술을 경험하는것은 항상 도전적인 일입니다.
+우리가 생각하는 모든것을 웹에서 모두 다 할 수 있다고 생각합니다.
+요새 React에 관심이 생겨 이 페이지를 React로 작성해 보았습니다.
+`;
+
 class AboutMe extends React.Component {
     constructor(props) {
         super(props);
@@ -81,7 +99,21 @@ class AboutMe extends React.Component {
 
     createContents() {
         return (
-            <img src='./images/gseok.jpg' alt='gyeongseok seo'/>
+            <Row gutter={4}>
+                <Col span={8}>
+                    <img src='./images/gseok.jpg' alt='gyeongseok seo'/>
+                </Col>
+                <Col span={16}>
+                    <li>Introduction</li>
+                    <SyntaxHighlighter language='javascript' style={github}>
+                        {aboutMeCodeString}
+                    </SyntaxHighlighter>
+                    <br></br>
+                    <SyntaxHighlighter language='tex' style={github}>
+                        {aboutMeString}
+                    </SyntaxHighlighter>
+                </Col>
+            </Row>
         );
     }
 
@@ -89,7 +121,7 @@ class AboutMe extends React.Component {
         let contents = this.createContents();
 
         return (
-            <Card title={this.state.label}>
+            <Card className='my-ant-card' title={this.state.label}>
                 {contents}
             </Card>
         );
@@ -114,7 +146,7 @@ class TimeLine extends React.Component {
         let contents = this.createContents();
 
         return (
-            <Card title={this.state.label}>
+            <Card className='my-ant-card' title={this.state.label}>
                 {contents}
             </Card>
         );
@@ -139,7 +171,7 @@ class Career extends React.Component {
         let contents = this.createContents();
 
         return (
-            <Card title={this.state.label}>
+            <Card className='my-ant-card' title={this.state.label}>
                 {contents}
             </Card>
         );
@@ -164,7 +196,7 @@ class TechSkill extends React.Component {
         let contents = this.createContents();
 
         return (
-            <Card title={this.state.label}>
+            <Card className='my-ant-card' title={this.state.label}>
                 {contents}
             </Card>
         );
@@ -189,7 +221,7 @@ class TechPPT extends React.Component {
         let contents = this.createContents();
 
         return (
-            <Card title={this.state.label}>
+            <Card className='my-ant-card' title={this.state.label}>
                 {contents}
             </Card>
         );
@@ -201,11 +233,11 @@ class App extends React.Component {
         return (
             <LocaleProvider locale={koKR}>
                 <div>
-                    <AboutMe/>
-                    <TimeLine/>
-                    <Career/>
-                    <TechSkill/>
-                    <TechPPT/>
+                    <Row className='my-ant-row'><Col span={24}><AboutMe/></Col></Row>
+                    <Row className='my-ant-row'><Col span={24}><TimeLine/></Col></Row>
+                    <Row className='my-ant-row'><Col span={24}><Career/></Col></Row>
+                    <Row className='my-ant-row'><Col span={24}><TechSkill/></Col></Row>
+                    <Row className='my-ant-row'><Col span={24}><TechPPT/></Col></Row>
                 </div>
             </LocaleProvider>
         );
