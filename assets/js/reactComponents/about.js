@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { DatePicker } from 'antd';
+import koKR from 'antd/lib/locale-provider/ko_KR';
+import { LocaleProvider, Card } from 'antd';
 
 class TextDesc extends React.Component {
     constructor(props) {
@@ -69,29 +70,6 @@ TextDesc.defaultProps = {
     text: 'No Text'
 };
 
-class IntroPane extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <div className='intro-pane'>
-                <div className='label'>
-                    {this.props.label}
-                </div>
-                <div className='contents'>
-                    {this.props.contents}
-                </div>
-            </div>
-        );
-    }
-}
-IntroPane.propTypes = {
-    label: PropTypes.string,
-    contents: PropTypes.element
-};
-
 class AboutMe extends React.Component {
     constructor(props) {
         super(props);
@@ -101,26 +79,119 @@ class AboutMe extends React.Component {
         }
     }
 
-    createAboutContents() {
-        let label = 'Introduction';
-        let title = 'intro me';
-        let text = 'hi all~~~';
-
+    createContents() {
         return (
-            <div>
-                <img src='./images/gseok.jpg'/>
-                <TextDesc/>
-                <DatePicker />
-            </div>
+            <img src='./images/gseok.jpg' alt='gyeongseok seo'/>
         );
     }
 
     render() {
-        let contents = this.createAboutContents();
+        let contents = this.createContents();
 
         return (
-            <IntroPane label={this.state.label}
-                       contents={contents}/>
+            <Card title={this.state.label}>
+                {contents}
+            </Card>
+        );
+    }
+}
+class TimeLine extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            label: 'Time Line'
+        }
+    }
+
+    createContents() {
+        return (
+            <div>TODO</div>
+        );
+    }
+
+    render() {
+        let contents = this.createContents();
+
+        return (
+            <Card title={this.state.label}>
+                {contents}
+            </Card>
+        );
+    }
+}
+class Career extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            label: 'Career'
+        }
+    }
+
+    createContents() {
+        return (
+            <div>TODO</div>
+        );
+    }
+
+    render() {
+        let contents = this.createContents();
+
+        return (
+            <Card title={this.state.label}>
+                {contents}
+            </Card>
+        );
+    }
+}
+class TechSkill extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            label: 'Tech Skill'
+        }
+    }
+
+    createContents() {
+        return (
+            <div>TODO</div>
+        );
+    }
+
+    render() {
+        let contents = this.createContents();
+
+        return (
+            <Card title={this.state.label}>
+                {contents}
+            </Card>
+        );
+    }
+}
+class TechPPT extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            label: 'Tech PPT'
+        }
+    }
+
+    createContents() {
+        return (
+            <div>TODO</div>
+        );
+    }
+
+    render() {
+        let contents = this.createContents();
+
+        return (
+            <Card title={this.state.label}>
+                {contents}
+            </Card>
         );
     }
 }
@@ -128,13 +199,15 @@ class AboutMe extends React.Component {
 class App extends React.Component {
     render() {
         return (
-            <div>
-                <AboutMe/>
-                <IntroPane label='Time Line'/>
-                <IntroPane label='Career'/>
-                <IntroPane label='Tech Skill'/>
-                <IntroPane label='Tech PPT'/>
-            </div>
+            <LocaleProvider locale={koKR}>
+                <div>
+                    <AboutMe/>
+                    <TimeLine/>
+                    <Career/>
+                    <TechSkill/>
+                    <TechPPT/>
+                </div>
+            </LocaleProvider>
         );
     }
 }
