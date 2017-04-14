@@ -138,14 +138,45 @@ class TimeLine extends React.Component {
         this.onClickIndex = this.onClickIndex.bind(this);
     }
 
+    getChildContext () {
+        return {
+            reflexbox: {
+                breakpoints: {
+                    sm: '(min-width: 30em)',
+                    md: '(min-width: 48em)',
+                    lg: '(min-width: 77.5em)'
+                }
+            }
+        };
+    }
+
     componentWillMount() {
         this.dates = Constants.TIME_LINE_VALUES.map((entry) => entry.date);
         this.views = Constants.TIME_LINE_VALUES.map((entry, index) => {
+            const imageExists = (
+                <Flex wrap>
+                    <Box col={12} lg={6} md={6} sm={12}>
+                            1
+                    </Box>
+                    <Box col={12} lg={6} md={6} sm={12}>
+                            2
+                    </Box>
+                </Flex>
+            );
+            const noImageExists = (
+                <Flex wrap>
+                    <Box col={12} lg={12} md={12} sm={12}>
+                            3
+                    </Box>
+                </Flex>
+            );
             return (
                 <div className='my-timeline-desc-container' key={index}>
-                    <h4>{entry.title}</h4>
-                    <hr/>
-                    <p>TODO</p>
+                    {entry.image ? (
+                        imageExists
+                    ) : (
+                        noImageExists
+                    )}
                 </div>
             );
         });
@@ -212,6 +243,9 @@ class TimeLine extends React.Component {
             </Card>
         );
     }
+}
+TimeLine.childContextTypes = {
+    reflexbox: PropTypes.object
 }
 
 class Career extends React.Component {
