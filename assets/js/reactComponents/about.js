@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Constants from './Constants';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import QRCode from 'qrcode.react';
-import HorizontalTimeline from 'react-horizontal-timeline';
+import HorizontalTimeline from './timeline/Components/HorizontalTimeline';
 import SwipeableViews from 'react-swipeable-views';
 import { github } from 'react-syntax-highlighter/dist/styles';
 import { Flex, Box } from 'reflexbox';
@@ -114,8 +114,8 @@ class TimeLine extends React.Component {
 
         this.state = {
             label: 'Time Line',
-            value: 0,
-            previous: 0,
+            value: (Constants.TIME_LINE_VALUES.length - 1),
+            previous: (Constants.TIME_LINE_VALUES.length - 1),
 
             // timelineConfig
             minEventPadding: 20,
