@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Constants from './Constants';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import QRCode from 'qrcode.react';
-import HorizontalTimeline from 'react-timeline-view';
+import HorizontalTimeline from 'react-horizontal-timeline';
 import { github } from 'react-syntax-highlighter/dist/styles';
 import { Flex, Box } from 'reflexbox';
 import koKR from 'antd/lib/locale-provider/ko_KR';
@@ -112,13 +112,36 @@ class TimeLine extends React.Component {
         super(props);
 
         this.state = {
-            label: 'Time Line'
+            label: 'Time Line',
+            value: 0,
+            previous: 0
         }
+
+        this.onClickIndex = this.onClickIndex.bind(this);
+    }
+
+    onClickIndex(index) {
+        this.setState((prevState) => {
+            return {
+                value: index,
+                previous: prevState.value
+            }
+        });
     }
 
     createContents() {
+        const timeLineValues = [{
+            date: '02/13/2009',
+            title: 'join tmaxsoft'
+        }, {
+            date: '03/23/2017',
+            title: 'marriage'
+        }];
+
         return (
-            <div>TODO</div>
+            <div>
+                <HorizontalTimeline indexClick={this.onClickIndex} values={timeLineValues} />
+            </div>
         );
     }
 
