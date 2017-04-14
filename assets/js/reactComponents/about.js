@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Constants from './Constants';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import QRCode from 'qrcode.react';
-import HorizontalTimeline from 'react-horizontal-timeline';
+import HorizontalTimeline from './timeline/Components/HorizontalTimeline';
 import { github } from 'react-syntax-highlighter/dist/styles';
 import { Flex, Box } from 'reflexbox';
 import koKR from 'antd/lib/locale-provider/ko_KR';
@@ -140,7 +140,10 @@ class TimeLine extends React.Component {
 
         return (
             <div>
-                <HorizontalTimeline indexClick={this.onClickIndex} values={timeLineValues} />
+                <HorizontalTimeline
+                    values={timeLineValues}
+                    indexClick={this.onClickIndex}
+                />
             </div>
         );
     }
