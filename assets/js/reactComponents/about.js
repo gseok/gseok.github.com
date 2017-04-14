@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import QRCode from 'qrcode.react';
 import { github } from 'react-syntax-highlighter/dist/styles';
+import { Flex, Box } from 'reflexbox';
 import koKR from 'antd/lib/locale-provider/ko_KR';
 import { LocaleProvider, Card, Icon, Tooltip, Row, Col } from 'antd';
 
@@ -108,10 +109,22 @@ class AboutMe extends React.Component {
         }
     }
 
+    getChildContext () {
+        return {
+            reflexbox: {
+                breakpoints: {
+                    sm: '(min-width: 30em)',
+                    md: '(min-width: 48em)',
+                    lg: '(min-width: 77.5em)'
+                }
+            }
+        };
+    }
+
     createContents() {
         return (
-            <Row gutter={4}>
-                <Col span={8} order={0}>
+            <Flex wrap>
+                <Box col={12} lg={4} md={4} sm={12}>
                     <img src='./images/gseok.jpg' alt='gyeongseok seo'/>
                     <div>
                         <Icon type='mail'/>
@@ -147,11 +160,11 @@ class AboutMe extends React.Component {
                         <Icon type='barcode'/>
                         <span>&nbsp;&nbsp;QRCode</span>
                         <div>
-                            <QRCode size='64' value='http://gseok.github.io' level='L'/>
+                            <QRCode size={64} value='http://gseok.github.io' level='L'/>
                         </div>
                     </div>
-                </Col>
-                <Col span={16} order={1}>
+                </Box>
+                <Box col={12} lg={8} md={8} sm={12}>
                     <li>Introduction</li>
                     <SyntaxHighlighter language='javascript' style={github}>
                         {aboutMeCodeString}
@@ -160,8 +173,8 @@ class AboutMe extends React.Component {
                     <SyntaxHighlighter language='tex' style={github}>
                         {aboutMeString}
                     </SyntaxHighlighter>
-                </Col>
-            </Row>
+                </Box>
+            </Flex>
         );
     }
 
@@ -175,6 +188,10 @@ class AboutMe extends React.Component {
         );
     }
 }
+AboutMe.childContextTypes = {
+    reflexbox: PropTypes.object
+}
+
 class TimeLine extends React.Component {
     constructor(props) {
         super(props);
