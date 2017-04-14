@@ -24,9 +24,18 @@ starwas, baseball, trip,
 family(son & wife)
 `;
 
+const timeLineValues = [{
+    date: '02/13/2009',
+    title: 'join tmaxsoft'
+}, {
+    date: '03/23/2017',
+    title: 'marriage'
+}];
+
 module.exports = {
     ABOUT_ME_CODE_STRING: aboutMeCodeString,
     ABOUT_ME_STRING: aboutMeString,
     ABOUT_ME_STRING_EN: aboutMeStringEn,
-    ABOUT_ME_LIKES: aboutMeLikesString
+    ABOUT_ME_LIKES: aboutMeLikesString,
+    TIME_LINE_VALUES: timeLineValues
 };

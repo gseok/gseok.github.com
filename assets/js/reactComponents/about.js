@@ -10,11 +10,6 @@ import { Flex, Box } from 'reflexbox';
 import koKR from 'antd/lib/locale-provider/ko_KR';
 import { LocaleProvider, Card, Icon, Tooltip, Row, Col } from 'antd';
 
-const aboutMeCodeString = Constants.ABOUT_ME_CODE_STRING;
-const aboutMeString = Constants.ABOUT_ME_STRING;
-const aboutMeStringEn = Constants.ABOUT_ME_STRING_EN;
-const aboutMeLikesString = Constants.ABOUT_ME_LIKES;
-
 class AboutMe extends React.Component {
     constructor(props) {
         super(props);
@@ -37,6 +32,11 @@ class AboutMe extends React.Component {
     }
 
     createContents() {
+        const aboutMeCodeString = Constants.ABOUT_ME_CODE_STRING;
+        const aboutMeString = Constants.ABOUT_ME_STRING;
+        const aboutMeStringEn = Constants.ABOUT_ME_STRING_EN;
+        const aboutMeLikesString = Constants.ABOUT_ME_LIKES;
+
         return (
             <Flex wrap>
                 <Box col={12} lg={4} md={4} sm={12}>
@@ -114,8 +114,25 @@ class TimeLine extends React.Component {
         this.state = {
             label: 'Time Line',
             value: 0,
-            previous: 0
-        }
+            previous: 0,
+
+            // timelineConfig
+            minEventPadding: 20,
+            maxEventPadding: 120,
+            linePadding: 100,
+            labelWidth: 100,
+            fillingMotionStiffness: 150,
+            fillingMotionDamping: 25,
+            slidingMotionStiffness: 150,
+            slidingMotionDamping: 25,
+            stylesBackground: '#f8f8f8',
+            stylesForeground: '#7b9d6f',
+            stylesOutline: '#dfdfdf',
+            isTouchEnabled: true,
+            isKeyboardEnabled: true,
+            isOpenEnding: true,
+            isOpenBeginning: true,
+        };
 
         this.onClickIndex = this.onClickIndex.bind(this);
     }
@@ -130,13 +147,7 @@ class TimeLine extends React.Component {
     }
 
     createContents() {
-        const timeLineValues = [{
-            date: '02/13/2009',
-            title: 'join tmaxsoft'
-        }, {
-            date: '03/23/2017',
-            title: 'marriage'
-        }];
+        const timeLineValues = Constants.TIME_LINE_VALUES;
 
         return (
             <div>
@@ -158,6 +169,7 @@ class TimeLine extends React.Component {
         );
     }
 }
+
 class Career extends React.Component {
     constructor(props) {
         super(props);
