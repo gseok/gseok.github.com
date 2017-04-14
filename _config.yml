@@ -56,7 +56,7 @@ exclude: [
   "vendor",
   "webpack.config.js",
   "draft-0.1.jpg",
-  "assets/js/reactComponents/about.js"
+  "assets/js/reactComponents"
 ]
 
 

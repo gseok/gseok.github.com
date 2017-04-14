@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Constants from './Constants';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import QRCode from 'qrcode.react';
-import HorizontalTimeline from './timeline/Components/HorizontalTimeline';
+import HorizontalTimeline from 'react-horizontal-timeline';
 import { github } from 'react-syntax-highlighter/dist/styles';
 import { Flex, Box } from 'reflexbox';
 import koKR from 'antd/lib/locale-provider/ko_KR';
@@ -137,6 +137,10 @@ class TimeLine extends React.Component {
         this.onClickIndex = this.onClickIndex.bind(this);
     }
 
+    componentWillMount() {
+        this.dates = Constants.TIME_LINE_VALUES.map((entry) => entry.date);
+    }
+
     onClickIndex(index) {
         this.setState((prevState) => {
             return {
@@ -147,13 +151,35 @@ class TimeLine extends React.Component {
     }
 
     createContents() {
-        const timeLineValues = Constants.TIME_LINE_VALUES;
 
         return (
-            <div>
+            <div style={{ width: '100%', height: '100px', margin: '0 auto' }}>
                 <HorizontalTimeline
-                    values={timeLineValues}
+                    values={this.dates}
+                    index={this.state.value}
                     indexClick={this.onClickIndex}
+
+                    minEventPadding={this.state.minEventPadding}
+                    maxEventPadding={this.state.maxEventPadding}
+                    linePadding={this.state.linePadding}
+                    labelWidth={this.state.labelWidth}
+                    fillingMotion={{
+                        stiffness: this.state.fillingMotionStiffness,
+                        damping: this.state.fillingMotionDamping
+                    }}
+                    slidingMotion={{
+                        stiffness: this.state.slidingMotionStiffness,
+                        damping: this.state.slidingMotionDamping
+                    }}
+                    styles={{
+                        background: this.state.stylesBackground,
+                        foreground: this.state.stylesForeground,
+                        outline: this.state.stylesOutline
+                    }}
+                    isTouchEnabled={this.state.isTouchEnabled}
+                    isKeyboardEnabled={this.state.isKeyboardEnabled}
+                    isOpenEnding={this.state.isOpenEnding}
+                    isOpenBeginning={this.state.isOpenBeginning}
                 />
             </div>
         );
