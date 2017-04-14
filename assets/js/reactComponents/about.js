@@ -153,7 +153,7 @@ class TimeLine extends React.Component {
     createContents() {
 
         return (
-            <div style={{ width: '100%', height: '100px', margin: '0 auto' }}>
+            <div className='my-timeline'>
                 <HorizontalTimeline
                     values={this.dates}
                     index={this.state.value}
