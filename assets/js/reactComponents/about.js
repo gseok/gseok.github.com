@@ -5,6 +5,7 @@ import Constants from './Constants';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import QRCode from 'qrcode.react';
 import HorizontalTimeline from 'react-horizontal-timeline';
+import SwipeableViews from 'react-swipeable-views';
 import { github } from 'react-syntax-highlighter/dist/styles';
 import { Flex, Box } from 'reflexbox';
 import koKR from 'antd/lib/locale-provider/ko_KR';
@@ -139,6 +140,15 @@ class TimeLine extends React.Component {
 
     componentWillMount() {
         this.dates = Constants.TIME_LINE_VALUES.map((entry) => entry.date);
+        this.views = Constants.TIME_LINE_VALUES.map((entry, index) => {
+            return (
+                <div className='my-timeline-desc-container' key={index}>
+                    <h4>{entry.title}</h4>
+                    <hr/>
+                    <p>TODO</p>
+                </div>
+            );
+        });
     }
 
     onClickIndex(index) {
@@ -151,36 +161,44 @@ class TimeLine extends React.Component {
     }
 
     createContents() {
-
         return (
-            <div className='my-timeline'>
-                <HorizontalTimeline
-                    values={this.dates}
-                    index={this.state.value}
-                    indexClick={this.onClickIndex}
+            <div>
+                <div className='my-timeline'>
+                    <HorizontalTimeline
+                        values={this.dates}
+                        index={this.state.value}
+                        indexClick={this.onClickIndex}
 
-                    minEventPadding={this.state.minEventPadding}
-                    maxEventPadding={this.state.maxEventPadding}
-                    linePadding={this.state.linePadding}
-                    labelWidth={this.state.labelWidth}
-                    fillingMotion={{
-                        stiffness: this.state.fillingMotionStiffness,
-                        damping: this.state.fillingMotionDamping
-                    }}
-                    slidingMotion={{
-                        stiffness: this.state.slidingMotionStiffness,
-                        damping: this.state.slidingMotionDamping
-                    }}
-                    styles={{
-                        background: this.state.stylesBackground,
-                        foreground: this.state.stylesForeground,
-                        outline: this.state.stylesOutline
-                    }}
-                    isTouchEnabled={this.state.isTouchEnabled}
-                    isKeyboardEnabled={this.state.isKeyboardEnabled}
-                    isOpenEnding={this.state.isOpenEnding}
-                    isOpenBeginning={this.state.isOpenBeginning}
-                />
+                        minEventPadding={this.state.minEventPadding}
+                        maxEventPadding={this.state.maxEventPadding}
+                        linePadding={this.state.linePadding}
+                        labelWidth={this.state.labelWidth}
+                        fillingMotion={{
+                            stiffness: this.state.fillingMotionStiffness,
+                            damping: this.state.fillingMotionDamping
+                        }}
+                        slidingMotion={{
+                            stiffness: this.state.slidingMotionStiffness,
+                            damping: this.state.slidingMotionDamping
+                        }}
+                        styles={{
+                            background: this.state.stylesBackground,
+                            foreground: this.state.stylesForeground,
+                            outline: this.state.stylesOutline
+                        }}
+                        isTouchEnabled={this.state.isTouchEnabled}
+                        isKeyboardEnabled={this.state.isKeyboardEnabled}
+                        isOpenEnding={this.state.isOpenEnding}
+                        isOpenBeginning={this.state.isOpenBeginning}
+                    />
+                </div>
+                <div className='my-timeline-desc'>
+                    <SwipeableViews
+                        index={this.state.value}
+                        resistance>
+                        {this.views}
+                    </SwipeableViews>
+                </div>
             </div>
         );
     }
