@@ -154,25 +154,40 @@ class TimeLine extends React.Component {
         this.dates = Constants.TIME_LINE_VALUES.map((entry) => entry.date);
         this.views = Constants.TIME_LINE_VALUES.map((entry, index) => {
             const imageExists = (
-                <Flex wrap>
+                <Flex wrap align='center' justify="center">
                     <Box col={12} lg={6} md={6} sm={12}>
-                            1
+                        <div className='my-timeline-desc-image-warp'>
+                            <img src={'./images/about/' + entry.image} 
+                                 className='my-timeline-desc-image'></img>
+                        </div>
                     </Box>
                     <Box col={12} lg={6} md={6} sm={12}>
-                            2
+                        <div className='my-timeline-descs-warp'
+                             style={{'textAlign': 'center'}}>
+                            <h4>{entry.term}</h4>
+                            <h5>{entry.title}</h5>
+                            <p></p>
+                            <p>{entry.desc}</p>
+                        </div>
                     </Box>
                 </Flex>
             );
             const noImageExists = (
-                <Flex wrap>
+                <Flex wrap align='center' justify="center">
                     <Box col={12} lg={12} md={12} sm={12}>
-                            3
+                        <div className='my-timeline-descs-warp'
+                             style={{'textAlign': 'center'}}>
+                            <h4>{entry.term}</h4>
+                            <h5>{entry.title}</h5>
+                            <p></p>
+                            <p>{entry.desc}</p>
+                        </div>
                     </Box>
                 </Flex>
             );
             return (
                 <div className='my-timeline-desc-container' key={index}>
-                    {entry.image ? (
+                    {(entry.image && entry.image.length > 0) ? (
                         imageExists
                     ) : (
                         noImageExists

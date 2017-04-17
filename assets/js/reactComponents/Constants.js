@@ -103,10 +103,6 @@ ko_2013_08:
 사내에서 팀을 이동할 기회가 생겨, Web의 세계로 본격적으로 들어가게된 시점입니다.
 webida라고 하는 web 기반 IDE 프로젝트에 참여하였습니다.
 webida는 open-source이고, 현재도 github에 코드가 존재합니다.
-github의 코드는 개발코드와 달리 open-source로 github에 올릴때, 코드를 한번
-정리하여서, 기존 개발자들의 commit이 모두 사라졌습니다.
-(너무 안타까운일입니다. 초기 개발자의 commit은 모두 사라지고
- 중간에 open-source로 공개한 당시 이후부터의 commit만 남아있습니다.)
 해당 프로젝트에서 Client을 담당하였습니다.
 webida의 대부분의 Client UI을 작성하였습니다.
 webida (https://github.com/webida)

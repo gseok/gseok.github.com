@@ -29,3 +29,48 @@
     font-size: 16px;
     color: #23527c;
 }
+
+.my-timeline-desc-image-warp {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.my-timeline-desc-image {
+    max-height: 350px;
+    max-width: 250px;
+}
+
+.my-timeline-desc-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-timeline-descs-warp {
+    padding-top: 15px;
+}
+
+.my-timeline-descs-warp h4 {
+    font-size: 15px;
+    line-height: 15px;
+    font-weight: normal;
+    color: #999999;
+}
+
+.my-timeline-descs-warp h5 {
+    font-weight: normal;
+    text-transform: none;
+    color: #000000;
+    font-size: 28px;
+    line-height: 30px;
+}
+
+.my-timeline-descs-warp p {
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 20px;
+    margin-bottom: 20px;
+    color: #666666;
+}
