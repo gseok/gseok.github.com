@@ -9,7 +9,7 @@ import SwipeableViews from 'react-swipeable-views';
 import { github } from 'react-syntax-highlighter/dist/styles';
 import { Flex, Box } from 'reflexbox';
 import koKR from 'antd/lib/locale-provider/ko_KR';
-import { LocaleProvider, Card, Icon, Tooltip, Row, Col } from 'antd';
+import { LocaleProvider, Card, Icon, Tooltip, Row, Col, Table } from 'antd';
 
 class AboutMe extends React.Component {
     constructor(props) {
@@ -273,8 +273,35 @@ class Career extends React.Component {
     }
 
     createContents() {
+        const columns = [{
+            title: 'Period',
+            dataIndex: 'period',
+            key: 'period'
+        }, {
+            title: 'Name',
+            dataIndex: 'name',
+            key: 'name'
+        }, {
+            title: 'Contents',
+            dataIndex: 'contents',
+            key: 'contents'
+        }];
+
+        const tooltipText = (
+            <div>
+                <p>{Constants.CARRER_SUMMARY_VALUES}</p>
+            </div>
+        );
+
         return (
-            <div>TODO</div>
+            <div className='my-career-table-warp'>
+                <Tooltip className='career-tooltip' placement='right'
+                         title={tooltipText}>
+                    <Icon type='info-circle'/><span>&nbsp;summary</span>
+                </Tooltip>
+                <Table columns={columns}
+                       dataSource={Constants.CARRER_TABLE_VALUES}/>
+            </div>
         );
     }
 
