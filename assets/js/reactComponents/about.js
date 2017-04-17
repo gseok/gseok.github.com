@@ -584,7 +584,7 @@ class TechPPT extends React.Component {
     }
 
     render() {
-        let contents = this.createContents();
+        const contents = this.createContents();
 
         return (
             <Card className='my-ant-card' title={this.state.label}>

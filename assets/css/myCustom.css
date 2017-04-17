@@ -127,3 +127,7 @@
 .ant-carousel .slick-dots li.slick-active button {
     background: #108ee9 !important;
 }
+
+.my-ppt-descs-warp {
+    min-height: 150px;
+}
