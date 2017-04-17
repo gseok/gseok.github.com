@@ -59,7 +59,8 @@
     color: #999999;
 }
 
-.my-timeline-descs-warp h5 {
+.my-timeline-descs-warp h5,
+.my-ppt-descs-warp h5 {
     font-weight: normal;
     text-transform: none;
     color: #000000;
@@ -67,7 +68,8 @@
     line-height: 30px;
 }
 
-.my-timeline-descs-warp p {
+.my-timeline-descs-warp p,
+.my-ppt-descs-warp p {
     font-size: 15px;
     font-weight: normal;
     line-height: 20px;
