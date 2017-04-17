@@ -97,4 +97,5 @@
 
 .ant-tooltip-inner {
     max-width: 500px;
+    white-space: pre-wrap;
 }

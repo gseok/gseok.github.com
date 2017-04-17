@@ -287,16 +287,10 @@ class Career extends React.Component {
             key: 'contents'
         }];
 
-        const tooltipText = (
-            <div>
-                <p>{Constants.CARRER_SUMMARY_VALUES}</p>
-            </div>
-        );
-
         return (
             <div className='my-career-table-warp'>
                 <Tooltip className='career-tooltip' placement='right'
-                         title={tooltipText}>
+                         title={Constants.CARRER_SUMMARY_VALUES}>
                     <Icon type='info-circle'/><span>&nbsp;summary</span>
                 </Tooltip>
                 <Table columns={columns}
