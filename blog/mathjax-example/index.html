@@ -5,14 +5,18 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>About Me &#8211; GyeongSeok Seo story</title>
+<title>MathJax Example &#8211; GyeongSeok Seo story</title>
+<meta name="description" content="MathJax is a simple way of including Tex/LaTex/MathML based mathematics in HTML webpages. To get up and running you need to include the MathJax script in the header of your github pages page, and then write some maths. For LaTex, there are two delimiters you need to know about, one for block or displayed mathematics \[ ... \], and the other for inline mathematics \( ... \).
 
-
+">
+<meta name="keywords" content="">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="About Me">
+<meta name="twitter:title" content="MathJax Example">
+<meta name="twitter:description" content="MathJax is a simple way of including Tex/LaTex/MathML based mathematics in HTML webpages. To get up and running you need to include the MathJax script in the header of your github pages page, and then write some maths. For LaTex, there are two delimiters you need to know about, one for block or displayed mathematics \[ ... \], and the other for inline mathematics \( ... \).
 
+">
 
 
 
@@ -22,16 +26,18 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="ko_KR">
 <meta property="og:type" content="article">
-<meta property="og:title" content="About Me">
+<meta property="og:title" content="MathJax Example">
+<meta property="og:description" content="MathJax is a simple way of including Tex/LaTex/MathML based mathematics in HTML webpages. To get up and running you need to include the MathJax script in the header of your github pages page, and then write some maths. For LaTex, there are two delimiters you need to know about, one for block or displayed mathematics \[ ... \], and the other for inline mathematics \( ... \).
 
-<meta property="og:url" content="https://gseok.github.io/">
+">
+<meta property="og:url" content="https://gseok.github.io/blog/mathjax-example/">
 <meta property="og:site_name" content="GyeongSeok Seo story">
 
 
 
 
 
-<link rel="canonical" href="https://gseok.github.io/">
+<link rel="canonical" href="https://gseok.github.io/blog/mathjax-example/">
 <link href="https://gseok.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="GyeongSeok Seo story Feed">
 
 <!-- https://t.co/dKP3o1e -->
@@ -65,7 +71,7 @@
 
 </head>
 
-<body id="page">
+<body id="post">
 
 <div class="navigation-wrapper">
 	<nav role="navigation" id="site-nav" class="animated drop">
@@ -98,8 +104,7 @@
   		<a href="https://gseok.github.io/" class="site-logo" rel="home" title="GyeongSeok Seo story"><img src="https://gseok.github.io/images/site-logo.png" width="200" height="200" alt="GyeongSeok Seo story logo" class="animated fadeInDown"></a>
       
 	  
-      <h1 class="site-title animated fadeIn"><a href="https://gseok.github.io/">GyeongSeok Seo story</a></h1>
-      <h2 class="site-description animated fadeIn" itemprop="description">() => { console.log('web developer gseok story'); }</h2>
+	      
 	  
 	</div>
 </header><!-- /.masthead -->
@@ -108,17 +113,60 @@
 
 
 <div id="main" role="main">
-  <article class="entry">
+  <article class="hentry">
     
     <div class="entry-wrapper">
-      
+      <header class="entry-header">
+        <ul class="entry-tags">
+          
+        </ul>
+        
+          <h1 class="entry-title">MathJax Example</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        
+          <img src="https://gseok.github.io/images/gseok.jpg" class="bio-photo" alt="gyeongseok seo bio photo"></a>
+        
+        <span class="author vcard">By <span class="fn">gyeongseok seo</span></span>
+        <span class="entry-date date published"><time datetime="2015-08-10T21:08:50+09:00"><i class="fa fa-calendar-o"></i> August 10, 2015</time></span>
+        
+        
+        
+        
+      </footer>
       <div class="entry-content">
-        <div id="root"></div>
-<script src="https://gseok.github.io/assets/js/reactComponents/about.js"></script>
+        <p><a href="http://www.mathjax.org/">MathJax</a> is a simple way of including Tex/LaTex/MathML based mathematics in HTML webpages. To get up and running you need to include the MathJax script in the header of your github pages page, and then write some maths. For LaTex, there are two delimiters you need to know about, one for block or displayed mathematics <code class="highlighter-rouge">\[ ... \]</code>, and the other for inline mathematics <code class="highlighter-rouge">\( ... \)</code>.</p>
 
+<h2 id="usage">Usage</h2>
 
+<p>To enable MathJax support be sure Kramdown is your Markdown flavor of choice and MathJax is set to true in your <code class="highlighter-rouge">_config.yml</code> file.</p>
+
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">markdown</span><span class="pi">:</span> <span class="s">kramdown</span>
+<span class="s">mathjax</span><span class="pi">:</span> <span class="s">true</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Here is an example MathJax inline rendering \\( 1/x^{2} \\), and here is a block rendering: 
+\\[ \frac{1}{n^{2}} \\]
+</code></pre>
+</div>
+
+<p>Here is an example MathJax inline rendering \( 1/x^{2} \), and here is a block rendering: 
+\[ \frac{1}{n^{2}} \]</p>
+
+<p>The only thing to look out for is the escaping of the backslash when using markdown, so the delimiters become <code class="highlighter-rouge">\\[ ... \\]</code> and <code class="highlighter-rouge">\\( ... \\)</code> for inline and block maths respectively.</p>
+
+        
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="https://gseok.github.io/blog/hello-world/" class="btn" title="Hello World">Previous</a>
+      
+      
+    </nav><!-- /.pagination -->
   </article>
 </div><!-- /#main -->
 
@@ -145,28 +193,6 @@
   </footer>
 </div><!-- /.footer-wrapper -->
 
-<!-- HTML5 Shiv and Media Query Support -->
-<!--[if lt IE 9]>
-  <script src="https://gseok.github.io/assets/js/vendor/html5shiv.min.js"></script>
-  <script src="https://gseok.github.io/assets/js/vendor/respond.min.js"></script>
-<![endif]-->
-
-<!-- Modernizr -->
-<script src="https://gseok.github.io/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
-
-
-<!-- MathJax -->
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-
-<!-- react -->
-<script src="https://gseok.github.io/assets/js/vendor/react.min.js"></script>
-<script src="https://gseok.github.io/assets/js/vendor/react-dom.min.js"></script>
-
-<!-- babel, babel-core -->
-<script src="https://gseok.github.io/assets/js/vendor/babel.min.js"></script>
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.3/require.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>-->
 <script type="text/javascript">
   var BASE_URL = 'https://gseok.github.io';
 </script>

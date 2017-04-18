@@ -5,13 +5,13 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>About Me &#8211; GyeongSeok Seo story</title>
+<title>Search &#8211; GyeongSeok Seo story</title>
 
 
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="About Me">
+<meta name="twitter:title" content="Search">
 
 
 
@@ -22,16 +22,16 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="ko_KR">
 <meta property="og:type" content="article">
-<meta property="og:title" content="About Me">
+<meta property="og:title" content="Search">
 
-<meta property="og:url" content="https://gseok.github.io/">
+<meta property="og:url" content="https://gseok.github.io/search/">
 <meta property="og:site_name" content="GyeongSeok Seo story">
 
 
 
 
 
-<link rel="canonical" href="https://gseok.github.io/">
+<link rel="canonical" href="https://gseok.github.io/search/">
 <link href="https://gseok.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="GyeongSeok Seo story Feed">
 
 <!-- https://t.co/dKP3o1e -->
@@ -98,8 +98,10 @@
   		<a href="https://gseok.github.io/" class="site-logo" rel="home" title="GyeongSeok Seo story"><img src="https://gseok.github.io/images/site-logo.png" width="200" height="200" alt="GyeongSeok Seo story logo" class="animated fadeInDown"></a>
       
 	  
-      <h1 class="site-title animated fadeIn"><a href="https://gseok.github.io/">GyeongSeok Seo story</a></h1>
-      <h2 class="site-description animated fadeIn" itemprop="description">() => { console.log('web developer gseok story'); }</h2>
+	      
+		      <h1 class="site-title animated fadeIn"><a href="https://gseok.github.io/">Search</a></h1>
+			  <h2 class="site-description animated fadeIn" itemprop="description"></h2>
+		  
 	  
 	</div>
 </header><!-- /.masthead -->
@@ -113,8 +115,25 @@
     <div class="entry-wrapper">
       
       <div class="entry-content">
-        <div id="root"></div>
-<script src="https://gseok.github.io/assets/js/reactComponents/about.js"></script>
+        <!-- Search form -->
+<form method="get" action="https://gseok.github.io/search/" data-search-form="" class="simple-search">
+  <label for="q">Search GyeongSeok Seo story for:</label>
+  <input type="search" name="q" id="goog-wm-qt" placeholder="What are you looking for?" data-search-input="" autofocus="" />
+  <input type="submit" value="Search" id="goog-wm-sb" />
+</form>
+
+<!-- Search results placeholder -->
+<h6 data-search-found="">
+  <span data-search-found-count=""></span> result(s) found for &ldquo;<span data-search-found-term=""></span>&rdquo;.
+</h6>
+<ul class="post-list" data-search-results=""></ul>
+
+<!-- Search result template -->
+<script type="text/x-template" id="search-result">
+  <li><article>
+    <a href="##Url##">##Title## <span class="excerpt">##Excerpt##</span></a>
+  </article></li>
+</script>
 
 
       </div><!-- /.entry-content -->
