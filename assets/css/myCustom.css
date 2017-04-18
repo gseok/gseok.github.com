@@ -128,6 +128,12 @@
     background: #108ee9 !important;
 }
 
+.ant-carousel .slick-slide img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .my-ppt-descs-warp {
     min-height: 150px;
 }
