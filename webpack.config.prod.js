@@ -1,4 +1,5 @@
 // prod config
+const webpack = require('webpack');
 
 module.exports = {
     entry: './assets/js/reactComponents/about.js',
@@ -14,15 +15,8 @@ module.exports = {
                 warnings: false,
             }
         }),
-        new webpack.optimize.OccurenceOrderPlugin()
+        new webpack.optimize.OccurrenceOrderPlugin()
     ],
-
-    devServer: {
-        inline: true,
-        hot: true,
-        port: 4000,
-        contentBase: __dirname + '/_site'
-    },
 
     module: {
             loaders: [

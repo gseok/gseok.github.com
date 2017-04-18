@@ -5,8 +5,8 @@ locale: ko_KR
 description: () => { console.log('web developer gseok story'); }
 logo: site-logo.png
 search: true
-#url: https://gseok.github.io
-url: http://localhost:4000
+url: https://gseok.github.io
+#url: http://localhost:4000
 
 # Jekyll configuration
 
