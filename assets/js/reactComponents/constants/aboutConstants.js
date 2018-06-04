@@ -1,8 +1,8 @@
 const aboutMeCodeString =
 `() => {
-    let i = 'Web Developer.';
-    let say = 'I am thinking about everything can do in Web.';
-    let hello = 'And hello everyone~';
+    const i = 'Web Developer.';
+    const say = 'I am thinking about everything can do in Web.';
+    const hello = 'And hello everyone~';
 
     console.log(i, say, hello);
 }`;
@@ -15,11 +15,11 @@ const aboutMeString =
 `;
 const aboutMeStringEn =
 `
-Hello All !!!! My name is Gyeong-seok Seo, And I’m working for S-core corporation. Currently, I have been assigned the Tizen project. It’s wonderful! charge of the web ide in Tizen project. in specifically run, debug, cli tools, etc … modules.
-I’m very interested in ALL web technology!! specially….recently node.js is interested looking on. : ) Added..!! of course, I like all computer world! if you are interested in Tizen project, feel free to enjoy with us!
+Hello All !!!! My name is Gyeong-seok Seo, I have been assigned the Smartthings project. It’s wonderful! charge of the web sdk for IoT device. in specifically run, build, ui, etc … modules.
+I’m very interested in ALL web technology!! specially….recently vue.js and react is interested looking on. : ) Added..!! of course, I like all computer world!
 `;
 const aboutMeLikesString =
-`stamp, movies, books, startrek,
+`lego, stamp, movies, books, startrek,
 starwas, baseball, trip,
 family(son & wife)
 `;
