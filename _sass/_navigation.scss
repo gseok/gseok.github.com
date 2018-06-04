@@ -3,6 +3,7 @@
    ========================================================================== */
 
 .navigation-wrapper {
+  display: none; // only show root
   text-align: center;
   @include clearfix;
 

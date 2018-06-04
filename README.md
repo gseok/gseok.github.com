@@ -1,3 +1,8 @@
+# 개발환경 설정
+1. ruby 환경설정 (https://jekyllrb.com/docs/windows/)
+2. jekyll 와 bundler 설치 (gem install jekyll bundler)
+3. jekyll dependency 설치 (bundle install)
+
 # 개발시
 * _config.yml 에 url을 local 주소로 변경
 * npm start (package.json에 script>start)로 구동
@@ -8,14 +13,19 @@
 
 # 클린
 * _site 와 node_modules 폴더를 제거
-* bundle exec jekyll build 로 static 빌드
+* jekyll 빌드
+    * bundle exec jekyll build 로 static 빌드
+
 * about은 react로 구성 따라서. 아래 두 명령어 필요.
-** npm install (디펜던시 인스톨)
-** npm start(개발시), npm build(배포시)
+    * npm install (디펜던시 인스톨)
+    * npm start(개발시), npm build(배포시)
 
 # 확인
 * _site폴더의 생성 확인
 * _site폴더의 assets > js > reactComponents 폴더의 생성 확인
+
+# 테스트
+* http://localhost:4000/ 로접속하여 테스트
 
 # So Simple Theme
 
