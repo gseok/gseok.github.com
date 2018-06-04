@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import Constants from './Constants';
 import QRCode from 'qrcode.react';
@@ -29,40 +28,48 @@ class AboutMe extends React.Component {
         };
     }
 
+    createBoxItem({ type, href, text }) {
+        return (
+            <div key={`${type}-${text}`}>
+                <Icon type={type}/>
+                <a target='_blank' href={href}>
+                    &nbsp;&nbsp;{text}
+                </a>
+            </div>
+        );
+    }
+
     createContents() {
         const aboutMeCodeString = Constants.ABOUT_ME_CODE_STRING;
         const aboutMeString = Constants.ABOUT_ME_STRING;
-        const aboutMeStringEn = Constants.ABOUT_ME_STRING_EN;
         const aboutMeLikesString = Constants.ABOUT_ME_LIKES;
+
+        const items = [{
+            type: 'mail',
+            href: 'mailto:gseok.seo@gmail.com',
+            text: 'gseok.seo@gmail.com'
+        }, {
+            type: 'home',
+            href: 'http://gseok.tistory.com',
+            text: 'Blog'
+        }, {
+            type: 'github',
+            href: 'https://github.com/gseok',
+            text: 'Github'
+        }, {
+            type: 'book',
+            href: 'https://legacy.gitbook.com/@gseok/dashboard',
+            text: 'GitBook'
+        }];
 
         return (
             <Flex wrap>
                 <Box col={12} lg={4} md={4} sm={12}>
                     <img src='./images/gseok.jpg' alt='gyeongseok seo'/>
-                    <div>
-                        <Icon type='mail'/>
-                        <a href="mailto:gseok.seo@gmail.com">
-                            &nbsp;&nbsp;gseok.seo@gmail.com
-                        </a>
-                    </div>
-                    <div>
-                        <Icon type='home'/>
-                        <a href="http://gseok.tistory.com">
-                            &nbsp;&nbsp;Blog
-                        </a>
-                    </div>
-                    <div>
-                        <Icon type='github'/>
-                        <a href="https://github.com/gseok">
-                            &nbsp;&nbsp;Github
-                        </a>
-                    </div>
-                    <div>
-                        <Icon type='book'/>
-                        <a href="https://www.gitbook.com/@gseok">
-                            &nbsp;&nbsp;GitBook
-                        </a>
-                    </div>
+                    {items.map((item) => {
+                        return this.createBoxItem(item);
+                    })}
+
                     <div>
                         <Icon type='heart'/>
                         <Tooltip placement='rightTop' title={aboutMeLikesString}>
@@ -92,7 +99,7 @@ class AboutMe extends React.Component {
     }
 
     render() {
-        let contents = this.createContents();
+        const contents = this.createContents();
 
         return (
             <Card className='my-ant-card' title={this.state.label}>
@@ -105,4 +112,4 @@ AboutMe.childContextTypes = {
     reflexbox: PropTypes.object
 }
 
-module.exports = AboutMe;
+export default AboutMe;
