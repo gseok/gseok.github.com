@@ -85,8 +85,6 @@
   
 
   
-
-  
     ,{
       "title"			: "About Me",
       "link"			: "https://gseok.github.io/",
@@ -99,12 +97,6 @@
   
 
   
-    ,{
-      "title"			: "About Me",
-      "link"			: "https://gseok.github.io/about/",
-      "excerpt"		: ""
-    }
-  
 
   
     ,{
@@ -114,6 +106,14 @@
     }
   
 
+  
+
+  
+    ,{
+      "title"			: "About Me",
+      "link"			: "https://gseok.github.io/about/",
+      "excerpt"		: ""
+    }
   
 
   
