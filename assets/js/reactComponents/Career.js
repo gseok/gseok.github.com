@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Constants from './Constants';
 import { Card, Icon, Tooltip, Table } from 'antd';
 
@@ -16,11 +15,13 @@ class Career extends React.Component {
         const columns = [{
             title: 'Period',
             dataIndex: 'period',
-            key: 'period'
+            key: 'period',
+            width: 150,
         }, {
             title: 'Name',
             dataIndex: 'name',
-            key: 'name'
+            key: 'name',
+            width: 150,
         }, {
             title: 'Contents',
             dataIndex: 'contents',
@@ -34,7 +35,9 @@ class Career extends React.Component {
                     <Icon type='info-circle'/><span>&nbsp;summary</span>
                 </Tooltip>
                 <Table columns={columns}
-                       dataSource={Constants.CARRER_TABLE_VALUES}/>
+                       dataSource={Constants.CARRER_TABLE_VALUES}
+                       pagination={{ pageSize: 50 }}
+                       scroll={{ y: 1000 }}/>
             </div>
         );
     }

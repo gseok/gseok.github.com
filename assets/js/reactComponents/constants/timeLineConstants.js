@@ -27,7 +27,7 @@ WAC은 (Wholesale Applications Community)의 약자입니다.
 홈페이지는(http://www.wholesaleappcommunity.com/) 입니다.
 제가 참여한 부분은, WAC Spec을 따르는 WEB-APP을 제작할 수 있는,
 IDE을 제공하는 파트를 담당했습니다.
-Eclipse 기반의 Plug-in 형태의 프로그램이고, 제가 처음 WEB world에 참여한 프로젝트 입니다.
+Eclipse 기반의 Plug-in 형태의 프로그램이고, 제가 처음 WEB World에 참여한 프로젝트 입니다.
 물론 아직은 Java(Eclipse)를 사용했지만 말이죠...
 `,
 ko_2011_03:
@@ -84,7 +84,6 @@ webida (https://github.com/webida)
 ko_2014_03:
 `Web 에서 UI Prototyping을 하는 Web기반 UI Prototyping Tool을 개발하였습니다.
 해당 프로젝트는 BtoB프로젝트로 납품한 회사 전용으로 사용되는 소프트웨어로 개발하였습니다.
-(그래서 스크린샷이 없습니다.)
 기존의 UI Prototyping Tool와 비슷한 툴로 생각하면 됩니다. 다만 Web에서 되는.!!
 이 프로젝트에서는 Modeling 부분을 담당하였습니다.
 (어떤 그림을 모델화 하고, 해당 모델을 Web에서 UI로 표현하는 부분)
@@ -116,8 +115,14 @@ Tizen C# appication을 개발 할 수 있게 해주는 프로젝트입니다.
 Project Check)등 거의 대부분의 기능입니다.
 `,
 ko_2017_04:
-`현재 Web Part에서 Smart Car관련 프로젝트 준비중입니다.
-react, virtul dom 등을 해당 프로젝트에 도입 가능한지 검토중입니다.
+`Smartthings Local SDK 프로젝트에 참여하였습니다.
+atom 기반의 Smartthings Iot Device 개발 환경을 제공하는 프로젝트 입니다.
+제가 담당한 부분은, Logger, Device Profile, Run As, CI(Jenkins), build, installer 입니다.
+`,
+ko_2018_01:
+`Smartthings Web SDK 프로젝트에 참여중입니다.
+web 기반의 Smartthings Iot Device 개발 환경을 제공하는 프로젝트 입니다.
+제가 담당한 부분은, Logger, Automation(OnBoarding), Hub Connected, React to Vue 입니다.
 `
 }
 
@@ -191,33 +196,44 @@ const timeLineValues = [{
     date: '2014-03-01',
     title: 'UIP(UI Prototyping Tool)',
     desc: DESC_ME.ko_2014_03,
-    term: 'March 01, 2014 - November 01,2014'
+    term: 'March 01, 2014 - November 01,2014',
+    image: 'uip.jpg'
 }, {
     date: '2014-11-01',
     title: 'Cafe Web Editor',
     desc: DESC_ME.ko_2014_11,
-    term: 'November 01,2014 - March 01, 2015'
+    term: 'November 01,2014 - March 01, 2015',
+    image: 'cafe-editor.jpg'
 }, {
     date: '2015-03-01',
     title: 'Tizen Web SDK',
     desc: DESC_ME.ko_2015_03,
-    term: 'March 01, 2015 - January 01, 2016'
+    term: 'March 01, 2015 - January 01, 2016',
+    image: 'tizen-websdk.jpg'
 }, {
     date: '2016-01-01',
     title: 'Insator - DPD',
     desc: DESC_ME.ko_2016_01,
-    term: 'January 01, 2016 - December 31, 2016'
+    term: 'January 01, 2016 - December 31, 2016',
+    image: 'insator.jpg'
 }, {
     date: '2017-01-01',
-    title: 'Insator - DPD',
+    title: 'vscode for tizen extension',
     desc: DESC_ME.ko_2017_01,
     term: 'January 01, 2017 - April 01, 2017',
     image: 'vscode.jpg'
 }, {
     date: '2017-04-01',
-    title: 'Smart Car',
+    title: 'Smartthings Local SDK',
     desc: DESC_ME.ko_2017_04,
-    term: 'April 01, 2017 - Now'
+    term: 'April 01, 2017 - December 31, 2017',
+    image: 'smartthings-local.jpg'
+}, {
+    date: '2018-01-01',
+    title: 'Smartthings Web SDK',
+    desc: DESC_ME.ko_2018_01,
+    term: 'January 01, 2018 - Now',
+    image: 'smartthings-web.png'
 }];
 
 module.exports = {

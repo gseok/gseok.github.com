@@ -45,13 +45,19 @@ const carrerTableValues = [{
     contents: 'Vscode tizen C# extention 개발 - Create, Build, Sign, Packaging, Install, Run 개발'
 }, {
     key: '10',
-    period: '2017.04 - Now',
-    name: 'smart car',
-    contents: 'Smart Car 개발 - Dashboard 개발'
+    period: '2017.04 - 2017.12',
+    name: 'Smartthings Local SDK',
+    contents: 'Smartthings Local SDK (atom extension) 개발 - Logger, Device Profile, Run As, CI(Jenkins), build, installer 개발'
+}, {
+    key: '11',
+    period: '2018.01 - 2018.06',
+    name: 'Smartthings Web SDK',
+    contents: 'Smartthings Web SDK 개발 - Logger, Automation(OnBoarding), Hub Connected, React to Vue 개발'
 }];
 
 const carrerSummaryValues ='\n \
-2017.04 ~ Now: smart car: 스마트카 dashboard 개발중\n \
+2018.01 ~ now : Smartthings Web SDK 개발중 - Logger, Automation(OnBoarding), Hub Connected, React to Vue 개발\n \
+2017.04 ~ 2017.12 : Smartthings Local SDK (atom extension) 개발 - Logger, Device Profile, Run As, CI(Jenkins), build, installer 개발\n \
 2017.01 ~ 2017.04 : m-tizen: VSCode Extension개발 (Visual Studio Code Extension - tizen extension) 개발\n \
 2016.01 ~ 2016.12 : Insator - (data preperation design) tool 개발\n \
 2015.03 ~ 2016.01 : Tizen Web Based IDE - client develop(Project Wizard, Menifest Editor)\n \

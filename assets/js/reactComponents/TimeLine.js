@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import Constants from './Constants';
 import HorizontalTimeline from './timeline/Components/HorizontalTimeline';
@@ -149,7 +148,7 @@ class TimeLine extends React.Component {
     }
 
     render() {
-        let contents = this.createContents();
+        const contents = this.createContents();
 
         return (
             <Card className='my-ant-card' title={this.state.label}>
@@ -162,4 +161,4 @@ TimeLine.childContextTypes = {
     reflexbox: PropTypes.object
 }
 
-module.exports = TimeLine;
+export default TimeLine;
