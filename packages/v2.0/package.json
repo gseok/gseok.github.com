@@ -1,0 +1,44 @@
+{
+  "name": "gseok-homepage-v2.0",
+  "description": "gseok homepage, this page made jekyll and using so-simple-theme",
+  "version": "2.0.0",
+  "author": "gyeongseok.seo <gseok.seo@gmail.com>",
+  "homepage": "http://gseok.github.io/",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gseok/gseok.github.com.git"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.config.dev.js",
+    "build": "webpack --config webpack.config.prod.js"
+  },
+  "unusedDep": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-imagemin": "~0.2.0",
+    "grunt-contrib-jshint": "~0.6.3",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-contrib-watch": "~0.5.2",
+    "grunt-svgmin": "~0.2.0"
+  },
+  "dependencies": {
+    "antd": "^2.9.1",
+    "color": "^0.11.3",
+    "prop-types": "^15.5.6",
+    "qrcode.react": "^0.6.1",
+    "radium": "^0.18.0",
+    "react": "^15.4.2",
+    "react-dimensions": "2.0.0-alpha1",
+    "react-dom": "^15.4.2",
+    "react-graph-vis": "^0.1.1",
+    "react-horizontal-timeline": "^1.1.1",
+    "react-icons": "^2.0.1",
+    "react-motion": "^0.4.2",
+    "react-swipeable-views": "^0.12.0",
+    "react-syntax-highlighter": "^5.3.0",
+    "reflexbox": "^2.2.3"
+  }
+}

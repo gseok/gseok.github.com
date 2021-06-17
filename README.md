@@ -1,57 +1,44 @@
-# 개발환경 설정
+# 소개
+- 개인 homepage 프로젝트 입니다.
+- 개인 블로그 및 개인 소개(about) 형태로 되어 있습니다.
+- 최종적으로는 github의 staitc page 서빙을 통해서, 서비스 됩니다.
+- Lerna 구조로 mono-repo구조로 만들었습니다.
+  - 개인 블로그: jekyll을 통해서 md(markup) 형태로 포스팅을 합니다.
+  - 개인 소개: react프로젝트로 개인소개인 about 영역의 컨텐츠를 독립적으로 제공합니다.
+
+
+# 폴더 구조 설명
+- packages/v2.0 - 블로그(jekyll), so simple theme을 이용한 블로그 입니다. 개인 소개 위주로만 되어 있고 현재 deprecated되었습니다.
+- packages/v3.0 - 블로그(jekyll), next theme(https://simpleyyt.com/jekyll-theme-next) 으로 되어 있습니다.
+- packages/about-react - 개인소개 페이지, react로 구성되어 있으면, 전체 page의 about영역에서 개인 소개를 위한 형태로 되어 있습니다.
+
+
+# 공통적인 jekyll 개발환경 설정 - v2.0, v3.0 모두 jekyll 기반으로 동일하게 필요한 설정 입니다.
 1. ruby 환경설정 (https://jekyllrb.com/docs/windows/)
 2. jekyll 와 bundler 설치 (gem install jekyll bundler)
 3. jekyll dependency 설치 (bundle install)
 
-# 개발시
-* _config.yml 에 url을 local 주소로 변경
-* npm start (package.json에 script>start)로 구동
 
-# 배포시
-* _config.yml 에 url을 github 주소로 변경
-* npm build (package.json에 script>build)로 구동
+# 개발시 - v3.0기준 (v2.0은 - v2.0내의 readme.md 참고)
+- ```bundle exec jekyll serve --livereload``` 형태로 실행
+- http://127.0.0.1:4000/  접속하여 테스트
+
+# 배포시 - v3.0기준 (v2.0은 - v2.0내의 readme.md 참고)
+- jekyll로 기본적인 static serve용 홈페이지 생성
+  - jekyll_env을 명시적으로 prod모드로 주고 build수행 필요
+  - 이때 github_token을 주어야 빌드 결과의 url path가 잘 맞게 됩니다.
+  - ```JEKYLL_GITHUB_TOKEN=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 JEKYLL_ENV=production bundle exec jekyll build```
+  - ```packages/v3.0/_site```에 빌드 결과물이 나옵니다.
+    - 해당 결과물 (_site)폴더를 flat하게 내려서 gseok.github.com 에 main(master)에 push하면 서빙됨
+  - !!```The GitHub API credentials you provided aren't valid``` 에러 발생시 위 github token이 잘못되어 있을 가능성이 높음 해당 부분 먼저 체크한다.
+    - https://github.com/settings/tokens
+- react 프로젝트는 별개로 빌드 후 위 _site폴더의 ```assets > js > react-component``` 형태로 추가해야 합니다.
 
 # 클린
-* _site 와 node_modules 폴더를 제거
-* jekyll 빌드
-    * bundle exec jekyll build 로 static 빌드
+- ```bundle exec jekyll clean```
+- 관련 명령어로 clean수행 가능합니다.
 
-* about은 react로 구성 따라서. 아래 두 명령어 필요.
-    * npm install (디펜던시 인스톨)
-    * npm start(개발시), npm build(배포시)
 
-# 확인
-* _site폴더의 생성 확인
-* _site폴더의 assets > js > reactComponents 폴더의 생성 확인
-
-# 테스트
-* http://localhost:4000/ 로접속하여 테스트
-
-# So Simple Theme
-
-Looking for a simple, responsive, theme for your Jekyll powered blog? Well look no further. Here be **So Simple Theme**, the followup to [**Minimal Mistakes**](http://mmistakes.github.io/minimal-mistakes/) -- by designer slash illustrator [Michael Rose](http://mademistakes.com).
-
-## Notable features:
-
-* Compatible with Jekyll 3 and GitHub Pages.
-* Responsive templates. Looks good on mobile, tablet, and desktop devices.
-* Gracefully degrading in older browsers. Compatible with Internet Explorer 9+ and all modern browsers.
-* Minimal embellishments and subtle animations.
-* Optional large feature images for posts and pages.
-* [Custom 404 page](http://mmistakes.github.io/so-simple-theme/404.html) to get you started.
-* Basic [search capabilities](https://github.com/mathaywarduk/jekyll-search)
-* Support for Disqus Comments
-
-![screenshot of So Simple Theme](http://mmistakes.github.io/so-simple-theme/images/so-simple-theme-preview.jpg)
-
-See a [live version of So Simple](http://mmistakes.github.io/so-simple-theme/) hosted on GitHub.
-
----
-
-## Getting Started
-
-So Simple takes advantage of Sass and data files to make customizing easier and requires Jekyll 3.x.
-
-To learn how to install and use this theme check out the [Setup Guide](http://mmistakes.github.io/so-simple-theme/theme-setup/) for more information.
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/mmistakes/so-simple-theme/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+# 주의!
+- 기본(blog): _site폴더의 생성 확인
+- 개인(about): _site폴더의 assets > js > reactComponents 폴더의 생성 확인
