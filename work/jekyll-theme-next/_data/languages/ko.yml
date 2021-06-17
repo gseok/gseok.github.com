@@ -59,9 +59,9 @@ counter:
     other: "총 %d개의 카테고리"
 
   archive_posts:
-    zero: 포스트 없음
+    zero: 포스트 없음!!
     one: 1개의 포스트
-    other: "총 %d개의 포스트"
+    other: "총 %d개의 포스트. "
 
 state:
   posts: 포스트
@@ -77,7 +77,7 @@ cheers:
   great: 훌륭해요
   excellent: 완벽해요
 
-keep_on: 포스트를 마저 작성하세요
+keep_on: 계속 포스트를 작성하세요!
 
 symbol:
   comma: ', '
