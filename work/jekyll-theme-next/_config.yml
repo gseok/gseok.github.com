@@ -11,13 +11,15 @@ author: GyeongSeok Seo
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
 language: ko
 date_format: '%Y-%m-%d'
+repository: gseok/gseok.github.com
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com' and baseurl as '/child'
+#url: http://localhost:4000
 #url: https://gseok.github.io
-url: http://localhost:4000
+url:
 baseurl:
-permalink: pretty
+permalink: /articles/:year-:month/:title
 
 # Pagination
 paginate: 10
@@ -33,7 +35,7 @@ paginate: 10
   #paginate_path: "/page:num/"
 
 # Handling Reading
-exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "Gemfile", "Gemfile.lock", "README_en.md", "vendor"]
+exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "Gemfile", "Gemfile.lock", "README_en.md"]
 
 # Separator
 #excerpt_separator: <!-- more -->
@@ -42,7 +44,7 @@ exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "
 ## 'pygments' is unsupported on GitHub Pages now.
 highlighter: rouge
 highlight:
-  line_number: true
+  line_number: false
 
 #### Markdown Processors
 ## 'redcarpet' is unsupported on GitHub Pages now.
@@ -68,9 +70,9 @@ feed:
 # Plugins
 ## Docs: https://help.github.com/articles/configuring-jekyll-plugins/
 plugins:
- - jemoji
- - jekyll-sitemap
- - jekyll-feed
+# - jemoji
+  - jekyll-sitemap
+  - jekyll-feed
 
 # ---------------------------------------------------------------
 # Site Information Settings
@@ -80,7 +82,7 @@ plugins:
 favicon: /assets/favicon.ico
 
 # Set default keywords (Use a comma to separate)
-keywords: "gseok"
+keywords: "Gseok,Blog"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
