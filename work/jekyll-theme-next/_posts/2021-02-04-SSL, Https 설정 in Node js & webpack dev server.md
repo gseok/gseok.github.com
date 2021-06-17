@@ -292,7 +292,7 @@ openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificat
 
 - 사실상 위의 openssl을 사용하여, pem -> key 추출 등의 여러 명령어를 사용하여, node에서 사용가능하게 변경하면 된다.
     - 각 nginx ssl환경에 맞는 파일을 -> node 환경에서 사용가능하게 변경 후 사용하면됨...
-- 여기서는 map.naver.com에서 사용하는 nginx용 인증서를 node용으로 바꾸는 부분만 간략하게 다룬다
+- 여기서는 my.example.com에서 사용하는 nginx용 인증서를 node용으로 바꾸는 부분만 간략하게 다룬다
 
 **nginx인증서**
 
@@ -344,11 +344,11 @@ https.createServer(options, app).listen(PORT, () => {
 
 - 서버 구동됨
 
-![](../assets/post-images/2021-02-04-SSL/01.png)
+![](../../assets/post-images/2021-02-04-SSL/01.png)
 
 - 접속시 정상 동작
 
-![](../assets/post-images/2021-02-04-SSL/02.png)
+![](../../assets/post-images/2021-02-04-SSL/02.png)
 
 - webpack-dev-server
 
@@ -370,6 +370,12 @@ devServer: {
         compress: true,
       },
 ```
+
+## **추가 내용**
+
+- webpack-dev-server의 https 설정은, 그 설정 그대로 node의 설정에 들어간다고 생각해도 된다.
+- node 에서 ```passphrase: 'sample'```와 같이 비번(passphrase)을 직접 입력하면, 굳이 pem 으로 (pass추출or합산) 하지 않아도 동작 가능하다.
+- 다만 이 글에서는 코드내에 passwd 노출이 싫었고, 각 파일들 pem, crt, key을 추출 합산 하는게 가능하다는걸 소개하고 싶었다. 각 개발 환경에 맞게 응용해서 쓰면 될꺼 같다.
 
 ## **좀더알기**
 
