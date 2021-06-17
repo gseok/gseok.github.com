@@ -1,7 +1,8 @@
 # real deploy
 - 아래 명령어 수행
+- JEKYLL_GITHUB_TOKEN= 이 bash에 export되어 있어야 한다.
 ```
-JEKYLL_GITHUB_TOKEN=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 JEKYLL_ENV=production bundle exec jekyll build
+JEKYLL_ENV=production bundle exec jekyll build
 ```
 
 - _site에 빌드 결과물이 나옴

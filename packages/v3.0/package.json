@@ -7,7 +7,7 @@
     "clear": "bundle exec jekyll clean",
     "start": "yarn clear && bundle exec jekyll serve --limit_posts 3 --livereload --incremental -o",
     "build:local": "JEKYLL_ENV=development bundle exec jekyll build --incremental -w",
-    "build:real": "JEKYLL_GITHUB_TOKEN=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 JEKYLL_ENV=production bundle exec jekyll build --incremental"
+    "build:real": "yarn clear && JEKYLL_ENV=production bundle exec jekyll build"
   },
   "dependencies": {}
 }

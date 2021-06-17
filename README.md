@@ -27,7 +27,8 @@
 - jekyll로 기본적인 static serve용 홈페이지 생성
   - jekyll_env을 명시적으로 prod모드로 주고 build수행 필요
   - 이때 github_token을 주어야 빌드 결과의 url path가 잘 맞게 됩니다.
-  - ```JEKYLL_GITHUB_TOKEN=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 JEKYLL_ENV=production bundle exec jekyll build```
+  - JEKYLL_GITHUB_TOKEN= 이 bash(.zshrc)에 export되어 있어야 한다. 코드에 아래와 같은 토큰이 노출된채로 git push되면 자동으로 토큰이 사라집니다.
+  - ```JEKYLL_GITHUB_TOKEN=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 JEKYLL_ENV=production bundle exec jekyll build```
   - ```packages/v3.0/_site```에 빌드 결과물이 나옵니다.
     - 해당 결과물 (_site)폴더를 flat하게 내려서 gseok.github.com 에 main(master)에 push하면 서빙됨
   - !!```The GitHub API credentials you provided aren't valid``` 에러 발생시 위 github token이 잘못되어 있을 가능성이 높음 해당 부분 먼저 체크한다.
