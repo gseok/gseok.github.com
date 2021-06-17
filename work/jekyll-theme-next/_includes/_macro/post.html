@@ -300,7 +300,8 @@
           </div>
           <!--/noindex-->
         {% elsif post.excerpt  %}
-          {% include _macro/post-excerpt.html %}
+          <!-- 중간 발췌나 desc 자동으로 안나오게 처리 -->
+          <!-- {% include _macro/post-excerpt.html %} -->
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="{{ post.url | relative_url }}{% if site.scroll_to_more %}#{{ __.post.more }}{% endif %}" rel="contents">
