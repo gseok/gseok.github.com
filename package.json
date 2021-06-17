@@ -2,6 +2,7 @@
   "name": "gseok-homepage",
   "description": "gseok homepage, this page made jekyll and react",
   "version": "3.0.0",
+  "private": true,
   "author": "gyeongseok.seo <gseok.seo@gmail.com>",
   "homepage": "http://gseok.github.io/",
   "repository": {
