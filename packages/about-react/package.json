@@ -4,7 +4,7 @@
   "version": "3.0.0",
   "author": "gyeongseok.seo <gseok.seo@gmail.com>",
   "scripts": {
-    "start": "webpack-dev-server --env NODE_ENV=development --config webpack.config.js --progress --profile --color",
+    "start": "webpack serve --env NODE_ENV=development --config webpack.config.js --progress --profile --color",
     "build:local": "webpack --env NODE_ENV=development --config webpack.config.js --progress --profile --color",
     "build:real": "webpack --env NODE_ENV=production --config webpack.config.js --progress --profile --color"
   },
