@@ -1,6 +1,7 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import { PropTypes } from 'prop-types';
 
-import { cummulativeSeperation } from '../helpers';
+import { getShortUUID } from '../helpers';
 import TimelineDot from './TimelineDot';
 
 /**
@@ -11,24 +12,24 @@ import TimelineDot from './TimelineDot';
  */
 const EventsBar = ({ events, selectedIndex, styles, handleDateClick, labelWidth }) => (
   <ol
-    className='events-bar'
+    className="events-bar"
     style={{
-      listStyle: 'none'
+      listStyle: 'none',
     }}
   >
-    {events.map((event, index) =>
+    {events.map((event, index) => (
       <TimelineDot
         distanceFromOrigin={event.distance}
         label={event.label}
         date={event.date}
         index={index}
-        key={index}
+        key={getShortUUID()}
         onClick={handleDateClick}
         selected={selectedIndex}
         styles={styles}
         labelWidth={labelWidth}
       />
-    )}
+    ))}
   </ol>
 );
 
@@ -38,11 +39,13 @@ const EventsBar = ({ events, selectedIndex, styles, handleDateClick, labelWidth 
  */
 EventsBar.propTypes = {
   // Array containing the events
-  events: PropTypes.arrayOf(PropTypes.shape({
-    distance: PropTypes.number.isRequired,
-    label: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-  })).isRequired,
+  events: PropTypes.arrayOf(
+    PropTypes.shape({
+      distance: PropTypes.number.isRequired,
+      label: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
   // The index of the selected event
   selectedIndex: PropTypes.number,
   // a handler for clicks on a datapoint
@@ -51,7 +54,6 @@ EventsBar.propTypes = {
   labelWidth: PropTypes.number.isRequired,
   // Custom styling
   styles: PropTypes.object,
-}
-
+};
 
 export default EventsBar;

@@ -1,6 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import { PropTypes } from 'prop-types';
 import { Motion, spring } from 'react-motion';
-
 
 /**
  * The markup Information for an event Line. You can stack multiple lines on top of eachother
@@ -8,27 +8,30 @@ import { Motion, spring } from 'react-motion';
  * @param  {object} props The props from parent, styling and positioning
  * @return {StatelessFunctionalReactComponent} Markup Information for the event line.
  */
-const EventLine = ({left, width, fillingMotion, backgroundColor}) => (
-  <Motion style={{
-    tWidth: spring(width, fillingMotion),
-    tLeft: spring(left, fillingMotion),
-  }}>{({tWidth, tLeft}) =>
-    <span
-      aria-hidden='true'
-      className='timeline-eventline'
-      style={{
-        position: 'absolute',
-        left: `${tLeft}px`,
-        top: 0,
-        height: '100%',
-        width: `${tWidth}px`,
-        transformOrigin: 'left center',
-        backgroundColor
-      }}
-    />
-    }</Motion>
+const EventLine = ({ left, width, fillingMotion, backgroundColor }) => (
+  <Motion
+    style={{
+      tWidth: spring(width, fillingMotion),
+      tLeft: spring(left, fillingMotion),
+    }}
+  >
+    {({ tWidth, tLeft }) => (
+      <span
+        aria-hidden="true"
+        className="timeline-eventline"
+        style={{
+          position: 'absolute',
+          left: `${tLeft}px`,
+          top: 0,
+          height: '100%',
+          width: `${tWidth}px`,
+          transformOrigin: 'left center',
+          backgroundColor,
+        }}
+      />
+    )}
+  </Motion>
 );
-
 
 EventLine.propTypes = {
   // Location and dimension
@@ -41,7 +44,6 @@ EventLine.propTypes = {
   }),
   // What color the line should have
   backgroundColor: PropTypes.string,
-}
-
+};
 
 export default EventLine;

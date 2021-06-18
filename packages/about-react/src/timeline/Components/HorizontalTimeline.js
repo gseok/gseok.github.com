@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import { PropTypes } from 'prop-types';
 
 // Decorators
 import Radium from 'radium';
@@ -8,7 +9,7 @@ import dimensions from 'react-dimensions';
 import EventsBar from './EventsBar';
 
 // Helpers and constansts
-import {zip, daydiff, cummulativeSeperation} from '../helpers';
+import { zip, daydiff, cummulativeSeperation } from '../helpers';
 import Constants from '../Constants';
 
 /**
@@ -16,7 +17,7 @@ import Constants from '../Constants';
  * @param {string} date The string representation of a date
  * @return {string} The formatted date string
  */
-const defaultGetLabel = (date, index) => (new Date(date)).toDateString().substring(4);
+const defaultGetLabel = (date, index) => new Date(date).toDateString().substring(4);
 
 /*
  * This is the Horizontal Timeline. This component expects an array of dates
@@ -24,13 +25,12 @@ const defaultGetLabel = (date, index) => (new Date(date)).toDateString().substri
  * also expects a callback which is activated when that particular index is
  * clicked passing that index along
  */
-class HorizontalTimeline extends React.Component {
-
+class HorizontalTimeline extends React.PureComponent {
   render() {
-    const props = this.props;
+    const { props } = this;
 
     if (!props.containerWidth) {
-      //As long as we do not know the width of our container, do not render anything!
+      // As long as we do not know the width of our container, do not render anything!
       return false;
     }
 
@@ -54,10 +54,7 @@ class HorizontalTimeline extends React.Component {
 
     const visibleWidth = this.props.containerWidth - 80;
 
-    const totalWidth = Math.max(
-      events[events.length - 1].distance + this.props.linePadding,
-      visibleWidth
-    );
+    const totalWidth = Math.max(events[events.length - 1].distance + this.props.linePadding, visibleWidth);
 
     let barPaddingRight = 0;
     let barPaddingLeft = 0;
@@ -86,8 +83,7 @@ class HorizontalTimeline extends React.Component {
         barPaddingLeft={barPaddingLeft}
       />
     );
-  };
-
+  }
 }
 
 /**
@@ -122,6 +118,8 @@ HorizontalTimeline.propTypes = {
   // --- INTERACTION ---
   isTouchEnabled: PropTypes.bool,
   isKeyboardEnabled: PropTypes.bool,
+  containerWidth: PropTypes.any,
+  containerHeight: PropTypes.any,
 };
 
 /**
@@ -141,15 +139,15 @@ HorizontalTimeline.defaultProps = {
   styles: {
     outline: '#dfdfdf',
     background: '#f8f8f8',
-    foreground: '#7b9d6f'
+    foreground: '#7b9d6f',
   },
   fillingMotion: {
     stiffness: 150,
-    damping: 25
+    damping: 25,
   },
   slidingMotion: {
     stiffness: 150,
-    damping: 25
+    damping: 25,
   },
   isOpenEnding: true,
   isOpenBeginning: true,
@@ -158,4 +156,4 @@ HorizontalTimeline.defaultProps = {
   isKeyboardEnabled: true,
 };
 
-export default Radium(dimensions({elementResize: true})(HorizontalTimeline));
+export default Radium(dimensions({ elementResize: true })(HorizontalTimeline));

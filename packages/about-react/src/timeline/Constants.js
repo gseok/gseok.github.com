@@ -30,6 +30,6 @@ module.exports = {
   // which events to trigger based on the left or the right arrow key on the keyboard is pressed
   KEYMAP: {
     37: 'left',
-    39: 'right'
-  }
+    39: 'right',
+  },
 };

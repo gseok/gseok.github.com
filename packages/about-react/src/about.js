@@ -10,20 +10,40 @@ import Career from './Career';
 import TechSkill from './TechSkill';
 import TechPPT from './TechPPT';
 
-class App extends React.Component {
-    render() {
-        return (
-            <LocaleProvider locale={koKR}>
-                <div className='my-about'>
-                    <Row className='my-ant-row'><Col span={24}><AboutMe/></Col></Row>
-                    <Row className='my-ant-row'><Col span={24}><TimeLine/></Col></Row>
-                    <Row className='my-ant-row'><Col span={24}><Career/></Col></Row>
-                    <Row className='my-ant-row'><Col span={24}><TechSkill/></Col></Row>
-                    <Row className='my-ant-row'><Col span={24}><TechPPT/></Col></Row>
-                </div>
-            </LocaleProvider>
-        );
-    }
+class App extends React.PureComponent {
+  render() {
+    return (
+      <LocaleProvider locale={koKR}>
+        <div className="my-about">
+          <Row className="my-ant-row">
+            <Col span={24}>
+              <AboutMe />
+            </Col>
+          </Row>
+          <Row className="my-ant-row">
+            <Col span={24}>
+              <TimeLine />
+            </Col>
+          </Row>
+          <Row className="my-ant-row">
+            <Col span={24}>
+              <Career />
+            </Col>
+          </Row>
+          <Row className="my-ant-row">
+            <Col span={24}>
+              <TechSkill />
+            </Col>
+          </Row>
+          <Row className="my-ant-row">
+            <Col span={24}>
+              <TechPPT />
+            </Col>
+          </Row>
+        </div>
+      </LocaleProvider>
+    );
+  }
 }
 
 const aboutRoot = document.getElementById('root');

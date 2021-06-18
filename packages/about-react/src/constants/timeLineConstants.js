@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 const DESC_ME = {
 ko_1983:
 `안녕하세요, 저를 타임라인으로 소개해 보겠습니다.

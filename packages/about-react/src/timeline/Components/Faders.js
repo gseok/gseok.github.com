@@ -1,11 +1,11 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import { PropTypes } from 'prop-types';
 import Radium from 'radium';
 
 import Color from 'color';
 
 const LEFT = 'left';
 const RIGHT = 'right';
-
 
 /**
  * Returns the styles that generate a fading effect on the edges of the timeline
@@ -27,10 +27,11 @@ const faderStyle = {
   },
   specific: (styles, position, gradientDirection) => ({
     [position]: 40,
-    backgroundImage: `linear-gradient(to ${gradientDirection}, ${styles.background}, ${Color(styles.background).alpha(0).rgbaString()})`
-  })
+    backgroundImage: `linear-gradient(to ${gradientDirection}, ${styles.background}, ${Color(styles.background)
+      .alpha(0)
+      .rgbaString()})`,
+  }),
 };
-
 
 /**
  * The markup Information for an element that produces the fade effect at the end of the timeline
@@ -40,11 +41,10 @@ const faderStyle = {
  */
 const Faders = (props) => (
   <ul style={{ listStyle: 'none' }}>
-    <li style={[ faderStyle.base, faderStyle.specific(props.styles, LEFT, RIGHT) ]} />
-    <li style={[ faderStyle.base, faderStyle.specific(props.styles, RIGHT, LEFT) ]} />
+    <li style={[faderStyle.base, faderStyle.specific(props.styles, LEFT, RIGHT)]} />
+    <li style={[faderStyle.base, faderStyle.specific(props.styles, RIGHT, LEFT)]} />
   </ul>
 );
-
 
 /**
  * The styles that parent will provide
@@ -54,9 +54,8 @@ Faders.propTypes = {
   styles: PropTypes.shape({
     foreground: PropTypes.string.isRequired,
     background: PropTypes.string.isRequired,
-    outline: PropTypes.string.isRequired
-  })
+    outline: PropTypes.string.isRequired,
+  }),
 };
-
 
 export default Radium(Faders);

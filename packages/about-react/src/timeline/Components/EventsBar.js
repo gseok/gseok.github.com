@@ -1,5 +1,6 @@
-import React, {PropTypes} from 'react';
-import {Motion, spring} from 'react-motion';
+import React from 'react';
+import { PropTypes } from 'prop-types';
+import { Motion, spring } from 'react-motion';
 
 import Events from './Events';
 import EventLine from './EventLine';
@@ -9,7 +10,6 @@ import HorizontalTimelineButtons from './HorizontalTimelineButtons';
 import Constants from '../Constants';
 
 class EventsBar extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -21,11 +21,11 @@ class EventsBar extends React.Component {
     this.touch = {
       coors: {
         x: 0,
-        y: 0
+        y: 0,
       },
       isSwiping: false,
       started: false,
-      threshold: 3
+      threshold: 3,
     };
 
     this.handleKeydown = this.handleKeydown.bind(this);
@@ -38,7 +38,21 @@ class EventsBar extends React.Component {
 
   componentDidMount() {
     const selectedEvent = this.props.events[this.props.index];
-    this.slideToPosition(-(selectedEvent.distance - (this.props.visibleWidth / 2)), this.props);
+    this.slideToPosition(-(selectedEvent.distance - this.props.visibleWidth / 2), this.props);
+  }
+
+  componentWillReceiveProps(props) {
+    const selectedEvent = props.events[props.index];
+    const minVisible = -this.state.position; // Position is always negative!
+    const maxVisible = minVisible + props.visibleWidth;
+
+    if (selectedEvent.distance > minVisible + 10 && selectedEvent.distance < maxVisible - 10) {
+      // Make sure we are not outside the view
+      this.slideToPosition(this.state.position, props);
+    } else {
+      // Try to center the selected index
+      this.slideToPosition(-(selectedEvent.distance - props.visibleWidth / 2), props);
+    }
   }
 
   componentWillUnmount() {
@@ -64,7 +78,7 @@ class EventsBar extends React.Component {
     this.touch.coors.y = touchObj.pageY;
     this.touch.isSwiping = false;
     this.touch.started = true;
-  };
+  }
 
   handleTouchMove(event) {
     if (!this.touch.started) {
@@ -83,7 +97,8 @@ class EventsBar extends React.Component {
       const dX = this.touch.coors.x - touchObj.pageX; // amount scrolled
       this.touch.coors.x = touchObj.pageX;
       this.setState({
-        position: this.state.position - (dX) // set new position
+        // eslint-disable-next-line react/no-access-state-in-setstate
+        position: this.state.position - dX, // set new position
       });
     }
     if (this.touch.isSwiping !== true) {
@@ -91,7 +106,7 @@ class EventsBar extends React.Component {
     }
     // Prevent native scrolling
     event.preventDefault();
-  };
+  }
 
   handleTouchEnd(event) {
     // Make sure we are scrolled to a valid position
@@ -100,21 +115,6 @@ class EventsBar extends React.Component {
     this.touch.coors.y = 0;
     this.touch.isSwiping = false;
     this.touch.started = false;
-  };
-
-
-  componentWillReceiveProps(props) {
-    const selectedEvent = props.events[props.index];
-    const minVisible = -this.state.position; // Position is always negative!
-    const maxVisible = minVisible + props.visibleWidth;
-
-    if (selectedEvent.distance > (minVisible + 10) && selectedEvent.distance < (maxVisible - 10)) {
-      //Make sure we are not outside the view
-      this.slideToPosition(this.state.position, props);
-    } else {
-      //Try to center the selected index
-      this.slideToPosition(-(selectedEvent.distance - (props.visibleWidth / 2)), props);
-    }
   }
 
   /**
@@ -123,13 +123,13 @@ class EventsBar extends React.Component {
    * @return {undefined} Modifies the value by which we translate the events bar
    */
   slideToPosition(position, props = this.props) {
-      // the width of the timeline component between the two buttons (prev and next)
-      const maxPosition = Math.min(props.visibleWidth - props.totalWidth, 0); // NEVER scroll to the right
+    // the width of the timeline component between the two buttons (prev and next)
+    const maxPosition = Math.min(props.visibleWidth - props.totalWidth, 0); // NEVER scroll to the right
 
-      this.setState({
-        position: Math.max(Math.min(0, position), maxPosition),
-        maxPosition
-      });
+    this.setState({
+      position: Math.max(Math.min(0, position), maxPosition),
+      maxPosition,
+    });
   }
 
   /**
@@ -143,16 +143,16 @@ class EventsBar extends React.Component {
   updateSlide(direction, props = this.props) {
     //  translate the timeline to the left('next')/right('prev')
     if (direction === Constants.RIGHT) {
-      this.slideToPosition((this.state.position - props.visibleWidth) + props.labelWidth, props);
+      this.slideToPosition(this.state.position - props.visibleWidth + props.labelWidth, props);
     } else if (direction === Constants.LEFT) {
-      this.slideToPosition((this.state.position + props.visibleWidth) - props.labelWidth, props);
+      this.slideToPosition(this.state.position + props.visibleWidth - props.labelWidth, props);
     }
-  };
+  }
 
   centerEvent(index, props = this.props) {
-      const event = props.events[index];
+    const event = props.events[index];
 
-      this.slideToPosition(-event.distance);
+    this.slideToPosition(-event.distance);
   }
 
   render() {
@@ -161,10 +161,10 @@ class EventsBar extends React.Component {
     // NOTE: Improve timeline dates handeling and eventsMinLapse handling
     const touchEvents = this.props.isTouchEnabled
       ? {
-        onTouchStart: this.handleTouchStart,
-        onTouchMove: this.handleTouchMove,
-        onTouchEnd: this.handleTouchEnd
-      }
+          onTouchStart: this.handleTouchStart,
+          onTouchMove: this.handleTouchMove,
+          onTouchEnd: this.handleTouchEnd,
+        }
       : {};
 
     // filled value = distane from origin to the selected event
@@ -180,60 +180,62 @@ class EventsBar extends React.Component {
         {...touchEvents}
       >
         <div
-          className='events-wrapper'
+          className="events-wrapper"
           style={{
             position: 'relative',
             height: '100%',
             margin: '0 40px',
-            overflow: 'hidden'
+            overflow: 'hidden',
           }}
         >
           <Motion
             style={{
-              X: spring(this.state.position, this.slidingMotion)
+              X: spring(this.state.position, this.slidingMotion),
             }}
-          >{({X}) =>
-            <div
-              className='events'
-              style={{
-                position: 'absolute',
-                left: 0,
-                top: 49,
-                height: 2,
-                width: this.props.totalWidth,
-                WebkitTransform: `translate3d(${X}, 0, 0)px`,
-                transform: `translate3d(${X}px, 0, 0)`
-              }}
-            >
-              <EventLine
-                left={this.props.barPaddingLeft}
-                width={eventLineWidth}
-                fillingMotion={this.props.fillingMotion}
-                backgroundColor={this.props.styles.outline}
-              />
-              <EventLine
-                left={this.props.barPaddingLeft}
-                width={filledValue}
-                fillingMotion={this.props.fillingMotion}
-                backgroundColor={this.props.styles.foreground}
-              />
-              <Events
-                events={this.props.events}
-                selectedIndex={this.props.index}
-                styles={this.props.styles}
-                handleDateClick={this.props.indexClick}
-                labelWidth={this.props.labelWidth}
-              />
-            </div>
-            }</Motion>
-          </div>
-          <Faders styles={this.props.styles}/>
-          <HorizontalTimelineButtons
-            maxPosition={this.state.maxPosition}
-            position={this.state.position}
-            styles={this.props.styles}
-            updateSlide={this.updateSlide}
-          />
+          >
+            {({ X }) => (
+              <div
+                className="events"
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  top: 49,
+                  height: 2,
+                  width: this.props.totalWidth,
+                  WebkitTransform: `translate3d(${X}, 0, 0)px`,
+                  transform: `translate3d(${X}px, 0, 0)`,
+                }}
+              >
+                <EventLine
+                  left={this.props.barPaddingLeft}
+                  width={eventLineWidth}
+                  fillingMotion={this.props.fillingMotion}
+                  backgroundColor={this.props.styles.outline}
+                />
+                <EventLine
+                  left={this.props.barPaddingLeft}
+                  width={filledValue}
+                  fillingMotion={this.props.fillingMotion}
+                  backgroundColor={this.props.styles.foreground}
+                />
+                <Events
+                  events={this.props.events}
+                  selectedIndex={this.props.index}
+                  styles={this.props.styles}
+                  handleDateClick={this.props.indexClick}
+                  labelWidth={this.props.labelWidth}
+                />
+              </div>
+            )}
+          </Motion>
+        </div>
+        <Faders styles={this.props.styles} />
+        <HorizontalTimelineButtons
+          maxPosition={this.state.maxPosition}
+          position={this.state.position}
+          styles={this.props.styles}
+          updateSlide={this.updateSlide}
+        />
       </div>
     );
   }
@@ -242,11 +244,13 @@ class EventsBar extends React.Component {
 EventsBar.propTypes = {
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
-  events: PropTypes.arrayOf(PropTypes.shape({
-    distance: PropTypes.number.isRequired,
-    label: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-  })).isRequired,
+  events: PropTypes.arrayOf(
+    PropTypes.shape({
+      distance: PropTypes.number.isRequired,
+      label: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
   isTouchEnabled: PropTypes.bool.isRequired,
   totalWidth: PropTypes.number.isRequired,
   visibleWidth: PropTypes.number.isRequired,
@@ -257,7 +261,8 @@ EventsBar.propTypes = {
   fillingMotion: PropTypes.object.isRequired,
   barPaddingRight: PropTypes.number.isRequired,
   barPaddingLeft: PropTypes.number.isRequired,
-}
-
+  isKeyboardEnabled: PropTypes.any,
+  selectedIndex: PropTypes.any,
+};
 
 export default EventsBar;

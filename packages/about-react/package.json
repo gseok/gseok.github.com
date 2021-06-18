@@ -3,7 +3,9 @@
   "description": "gseok homepage about area made by react",
   "version": "3.0.0",
   "author": "gyeongseok.seo <gseok.seo@gmail.com>",
+  "license": "CC-BY-NC-4.0",
   "scripts": {
+    "codelint": "eslint ./src --ext .js --ext .ts --ext .tsx -c .eslintrc.js",
     "clear": "rm -rf ./_site",
     "start": "yarn clear && webpack serve --env NODE_ENV=development --config webpack.config.js --progress --profile --color",
     "build:local": "yarn clear && webpack --env NODE_ENV=development --config webpack.config.js --progress --profile --color",
@@ -12,6 +14,7 @@
   "dependencies": {
     "antd": "^2.9.1",
     "color": "^0.11.3",
+    "core-js": "^3.14.0",
     "prop-types": "^15.5.6",
     "qrcode.react": "^0.6.1",
     "radium": "^0.18.0",

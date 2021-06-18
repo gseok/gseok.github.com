@@ -1,61 +1,76 @@
-const carrerTableValues = [{
+/* eslint-disable no-multi-str */
+const carrerTableValues = [
+  {
     key: '1',
     period: '2009.03 - 2010.06',
     name: 'tmax window',
-    contents: 'MFC 호환 DLL 개발 - DLL library 개발'
-}, {
+    contents: 'MFC 호환 DLL 개발 - DLL library 개발',
+  },
+  {
     key: '2',
     period: '2010.07 - 2011.02',
     name: 'wac',
-    contents: 'WAC IDE 개발 - Run, Project Wizard 개발'
-}, {
+    contents: 'WAC IDE 개발 - Run, Project Wizard 개발',
+  },
+  {
     key: '3',
     period: '2011.03 - 2013.08',
     name: 'tizen',
-    contents: 'Tizen IDE 개발 - Run, Debug, CLI, Sample App, 개발'
-}, {
+    contents: 'Tizen IDE 개발 - Run, Debug, CLI, Sample App, 개발',
+  },
+  {
     key: '4',
     period: '2013.08 - 2014.03',
     name: 'webida',
-    contents: 'Web Base IDE 개발 - Project Wizard, Menu System, Preview, Plug-in System, UI/UX 개발'
-}, {
+    contents: 'Web Base IDE 개발 - Project Wizard, Menu System, Preview, Plug-in System, UI/UX 개발',
+  },
+  {
     key: '5',
     period: '2014.03 - 2014.11',
     name: 'uip',
-    contents: 'UI Prototyping Tool 개발 - Model, Widget, Preview, Rendering 개발'
-}, {
+    contents: 'UI Prototyping Tool 개발 - Model, Widget, Preview, Rendering 개발',
+  },
+  {
     key: '6',
     period: '2014.11 - 2015.03',
     name: 'cafe note',
-    contents: 'Web Base Editor 개발 - widget 개발'
-}, {
+    contents: 'Web Base Editor 개발 - widget 개발',
+  },
+  {
     key: '7',
     period: '2015.13 - 2016.01',
     name: 'wsdk',
-    contents: 'Tizen Web Base IDE 개발 - Project Wizard, Manifest Editor 개발'
-}, {
+    contents: 'Tizen Web Base IDE 개발 - Project Wizard, Manifest Editor 개발',
+  },
+  {
     key: '8',
     period: '2016.01 - 2016.12',
     name: 'insator',
-    contents: 'Data Preperation Tool 개발 - Dashboard, Project Wizard, Property UI, Template Wizard 개발'
-}, {
+    contents: 'Data Preperation Tool 개발 - Dashboard, Project Wizard, Property UI, Template Wizard 개발',
+  },
+  {
     key: '9',
     period: '2017.01 - 2017.04',
     name: 'vscode',
-    contents: 'Vscode tizen C# extention 개발 - Create, Build, Sign, Packaging, Install, Run 개발'
-}, {
+    contents: 'Vscode tizen C# extention 개발 - Create, Build, Sign, Packaging, Install, Run 개발',
+  },
+  {
     key: '10',
     period: '2017.04 - 2017.12',
     name: 'Smartthings Local SDK',
-    contents: 'Smartthings Local SDK (atom extension) 개발 - Logger, Device Profile, Run As, CI(Jenkins), build, installer 개발'
-}, {
+    contents:
+      'Smartthings Local SDK (atom extension) 개발 - Logger, Device Profile, Run As, CI(Jenkins), build, installer 개발',
+  },
+  {
     key: '11',
     period: '2018.01 - 2018.06',
     name: 'Smartthings Web SDK',
-    contents: 'Smartthings Web SDK 개발 - Logger, Automation(OnBoarding), Hub Connected, React to Vue 개발'
-}];
+    contents: 'Smartthings Web SDK 개발 - Logger, Automation(OnBoarding), Hub Connected, React to Vue 개발',
+  },
+];
 
-const carrerSummaryValues ='\n \
+const carrerSummaryValues =
+  '\n \
 2018.01 ~ now : Smartthings Web SDK 개발중 - Logger, Automation(OnBoarding), Hub Connected, React to Vue 개발\n \
 2017.04 ~ 2017.12 : Smartthings Local SDK (atom extension) 개발 - Logger, Device Profile, Run As, CI(Jenkins), build, installer 개발\n \
 2017.01 ~ 2017.04 : m-tizen: VSCode Extension개발 (Visual Studio Code Extension - tizen extension) 개발\n \
@@ -74,6 +89,6 @@ const carrerSummaryValues ='\n \
 ';
 
 module.exports = {
-    CARRER_TABLE_VALUES: carrerTableValues,
-    CARRER_SUMMARY_VALUES: carrerSummaryValues
+  CARRER_TABLE_VALUES: carrerTableValues,
+  CARRER_SUMMARY_VALUES: carrerSummaryValues,
 };

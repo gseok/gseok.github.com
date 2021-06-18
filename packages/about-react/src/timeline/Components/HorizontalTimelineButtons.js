@@ -1,10 +1,12 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import { PropTypes } from 'prop-types';
 import Radium from 'radium';
-import Constants from '../Constants';
 
 // icons
 import FaAngleLeft from 'react-icons/lib/fa/angle-left';
 import FaAngleRight from 'react-icons/lib/fa/angle-right';
+
+import Constants from '../Constants';
 
 // this handles the rendering part of the buttons that appear on either side of
 // the timeline.
@@ -45,24 +47,23 @@ const buttonStyles = {
     overflow: 'hidden',
     textIndent: '100%',
     whiteSpace: 'nowrap',
-    fill: active ? styles.foreground : styles.outline
+    fill: active ? styles.foreground : styles.outline,
   }),
   inactive: (styles) => ({
     color: styles.outline,
     cursor: 'not-allowed',
     ':hover': {
-      border: `2px solid ${styles.outline}`
-    }
+      border: `2px solid ${styles.outline}`,
+    },
   }),
   active: (styles) => ({
     cursor: 'pointer',
     ':hover': {
       border: `2px solid ${styles.foreground}`,
-      color: styles.foreground
-    }
-  })
+      color: styles.foreground,
+    },
+  }),
 };
-
 
 /**
  * Markup for both the buttons (that translate the timeline left or right).
@@ -77,37 +78,36 @@ const HorizontalTimelineButtons = (props) => {
   return (
     <ul className="buttons">
       <li
+        role="menuitem"
         className={`button-back ${buttonBackEnabled ? 'enabled' : 'disabled'}`}
         key={Constants.LEFT}
         onClick={() => props.updateSlide(Constants.LEFT)}
+        onKeyDown={() => {}}
         style={[
           buttonStyles.link(props.styles),
           buttonBackEnabled ? buttonStyles.active(props.styles) : buttonStyles.inactive(props.styles),
           { [Constants.LEFT]: 0 },
         ]}
       >
-        <FaAngleLeft
-          style={buttonStyles.icon(props.styles, buttonBackEnabled)}
-        />
+        <FaAngleLeft style={buttonStyles.icon(props.styles, buttonBackEnabled)} />
       </li>
       <li
+        role="menuitem"
         className={`button-forward ${buttonForwardEnabled ? 'enabled' : 'disabled'}`}
         key={Constants.RIGHT}
         onClick={() => props.updateSlide(Constants.RIGHT)}
+        onKeyDown={() => {}}
         style={[
           buttonStyles.link(props.styles),
           buttonForwardEnabled ? buttonStyles.active(props.styles) : buttonStyles.inactive(props.styles),
           { [Constants.RIGHT]: 0 },
         ]}
       >
-        <FaAngleRight
-          style={buttonStyles.icon(props.styles, buttonForwardEnabled)}
-        />
+        <FaAngleRight style={buttonStyles.icon(props.styles, buttonForwardEnabled)} />
       </li>
     </ul>
   );
-}
-
+};
 
 // Expected propteries
 HorizontalTimelineButtons.propTypes = {
@@ -118,7 +118,7 @@ HorizontalTimelineButtons.propTypes = {
   // The user passed styles (has fields like foreground, background color etc.)
   styles: PropTypes.object,
   // The maximum position that the timeline component can acuire, (on initial load will be null)
-  maxPosition: PropTypes.number
+  maxPosition: PropTypes.number,
 };
 
 // Wrapping the buttons with Radium (so we get all the styling goodness)

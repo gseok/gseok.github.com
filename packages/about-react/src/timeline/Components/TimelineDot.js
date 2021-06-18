@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react';
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import React from 'react';
+import { PropTypes } from 'prop-types';
 import Radium from 'radium';
 
 /**
@@ -53,60 +55,63 @@ const dots = {
   }),
 };
 
-
 /**
  * The markup for one single dot on the timeline
-  *
+ *
  * @param {object} props The props passed down
  * @return {StatelessFunctionalReactComponent} The markup for a dot
  */
 class TimelineDot extends React.Component {
-
-  __getDotStyles__ (dotType, key) {
+  __getDotStyles__(dotType, key) {
+    const { styles, labelWidth } = this.props;
     const hoverStyle = {
-      backgroundColor: this.props.styles.foreground,
-      border: `2px solid ${this.props.styles.foreground}`,
+      backgroundColor: styles.foreground,
+      border: `2px solid ${styles.foreground}`,
     };
 
     return [
       dots.base,
-      { left: this.props.labelWidth / 2 - dots.base.width / 2},
-      dots[dotType](this.props.styles),
+      { left: labelWidth / 2 - dots.base.width / 2 },
+      dots[dotType](styles),
       Radium.getState(this.state, key, ':hover') || Radium.getState(this.state, 'dot-dot', ':hover')
         ? hoverStyle
         : undefined,
-    ]
+    ];
   }
 
   render() {
+    const { index, selected, date, label, labelWidth, distanceFromOrigin, onClick } = this.props;
     let dotType = 'future';
-    if (this.props.index < this.props.selected) {
+    if (index < selected) {
       dotType = 'past';
-    } else if (this.props.index === this.props.selected) {
+    } else if (index === selected) {
       dotType = 'present';
     }
 
     return (
       <li
-        key={ this.props.date }
-        id={`timeline-dot-${this.props.date}`}
+        role="menuitem"
+        key={date}
+        id={`timeline-dot-${date}`}
         className={`${dotType} dot-label`}
-        onClick={() => this.props.onClick(this.props.index)}
+        onClick={() => onClick(index)}
+        onKeyDown={() => {}}
         style={[
           dots.links,
           {
-            left: this.props.distanceFromOrigin - this.props.labelWidth / 2,
+            left: distanceFromOrigin - labelWidth / 2,
             cursor: 'pointer',
-            width: this.props.labelWidth,
+            width: labelWidth,
             ':hover': {}, // We need this to track the hover state of this element
-          }
+          },
         ]}
       >
-        { this.props.label }
+        {label}
         <span
-          key='dot-dot'
-          onClick={() => this.props.onClick(this.props.index) }
-          style={this.__getDotStyles__(dotType, this.props.date)}
+          key="dot-dot"
+          onClick={() => onClick(index)}
+          onKeyDown={() => {}}
+          style={this.__getDotStyles__(dotType, date)}
         />
       </li>
     );
@@ -133,7 +138,7 @@ TimelineDot.propTypes = {
   // The numerical value in pixels of the distance from the origin
   distanceFromOrigin: PropTypes.number.isRequired,
   // The styles prefrences of the user
-  styles: PropTypes.object.isRequired
+  styles: PropTypes.object.isRequired,
 };
 
 export default Radium(TimelineDot);
