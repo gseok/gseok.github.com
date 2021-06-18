@@ -18,7 +18,7 @@ const log = (...args) => console.log.apply(this, args);
 
 module.exports = (env) => {
   const { NODE_ENV = DEFAULT_MODE } = env;
-  log(`Webpack Run Mode: ${NODE_ENV}`)
+  log(`Webpack Run Mode: ${NODE_ENV}`);
 
   const defaultConf = {
     entry: `./src/about.js`,
@@ -36,7 +36,8 @@ module.exports = (env) => {
         patterns: [
           { from: './images/about', to: path.resolve(imageTargetPath, 'about') },
           { from: './images/ppt', to: path.resolve(imageTargetPath, 'ppt')},
-          { from: './images/gseok.jpg', to: imageTargetPath }
+          { from: './images/gseok.jpg', to: imageTargetPath },
+          { from: './css', to: path.resolve(outputBasePath, 'assets/css') },
         ]
       }),
       new CleanWebpackPlugin({
