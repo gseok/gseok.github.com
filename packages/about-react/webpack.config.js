@@ -135,25 +135,13 @@ module.exports = (env) => {
                 comments: false,
                 ascii_only: true,
               },
-              removeComments: true,
             },
-            sourceMap: false,
+            extractComments: false,
           }),
         ],
       },
     };
     prodConf.plugins.push(new CompressionPlugin());
-    prodConf.plugins.push(
-      new CompressionPlugin({
-        filename: '[path].br[query]',
-        algorithm: 'brotliCompress',
-        test: /\.(js|css|html|svg|txt)$/,
-        compressionOptions: {
-          // zlib’s `level` option matches Brotli’s `BROTLI_PARAM_QUALITY` option.
-          level: 11,
-        },
-      }),
-    );
     return prodConf;
   }
 
