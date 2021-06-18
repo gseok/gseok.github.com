@@ -4,9 +4,10 @@
   "version": "3.0.0",
   "author": "gyeongseok.seo <gseok.seo@gmail.com>",
   "scripts": {
-    "start": "webpack serve --env NODE_ENV=development --config webpack.config.js --progress --profile --color",
-    "build:local": "webpack --env NODE_ENV=development --config webpack.config.js --progress --profile --color",
-    "build:real": "webpack --env NODE_ENV=production --config webpack.config.js --progress --profile --color"
+    "clear": "rm -rf ./_site",
+    "start": "yarn clear && webpack serve --env NODE_ENV=development --config webpack.config.js --progress --profile --color",
+    "build:local": "yarn clear && webpack --env NODE_ENV=development --config webpack.config.js --progress --profile --color",
+    "build:real": "yarn clear && webpack --env NODE_ENV=production --config webpack.config.js --progress --profile --color"
   },
   "dependencies": {
     "antd": "^2.9.1",

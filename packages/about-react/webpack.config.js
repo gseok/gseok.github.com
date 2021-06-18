@@ -4,13 +4,14 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const DEFAULT_MODE = 'development';
 const PRODUCTION_MODE = 'production';
 
 const outputBasePath = path.resolve(__dirname, '_site');
-const publicPath = 'assets/js/reactComponents/';
-const imageTargetPath = path.resolve(outputBasePath, 'about');
+const publicPath = 'assets/js/about-react/';
+const imageTargetPath = path.resolve(outputBasePath, 'assets/about-images/');
 const outputPath = path.resolve(outputBasePath, publicPath);
 
 const log = (...args) => console.log.apply(this, args);
@@ -33,15 +34,15 @@ module.exports = (env) => {
     plugins: [
       new CopyWebpackPlugin({
         patterns: [
-          { from: './images/about/*', to: imageTargetPath },
-          { from: './images/ppt/*', to: imageTargetPath },
+          { from: './images/about', to: path.resolve(imageTargetPath, 'about') },
+          { from: './images/ppt', to: path.resolve(imageTargetPath, 'ppt')},
           { from: './images/gseok.jpg', to: imageTargetPath }
         ]
       }),
       new CleanWebpackPlugin({
         cleanOnceBeforeBuildPatterns: [
-          path.resolve(outputBasePath, publicPath),
-          path.resolve(outputBasePath, 'about/images')
+          path.resolve(imageTargetPath),
+          path.resolve(outputPath),
         ]
       })
     ],
@@ -78,17 +79,30 @@ module.exports = (env) => {
 
   // development
   if (NODE_ENV === DEFAULT_MODE) {
+    const devServerPort = 4000;
     const devConf = {
       ...defaultConf,
 
-      devtool: 'inline-source-map',
+      devtool: 'cheap-module-source-map',
       devServer: {
+        contentBase: [outputBasePath],
+        public: `http://localhost:${devServerPort}/about`,
+        port: devServerPort,
         hot: true,
-        port: 4000,
-        contentBase: outputBasePath
+        open: true,
+        inline: true,
+        writeToDisk: true,
+        disableHostCheck: true,
+        historyApiFallback: true,
+        compress: true,
       },
     }
     devConf.plugins.push(new webpack.HotModuleReplacementPlugin());
+    devConf.plugins.push(new CopyWebpackPlugin({
+      patterns: [
+        { from: './templates/index.html', to: path.resolve(outputBasePath, 'about') },
+      ]
+    }));
 
     return devConf;
   }

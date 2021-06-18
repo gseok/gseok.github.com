@@ -55,7 +55,7 @@ class TimeLine extends React.Component {
                 <Flex wrap align='center' justify="center">
                     <Box col={12} lg={6} md={6} sm={12}>
                         <div className='my-timeline-desc-image-warp'>
-                            <img src={'./images/about/' + entry.image} 
+                            <img src={'../assets/about-images/about/' + entry.image}
                                  className='my-timeline-desc-image'></img>
                         </div>
                     </Box>

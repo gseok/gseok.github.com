@@ -65,7 +65,7 @@ class AboutMe extends React.Component {
         return (
             <Flex wrap>
                 <Box col={12} lg={4} md={4} sm={12}>
-                    <img src='./images/gseok.jpg' alt='gyeongseok seo'/>
+                    <img src='../assets/about-images/gseok.jpg' alt='gyeongseok seo'/>
                     {items.map((item) => {
                         return this.createBoxItem(item);
                     })}
