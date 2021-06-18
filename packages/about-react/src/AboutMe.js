@@ -50,16 +50,12 @@ class AboutMe extends React.Component {
             text: 'gseok.seo@gmail.com'
         }, {
             type: 'home',
-            href: 'http://gseok.tistory.com',
+            href: 'https://gseok.github.io',
             text: 'Blog'
         }, {
             type: 'github',
             href: 'https://github.com/gseok',
             text: 'Github'
-        }, {
-            type: 'book',
-            href: 'https://legacy.gitbook.com/@gseok/dashboard',
-            text: 'GitBook'
         }];
 
         return (

@@ -21,6 +21,7 @@ module.exports = (env) => {
   log(`Webpack Run Mode: ${NODE_ENV}`);
 
   const defaultConf = {
+    target: 'web',
     entry: `./src/about.js`,
     mode: NODE_ENV === DEFAULT_MODE || NODE_ENV === PRODUCTION_MODE ? NODE_ENV : DEFAULT_MODE,
 
@@ -98,7 +99,6 @@ module.exports = (env) => {
         compress: true,
       },
     }
-    devConf.plugins.push(new webpack.HotModuleReplacementPlugin());
     devConf.plugins.push(new CopyWebpackPlugin({
       patterns: [
         { from: './templates/index.html', to: path.resolve(outputBasePath, 'about') },
