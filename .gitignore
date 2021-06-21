@@ -5,6 +5,9 @@
 *.code-workspace
 .vscode
 
+# jekyll
+.jekyll-metadata
+
 # environment
 /.env
 .env
