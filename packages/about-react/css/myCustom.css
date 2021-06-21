@@ -90,6 +90,10 @@
     color: #666666;
 }
 
+.my-ppt-item {
+    cursor: pointer;
+}
+
 .my-career-table-warp .ant-table-pagination{
     display: none;
 }

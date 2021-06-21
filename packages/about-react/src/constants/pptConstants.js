@@ -19,13 +19,13 @@ const pptDatas = [
   },
   {
     title: 'Node.js',
-    url: 'http://gseok.github.io/ppt/nodejs/',
+    url: 'https://gseok.github.io/ppt/nodejs/',
     image: '../assets/about-images/ppt/nodejs.png',
     desc: "This is my node.js study web-ppt. Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.",
   },
   {
     title: 'HTML5 Canvas',
-    url: 'http://gseok.github.io/ppt/canvas/',
+    url: 'https://gseok.github.io/ppt/canvas/',
     image: '../assets/about-images/ppt/html5canvas.png',
     desc: 'This is my HTML5 canvas study web-ppt. The HTML5 canvas element is used to draw graphics, on the fly, via scripting (usually JavaScript). The canvas element is only a container for graphics. You must use a script to actually draw the graphics. Canvas has several methods for drawing paths, boxes, circles, characters, and adding images.',
   },

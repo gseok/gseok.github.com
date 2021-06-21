@@ -14,10 +14,17 @@ class TechPPT extends React.Component {
     };
 
     this.onChange = this.onChange.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
   onChange(pptIndex) {
     this.setState({ pptIndex });
+  }
+
+  onClick(url) {
+    return () => {
+      window.open(url);
+    };
   }
 
   createContents() {
@@ -27,9 +34,17 @@ class TechPPT extends React.Component {
         <div key={entry.url}>
           <Flex align="center" justify="center">
             <Box col={12} lg={12} md={12} sm={12}>
-              <a href={entry.url} target="_blank" rel="noreferrer">
-                <img src={entry.image} alt={entry.title} />
-              </a>
+              <img
+                className="my-ppt-item"
+                src={entry.image}
+                alt={entry.title}
+                onClick={this.onClick(entry.url)}
+                onKeyPress={() => {}}
+                // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+                role="button"
+                tabIndex={0}
+                aria-label={entry.title}
+              />
             </Box>
           </Flex>
         </div>
