@@ -1,10 +1,10 @@
-const aboutMeCodeString = `() => {
+const aboutMeCodeString = `(() => {
     const i = 'Web Developer.';
     const say = 'I am thinking about everything can do in Web.';
     const hello = 'And hello everyone~';
 
     console.log(i, say, hello);
-}`;
+})()`;
 const aboutMeString = `안녕하세요, 저는 웹 개발자 입니다.
 웹 개발을 좋아하고, 재미있어합니다.
 웹의 새로운 기술을 경험하는것은 항상 도전적인 일입니다.
