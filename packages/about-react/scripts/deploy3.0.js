@@ -15,6 +15,7 @@ const copyFileSync = (source, target) => {
       }
   }
 
+  console.log(`Copey ${source} to ${targetFile}`);
   fs.writeFileSync(targetFile, fs.readFileSync(source));
 }
 const copyFolderRecursiveSync = (source, target) => {
@@ -41,30 +42,9 @@ const copyFolderRecursiveSync = (source, target) => {
   }
 }
 
-const runCommand = (command, options) => {
-  return new Promise((resolve, reject) => {
-    const cProcess = spawn(command, options);
-    let hasError = false;
-
-    cProcess.stdout.setEncoding('utf8');
-    cProcess.stderr.setEncoding('utf8');
-    cProcess.stdout.on('data', console.log);
-    cProcess.stderr.on('data', (data) => {
-      console.error(data);
-      hasError = true;
-    });
-    cProcess.on('close', (data) => {
-      if (hasError) return reject();
-      return resolve(data);
-    });
-    cProcess.on('error', reject);
-  });
-};
-
-const buildReal = () => runCommand('yarn', ['build:real']);
 const copyToV3 = () => {
   const sourceBase = path.resolve(__dirname, '../_site/assets');
-  const targetBase = path.resolve(__dirname, '../../v3.0/assets/test');
+  const targetBase = path.resolve(__dirname, '../../v3.0/assets');
 
   [
     {
@@ -91,7 +71,6 @@ const copyToV3 = () => {
 }
 
 (() => {
-  return buildReal().then(copyToV3).catch((e) => {
-    console.error(e);
-  });
+  console.log('build complete!! Copy to build result');
+  copyToV3();
 })();
