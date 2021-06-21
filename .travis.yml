@@ -1,0 +1,29 @@
+language: ruby # 루비언어 사용
+rvm:
+- 2.6.3 # RVM 버전 2.6.3 사용
+
+before_script:
+- chmod +x ./cibuild.sh # 실행권한 추가
+
+script: ./cibuild.sh #스크립트 실행
+
+addons:
+  apt:
+    packages:
+    - libcurl4-openssl-dev
+
+cache: bundler # 루비 번들러 캐쉬 추가
+
+deploy: # 배포 설정
+  provider: pages # GitHub Pages 서비스 사용
+  skip_cleanup: true # 빌드 중 생성되는 파일 삭제 여부
+  github_token: $GITHUB_TOKEN # Github Repository에 접근 할 개인 키
+  keep_history: false # 히스토리 유지를 위한 자동 commit 여부
+  local-dir: ./packages/v3.0/_site # 빌드 결과물 경로
+  target-branch: master # 빌드 결과물 업로드할 브랜치 이름
+  on:
+    branch: develop # 빌드 대상 브랜치
+
+# e-mail 알림 끄기
+notifications:
+  email: false
