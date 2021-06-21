@@ -35,6 +35,11 @@
     - https://github.com/settings/tokens
 - react 프로젝트는 별개로 빌드 후 위 _site폴더의 ```assets > js > react-component``` 형태로 추가해야 합니다.
 
+# Travis-CI 배포 - v3.0
+- travis-ci 을 통한 자동 배포 설정이 되어 있습니다.
+- develop 브랜치에 push가 발생하면 자동 배포가 이루어 집니다.
+- JEKYLL_GITHUB_TOKEN 환경변수 및 GITHUB_TOKEN 환경변수에 github에 대한 token이 설정되어 있습니다. (이는 travis-ci의 setting에 설정되어 있습니다.)
+
 # 클린
 - ```bundle exec jekyll clean```
 - 관련 명령어로 clean수행 가능합니다.
