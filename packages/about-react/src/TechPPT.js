@@ -22,7 +22,9 @@ class TechPPT extends React.Component {
   }
 
   onClick(url) {
-    return () => {
+    return (e) => {
+      e.stopPropagation();
+      e.preventDefault();
       window.open(url);
     };
   }
