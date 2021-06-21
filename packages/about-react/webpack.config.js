@@ -45,7 +45,8 @@ module.exports = (env) => {
         cleanOnceBeforeBuildPatterns: [
           path.resolve(imageTargetPath),
           path.resolve(outputPath),
-        ]
+        ],
+        dangerouslyAllowCleanPatternsOutsideProject: true,
       })
     ],
 

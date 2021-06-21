@@ -121,9 +121,41 @@ atom 기반의 Smartthings Iot Device 개발 환경을 제공하는 프로젝트
 제가 담당한 부분은, Logger, Device Profile, Run As, CI(Jenkins), build, installer 입니다.
 `,
 ko_2018_01:
-`Smartthings Web SDK 프로젝트에 참여중입니다.
+`Smartthings Web SDK 프로젝트에 참여하였습니다.
 web 기반의 Smartthings Iot Device 개발 환경을 제공하는 프로젝트 입니다.
 제가 담당한 부분은, Logger, Automation(OnBoarding), Hub Connected, React to Vue 입니다.
+`,
+ko_2018_08:
+`Naver Maps Admin Tool 프로젝트에 참여하였습니다.
+web 기반의 네이버 지도 데이터 관리 및 운영을 위한 관리툴 서비스 프로젝트 입니다.
+제가 담당한 부분은, 관리툴 광통 관리툴서버(express.js), POI편집툴, 다국어 관리툴, 배너 관리툴,
+지하철 메타 정보 관리툴)등 거의 대부분의 기능입니다.
+`,
+ko_2018_08_02:
+`Naver Maps(Pc-V5) 프로젝트에 참여하였습니다.
+Naver의 Pc판 지도 서비스로, 기존 flash 및 레스터 기반 지도를 개편하는 프로젝트 입니다.
+제가 담당한 부분은, 날씨, 지도검색 Sync, 버전관리, OG Tag, 인쇄저장, Api Proxy서버, 입니다.
+`,
+ko_2019_05:
+`Naver MyPlace 프로젝트에 참여하였습니다.
+사용자가 방문한 곳을 영수증으로 체크하고, 해당 정보 기준으로 별점을 주고, 장소Set을 공유하는 서비스 입니다.
+제가 담당한 부분은, ClientUI, GraphQL서버 개발, MyPlace 발견하기 관리툴 입니다.
+`,
+ko_2019_11:
+`Naver Ketch App 프로젝트에 참여하였습니다.
+지도 NativeApp의 대중교통 장소들에 대한 EndPage로 NativeApp의 webview로 나오는 컨텐츠를 담당하는 프로젝트 입니다.
+제가 담당한 부분은, 지하철, 공항, 항만, 터미널의 End Page요소 입니다.
+`,
+ko_2020_01:
+`Naver 버스터미널, 컨검,통검 엔드 프로젝트에 참여하였습니다. 네이버 기본검색(초록창)에서,
+버스, 시외버스, 동서울터미널 와 같은 터미널 키워드 검색에 대한 컨텐츠를 제공하는 프로젝트 입니다.
+제가 담당한 부분은, End(메인홈, 지도, 라우팅), CollectionUI, Presentation Server 입니다.
+`,
+ko_2020_11:
+`Naver KTX(Korail), 컨검,통검 엔드 프로젝트에 참여하였습니다. 네이버 기본검색(초록창)에서,
+기차예매, 서울역 와 같은 기차역 키워드 검색에 대한 컨텐츠를 제공하고, mobile, pc, in-app end을 모두 제공하는,
+프로젝트 입니다. 동시에 Nave Pay와 연동하여, Korail기차 예매를 Naver화면에서 제공하는 프로젝트 입니다.
+제가 담당한 부분은, End(메인홈, 지도, 라우팅), CollectionUI, Presentation Server 입니다.
 `
 }
 
@@ -235,6 +267,42 @@ const timeLineValues = [{
     desc: DESC_ME.ko_2018_01,
     term: 'January 01, 2018 - Now',
     image: 'smartthings-web.png'
+}, {
+    date: '2018-08-01',
+    title: 'Naver Maps Admin Tool',
+    desc: DESC_ME.ko_2018_08,
+    term: 'August 01, 2018 - May 31, 2019',
+    image: 'naverMapsAdmin.png'
+}, {
+    date: '2018-08-01',
+    title: 'Naver Maps(Pc-V5)',
+    desc: DESC_ME.ko_2018_08_02,
+    term: 'August 01, 2018 - December 31, 2019',
+    image: 'naverMapPcV5.png'
+}, {
+    date: '2019-05-01',
+    title: 'Naver MyPlace',
+    desc: DESC_ME.ko_2019_05,
+    term: 'May 01, 2019 - December 31, 2019',
+    image: 'naverMyplace.jpg'
+}, {
+    date: '2019-11-01',
+    title: 'Naver Ketch App',
+    desc: DESC_ME.ko_2019_11,
+    term: 'November 01, 2019 - December 31, 2019',
+    image: 'naverKetchApp.jpg'
+}, {
+    date: '2020-01-01',
+    title: 'Naver 버스터미널, 컨검,통검 엔드',
+    desc: DESC_ME.ko_2020_01,
+    term: 'January 01, 2020 - October 31, 2020',
+    image: 'naverBusTerminal.png'
+}, {
+    date: '2020-11-01',
+    title: 'Naver KTX(Korail), 컨검,통검 엔드',
+    desc: DESC_ME.ko_2020_11,
+    term: 'November 01, 2020 - June 31, 2021',
+    image: 'naverTrain.png'
 }];
 
 module.exports = {
