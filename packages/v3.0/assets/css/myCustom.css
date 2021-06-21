@@ -2,14 +2,6 @@
     max-width: 77.5em;
 }
 
-.site-nav #menu .menu-item a {
-    color: #262a30 !important;
-}
-
-.site-nav #menu .menu-item-active a {
-    color: #108ee9 !important;
-}
-
 .my-about {
     padding-bottom: 10px;
 }
@@ -92,13 +84,6 @@
 
 .my-career-table-warp .ant-table-pagination{
     display: none;
-}
-
-.my-career-table-warp .ant-table-header table, .my-career-table-warp .ant-table-body table {
-    margin: 0 !important;
-    border: none;
-    font-size: 12px;
-    table-layout: auto;
 }
 
 .my-career-table-warp .ant-table-thead>tr>th:last-child {
