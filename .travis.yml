@@ -21,7 +21,6 @@ deploy: # 배포 설정
   keep_history: false # 히스토리 유지를 위한 자동 commit 여부
   local-dir: ./packages/v3.0/_site # 빌드 결과물 경로
   target-branch: master # 빌드 결과물 업로드할 브랜치 이름
-  fqdn: gseok.github.io
   on:
     branch: develop # 빌드 대상 브랜치
 
