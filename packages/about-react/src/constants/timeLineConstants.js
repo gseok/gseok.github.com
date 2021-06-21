@@ -272,37 +272,37 @@ const timeLineValues = [{
     title: 'Naver Maps Admin Tool',
     desc: DESC_ME.ko_2018_08,
     term: 'August 01, 2018 - May 31, 2019',
-    image: 'naverMapsAdmin.png'
+    image: 'naver-map-admin.png'
 }, {
     date: '2018-08-01',
     title: 'Naver Maps(Pc-V5)',
     desc: DESC_ME.ko_2018_08_02,
     term: 'August 01, 2018 - December 31, 2019',
-    image: 'naverMapPcV5.png'
+    image: 'naver-map-pcv5.png'
 }, {
     date: '2019-05-01',
     title: 'Naver MyPlace',
     desc: DESC_ME.ko_2019_05,
     term: 'May 01, 2019 - December 31, 2019',
-    image: 'naverMyplace.jpg'
+    image: 'naver-myplace.jpg'
 }, {
     date: '2019-11-01',
     title: 'Naver Ketch App',
     desc: DESC_ME.ko_2019_11,
     term: 'November 01, 2019 - December 31, 2019',
-    image: 'naverKetchApp.jpg'
+    image: 'naver-ketch-app.jpg'
 }, {
     date: '2020-01-01',
     title: 'Naver 버스터미널, 컨검,통검 엔드',
     desc: DESC_ME.ko_2020_01,
     term: 'January 01, 2020 - October 31, 2020',
-    image: 'naverBusTerminal.png'
+    image: 'naver-bus-terminal.png'
 }, {
     date: '2020-11-01',
     title: 'Naver KTX(Korail), 컨검,통검 엔드',
     desc: DESC_ME.ko_2020_11,
     term: 'November 01, 2020 - June 31, 2021',
-    image: 'naverTrain.png'
+    image: 'naver-train.png'
 }];
 
 module.exports = {

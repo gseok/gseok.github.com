@@ -32,7 +32,7 @@ const copyFolderRecursiveSync = (source, target) => {
       files.forEach( function ( file ) {
           var curSource = path.join( source, file );
           if ( fs.lstatSync( curSource ).isDirectory() ) {
-              copyFolderRecursiveSync( curSource, target );
+              copyFolderRecursiveSync( curSource, path.join(target, file) );
           } else {
               copyFileSync( curSource, target );
           }
