@@ -91,9 +91,7 @@ const copyToV3 = () => {
 }
 
 (() => {
-  console.log('hiw..', __dirname);
-  copyToV3();
-  // return buildReal().catch((e) => {
-  //   console.error(e);
-  // });
+  return buildReal().then(copyToV3).catch((e) => {
+    console.error(e);
+  });
 })();
