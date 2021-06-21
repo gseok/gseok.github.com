@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable no-script-url */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Flex, Box } from 'reflexbox';
