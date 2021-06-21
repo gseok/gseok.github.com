@@ -6,7 +6,7 @@
   "scripts": {
     "clear": "bundle exec jekyll clean",
     "start": "yarn clear && bundle exec jekyll serve --limit_posts 3 --livereload --incremental -o",
-    "build:local": "JEKYLL_ENV=development bundle exec jekyll build --incremental -w",
+    "build:local": "yarn clear && JEKYLL_ENV=development bundle exec jekyll build --incremental -w",
     "build:real": "yarn clear && JEKYLL_ENV=production bundle exec jekyll build"
   },
   "dependencies": {}
