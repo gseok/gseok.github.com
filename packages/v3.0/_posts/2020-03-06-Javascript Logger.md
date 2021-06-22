@@ -3,7 +3,7 @@ title: Javascript Logger
 date: 2020-03-06 23:00:00
 updated: 2021-06-22 10:35:00
 categories:
- - teck talk
+ - tech talk
 tags:
  - javascript
  - logger
