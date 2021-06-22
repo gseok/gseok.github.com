@@ -3,12 +3,13 @@ title: DOM 스샷찍기(Svg & Canvas & DOM)
 date: 2020-01-10 23:29:53
 updated: 2021-06-22 09:55:00
 categories:
- - webtech
+ - tech talk
 tags:
  - javascript
  - dom
  - canvas
  - svg
+ - webtech
 ---
 
 ### 소개
