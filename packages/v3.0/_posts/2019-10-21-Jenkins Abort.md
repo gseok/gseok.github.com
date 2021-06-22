@@ -1,6 +1,6 @@
 ---
 title: Jenkins Abort
-date: 2010-10-21 23:29:53
+date: 2019-10-21 23:29:53
 updated: 2021-06-22 09:20:00
 categories:
  - ci
