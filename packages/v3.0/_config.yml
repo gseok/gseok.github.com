@@ -106,7 +106,9 @@ copyright: false
 canonical: true
 
 # Change headers hierarchy on site-subtitle (will be main site description) and on all post/pages titles for better SEO-optimization.
-seo: false
+seo: true
+
+timezone: Asia/Seoul
 
 # If true, will add site-subtitle to index page, added in jekyll config.
 # subtitle: Subtitle
