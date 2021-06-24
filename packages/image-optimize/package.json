@@ -1,0 +1,13 @@
+{
+  "name": "image-optimize",
+  "description": "tinypng api을 사용한 자동 이미지 최적화",
+  "version": "1.0.0",
+  "author": "gyeongseok.seo <gseok.seo@gmail.com>",
+  "license": "CC-BY-NC-4.0",
+  "scripts": {
+    "start": "node ./image-optimize.js",
+    "debug": "node --inspect-brk image-optimize.js /Users/user/develop/gseok/gseok.github.com/packages/v3.0/assets/post-images"
+  },
+  "dependencies": {
+  }
+}

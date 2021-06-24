@@ -40,6 +40,22 @@
 - develop 브랜치에 push가 발생하면 자동 배포가 이루어 집니다.
 - JEKYLL_GITHUB_TOKEN 환경변수 및 GITHUB_TOKEN 환경변수에 github에 대한 token이 설정되어 있습니다. (이는 travis-ci의 setting에 설정되어 있습니다.)
 
+# Image Optimize
+- 블로그 포스트 등에서 사용하는 png, jpg이미지를 최적화 합니다.
+- tinypng이 api을 사용(월 500건까지 무료) 합니다.
+- 무료 월 500건 제약이 있기 때문에 최적화 전에, 500건 사용 여부를 미리 체크합니다.
+- optimize된 파일 list을 기억하기 위한 용도로 .optimizelist 파일을 하나 사용합니다.
+- tinypng에서 제공하는 api역시 api-key가 필요합니다.
+- 해당 key는 ```TINY_PNG_API_TOKEN``` 형태로 ```.bashrc```나 ```.zshrc```에 미리 추가해서 사용합니다.
+  - tinypng는 개인적으로 gmail로 가입해서 사용중입니다. -> 키 분실시 찾기 쉽게 하기 위해 기록해둡니다.
+
+# husky
+- 사실 git을 협업으로 사용시 develop 브랜치 역시 곧바로 push을 하지 못하게 하고, code pr을 활용하는게 좋습니다.
+- 다만 본 프로젝트는 개인 프로젝트로 develop으로 직접 push을 하고 있습니다.
+- 현재 develop 브랜치로 push하면 travis-ci가 자동 배포 되고 있습니다.
+- develop으로 push시 build에러등을 미리 감지하기 위해 husky을 도입하였습니다.
+  - 따라서 local에서 개발시 develop branch로 push을 하면 local에서 먼저, real build test을 선 수행하게 됩니다.
+
 # 클린
 - ```bundle exec jekyll clean```
 - 관련 명령어로 clean수행 가능합니다.
