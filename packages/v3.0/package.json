@@ -11,10 +11,5 @@
     "build:real": "yarn clear && JEKYLL_ENV=production bundle exec jekyll build",
     "optimize:image": "TEMP=$(echo $PWD/assets/post-images) && yarn workspace image-optimize start $TEMP"
   },
-  "dependencies": {},
-  "husky": {
-    "hooks": {
-      "pre-push": "yarn workspace v3.0 build:real"
-    }
-  }
+  "dependencies": {}
 }

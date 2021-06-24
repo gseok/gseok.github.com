@@ -20,6 +20,11 @@
     "build:local": "lerna run build:local",
     "build:real": "lerna run build:real"
   },
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn workspace v3.0 build:real"
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
