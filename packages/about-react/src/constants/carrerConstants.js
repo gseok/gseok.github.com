@@ -3,7 +3,7 @@ const carrerTableValues = [
   {
     period: '2009.03 - 2010.06',
     name: 'tmax window',
-    contents: 'MFC 호환 DLL 개발 - DLL library 개발',
+    contents: 'tmax window MFC 호환 DLL 개발 - DLL library 개발',
   },
   {
     period: '2010.07 - 2011.02',

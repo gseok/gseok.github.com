@@ -1,13 +1,17 @@
 import React from 'react';
 import { Card, Icon, Tooltip, Table } from 'antd';
+import MobileDetect from 'mobile-detect';
 import Constants from './Constants';
+import { getShortUUID } from './timeline/helpers';
 
 class Career extends React.Component {
   constructor(props) {
     super(props);
 
+    const md = new MobileDetect((window && window.navigator && window.navigator.userAgent) || '');
     this.state = {
       label: 'Career',
+      isMobile: md.mobile(),
     };
   }
 
@@ -31,6 +35,25 @@ class Career extends React.Component {
         key: 'contents',
       },
     ];
+
+    if (this.state.isMobile) {
+      return (
+        <div className="my-career-table-warp">
+          <ul className="my-career-mobile-ul">
+            {Constants.CARRER_TABLE_VALUES.map(({ period, name, contents }) => {
+              return (
+                <div key={getShortUUID()}>
+                  <li>{period.trim()}</li>
+                  <ul>
+                    <li>{contents.trim()}</li>
+                  </ul>
+                </div>
+              );
+            })}
+          </ul>
+        </div>
+      );
+    }
 
     return (
       <div className="my-career-table-warp">

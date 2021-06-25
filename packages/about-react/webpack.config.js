@@ -82,7 +82,7 @@ module.exports = (env) => {
 
   // development
   if (NODE_ENV === DEFAULT_MODE) {
-    const devServerPort = 4000;
+    const devServerPort = 4001;
     const devConf = {
       ...defaultConf,
 
