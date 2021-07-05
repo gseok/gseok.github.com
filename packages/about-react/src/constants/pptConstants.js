@@ -1,5 +1,11 @@
 const pptDatas = [
   {
+    title: 'Deno',
+    url: 'https://gseok.github.io/ppt/deno',
+    image: '../assets/about-images/ppt/deno.png',
+    desc: 'This is my deno study web-ppt. Deno is an secure runtime for JavaScript and TypeScript',
+  },
+  {
     title: 'Virtual DOM',
     url: 'https://www.slideshare.net/gyeongseokseo/virtual-dom',
     image: '../assets/about-images/ppt/virtualDom.png',
