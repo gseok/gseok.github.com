@@ -61,6 +61,11 @@ class AboutMe extends React.Component {
         href: 'https://github.com/gseok',
         text: 'Github',
       },
+      {
+        type: 'user',
+        href: 'https://gseok.github.io/ppt/aboutme',
+        text: 'who am i',
+      },
     ];
 
     return (
