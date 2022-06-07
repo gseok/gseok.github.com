@@ -1,0 +1,1178 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,dom,canvas,svg,webtech," />
+
+
+<link rel="alternate" type="application/rss+xml" href="https://gseok.github.io/feed.xml" title="Gseok Blog">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Gseok Blog" type="application/atom+xml" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="소개">
+<meta name="keywords" content="javascript, dom, canvas, svg, webtech">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM 스샷찍기(Svg &amp; Canvas &amp; DOM)">
+<meta property="og:url" content="https://gseok.github.io/articles/2020-01/DOM-screenshot">
+<meta property="og:site_name" content="Gseok Blog">
+<meta property="og:description" content="소개">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2021-06-22T18:55:00+09:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DOM 스샷찍기(Svg &amp; Canvas &amp; DOM)">
+<meta name="twitter:description" content="소개">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '작성자'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://gseok.github.io/"/>
+
+
+
+
+
+  <title>DOM 스샷찍기(Svg & Canvas & DOM) | Gseok Blog</title>
+  
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-38849338-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-38849338-1');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ko">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gseok Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">GyeongSeok Seo story</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            홈
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            카테고리
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            아카이브
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            태그
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://gseok.github.io/articles/2020-01/DOM-screenshot">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GyeongSeok Seo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/gseok.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gseok Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+          
+          
+            DOM 스샷찍기(Svg & Canvas & DOM)
+          
+        </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+              <time title="DOM 스샷찍기(Svg & Canvas & DOM)" itemprop="dateCreated datePublished" datetime="2020-01-11">
+                2020-01-11
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">수정일</span>
+              
+              <time title="DOM 스샷찍기(Svg & Canvas & DOM)" itemprop="dateModified" datetime="2021-06-22">
+                2021-06-22
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/tech%20talk" itemprop="url" rel="index">
+                    <span itemprop="name">tech talk</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/articles/2020-01/DOM-screenshot#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="/articles/2020-01/DOM-screenshot" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  <h3 id="소개">소개</h3>
+
+<ul>
+  <li>svg, canvas, 일반 DOM이 섞여 있는 Web Page을 브라우저에서 screenshot을 생성하기 위한 web tech tip에 대해서 이야기 합니다.</li>
+</ul>
+
+<h3 id="web에서-스크린샷-생성하는-lib">Web에서 스크린샷 생성하는 Lib</h3>
+
+<ul>
+  <li>html2canvas
+    <ul>
+      <li>doc: <a href="https://html2canvas.hertzen.com/">https://html2canvas.hertzen.com/</a></li>
+      <li>git: <a href="https://github.com/niklasvh/html2canvas/">https://github.com/niklasvh/html2canvas/</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>web에서 screenshot을 생성하는 대표적인 lib가 존재합니다. 해당 lib는 screenshot을 생성하기 위한 타겟 dom을 canvas에 draw하여서 screenshot을 생성합니다.</p>
+
+<p>보통 일반적인 web page의 경우 큰 문제 없이 구동되지만, 복잡한 구조의 page인 경우, 특히 IE에서 아래와 같은 문제가 발생 할 수 있습니다.</p>
+
+<p><strong>html2canvas의 문제</strong></p>
+
+<ul>
+  <li>svg: svg → canvas로 draw할때, SecurityError가 발생하여, svg가 그려지지 않음
+    <ul>
+      <li>ref: <a href="https://html.spec.whatwg.org/multipage/canvas.html#security-with-canvas-elements">https://html.spec.whatwg.org/multipage/canvas.html#security-with-canvas-elements</a></li>
+      <li>ref: <a href="https://github.com/eligrey/canvas-toBlob.js/issues/21">https://github.com/eligrey/canvas-toBlob.js/issues/21</a></li>
+      <li>ref: <a href="https://github.com/niklasvh/html2canvas/issues/201">https://github.com/niklasvh/html2canvas/issues/201</a></li>
+      <li><a href="https://github.com/niklasvh/html2canvas/issues/1543">https://github.com/niklasvh/html2canvas/issues/1543</a></li>
+    </ul>
+  </li>
+  <li>image: image → canvas시 canvas의 tainted error가 발생
+    <ul>
+      <li>ref: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image">https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>html2canvas lib을 IE에서 사용시 특히나 위 문제가 많이 발생합니다. 그 이유는 svg태그를 모두 parsing하고 분석해서 svg → canvas로 직접 draw하는 형태가 아니라. image을 사용하는 trick을 사용하고 있기 때문입니다.</p>
+
+<ul>
+  <li>httml2canvas에서 svg의 처리는 아래와 같습니다.
+    <ul>
+      <li>svg → string으로 변환(serializeToString)</li>
+      <li>svg text(string) 을 new image 하고</li>
+      <li>image src에 ‘data:image/svg+xml’형태로 설정</li>
+      <li>이후 해당 image을 canvas에 drawImage함</li>
+    </ul>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">export</span> <span class="kd">class</span> <span class="nx">SVGElementContainer</span> <span class="kd">extends</span> <span class="nx">ElementContainer</span> <span class="p">{</span>
+    <span class="nl">svg</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">intrinsicWidth</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="nl">intrinsicHeight</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">img</span><span class="p">:</span> <span class="nx">SVGSVGElement</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">super</span><span class="p">(</span><span class="nx">img</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="nx">s</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLSerializer</span><span class="p">();</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">svg</span> <span class="o">=</span>
+  			<span class="s2">`data:image/svg+xml,</span><span class="p">${</span><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">serializeToString</span><span class="p">(</span><span class="nx">img</span><span class="p">))}</span><span class="s2">`</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">intrinsicWidth</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">width</span><span class="p">.</span><span class="nx">baseVal</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">intrinsicHeight</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">height</span><span class="p">.</span><span class="nx">baseVal</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+
+      <span class="nx">CacheStorage</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">().</span><span class="nx">addImage</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">svg</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>위 과정이후 문제가 발생합니다. 위 image → canvas시 tainted error가 발생</li>
+</ul>
+
+<p>결국 html2canvas lib에서의 svg처리 문제로, svg가 잘 그려지지 않는 문제가 발생하고, 근본적으로는 web상에서 canvas가 tained 되었을때, 이를 외부에서 사용가능한 형태로의 변환 시도시 에러가 발생합니다.</p>
+
+<p>Image을 canvas에 그렸을때 tained 문제</p>
+
+<ul>
+  <li>crossOrigin = “Anonymous”; 설정이 Img 가 onLoad되기 이전에 설정 되어 있어야 해당 문제가 발생하지 않습니다.</li>
+  <li>이미 dom 상에 img가 있는데 해당 img에 위 attribute가 없는 경우, img을 xhr로 load하고, load한 data을 읽어서 crossOrigin = “Anonymous” 가 미리 설정된 img을 만들어 해당 img에 다시 이미지를 그리는 형태로 회피를 합니다.</li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// proxy 코드 스닙</span>
+<span class="kr">private</span> <span class="nx">proxy</span><span class="p">(</span><span class="nx">src</span><span class="p">:</span> <span class="nx">string</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_options</span><span class="p">.</span><span class="nx">proxy</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">proxy</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">No proxy defined</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kd">const</span> <span class="nx">key</span> <span class="o">=</span> <span class="nx">src</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">256</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">responseType</span> <span class="o">=</span> <span class="nx">FEATURES</span><span class="p">.</span><span class="nx">SUPPORT_RESPONSE_TYPE</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">blob</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+      <span class="nx">xhr</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+              <span class="k">if</span> <span class="p">(</span><span class="nx">responseType</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+                  <span class="nx">resolve</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">response</span><span class="p">);</span>
+              <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                  <span class="kd">const</span> <span class="nx">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FileReader</span><span class="p">();</span>
+                  <span class="nx">reader</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">load</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">resolve</span><span class="p">(</span><span class="nx">reader</span><span class="p">.</span><span class="nx">result</span> <span class="k">as</span> <span class="nx">string</span><span class="p">),</span> <span class="kc">false</span><span class="p">);</span>
+                  <span class="nx">reader</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">e</span><span class="p">),</span> <span class="kc">false</span><span class="p">);</span>
+                  <span class="nx">reader</span><span class="p">.</span><span class="nx">readAsDataURL</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">response</span><span class="p">);</span>
+              <span class="p">}</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+              <span class="nx">reject</span><span class="p">(</span><span class="s2">`Failed to proxy resource </span><span class="p">${</span><span class="nx">key</span><span class="p">}</span><span class="s2"> with status code </span><span class="p">${</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">status</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+          <span class="p">}</span>
+      <span class="p">};</span>
+
+			<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span> <span class="s2">`</span><span class="p">${</span><span class="nx">proxy</span><span class="p">}</span><span class="s2">?url=</span><span class="p">${</span><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">src</span><span class="p">)}</span><span class="s2">&amp;responseType=</span><span class="p">${</span><span class="nx">responseType</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+	<span class="p">...</span>
+<span class="p">}</span>
+
+<span class="c1">// proxy 가 필요한 경우 ==&gt; CORS을 재설정 하는 경우</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">useProxy</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">src</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">proxy</span><span class="p">(</span><span class="nx">src</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">Logger</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">debug</span><span class="p">(</span><span class="s2">`Added image </span><span class="p">${</span><span class="nx">key</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">256</span><span class="p">)}</span><span class="s2">`</span><span class="p">);</span>
+
+<span class="k">return</span> <span class="k">await</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">img</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+    <span class="nx">img</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">resolve</span><span class="p">(</span><span class="nx">img</span><span class="p">);</span>
+    <span class="nx">img</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="nx">reject</span><span class="p">;</span>
+    <span class="c1">//ios safari 10.3 taints canvas with data urls unless crossOrigin is set to anonymous</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isInlineBase64Image</span><span class="p">(</span><span class="nx">src</span><span class="p">)</span> <span class="o">||</span> <span class="nx">useCORS</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">img</span><span class="p">.</span><span class="nx">crossOrigin</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">anonymous</span><span class="dl">'</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">img</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">src</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">img</span><span class="p">.</span><span class="nx">complete</span> <span class="o">===</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Inline XML images may fail to parse, throwing an Error later on</span>
+        <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">resolve</span><span class="p">(</span><span class="nx">img</span><span class="p">),</span> <span class="mi">500</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_options</span><span class="p">.</span><span class="nx">imageTimeout</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">setTimeout</span><span class="p">(</span>
+            <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">reject</span><span class="p">(</span><span class="s2">`Timed out (</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">_options</span><span class="p">.</span><span class="nx">imageTimeout</span><span class="p">}</span><span class="s2">ms) loading image`</span><span class="p">),</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_options</span><span class="p">.</span><span class="nx">imageTimeout</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p><strong>canvas tained?</strong></p>
+
+<ul>
+  <li>canvas에 img나 svg을 draw할때, 해당 svg or img(원본)에 CORS 설정(attribute)을 보고 해당 설정이 없는 원본을 draw한 canvas는 tained된(더럽혀졌어…) canvas로 browser에서 판단됩니다.</li>
+  <li>tained된 canvas아래 동작 시도시 Security Error가 발생합니다.
+    <ul>
+      <li>Calling <code class="language-plaintext highlighter-rouge">[getImageData()](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData)</code> on the canvas’s context</li>
+      <li>Calling <code class="language-plaintext highlighter-rouge">[toBlob()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob)</code> on the <code class="language-plaintext highlighter-rouge">[&lt;canvas&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas)</code> element itself</li>
+      <li>Calling <code class="language-plaintext highlighter-rouge">[toDataURL()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL)</code> on the canvas</li>
+    </ul>
+  </li>
+  <li>그 이외의 동작은 가능합니다.
+    <ul>
+      <li>따라서, 원본 소스에서 허락하지 않은 경우, low data변환이나 외부 반출에 제약이 발생합니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="security--tained-error-회피하기">security &amp; tained error 회피하기</h3>
+
+<p><strong>canvg</strong></p>
+
+<p>canvg는 svg을 canvas로 변경해주는 대표적인 lib 입니다. html2canvas와 다르게 canvg는 svg의 내용을 직접 parsing하고 해석하여, 해당 그림을 canvas에 그려줍니다.</p>
+
+<ul>
+  <li>git: <a href="https://github.com/canvg/canvg">https://github.com/canvg/canvg</a></li>
+</ul>
+
+<p>canvg가 생성하는 canvas에 그려진 svg는 실질적으로는 canvas에 메뉴얼하게 그린 pure한 canvas이기 때문에 security나 tained error가 발생하지 않습니다.</p>
+
+<p><strong>html2canvas + canvg 조합하여 회피하기</strong></p>
+
+<p>html2canvas에서는, 목적하는 dom을 clone하여 이용하고, 해당 cloned dom은 canvas로 그려지기 전에 수동으로 이미지, 스타일 등을 조정 할 수 있는 callback api을 제공합니다.</p>
+
+<p>따라서, html2canvas에 svg부분만 canvg로 그려서 대체하면, 실질적으로 html2canvas을 이용해서 이미지를 생성 할 수 있습니다.</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// pseudo code</span>
+<span class="n">html2canvas</span><span class="p">(</span><span class="n">targetElement</span><span class="p">,</span> <span class="p">{</span>
+	<span class="nl">onclone:</span> <span class="n">clonedDoc</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	  <span class="c1">// svg to canvas</span>
+		<span class="k">const</span> <span class="n">svg</span> <span class="o">=</span> <span class="n">clonedDoc</span><span class="p">.</span><span class="n">querySelector</span><span class="p">(</span><span class="err">'</span><span class="n">svg</span><span class="err">'</span><span class="p">);</span>
+	  <span class="k">if</span> <span class="p">(</span><span class="n">svg</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">const</span> <span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvg</span><span class="p">.</span><span class="n">fromString</span><span class="p">(</span><span class="n">svg</span><span class="p">.</span><span class="n">innerHTML</span><span class="p">).</span><span class="n">render</span><span class="p">();</span>
+			<span class="k">const</span> <span class="n">parent</span> <span class="o">=</span> <span class="n">svg</span><span class="p">.</span><span class="n">parentElement</span><span class="p">;</span>
+			<span class="n">svg</span><span class="p">.</span><span class="n">remove</span><span class="p">();</span>
+      <span class="n">parent</span><span class="p">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">canvas</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="dom-to-canvas">DOM to Canvas</h3>
+
+<p>dom object을 canvas에 그리는 가장 일반 적인 방법을 소개합니다.</p>
+
+<p>참고: <a href="http://man.hubwiz.com/docset/JavaScript.docset/Contents/Resources/Documents/developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Drawing_DOM_objects_into_a_canvas.html">http://man.hubwiz.com/docset/JavaScript.docset/Contents/Resources/Documents/developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Drawing_DOM_objects_into_a_canvas.html</a></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">DOMURL</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span> <span class="o">||</span> <span class="nb">window</span><span class="p">.</span><span class="nx">webkitURL</span> <span class="o">||</span> <span class="nb">window</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">canvas</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="dl">'</span><span class="s1">2d</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+<span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span>
+		 <span class="s2">`&lt;svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"&gt;
+        &lt;foreignObject width="100%" height="100%"&gt;
+          &lt;div xmlns="http://www.w3.org/1999/xhtml" style="font-size:40px"&gt;
+            &lt;em&gt;I&lt;/em&gt; like
+            &lt;span style="color:white; text-shadow:0 0 2px blue;"&gt;
+            cheese&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/foreignObject&gt;
+      &lt;/svg&gt;`</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">svg</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Blob</span><span class="p">([</span><span class="nx">data</span><span class="p">],</span> <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">image/svg+xml;charset=utf-8</span><span class="dl">'</span><span class="p">});</span>
+<span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">DOMURL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">svg</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">img</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+<span class="nx">img</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">img</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="nx">DOMURL</span><span class="p">.</span><span class="nx">revokeObjectURL</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">img</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">canvas</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>svg의 foreignObject을 이용하여 내부에 dom을 그리고, svg → image → canvas에 그리는 형태입니다.</li>
+  <li>단 IE에서는 지원하지 않고 있습니다. ref: <a href="https://caniuse.com/#search=foreignobject">https://caniuse.com/#search=foreignobject</a></li>
+  <li>html2canvas의 경우, foreignObject을 지원하는 경우 위와 같은 방법으로 canvas에 그리고, 만약 foreignObject을 지원하지 않는 경우, dom tree을 모두 parsing하면서 각각의 element type에 따라서, size(bound), style, text등을 계산하여 직접 canvas에 그림을 그립니다. ref: <a href="https://github.com/niklasvh/html2canvas/blob/master/src/render/canvas/canvas-renderer.ts">https://github.com/niklasvh/html2canvas/blob/master/src/render/canvas/canvas-renderer.ts</a></li>
+</ul>
+
+<h3 id="정리">정리</h3>
+
+<ul>
+  <li>DOM → Image(Canvas)는 foreignObject을 사용하는 경우 생각보다 어렵지 않게 변환 가능합니다.</li>
+  <li>DOM에 SVG나 Image가 존재하는 경우 Security 문제가 있을 수 있습니다.
+    <ul>
+      <li>Image: attribute에 crossOrigin = “Anonymous”; 설정으로 회피 가능 합니다.</li>
+      <li>svg: canvg등으로 svg → canvas로 직접 그리는 형태로 회피 가능 합니다.</li>
+    </ul>
+  </li>
+  <li>대다수의 간략한 DOM Tree의 경우 문제없이 기본적인 lib사용으로 이미지 생성이 가능합니다.</li>
+  <li>만약 SVG나 Image에 의해 문제가 발생할 경우 위와 같은 회피 방법을 활용하여 이미지 생성을 할 수 있습니다.</li>
+</ul>
+
+<h3 id="추가사항">추가사항</h3>
+
+<ul>
+  <li>html2canvas의 경우, 내부적으로 target이 되는 dom tree만 clone하는게 아니라. full window(document)을 모두 clone하여 동작합니다. 따라서 document의 크기에 따라서, document의 dom tree가 매우 복잡하고 많은 경우, 500ms 이상 느리게 동작 할 수 있습니다.</li>
+  <li>이미지 생성을 해야하는 부분에 DOM보다는 SVG나 Image로만 되어 있다면, 직접 SVG, Image를 Canvas에 그려서 이미지로 생성하는게 성능상 이점이 큽니다.</li>
+</ul>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/javascript" rel="tag"># javascript</a>
+          
+            
+            <a href="/tag/#/dom" rel="tag"># dom</a>
+          
+            
+            <a href="/tag/#/canvas" rel="tag"># canvas</a>
+          
+            
+            <a href="/tag/#/svg" rel="tag"># svg</a>
+          
+            
+            <a href="/tag/#/webtech" rel="tag"># webtech</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/articles/2020-02/Debug-breakpoint-ignored" rel="next" title="Debug breakpoint ignored 문제 수정">
+                <i class="fa fa-chevron-left"></i> Debug breakpoint ignored 문제 수정
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/articles/2019-10/Jenkins-Abort" rel="prev" title="Jenkins Abort">
+                Jenkins Abort <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            목차
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            흝어보기
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/gseok.jpg"
+               alt="GyeongSeok Seo" />
+          <p class="site-author-name" itemprop="name">GyeongSeok Seo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">포스트</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">카테고리</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">태그</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://github.com/gseok" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/assets/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-3"> <a class="nav-link" href="#소개"> <span class="nav-number">1</span> <span class="nav-text">소개</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#web에서-스크린샷-생성하는-lib"> <span class="nav-number">2</span> <span class="nav-text">Web에서 스크린샷 생성하는 Lib</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#security--tained-error-회피하기"> <span class="nav-number">3</span> <span class="nav-text">security &amp; tained error 회피하기</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#dom-to-canvas"> <span class="nav-number">4</span> <span class="nav-text">DOM to Canvas</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#정리"> <span class="nav-number">5</span> <span class="nav-text">정리</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#추가사항"> <span class="nav-number">6</span> <span class="nav-text">추가사항</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GyeongSeok Seo</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://gseok.disqus.com/count.js" async></script>
+    
+
+    
+      
+      <script type="text/javascript">
+          var disqus_config = function () {
+              this.page.url = 'https://gseok.github.io/articles/2020-01/DOM-screenshot';
+              this.page.identifier = '/articles/2020-01/DOM-screenshot';
+              this.page.title = 'DOM 스샷찍기(Svg & Canvas & DOM)';
+          };
+          var d = document, s = d.createElement('script');
+          s.src = 'https://gseok.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', '' + +new Date());
+          (d.head || d.body).appendChild(s);
+      </script>
+      
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+

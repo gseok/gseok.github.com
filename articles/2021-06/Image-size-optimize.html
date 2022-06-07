@@ -1,0 +1,1253 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,nodejs,tech basic," />
+
+
+<link rel="alternate" type="application/rss+xml" href="https://gseok.github.io/feed.xml" title="Gseok Blog">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Gseok Blog" type="application/atom+xml" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="소개">
+<meta name="keywords" content="javascript, nodejs, tech basic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="png, jpg, 이미지 용량 줄이기">
+<meta property="og:url" content="https://gseok.github.io/articles/2021-06/Image-size-optimize">
+<meta property="og:site_name" content="Gseok Blog">
+<meta property="og:description" content="소개">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="../../assets/post-images/2021-06-23-Image-size-optimize/01.png">
+<meta property="og:image" content="../../assets/post-images/2021-06-23-Image-size-optimize/02.png">
+<meta property="og:image" content="../../assets/post-images/2021-06-23-Image-size-optimize/03.png">
+<meta property="og:image" content="../../assets/post-images/2021-06-23-Image-size-optimize/04.png">
+<meta property="og:image" content="../../assets/post-images/2021-06-23-Image-size-optimize/05.png">
+<meta property="og:image" content="../../assets/post-images/2021-06-23-Image-size-optimize/06.png">
+<meta property="og:image" content="../../assets/post-images/2021-06-23-Image-size-optimize/07.png">
+<meta property="og:image" content="../../assets/post-images/2021-06-23-Image-size-optimize/08.png">
+<meta property="og:updated_time" content="2021-06-24T01:10:00+09:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="png, jpg, 이미지 용량 줄이기">
+<meta name="twitter:description" content="소개">
+<meta name="twitter:image" content="../../assets/post-images/2021-06-23-Image-size-optimize/01.png">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '작성자'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://gseok.github.io/"/>
+
+
+
+
+
+  <title>png, jpg, 이미지 용량 줄이기 | Gseok Blog</title>
+  
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-38849338-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-38849338-1');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ko">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gseok Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">GyeongSeok Seo story</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            홈
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            카테고리
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            아카이브
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            태그
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://gseok.github.io/articles/2021-06/Image-size-optimize">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GyeongSeok Seo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/gseok.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gseok Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+          
+          
+            png, jpg, 이미지 용량 줄이기
+          
+        </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+              <time title="png, jpg, 이미지 용량 줄이기" itemprop="dateCreated datePublished" datetime="2021-06-24">
+                2021-06-24
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">수정일</span>
+              
+              <time title="png, jpg, 이미지 용량 줄이기" itemprop="dateModified" datetime="2021-06-23">
+                2021-06-23
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/tech%20talk" itemprop="url" rel="index">
+                    <span itemprop="name">tech talk</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/articles/2021-06/Image-size-optimize#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="/articles/2021-06/Image-size-optimize" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  <h2 id="소개">소개</h2>
+
+<p>web환경에서 resource의 용량은 성능에 매우 큰 영향을 준다. 따라서 여러가지 기법을 이용해서 이를 해결하게 된다. 이런 기법에는 splite image사용, resource cache, device rosolution에 따른 resource 서빙, image crop, image reszie 등등이 있다. 실제 매우 많은 사람이 사용하는 포털 서비스에서도 이러한 기법을 사용한다.</p>
+
+<p><strong>실제 포털에서의 예(다음카카오)</strong></p>
+
+<p><img src="../../assets/post-images/2021-06-23-Image-size-optimize/01.png" alt="" /></p>
+
+<ul>
+  <li>실제 서비스되는 이미지의 용량: 12.4kB</li>
+  <li>주소:
+    <ul>
+      <li><a href="https://search1.daumcdn.net/thumb/C200x278.fwebp.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fbrunch%2Fservice%2Fuser%2F3jtQ%2Fimage%2FCXQeP3cgNqaOGX9_Dx7a9mlt41U.png">https://search1.daumcdn.net/thumb/C200x278.fwebp.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fbrunch%2Fservice%2Fuser%2F3jtQ%2Fimage%2FCXQeP3cgNqaOGX9_Dx7a9mlt41U.png</a></li>
+    </ul>
+  </li>
+  <li>주소를 잘 보면 여러 정보를 볼 수 있다
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">200x278</code>크기로 crop</li>
+      <li>quality: 85%</li>
+      <li>원본 이미지 주소: <a href="http://t1.daumcdn.net/brunch/service/user/3jtQ/image/CXQeP3cgNqaOGX9_Dx7a9mlt41U.png">http://t1.daumcdn.net/brunch/service/user/3jtQ/image/CXQeP3cgNqaOGX9_Dx7a9mlt41U.png</a></li>
+      <li>실제 원본 이미지의 경우 아래와 같이 192kB 임을 볼 수 있다.</li>
+    </ul>
+
+    <p><img src="../../assets/post-images/2021-06-23-Image-size-optimize/02.png" alt="" /></p>
+  </li>
+  <li>정리하면, 원본 192kB → 이미지 최적화 + 이미지 crop → 12.kB로 사용됨을 알 수 있다.</li>
+</ul>
+
+<p>실제 포털에서의 예(네이버)</p>
+
+<p><img src="../../assets/post-images/2021-06-23-Image-size-optimize/03.png" alt="" /></p>
+
+<ul>
+  <li>실제 서비스되는 이미지의 용량: 18.8kB</li>
+  <li>주소:
+    <ul>
+      <li><a href="https://search.pstatic.net/common/?autoRotate=true&amp;quality=95&amp;type=f174_174&amp;src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_267%2F1441008970338JWBLo_JPEG%2F11630456_0.jpg">https://search.pstatic.net/common/?autoRotate=true&amp;quality=95&amp;type=f174_174&amp;src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_267%2F1441008970338JWBLo_JPEG%2F11630456_0.jpg</a></li>
+    </ul>
+  </li>
+  <li>주소로 알 수 있는 정보
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">174_174</code> 크기로 crop</li>
+      <li>quality: 95%</li>
+      <li>원본 이미지 주소: <a href="https://ldb-phinf.pstatic.net/20150831_267/1441008970338JWBLo_JPEG/11630456_0.jpg">https://ldb-phinf.pstatic.net/20150831_267/1441008970338JWBLo_JPEG/11630456_0.jpg</a></li>
+      <li>실제 원본 이미지의 경우 아래와 같이 184kB임을 볼 수 있다.</li>
+    </ul>
+
+    <p><img src="../../assets/post-images/2021-06-23-Image-size-optimize/04.png" alt="" /></p>
+  </li>
+  <li>정리하면, 원본 184kB → 이미지 최적화 + 이미지 crop → 18.8kB로 사용됨을 알 수 있다.</li>
+</ul>
+
+<p>대형 포탈이 아닌 개인이 서비스(블로그 등) 할때, 위의 예와 같은 처리를 하려면, 이미지 캐시 서버 혹은 이미지 처리 서버를 직접 구현하여야 한다. 하지만 개인 서비스에서 이런 추가 서비스를 별개로 구현하기는 쉽지 않다. 따라서 이러한 이미지 처리 서버 서비스를 이용해야한다. 본 글에서는, 이러한 이미지 최적화 처리를 개인이 쉽게 할 수 있는, <a href="https://tinypng.com/">TinyPNG</a> 서비스를 소개한다.</p>
+
+<h2 id="tinypng">TinyPNG</h2>
+
+<p><img src="../../assets/post-images/2021-06-23-Image-size-optimize/05.png" alt="" /></p>
+
+<ul>
+  <li>앞선 소개에서 이야기한 기능을 제공하는 서비스이다.</li>
+  <li>기본적으로 web상에서 drag and drop 으로 쉽게 이미지를 최적화 할 수 있다</li>
+  <li>기술적으로는 png, jpg(파일의) 불필요한 meta을 제거하고, 24bit png file을 8bit indexed color형태로 변환한다고 되어 있다. (This technique is called “quantization”. By reducing the number of colors, 24-bit PNG files can be converted to much smaller 8-bit indexed color images.)</li>
+</ul>
+
+<h3 id="cdn기능">CDN기능</h3>
+
+<ul>
+  <li><a href="https://tinify.com/cdn/documentation#configuration">https://tinify.com/cdn/documentation#configuration</a></li>
+  <li>web에서 직접 변환와 다르게 위 포탈의 형태와 비슷하게, image을 cdn형태로 서빙해주는 서비스 이다.
+    <ul>
+      <li>맨 앞의 소개쪽의 다음, 네이버 등의 포탈이 제공하는 이미지 서버(CDN server)형태와 동일한 형태.</li>
+    </ul>
+  </li>
+  <li>현재(2021.06) beta서비스 중이며, 해당 기능은 무료가 없고 유료만 있다.</li>
+  <li>TinyPNG의 CDN document을 살펴보면 아래와 같이 기존 image을 tinifycdn 주소로 변환하여 사용하도록 가이드 한다.
+    <ul>
+      <li>
+        <p>즉 이미지 자체를 TinyPNG에서 서빙해주는 형태이다.</p>
+
+        <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  **Before**
+  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/images/logo.jpg"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://images.example.com/images/header.jpg"</span><span class="nt">/&gt;</span>
+</code></pre></div>        </div>
+
+        <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  **After**
+
+  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://xxxxxxxx.tinifycdn.com/images/logo.jpg"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://xxxxxxxx.tinifycdn.com/images/header.jpg"</span><span class="nt">/&gt;</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="api-기능">API 기능</h3>
+
+<ul>
+  <li><a href="https://tinypng.com/developers/reference">https://tinypng.com/developers/reference</a></li>
+  <li>REST API로 image 변환 처리를 가능하게 제공하고 있다.</li>
+  <li>무료로 월 500건까지 사용 가능하다</li>
+  <li>기존적으로 ajax을 curl등으로 직접 호출도 가능하고, 여러 언어에서 사용하기 쉽게 lib도 제공하고 있다.
+    <ul>
+      <li>Ruby, php, Node.js, Python, Java, .Net 의 lib지원</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>api auth생성</strong></p>
+
+<ul>
+  <li>당연히 api를 막쓰는건 아니고, 사용자 등록을 하여 api key을 발급 받아야 한다.</li>
+  <li><a href="https://tinypng.com/developers">https://tinypng.com/developers</a>  페이지에서 e-mail로 인증하면 개발자 계정 로그인이 가능하다.</li>
+</ul>
+
+<p><img src="../../assets/post-images/2021-06-23-Image-size-optimize/06.png" alt="" /></p>
+
+<ul>
+  <li>로그인 이후 <a href="https://tinify.com/dashboard/api">https://tinify.com/dashboard/api</a>  로 접속하면 본인의 Dashboard로 접근 가능하다.</li>
+  <li>해당 Dashboard 에서 ‘Add api key’을 통해서 api key을 발급 받을 수 있다.</li>
+</ul>
+
+<p><img src="../../assets/post-images/2021-06-23-Image-size-optimize/07.png" alt="" /></p>
+
+<p><strong>Api 사용</strong></p>
+
+<ul>
+  <li>HTTP(Rest Api)도 있기 때문에 ajax로 호출해서 사용하거나, 제공되는 lib의 형태로 사용하면 된다.</li>
+  <li>
+    <p>node.js의 예</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  npm <span class="nb">install</span> <span class="nt">--save</span> tinify
+  혹은
+  yarn add <span class="nt">-D</span> tinyify
+</code></pre></div>    </div>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">const</span> <span class="nx">tinify</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">tinify</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">tinify</span><span class="p">.</span><span class="nx">key</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">YOUR_API_KEY</span><span class="dl">"</span><span class="p">;</span>
+
+  <span class="c1">// auth 체크</span>
+  <span class="kd">const</span> <span class="nx">check</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  	  <span class="nx">tinify</span><span class="p">.</span><span class="nx">validate</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+  		  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="c1">// Validation of API key failed.</span>
+          <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+  		  <span class="c1">// validate 이후 compression count을 알 수 있다.</span>
+  		  <span class="c1">// 무료 500 이하로 사용하고 싶을때 해당값을 check해서 사용 가능하다.</span>
+  			<span class="kd">let</span> <span class="nx">compressionsThisMonth</span> <span class="o">=</span> <span class="nx">tinify</span><span class="p">.</span><span class="nx">compressionCount</span><span class="p">;</span>
+        <span class="nx">resolve</span><span class="p">();</span>
+  		<span class="p">})</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="c1">// optimize (compress)</span>
+  <span class="c1">// srcPath: 소스 이미지 path</span>
+  <span class="c1">// targetPath: 타켓 이미지 path</span>
+  <span class="c1">// local에서 구동시 소스와 타겟 위치가 같으면 소스가 compress되서 덮어써진다.</span>
+  <span class="kd">const</span> <span class="nx">compress</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">srcPath</span><span class="p">,</span> <span class="nx">targetPath</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">source</span> <span class="o">=</span> <span class="nx">tinify</span><span class="p">.</span><span class="nx">fromFile</span><span class="p">(</span><span class="nx">srcPath</span><span class="p">);</span> <span class="c1">// fromFile이 tinyPNG의 Source클래스를 리턴한다.</span>
+    <span class="k">return</span> <span class="nx">source</span><span class="p">.</span><span class="nx">toFile</span><span class="p">(</span><span class="nx">targetPath</span><span class="p">);</span> <span class="c1">// source.toFile은 Promise을 리턴한다.</span>
+  <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>그외 <a href="https://tinypng.com/analyzer">https://tinypng.com/analyzer</a> 에서 코드(이미지) 분석이나, photoshop plugin도 제공되고 있다.</p>
+
+<h3 id="활용">활용</h3>
+
+<ul>
+  <li>개인적으로는, jekyll을 통한 blog post을 할때, image source을 optimization(compress)하는 간단한 node 코드를 작성해서 사용중이다.</li>
+  <li>월 500회 제약이 있어서, 한번 줄인 이미지는 다시 줄이지 않도록 하는 처리를 간략하게 파일로 사용하고 있다</li>
+  <li>
+    <p>코드(image-optimize.js)</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="cp">#!/usr/bin/env node
+</span>
+  <span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">tinify</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">tinify</span><span class="dl">'</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">prevListPath</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">.optimizelist</span><span class="dl">'</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">log</span><span class="p">,</span> <span class="nx">error</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">console</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">exit</span> <span class="o">=</span> <span class="p">(</span><span class="nx">code</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">(</span><span class="nx">fn</span> <span class="o">&amp;&amp;</span> <span class="nx">fn</span><span class="p">())</span> <span class="o">||</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="nx">code</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kd">const</span> <span class="nx">checkTargetArgs</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">targetArgs</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">targetArgs</span> <span class="o">||</span> <span class="nx">targetArgs</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">msg1</span> <span class="o">=</span> <span class="s2">`&gt; Error: There are no target path !!!`</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="nx">msg2</span> <span class="o">=</span> <span class="s2">`&gt; Error: Plz pass the target path 'node image-optimize.js {:targetPath}'`</span><span class="p">;</span>
+      <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">msg1</span><span class="p">}</span><span class="s2">\n</span><span class="p">${</span><span class="nx">msg2</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">log</span><span class="p">(</span><span class="s2">`&gt; Check targets: </span><span class="p">${</span><span class="nx">targetArgs</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="nx">tinify</span><span class="p">.</span><span class="nx">mytarget</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">targetArgs</span><span class="p">];</span>
+    <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">tinify</span><span class="p">.</span><span class="nx">mytarget</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kd">const</span> <span class="nx">checkAPIKey</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">TINYPNG_API_TOKEN</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">;</span>
+
+    <span class="nx">log</span><span class="p">(</span><span class="s2">`&gt; Check tinypng api key: </span><span class="p">${</span><span class="nx">TINYPNG_API_TOKEN</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">TINYPNG_API_TOKEN</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">msg1</span> <span class="o">=</span> <span class="s2">`&gt; Error: There are no TINYPNG_API_TOKEN !!!`</span><span class="p">;</span>
+        <span class="kd">const</span> <span class="nx">msg2</span> <span class="o">=</span> <span class="s2">`&gt; Error: Plz check 'export TINYPNG_API_TOKEN={:tinypng api token}' in your .bashrc or .zshrc`</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">reject</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">msg1</span><span class="p">}</span><span class="s2">\n</span><span class="p">${</span><span class="nx">msg2</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="nx">tinify</span><span class="p">.</span><span class="nx">key</span> <span class="o">=</span> <span class="nx">TINYPNG_API_TOKEN</span><span class="p">;</span>
+      <span class="nx">tinify</span><span class="p">.</span><span class="nx">validate</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">resolve</span><span class="p">(</span><span class="nx">tinify</span><span class="p">.</span><span class="nx">compressionCount</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="kd">const</span> <span class="nx">createTargetFilePathList</span> <span class="o">=</span> <span class="p">(</span><span class="nx">source</span><span class="p">,</span> <span class="nx">list</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">fs</span><span class="p">.</span><span class="nx">existsSync</span><span class="p">(</span><span class="nx">source</span><span class="p">))</span> <span class="k">return</span> <span class="nx">list</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">fs</span><span class="p">.</span><span class="nx">lstatSync</span><span class="p">(</span><span class="nx">source</span><span class="p">).</span><span class="nx">isDirectory</span><span class="p">())</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">files</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readdirSync</span><span class="p">(</span><span class="nx">source</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="nx">q</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">files</span><span class="p">].</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span> <span class="nx">curfile</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">curSource</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span> <span class="nx">curfile</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">createTargetFilePathList</span><span class="p">(</span><span class="nx">curSource</span><span class="p">,</span> <span class="nx">acc</span><span class="p">);</span>
+      <span class="p">},</span> <span class="p">[]);</span>
+      <span class="k">return</span> <span class="p">[...</span><span class="nx">list</span><span class="p">,</span> <span class="p">...</span><span class="nx">q</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">[...</span><span class="nx">list</span><span class="p">,</span> <span class="nx">source</span><span class="p">];</span>
+  <span class="p">}</span>
+
+  <span class="kd">const</span> <span class="nx">getPrevOptimizeList</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">prevListPath</span><span class="p">,</span> <span class="p">{</span><span class="na">encoding</span><span class="p">:</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">,</span> <span class="na">flag</span><span class="p">:</span><span class="dl">'</span><span class="s1">r</span><span class="dl">'</span><span class="p">});</span>
+    <span class="kd">const</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">text</span><span class="p">).</span><span class="nx">data</span> <span class="o">||</span> <span class="p">[];</span>
+    <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">list</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kd">const</span> <span class="nx">setPrevOptimizeList</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">list</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">&gt; Optimize history write...</span><span class="dl">'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span> <span class="na">data</span><span class="p">:</span> <span class="nx">list</span> <span class="p">},</span> <span class="kc">null</span> <span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+      <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="nx">prevListPath</span><span class="p">,</span> <span class="nx">text</span><span class="p">,</span> <span class="p">{</span><span class="na">encoding</span><span class="p">:</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">,</span> <span class="na">flag</span><span class="p">:</span><span class="dl">'</span><span class="s1">w</span><span class="dl">'</span><span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="nx">reject</span><span class="p">(</span><span class="s2">`&gt; Error: Optimize history write !!!`</span><span class="p">);</span>
+        <span class="p">};</span>
+        <span class="nx">resolve</span><span class="p">(</span><span class="nx">list</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="kd">const</span> <span class="nx">getTargetPathList</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">targetArgs</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">paths</span> <span class="o">=</span> <span class="nx">targetArgs</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">list</span><span class="p">,</span> <span class="nx">targetArg</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">createTargetFilePathList</span><span class="p">(</span><span class="nx">targetArg</span><span class="p">,</span> <span class="nx">list</span><span class="p">);</span>
+    <span class="p">},</span> <span class="p">[]);</span>
+    <span class="kd">const</span> <span class="nx">prevPaths</span> <span class="o">=</span> <span class="p">[...</span><span class="k">await</span> <span class="nx">getPrevOptimizeList</span><span class="p">()];</span>
+    <span class="kd">const</span> <span class="nx">filteredList</span> <span class="o">=</span> <span class="nx">paths</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">p</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">prevPaths</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">});</span>
+    <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({</span> <span class="na">targetPathList</span><span class="p">:</span> <span class="nx">filteredList</span><span class="p">,</span> <span class="na">prevList</span><span class="p">:</span> <span class="nx">prevPaths</span> <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="kd">const</span> <span class="nx">compressFile</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">source</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// png, jpg 만된다</span>
+    <span class="kd">const</span> <span class="nx">ext</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">source</span><span class="p">).</span><span class="nx">ext</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ext</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">.png</span><span class="dl">'</span> <span class="o">||</span> <span class="nx">ext</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">.jpg</span><span class="dl">'</span> <span class="o">||</span> <span class="nx">ext</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">.jpeg</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">src</span> <span class="o">=</span> <span class="nx">tinify</span><span class="p">.</span><span class="nx">fromFile</span><span class="p">(</span><span class="nx">source</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nx">src</span><span class="p">.</span><span class="nx">toFile</span><span class="p">(</span><span class="nx">source</span><span class="p">).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">source</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 그외 확장자는 그대로 pass</span>
+    <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">source</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kd">const</span> <span class="nx">compress</span> <span class="o">=</span> <span class="k">async</span> <span class="p">({</span> <span class="nx">targetPathList</span><span class="p">,</span> <span class="nx">prevList</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">source</span> <span class="k">of</span> <span class="nx">targetPathList</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">log</span><span class="p">(</span><span class="s2">`&gt; Optimize progress... [</span><span class="p">${</span><span class="nx">source</span><span class="p">}</span><span class="s2">]`</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="nx">complete</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">compressFile</span><span class="p">(</span><span class="nx">source</span><span class="p">);</span>
+      <span class="nx">prevList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">complete</span><span class="p">);</span>
+      <span class="nx">log</span><span class="p">(</span><span class="s2">`&gt; Optimize complete... [</span><span class="p">${</span><span class="nx">complete</span><span class="p">}</span><span class="s2">]`</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">prevList</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// run</span>
+  <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">!! Image Optimize Run !!</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">checkAPIKey</span><span class="p">()</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">checkTargetArgs</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">getTargetPathList</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">compress</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">setPrevOptimizeList</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">!! Image Optimize Done !!</span><span class="dl">'</span><span class="p">))</span>
+      <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">msg</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">error</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+          <span class="nx">error</span><span class="p">(</span><span class="s2">`!! Image Optimize Failure  !!`</span><span class="p">);</span>
+        <span class="p">});</span>
+      <span class="p">});</span>
+  <span class="p">})();</span>
+</code></pre></div>    </div>
+
+    <p><strong>실제 구동</strong></p>
+
+    <p>node image-optimize.js {:targetPath} 형태로 사용중이다.</p>
+
+    <p><img src="../../assets/post-images/2021-06-23-Image-size-optimize/08.png" alt="" /></p>
+
+    <p>## 정리</p>
+
+    <ul>
+      <li>이미지 최적화는 서비스 품질와 성능을 높인다.</li>
+      <li>실제 포탈등에서는 여러 기법으로 이미지 최적화를 하여 서비스 한다.</li>
+      <li>개인이 직접 이미지 최적화 서비스를 구현하기 힘들수 있는데 무료로 사용가능한 tinyPNG가 있다.</li>
+      <li>REST API나 대중적인 언어의 lib도 제공되고 있다.</li>
+      <li>해당 방법을 응용하면 본인의 서비스의 image 서비스를 최적화하여, 서비스의 품질을 높일 수 있다!!</li>
+      <li>꼭 해당 서비스가 아니여도, 실제 서비스 전에 resource최적화(e.g. java의 image 최적화 lib을 쓴다던가…. 하는등의 작업)는 꼭 해주는게 좋을듯 하다.!</li>
+    </ul>
+  </li>
+</ul>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/javascript" rel="tag"># javascript</a>
+          
+            
+            <a href="/tag/#/nodejs" rel="tag"># nodejs</a>
+          
+            
+            <a href="/tag/#/tech%20basic" rel="tag"># tech basic</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/articles/2022-06/pyscript" rel="next" title="pyscript 소개">
+                <i class="fa fa-chevron-left"></i> pyscript 소개
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/articles/2021-06/Javascript-Module-System-CJS-AMD-UMD-ESM" rel="prev" title="Javascript Module System (CJS, AMD, UMD, ESM)">
+                Javascript Module System (CJS, AMD, UMD, ESM) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            목차
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            흝어보기
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/gseok.jpg"
+               alt="GyeongSeok Seo" />
+          <p class="site-author-name" itemprop="name">GyeongSeok Seo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">포스트</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">카테고리</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">태그</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://github.com/gseok" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/assets/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-2"> <a class="nav-link" href="#소개"> <span class="nav-number">1</span> <span class="nav-text">소개</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#tinypng"> <span class="nav-number">2</span> <span class="nav-text">TinyPNG</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#cdn기능"> <span class="nav-number">2.1</span> <span class="nav-text">CDN기능</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#api-기능"> <span class="nav-number">2.2</span> <span class="nav-text">API 기능</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#활용"> <span class="nav-number">2.3</span> <span class="nav-text">활용</span> </a> </li> </ol> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GyeongSeok Seo</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://gseok.disqus.com/count.js" async></script>
+    
+
+    
+      
+      <script type="text/javascript">
+          var disqus_config = function () {
+              this.page.url = 'https://gseok.github.io/articles/2021-06/Image-size-optimize';
+              this.page.identifier = '/articles/2021-06/Image-size-optimize';
+              this.page.title = 'png, jpg, 이미지 용량 줄이기';
+          };
+          var d = document, s = d.createElement('script');
+          s.src = 'https://gseok.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', '' + +new Date());
+          (d.head || d.body).appendChild(s);
+      </script>
+      
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+

@@ -1,0 +1,1201 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="polyfill,transform,babel,webpack,devops," />
+
+
+<link rel="alternate" type="application/rss+xml" href="https://gseok.github.io/feed.xml" title="Gseok Blog">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Gseok Blog" type="application/atom+xml" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="소개">
+<meta name="keywords" content="polyfill, transform, babel, webpack, devops">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Polyfill, Transform, 브라우저 하위호환 지원하기">
+<meta property="og:url" content="https://gseok.github.io/articles/2020-02/Polyfill-Transform">
+<meta property="og:site_name" content="Gseok Blog">
+<meta property="og:description" content="소개">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="../../assets/post-images/2020-02-08-Polyfill-Transform/01.png">
+<meta property="og:image" content="../../assets/post-images/2020-02-08-Polyfill-Transform/02.png">
+<meta property="og:image" content="../../assets/post-images/2020-02-08-Polyfill-Transform/03.png">
+<meta property="og:image" content="../../assets/post-images/2020-02-08-Polyfill-Transform/04.png">
+<meta property="og:updated_time" content="2021-06-22T18:00:00+09:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Polyfill, Transform, 브라우저 하위호환 지원하기">
+<meta name="twitter:description" content="소개">
+<meta name="twitter:image" content="../../assets/post-images/2020-02-08-Polyfill-Transform/01.png">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '작성자'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://gseok.github.io/"/>
+
+
+
+
+
+  <title>Polyfill, Transform, 브라우저 하위호환 지원하기 | Gseok Blog</title>
+  
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-38849338-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-38849338-1');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ko">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gseok Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">GyeongSeok Seo story</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            홈
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            카테고리
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            아카이브
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            태그
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://gseok.github.io/articles/2020-02/Polyfill-Transform">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GyeongSeok Seo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/gseok.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gseok Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+          
+          
+            Polyfill, Transform, 브라우저 하위호환 지원하기
+          
+        </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+              <time title="Polyfill, Transform, 브라우저 하위호환 지원하기" itemprop="dateCreated datePublished" datetime="2020-02-09">
+                2020-02-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">수정일</span>
+              
+              <time title="Polyfill, Transform, 브라우저 하위호환 지원하기" itemprop="dateModified" datetime="2021-06-22">
+                2021-06-22
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/bundler" itemprop="url" rel="index">
+                    <span itemprop="name">bundler</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/articles/2020-02/Polyfill-Transform#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="/articles/2020-02/Polyfill-Transform" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  <h3 id="소개">소개</h3>
+
+<p>polyfill 와 transform을 이용하여 브라우저 하위환을 맞추는 방법에 대해서 간략하게 설명합니다.</p>
+
+<h3 id="브라우저-하위호환">브라우저 하위호환?</h3>
+
+<p>javascript 언어가 발전하고, 해당 언어가 구동되는 browser역시 발전하면서, 최신 javascript언어의 문법이 old 브라우저에서는 구동 안되는 문제가 발생하게 되었습니다. 이를 해결하여, 최신 javascript언어 &amp; 문법을 사용해도, old 브라우저에서 구동되게 하는것이 브라우저 하위호환 입니다.</p>
+
+<p>old 브라우저에서 지원하지 않는 javascript사용시 아래와 같이 구문에러가 발생하게 됩니다.</p>
+
+<p><img src="../../assets/post-images/2020-02-08-Polyfill-Transform/01.png" alt="" /></p>
+
+<h3 id="하위호환을-하는-방법">하위호환을 하는 방법</h3>
+
+<p>결론적으로 보면, old 브라우저에서 구동 가능한 형태로, 현재 구현되어있는 javascript을 변경(transform)해 주거나, 미지원 내장 함수에 대해서 javascript level에서 해당 함수를 직접 구현하여 넣어주는 형태(polyfill)로 가능합니다. 이밖에  실제 코드가 구동되는 run-time에 실시간으로 변경처리도 가능하지만 real(deploy)환경에서는 성능이슈등이 있음으로 추천되지 않습니다(물론 경우에 따라서 유연하게 사용가능합니다).</p>
+
+<h3 id="polyfill">Polyfill</h3>
+
+<p>old 브라우저에서 미지원되고 있는 내장 함수나 기능을 넣어주는 방식 입니다.</p>
+
+<p>예를들어, Object.assign 은 es6(ECMA 2015) 문법으로, 아래와 같이 <strong>IE10이하에서는 지원되지 않습니다</strong>.</p>
+
+<p>참고: <a href="https://caniuse.com/#search=object.assign">https://caniuse.com/#search=object.assign</a></p>
+
+<p><img src="../../assets/post-images/2020-02-08-Polyfill-Transform/02.png" alt="" /></p>
+
+<p>따라서 <strong>해당 기능(Object.assign)을 IE10 이하에서 지원하고 싶다면</strong>, ‘본인이 직접 Object.assign’을 구현하거나, 구현된 하위호환용 Object.assign을 적용해 주면 됩니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 직접 구현했다고 가정했을때..., Object.keys랑 arrow fn은 있다고 가정</span>
+
+<span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">newObj</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">newObj</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">a</span><span class="p">[</span><span class="nx">key</span><span class="p">]);</span>
+  <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">b</span><span class="p">,</span> <span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">newObj</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">key</span><span class="p">]);</span>
+  <span class="k">return</span> <span class="nx">newObj</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// 위 로직이 구동된 이후에 Object.assign은 구문에러가 나지 않음.</span>
+</code></pre></div></div>
+
+<p>Polyfill의 기본 컨셉은 위와 같이 old browser에서는 browser객체(함수)로 존재하지 않는 기능을 직접 넣어줍니다.</p>
+
+<p>위의 예제를 보면 알겠지만 문제는, 이 직접 만든 구현체의 내용역시 old browser에서 구동되는 형태로 만들어야 하고, <strong>해당 구현체의 로직이 탄탄해야(메모리 누수가 없고, spec을 모두 지원하고, 등등…)</strong>합니다.</p>
+
+<p>실제 위 Object.assign의 polyfill을 검색해보면 아래와 같이 여러가지 polyfill구현체를 찾아 볼 수 있습니다.</p>
+
+<ul>
+  <li>Object.assign 여러 polyfill 구현체들
+    <ul>
+      <li><a href="https://github.com/rubennorte/es6-object-assign">https://github.com/rubennorte/es6-object-assign</a></li>
+      <li><a href="https://github.com/christiansany/object-assign-polyfill/blob/master/index.js">https://github.com/christiansany/object-assign-polyfill/blob/master/index.js</a></li>
+      <li><a href="https://vanillajstoolkit.com/polyfills/objectassign/">https://vanillajstoolkit.com/polyfills/objectassign/</a></li>
+      <li><a href="https://github.com/zloirock/core-js/blob/master/packages/core-js/internals/object-assign.js">https://github.com/zloirock/core-js/blob/master/packages/core-js/internals/object-assign.js</a>  (babel에서 사용)</li>
+      <li>등등…</li>
+    </ul>
+  </li>
+</ul>
+
+<p>사실 여러 구현체들중 본인 기능에 문제 없이 동작한다면 어떤걸 사용해도 무방합니다. 하지만 가장 많이 사용한 어느정도 검증된 방식이 bable의 polyfill을 사용하는 방식입니다.</p>
+
+<h3 id="transform">Transform</h3>
+
+<p>old브라우저에서 미지원되고 있는 함수나 문법을 지원되는 함수나 문법으로 코드를 변경해 주는 방식입니다.</p>
+
+<p>polyfill와는 다르게 원본 코드자체가, old browser에서 구동되는 형태로 바꾸어서 들어가게 됩니다. 예를 들어 arrow function은 es6(ECMA 2015) 문법으로, 아래와 같이 <strong>IE11이하에서는 지원되지 않습니다</strong>.</p>
+
+<p>참고: <a href="https://caniuse.com/#feat=arrow-functions">https://caniuse.com/#feat=arrow-functions</a></p>
+
+<p><img src="../../assets/post-images/2020-02-08-Polyfill-Transform/03.png" alt="" /></p>
+
+<p>이경우 함수 레벨이 아닌 문법 자체가 미지원되고 있기 때문에 원본 코드가 바뀌어야 합니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 아래와 같은 코드가 있다면</span>
+<span class="kd">const</span> <span class="nx">gseok</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">arrowFnTest</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">test</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">};</span>
+
+<span class="c1">// 변경되어서 IE11도 이해할수 있는 문법으로 코드 자체가 바뀌어야함</span>
+<span class="kd">var</span> <span class="nx">gseok</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">arrowFnTest</span><span class="p">:</span> <span class="kd">function</span> <span class="nx">arrowFnTest</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">test</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>transform의 경우, 개발자가 애시당초 old 브라우저에서 지원되는 문법으로 개발하지 않는한, <strong>수동으로 코드를 변경하기는 거의 불가능</strong>하기 때문에, <strong>보통 빌드 시점에 javascript code compiler을 통해서</strong>, 최신코드 → old 브라우저가 이해가능한 코드, 로 변환해서 적용하게 됩니다.</p>
+
+<p>이때 사용하게 되는 <strong>javascript code compiler가 업계 de facto인 babel</strong>이 됩니다.</p>
+
+<h3 id="how">How?</h3>
+
+<p>브라우저 하위 호환 개념과 두가지 방식에 대해서 알아보았습니다. 해당 방식을 실제 어떤식으로 적용해야하는지에 대해서 설명합니다.</p>
+
+<p>Polyfill을 직접 구현해서 넣어주거나, Transform이 불필요하게 애시당초 old 브라우저가 이해하도록 구현할 수도 있지만, 보통 최신 javascript 문법으로 프로젝트를 구현하고, 빌드 시점에 compiler을 통해서 이를 변경하는 형태를 취하게 됩니다.</p>
+
+<p>여기서는 거의 업계 표준(de facto)인  <strong>babel을 이용해서 polyfill 및 transform</strong>을 하는 방식을 간략하게 설명합니다.</p>
+
+<h3 id="babel-기본-개념"><strong>babel 기본 개념</strong></h3>
+
+<p>babel은 javascript compiler로 원본 js(or ts)을 받아서 설정된 option(빌드 config) 에 따라서 컴파일된 결과물을 생성합니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// babel</span>
+<span class="nx">original</span><span class="p">.</span><span class="nx">js</span> <span class="err">→</span> <span class="nx">babel</span> <span class="err">→</span> <span class="nx">compiled</span><span class="p">.</span><span class="nx">js</span>
+
+<span class="c1">// java</span>
+<span class="p">[</span><span class="nx">original</span><span class="p">.</span><span class="nx">java</span><span class="p">](</span><span class="nx">http</span><span class="p">:</span><span class="c1">//original.java) → javac  → original.jar</span>
+</code></pre></div></div>
+
+<p>보통 다른 언어의 컴파일러처럼 babel역시 <strong>cli로 컴파일을 수행 할 수 있습</strong>니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="nx">npx</span> <span class="nx">babel</span> <span class="nx">a</span><span class="p">.</span><span class="nx">js</span> <span class="o">--</span><span class="nx">out</span><span class="o">-</span><span class="nx">file</span> <span class="nx">a</span><span class="o">-</span><span class="nx">compiled</span><span class="p">.</span><span class="nx">js</span> <span class="o">--</span><span class="nx">config</span><span class="o">-</span><span class="nx">file</span> <span class="nx">babel</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">json</span>
+</code></pre></div></div>
+
+<p>참고: cli <a href="https://babeljs.io/docs/en/babel-cli">https://babeljs.io/docs/en/babel-cli</a></p>
+
+<p>참고: configfile <a href="https://babeljs.io/docs/en/config-files">https://babeljs.io/docs/en/config-files</a></p>
+
+<h3 id="babel-번들러와-같이-쓰기">babel 번들러와 같이 쓰기</h3>
+
+<p>babel이 defacto이기 떄문에 거의 모든 번들러에서는 babel compile을 지원합니다. 여기서는 webpack 번들러를 사용했을때 babel을 적용하는 방법에 대해서 설명합니다.</p>
+
+<p><strong>webpack.config.js</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nl">rules</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">tsx</span><span class="se">?</span><span class="sr">$/</span><span class="p">,</span>
+          <span class="na">use</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="na">loader</span><span class="p">:</span> <span class="dl">'</span><span class="s1">babel-loader</span><span class="dl">'</span><span class="p">,</span>
+              <span class="na">options</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">presets</span><span class="p">:</span> <span class="p">[</span>
+                  <span class="p">[</span>
+                    <span class="dl">'</span><span class="s1">@babel/preset-env</span><span class="dl">'</span><span class="p">,</span>
+                    <span class="p">{</span>
+                      <span class="na">targets</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="na">browsers</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">last 2 versions</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">ie &gt;= 8</span><span class="dl">'</span><span class="p">],</span>
+                      <span class="p">},</span>
+                      <span class="na">debug</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                      <span class="na">useBuiltIns</span><span class="p">:</span> <span class="dl">'</span><span class="s1">usage</span><span class="dl">'</span><span class="p">,</span>
+                      <span class="na">corejs</span><span class="p">:</span> <span class="p">{</span> <span class="na">version</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="na">proposals</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>
+                    <span class="p">},</span>
+                  <span class="p">],</span>
+                  <span class="dl">'</span><span class="s1">@babel/preset-react</span><span class="dl">'</span><span class="p">,</span>
+                <span class="p">],</span>
+              <span class="p">},</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+              <span class="na">loader</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ts-loader</span><span class="dl">'</span><span class="p">,</span>
+              <span class="na">options</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">configFile</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">./tsconfig.json</span><span class="dl">'</span><span class="p">),</span>
+              <span class="p">},</span>
+            <span class="p">},</span>
+        <span class="p">}</span>
+     <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>webpack에 babel-loader을 적용하면, cli을  통해서  compile을 하는것과 동일하게, 코드를 compile할 수 있습니다.</li>
+  <li>해당 loader의 option설정은 cli을 통해서 compile할때 적용하는 babel의 config설정과 동일합니다.</li>
+</ul>
+
+<p><strong>@babel/preset-env?</strong></p>
+
+<p>polyfill이나, transform을 할때, 각각의 종류와 type이 여러개가 존재하게 됩니다. 해당 polyfill이나, transform을 하나의 set로 묶어서 제공하는게 babel의 preset-env입니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// e.g) 아래와 같은 부분이 다 set으로 묶여서 같이 들어 있음!</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="p">(</span><span class="o">-</span><span class="nx">pure</span><span class="p">)</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="p">(</span><span class="o">-</span><span class="nx">pure</span><span class="p">)</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="k">from</span><span class="o">-</span><span class="nx">code</span><span class="o">-</span><span class="nx">point</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="p">(</span><span class="o">-</span><span class="nx">pure</span><span class="p">)</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">raw</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="p">(</span><span class="o">-</span><span class="nx">pure</span><span class="p">)</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">code</span><span class="o">-</span><span class="nx">point</span><span class="o">-</span><span class="nx">at</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="p">(</span><span class="o">-</span><span class="nx">pure</span><span class="p">)</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">ends</span><span class="o">-</span><span class="kd">with</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="p">(</span><span class="o">-</span><span class="nx">pure</span><span class="p">)</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">includes</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="p">(</span><span class="o">-</span><span class="nx">pure</span><span class="p">)</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">starts</span><span class="o">-</span><span class="kd">with</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">match</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="p">(</span><span class="o">-</span><span class="nx">pure</span><span class="p">)</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">match</span><span class="o">-</span><span class="nx">all</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="p">(</span><span class="o">-</span><span class="nx">pure</span><span class="p">)</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">repeat</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="p">(</span><span class="o">-</span><span class="nx">pure</span><span class="p">)</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">pad</span><span class="o">-</span><span class="nx">start</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="p">(</span><span class="o">-</span><span class="nx">pure</span><span class="p">)</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">pad</span><span class="o">-</span><span class="nx">end</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">replace</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">search</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">split</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="p">(</span><span class="o">-</span><span class="nx">pure</span><span class="p">)</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">trim</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="p">(</span><span class="o">-</span><span class="nx">pure</span><span class="p">)</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">trim</span><span class="o">-</span><span class="nx">start</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="p">(</span><span class="o">-</span><span class="nx">pure</span><span class="p">)</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">trim</span><span class="o">-</span><span class="nx">end</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="p">(</span><span class="o">-</span><span class="nx">pure</span><span class="p">)</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">trim</span><span class="o">-</span><span class="nx">left</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="p">(</span><span class="o">-</span><span class="nx">pure</span><span class="p">)</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">trim</span><span class="o">-</span><span class="nx">right</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="p">(</span><span class="o">-</span><span class="nx">pure</span><span class="p">)</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">anchor</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="p">(</span><span class="o">-</span><span class="nx">pure</span><span class="p">)</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">big</span>
+<span class="nx">core</span><span class="o">-</span><span class="nx">js</span><span class="p">(</span><span class="o">-</span><span class="nx">pure</span><span class="p">)</span><span class="o">/</span><span class="nx">es</span><span class="o">|</span><span class="nx">stable</span><span class="o">|</span><span class="nx">features</span><span class="o">/</span><span class="nx">string</span><span class="o">/</span><span class="nx">blink</span>
+<span class="p">...</span>
+</code></pre></div></div>
+
+<p>babel의 예전 버전에서는, 개발자가 필요한 polyfill이나 transform을 직접 하나씩 설정하는 형태를 취했는데, babel 버전이 올라가고, corejs을 사용하면서, corejs을 활용한 형태로 변경되었습니다.</p>
+
+<p>참고: <a href="https://babeljs.io/docs/en/babel-preset-env">https://babeljs.io/docs/en/babel-preset-env</a></p>
+
+<p><strong>실제 polyfill 및 transform 설정</strong></p>
+
+<p>useBuiltIns</p>
+
+<ul>
+  <li>기본값은 false입니다. ‘entry’나 ‘usage’을 사용할 수 있고, 실제 polyfill파일인 core-js을 같이 설정해주어야 합니다.</li>
+  <li>
+    <p>entry</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// entry 포함방식과 동일합니다. 즉 아래 case는 모두 동일합니다.</span>
+
+  <span class="c1">// 1. webpack.config.js에 entry 활용</span>
+  <span class="p">{</span>
+    <span class="na">entry</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">core-js</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/src/index.js</span><span class="dl">'</span><span class="p">]</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 2. 실제 소스 코드의 entry 코드에서 import</span>
+  <span class="c1">// index.js라고 가정했을때, 해당 파일 최상단에</span>
+  <span class="k">import</span> <span class="dl">'</span><span class="s1">core-js</span><span class="dl">'</span><span class="p">;</span>
+
+  <span class="c1">// 3. webpack의 bable-loader의 babel-preset-evn의 useBuiltIns 설정</span>
+  <span class="p">{</span>
+    <span class="na">loader</span><span class="p">:</span> <span class="dl">'</span><span class="s1">babel-loader</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">options</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">presets</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">[</span>
+          <span class="dl">'</span><span class="s1">@babel/preset-env</span><span class="dl">'</span><span class="p">,</span>
+          <span class="p">{</span>
+            <span class="na">targets</span><span class="p">:</span> <span class="p">{</span>
+              <span class="na">browsers</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">last 2 versions</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">ie &gt;= 8</span><span class="dl">'</span><span class="p">],</span>
+            <span class="p">},</span>
+            <span class="na">debug</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="na">useBuiltIns</span><span class="p">:</span> <span class="dl">'</span><span class="s1">entry</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">corejs</span><span class="p">:</span> <span class="p">{</span> <span class="na">version</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="na">proposals</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>
+          <span class="p">},</span>
+        <span class="p">],</span>
+        <span class="dl">'</span><span class="s1">@babel/preset-react</span><span class="dl">'</span><span class="p">,</span>
+      <span class="p">],</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+</code></pre></div>    </div>
+  </li>
+  <li>usage
+    <ul>
+      <li>기존 entry방식은 현재 내 코드에서 필요한 polyfill이나 transform이외 불필요한 모든 polyfill와 transform이 같이 추가되는 문제가 있음.</li>
+      <li>usage을 사용하면, entry포인트로부터 모든 파일을 탐색하면서 해당 파일에 필요한 polyfill와 transform을 추리고, 해당 부분을 중복되지 않게 추가해줍니다.</li>
+    </ul>
+
+    <p><img src="../../assets/post-images/2020-02-08-Polyfill-Transform/04.png" alt="" /></p>
+  </li>
+  <li>
+    <p>usage와 직접 polyfill 추가 복합 사용도 가능합니다.</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// entry 파일에 import</span>
+  <span class="k">import</span> <span class="dl">'</span><span class="s1">core-js/es/map</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">import</span> <span class="dl">'</span><span class="s1">core-js/es/set</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">import</span> <span class="dl">'</span><span class="s1">core-js/es/object/assign</span><span class="dl">'</span><span class="p">;</span>
+
+  <span class="c1">// webpack에서 usage</span>
+  <span class="p">[</span>
+    <span class="dl">'</span><span class="s1">@babel/preset-env</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">{</span>
+      <span class="na">targets</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">browsers</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">last 2 versions</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">ie &gt;= 8</span><span class="dl">'</span><span class="p">],</span>
+      <span class="p">},</span>
+      <span class="na">debug</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">useBuiltIns</span><span class="p">:</span> <span class="dl">'</span><span class="s1">usage</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">corejs</span><span class="p">:</span> <span class="p">{</span> <span class="na">version</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="na">proposals</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>
+    <span class="p">},</span>
+  <span class="p">],</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/polyfill" rel="tag"># polyfill</a>
+          
+            
+            <a href="/tag/#/transform" rel="tag"># transform</a>
+          
+            
+            <a href="/tag/#/babel" rel="tag"># babel</a>
+          
+            
+            <a href="/tag/#/webpack" rel="tag"># webpack</a>
+          
+            
+            <a href="/tag/#/devops" rel="tag"># devops</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/articles/2020-02/React-SSR" rel="next" title="React SSR">
+                <i class="fa fa-chevron-left"></i> React SSR
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/articles/2020-02/Debug-breakpoint-ignored" rel="prev" title="Debug breakpoint ignored 문제 수정">
+                Debug breakpoint ignored 문제 수정 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            목차
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            흝어보기
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/gseok.jpg"
+               alt="GyeongSeok Seo" />
+          <p class="site-author-name" itemprop="name">GyeongSeok Seo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">포스트</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">카테고리</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">태그</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://github.com/gseok" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/assets/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-3"> <a class="nav-link" href="#소개"> <span class="nav-number">1</span> <span class="nav-text">소개</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#브라우저-하위호환"> <span class="nav-number">2</span> <span class="nav-text">브라우저 하위호환?</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#하위호환을-하는-방법"> <span class="nav-number">3</span> <span class="nav-text">하위호환을 하는 방법</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#polyfill"> <span class="nav-number">4</span> <span class="nav-text">Polyfill</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#transform"> <span class="nav-number">5</span> <span class="nav-text">Transform</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#how"> <span class="nav-number">6</span> <span class="nav-text">How?</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#babel-기본-개념"> <span class="nav-number">7</span> <span class="nav-text">babel 기본 개념</strong</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#babel-번들러와-같이-쓰기"> <span class="nav-number">8</span> <span class="nav-text">babel 번들러와 같이 쓰기</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GyeongSeok Seo</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://gseok.disqus.com/count.js" async></script>
+    
+
+    
+      
+      <script type="text/javascript">
+          var disqus_config = function () {
+              this.page.url = 'https://gseok.github.io/articles/2020-02/Polyfill-Transform';
+              this.page.identifier = '/articles/2020-02/Polyfill-Transform';
+              this.page.title = 'Polyfill, Transform, 브라우저 하위호환 지원하기';
+          };
+          var d = document, s = d.createElement('script');
+          s.src = 'https://gseok.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', '' + +new Date());
+          (d.head || d.body).appendChild(s);
+      </script>
+      
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+

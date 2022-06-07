@@ -1,0 +1,1132 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,logger,log,winston,webtech," />
+
+
+<link rel="alternate" type="application/rss+xml" href="https://gseok.github.io/feed.xml" title="Gseok Blog">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Gseok Blog" type="application/atom+xml" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="소개">
+<meta name="keywords" content="javascript, logger, log, winston, webtech">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript Logger">
+<meta property="og:url" content="https://gseok.github.io/articles/2020-03/Javascript-Logger">
+<meta property="og:site_name" content="Gseok Blog">
+<meta property="og:description" content="소개">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="../../assets/post-images/2020-03-06-Javascript-Logger/01.png">
+<meta property="og:image" content="../../assets/post-images/2020-03-06-Javascript-Logger/02.png">
+<meta property="og:image" content="../../assets/post-images/2020-03-06-Javascript-Logger/03.png">
+<meta property="og:updated_time" content="2021-06-22T19:35:00+09:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript Logger">
+<meta name="twitter:description" content="소개">
+<meta name="twitter:image" content="../../assets/post-images/2020-03-06-Javascript-Logger/01.png">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '작성자'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://gseok.github.io/"/>
+
+
+
+
+
+  <title>Javascript Logger | Gseok Blog</title>
+  
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-38849338-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-38849338-1');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ko">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gseok Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">GyeongSeok Seo story</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            홈
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            카테고리
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            아카이브
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            태그
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://gseok.github.io/articles/2020-03/Javascript-Logger">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GyeongSeok Seo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/gseok.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gseok Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+          
+          
+            Javascript Logger
+          
+        </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+              <time title="Javascript Logger" itemprop="dateCreated datePublished" datetime="2020-03-07">
+                2020-03-07
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">수정일</span>
+              
+              <time title="Javascript Logger" itemprop="dateModified" datetime="2021-06-22">
+                2021-06-22
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/tech%20talk" itemprop="url" rel="index">
+                    <span itemprop="name">tech talk</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/articles/2020-03/Javascript-Logger#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="/articles/2020-03/Javascript-Logger" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  <h3 id="소개">소개</h3>
+
+<p>javascript의 logger의 개념과 사용을 간략하게 소개합니다.</p>
+
+<p><strong>개념설명</strong></p>
+
+<p>javascript 개발 환경에서 특히 client개발을 하는경우 console.log을 보통 사용하기 때문에, 다른 언어나 framework에서 사용하는 별도의 logger을 도입하는 경우가 많지는 않습니다. 하지만 node와 같은 서버에서는 logger를 도입해서 사용하는것이 좀더 효율적으로 server log을 관리 할 수 있다고 생각됩니다.</p>
+
+<p>logger을 도입하면 아래와 같은 이점이 있습니다.</p>
+
+<ul>
+  <li>Log을 Level별로 관리 할 수 있습니다.</li>
+  <li>Log을 file or stdout형태로 관리 할 수 있습니다.</li>
+  <li>Log format을 각 프로젝트에 맞게 custtomize할 수 있습니다.</li>
+  <li>Log을 빌드 시점 or Runtime에 on/off 할 수 있습니다.</li>
+</ul>
+
+<p><strong>Log Level</strong></p>
+
+<p>로그 레벨이 javascipt에서는 표준처럼 정해진 부분은 없습니다. 다만 unix system의 syslog의 RFC5424형태나 android, apach(log4j)등을 참고해 볼 수 있습니다.</p>
+
+<p>syslog (<a href="https://tools.ietf.org/html/rfc5424">RFC5424</a>)</p>
+
+<p><img src="../../assets/post-images/2020-03-06-Javascript-Logger/01.png" alt="" /></p>
+
+<p>android</p>
+
+<p><img src="../../assets/post-images/2020-03-06-Javascript-Logger/02.png" alt="" /></p>
+
+<p>log4j</p>
+
+<p><img src="../../assets/post-images/2020-03-06-Javascript-Logger/03.png" alt="" /></p>
+
+<p>중요한 점은 Log을 Level로 구분하고, 의미를 부여하여서 관리 &amp; 적용한다는 부분입니다. 보통 Error, Debug, Warning, Info는 거의 비슷하게(비슷한 의미로) 존재합니다.</p>
+
+<h3 id="winston">winston</h3>
+
+<p>java(apach)의 경우 log4j라는 유명한 logger라이브러리가 있습니다. javascript의 경우 javascript을 대표하는 logger라이브러리는 없지만, javascript진영에서 가장 많이 사용하는 (Top10)라이브러리중 하나인 winston을 소개합니다.</p>
+
+<p>참고: <a href="https://github.com/winstonjs/winston">https://github.com/winstonjs/winston</a></p>
+
+<p><strong>winston의 특징은 다음과 같습니다.</strong></p>
+
+<ul>
+  <li>javascript logger.</li>
+  <li>log level 컨트롤이 가능합니다.
+    <ul>
+      <li>custom log level정의가 가능합니다.</li>
+      <li>log level에 따른 동적 처리가 가능합니다.</li>
+    </ul>
+  </li>
+  <li>Transport기능을 제공합니다.
+    <ul>
+      <li>log을 file, db 등으로 출력하는게 가능합니다. 물론 stdout(console.log)도 가능합니다.</li>
+      <li>log의 출력을 level별로 조정 하는게 가능합니다.</li>
+      <li>참고: <a href="https://github.com/winstonjs/winston#transports">https://github.com/winstonjs/winston#transports</a></li>
+    </ul>
+  </li>
+  <li>Format 기능을 제공합니다.
+    <ul>
+      <li>Custom한 format을 생성할 수 있습니다.</li>
+      <li>참고: <a href="https://github.com/winstonjs/logform">https://github.com/winstonjs/logform</a></li>
+    </ul>
+  </li>
+  <li>Profile 기능을 제공합니다.
+    <ul>
+      <li>간략한 수준 (수행시간 측정)에 활용 가능한 profile기능을 제공합니다.</li>
+      <li>참고: <a href="https://github.com/winstonjs/winston#profiling">https://github.com/winstonjs/winston#profiling</a></li>
+    </ul>
+  </li>
+  <li>Querying Logs 기능을 제공합니다.</li>
+</ul>
+
+<p><strong>winston custom logger</strong></p>
+
+<p>아래 코드 예제처럼 사용자 입맛에 맞는 형태로 logger구성을 하여 사용하는것이 가능합니다.</p>
+
+<ul>
+  <li>
+    <p>Code</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">import</span> <span class="p">{</span> <span class="nx">Logger</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">winston</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">winston</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">winston</span><span class="dl">'</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">combine</span><span class="p">,</span> <span class="nx">timestamp</span><span class="p">,</span> <span class="nx">colorize</span><span class="p">,</span> <span class="nx">printf</span><span class="p">,</span> <span class="nx">json</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">winston</span><span class="p">.</span><span class="nx">format</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="nx">customFormat</span><span class="p">:</span> <span class="nx">any</span> <span class="o">=</span> <span class="nx">printf</span><span class="p">((</span><span class="nx">info</span><span class="p">:</span> <span class="nx">any</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">`[</span><span class="p">${</span><span class="nx">info</span><span class="p">.</span><span class="nx">timestamp</span><span class="p">}</span><span class="s2">][</span><span class="p">${</span><span class="nx">info</span><span class="p">.</span><span class="nx">level</span><span class="p">}</span><span class="s2">] </span><span class="p">${</span><span class="nx">info</span><span class="p">.</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="c1">// NOTE: Log only less than or equal to this level (log level)</span>
+  <span class="c1">// LOG_LEVEL is setting when webpack build time</span>
+  <span class="kd">const</span> <span class="nx">customLogger</span><span class="p">:</span> <span class="nx">Logger</span> <span class="o">=</span> <span class="nx">winston</span><span class="p">.</span><span class="nx">createLogger</span><span class="p">({</span>
+    <span class="na">level</span><span class="p">:</span> <span class="dl">'</span><span class="s1">LOG_LEVEL</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">levels</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">log</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="c1">// log always displayed</span>
+      <span class="na">error</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="na">warn</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="na">info</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="na">debug</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">format</span><span class="p">:</span> <span class="nx">combine</span><span class="p">(</span>
+      <span class="nx">timestamp</span><span class="p">({</span>
+        <span class="na">format</span><span class="p">:</span> <span class="dl">'</span><span class="s1">YYYY-MM-DD HH:mm:ss.SSS</span><span class="dl">'</span><span class="p">,</span>
+      <span class="p">}),</span>
+      <span class="nx">colorize</span><span class="p">(),</span>
+      <span class="nx">json</span><span class="p">(),</span>
+      <span class="nx">customFormat</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="na">transports</span><span class="p">:</span> <span class="p">[</span>
+      <span class="k">new</span> <span class="nx">winston</span><span class="p">.</span><span class="nx">transports</span><span class="p">.</span><span class="nx">Console</span><span class="p">({</span>
+        <span class="na">level</span><span class="p">:</span> <span class="dl">'</span><span class="s1">LOG_LEVEL</span><span class="dl">'</span><span class="p">,</span>
+      <span class="p">}),</span>
+    <span class="p">],</span>
+  <span class="p">});</span>
+  <span class="nx">winston</span><span class="p">.</span><span class="nx">addColors</span><span class="p">({</span>
+    <span class="na">log</span><span class="p">:</span> <span class="dl">'</span><span class="s1">grey</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">error</span><span class="p">:</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">warn</span><span class="p">:</span> <span class="dl">'</span><span class="s1">yellow</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">info</span><span class="p">:</span> <span class="dl">'</span><span class="s1">green</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">debug</span><span class="p">:</span> <span class="dl">'</span><span class="s1">blue</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">});</span>
+
+  <span class="kd">const</span> <span class="nx">formatObject</span><span class="p">:</span> <span class="nb">Function</span> <span class="o">=</span> <span class="p">(</span><span class="nx">param</span><span class="p">:</span> <span class="nx">any</span><span class="p">):</span> <span class="nx">string</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="na">type</span><span class="p">:</span> <span class="nx">any</span> <span class="o">=</span> <span class="k">typeof</span> <span class="nx">param</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">type</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">object</span><span class="dl">'</span> <span class="o">||</span> <span class="nx">type</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">function</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">try</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">param</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+      <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="na">cache</span><span class="p">:</span> <span class="nb">Set</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span>
+          <span class="nx">param</span><span class="p">,</span>
+          <span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">value</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">object</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+              <span class="k">if</span> <span class="p">(</span><span class="nx">cache</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">value</span><span class="p">))</span> <span class="p">{</span>
+                <span class="c1">// Circular reference found</span>
+                <span class="k">try</span> <span class="p">{</span>
+                  <span class="c1">// If this value does not reference a parent it can be deduped</span>
+                  <span class="k">return</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">value</span><span class="p">));</span>
+                <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                  <span class="c1">// discard key if value cannot be deduped</span>
+                  <span class="k">return</span> <span class="dl">''</span><span class="p">;</span>
+                <span class="p">}</span>
+              <span class="p">}</span>
+              <span class="c1">// Store value in our set</span>
+              <span class="nx">cache</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
+          <span class="p">},</span>
+          <span class="mi">2</span><span class="p">,</span>
+        <span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">param</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="kd">const</span> <span class="nx">createLogContent</span><span class="p">:</span> <span class="nb">Function</span> <span class="o">=</span> <span class="p">(...</span><span class="nx">args</span><span class="p">:</span> <span class="nx">any</span><span class="p">[]):</span> <span class="nx">string</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">args</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="na">logData</span><span class="p">:</span> <span class="nx">any</span><span class="p">,</span> <span class="na">index</span><span class="p">:</span> <span class="nx">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">index</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">data</span> <span class="o">+=</span> <span class="nx">formatObject</span><span class="p">(</span><span class="nx">logData</span><span class="p">);</span>
+          <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nx">data</span> <span class="o">+=</span> <span class="s2">`, </span><span class="p">${</span><span class="nx">formatObject</span><span class="p">(</span><span class="nx">logData</span><span class="p">)}</span><span class="s2">`</span><span class="p">;</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="c1">// support multiple arguments e.g) logger.debug('arg1', 'arg2', 'arg3')</span>
+  <span class="kd">const</span> <span class="nx">logger</span><span class="p">:</span> <span class="nx">any</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">log</span><span class="p">:</span> <span class="k">async</span> <span class="p">(...</span><span class="na">args</span><span class="p">:</span> <span class="nx">any</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">customLogger</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">log</span><span class="dl">'</span><span class="p">,</span> <span class="nx">createLogContent</span><span class="p">(...</span><span class="nx">args</span><span class="p">));</span>
+    <span class="p">},</span>
+    <span class="na">error</span><span class="p">:</span> <span class="k">async</span> <span class="p">(...</span><span class="na">args</span><span class="p">:</span> <span class="nx">any</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">customLogger</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">createLogContent</span><span class="p">(...</span><span class="nx">args</span><span class="p">));</span>
+      <span class="c1">// TODO: implements sen nelo log</span>
+    <span class="p">},</span>
+    <span class="na">warn</span><span class="p">:</span> <span class="k">async</span> <span class="p">(...</span><span class="na">args</span><span class="p">:</span> <span class="nx">any</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">customLogger</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="nx">createLogContent</span><span class="p">(...</span><span class="nx">args</span><span class="p">));</span>
+    <span class="p">},</span>
+    <span class="na">info</span><span class="p">:</span> <span class="k">async</span> <span class="p">(...</span><span class="na">args</span><span class="p">:</span> <span class="nx">any</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">customLogger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">createLogContent</span><span class="p">(...</span><span class="nx">args</span><span class="p">));</span>
+    <span class="p">},</span>
+    <span class="na">debug</span><span class="p">:</span> <span class="k">async</span> <span class="p">(...</span><span class="na">args</span><span class="p">:</span> <span class="nx">any</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">customLogger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="nx">createLogContent</span><span class="p">(...</span><span class="nx">args</span><span class="p">));</span>
+    <span class="p">},</span>
+  <span class="p">};</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">production</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="dl">'</span><span class="s1">Logging initialized at debug level</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">export</span> <span class="k">default</span> <span class="nx">logger</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/javascript" rel="tag"># javascript</a>
+          
+            
+            <a href="/tag/#/logger" rel="tag"># logger</a>
+          
+            
+            <a href="/tag/#/log" rel="tag"># log</a>
+          
+            
+            <a href="/tag/#/winston" rel="tag"># winston</a>
+          
+            
+            <a href="/tag/#/webtech" rel="tag"># webtech</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/articles/2020-03/Git-Hooks,-GitHub-Webhooks" rel="next" title="Git Hooks, GitHub Webhooks">
+                <i class="fa fa-chevron-left"></i> Git Hooks, GitHub Webhooks
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/articles/2020-03/React-Typescript-svg-mport" rel="prev" title="react + typescript에서 svg import로 사용하기">
+                react + typescript에서 svg import로 사용하기 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            목차
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            흝어보기
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/gseok.jpg"
+               alt="GyeongSeok Seo" />
+          <p class="site-author-name" itemprop="name">GyeongSeok Seo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">포스트</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">카테고리</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">태그</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://github.com/gseok" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/assets/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-3"> <a class="nav-link" href="#소개"> <span class="nav-number">1</span> <span class="nav-text">소개</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#winston"> <span class="nav-number">2</span> <span class="nav-text">winston</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GyeongSeok Seo</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://gseok.disqus.com/count.js" async></script>
+    
+
+    
+      
+      <script type="text/javascript">
+          var disqus_config = function () {
+              this.page.url = 'https://gseok.github.io/articles/2020-03/Javascript-Logger';
+              this.page.identifier = '/articles/2020-03/Javascript-Logger';
+              this.page.title = 'Javascript Logger';
+          };
+          var d = document, s = d.createElement('script');
+          s.src = 'https://gseok.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', '' + +new Date());
+          (d.head || d.body).appendChild(s);
+      </script>
+      
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+

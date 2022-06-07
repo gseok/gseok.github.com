@@ -1,0 +1,1495 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,cjs,amd,umd,esm,tech basic," />
+
+
+<link rel="alternate" type="application/rss+xml" href="https://gseok.github.io/feed.xml" title="Gseok Blog">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Gseok Blog" type="application/atom+xml" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="소개">
+<meta name="keywords" content="javascript, cjs, amd, umd, esm, tech basic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript Module System (CJS, AMD, UMD, ESM)">
+<meta property="og:url" content="https://gseok.github.io/articles/2021-06/Javascript-Module-System-CJS-AMD-UMD-ESM">
+<meta property="og:site_name" content="Gseok Blog">
+<meta property="og:description" content="소개">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="../../assets/post-images/2021-06-21-Javascript-Module-System/async-defer.svg">
+<meta property="og:updated_time" content="2021-06-22T03:22:00+09:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript Module System (CJS, AMD, UMD, ESM)">
+<meta name="twitter:description" content="소개">
+<meta name="twitter:image" content="../../assets/post-images/2021-06-21-Javascript-Module-System/async-defer.svg">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '작성자'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://gseok.github.io/"/>
+
+
+
+
+
+  <title>Javascript Module System (CJS, AMD, UMD, ESM) | Gseok Blog</title>
+  
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-38849338-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-38849338-1');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ko">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gseok Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">GyeongSeok Seo story</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            홈
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            카테고리
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            아카이브
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            태그
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://gseok.github.io/articles/2021-06/Javascript-Module-System-CJS-AMD-UMD-ESM">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GyeongSeok Seo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/gseok.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gseok Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+          
+          
+            Javascript Module System (CJS, AMD, UMD, ESM)
+          
+        </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+              <time title="Javascript Module System (CJS, AMD, UMD, ESM)" itemprop="dateCreated datePublished" datetime="2021-06-22">
+                2021-06-22
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">수정일</span>
+              
+              <time title="Javascript Module System (CJS, AMD, UMD, ESM)" itemprop="dateModified" datetime="2021-06-21">
+                2021-06-21
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/tech%20talk" itemprop="url" rel="index">
+                    <span itemprop="name">tech talk</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/articles/2021-06/Javascript-Module-System-CJS-AMD-UMD-ESM#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="/articles/2021-06/Javascript-Module-System-CJS-AMD-UMD-ESM" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  <h2 id="소개">소개</h2>
+
+<p>javascript의 module system의 탄생 배경(히스토리)을 알아보고, 이어서 현재 대표적인 javascript module system인 cjs, amd, umd, esm에 대해서 간략하게 알아본다.</p>
+
+<h2 id="배경">배경</h2>
+
+<p>초창기 javascript는 module의 기능 or 개념이 없었고, javascript의 구동환경 역시 browser로 고정되어 있었습니다. 따라서 이당시에서는 하나의 (js)파일로 모든 기능을 제공하거나, <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code>태그의 순차 로딩과, window(global)객체를 활용하여 모듈을 흉내(IIFE의 module pattern)내거나 기능을 분리하여 제공하였습니다.</p>
+
+<p>javascript생태계가 발전함에 따라서, Javascript을 범용적으로 사용하려는 요구사항들이 발생하게 되었고, 이런 요구사항에 따라서 javascript에서의 module 기능의 필요성이 대두되게 되었습니다. 이러한 필요성에 의해서 탄생한 것이 javascipt module 시스템의, 양대산맥격인 cjs, amd이며 이어서, umd, ems등으로 발전하고 있습니다.</p>
+
+<h3 id="전통적인-방법">전통적인 방법</h3>
+
+<p><strong>script order을 사용한 형태</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="err">!</span><span class="na">DOCTYPE</span> <span class="na">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="p">=</span><span class="s">"text/javascript"</span> <span class="na">src</span><span class="p">=</span><span class="s">"./area.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="p">=</span><span class="s">"text/javascript"</span> <span class="na">src</span><span class="p">=</span><span class="s">"./main.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+
+// area.js
+var pi = 3.142;
+function area(radius) <span class="si">{</span>
+  <span class="k">return</span> <span class="nx">pi</span> <span class="o">*</span> <span class="nx">radius</span> <span class="o">*</span> <span class="nx">radius</span><span class="p">;</span>
+<span class="si">}</span>
+
+// main.js
+var answer = area(5);
+console.log(answer);
+</code></pre></div></div>
+
+<ul>
+  <li>global scope을 점유하고 있고, 너무 generic한 이름을 사용하고 있다.</li>
+  <li>pi나 area가 언제든 변경될 여지가 존재한다.</li>
+</ul>
+
+<p><strong>IIFE module pattern형태</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// IIFE 1</span>
+<span class="c1">// area.js</span>
+<span class="kd">var</span> <span class="nx">utils</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// you hide `pi` within the function scope</span>
+  <span class="kd">var</span> <span class="nx">pi</span> <span class="o">=</span> <span class="mf">3.142</span><span class="p">;</span>
+  <span class="kd">function</span> <span class="nx">area</span><span class="p">(</span><span class="nx">radius</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">pi</span> <span class="o">*</span> <span class="nx">radius</span> <span class="o">*</span> <span class="nx">radius</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="p">{</span> <span class="nx">area</span> <span class="p">};</span>
+<span class="p">})();</span>
+
+<span class="c1">// main.js</span>
+<span class="kd">var</span> <span class="nx">answer</span> <span class="o">=</span> <span class="nx">utils</span><span class="p">.</span><span class="nx">area</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+
+<span class="c1">// IIFE 2, 혹은 약속된 namespace을 활용</span>
+<span class="c1">// namespace.js</span>
+<span class="c1">// main.js, area.js가 약속하는 특정 namespace필요</span>
+<span class="kd">var</span> <span class="nx">myNamespace</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="c1">// area.js</span>
+<span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">myNamespace</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// you hide `pi` within the function scope</span>
+  <span class="kd">var</span> <span class="nx">pi</span> <span class="o">=</span> <span class="mf">3.142</span><span class="p">;</span>
+  <span class="kd">function</span> <span class="nx">area</span><span class="p">(</span><span class="nx">radius</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">pi</span> <span class="o">*</span> <span class="nx">radius</span> <span class="o">*</span> <span class="nx">radius</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">myNamespace</span><span class="p">.</span><span class="nx">area</span> <span class="o">=</span> <span class="nx">area</span><span class="p">;</span>
+<span class="p">})(</span><span class="nx">myNamespace</span><span class="p">);</span>
+
+<span class="c1">// main.js</span>
+<span class="kd">var</span> <span class="nx">answer</span> <span class="o">=</span> <span class="nx">myNamespace</span><span class="p">.</span><span class="nx">area</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>IIFE의 1번째 방법은 여전히 IIFE의 리턴을 받는 utils에 종속적이다. (다만 area라는 이름의 충돌은 피할 수 있다)</li>
+  <li>IIFE의 2번째 예제와 같은 형태가 jQuery의 방식이다. global에  $ 라는 namespace, 즉 특정 이름으로 노출하는 형태이다.</li>
+  <li>여전히 다음과 같은 문제가 존재한다
+    <ul>
+      <li>global namespace(scope) 오염</li>
+      <li>lack of dependency resolution (파일 순서가 매우 종속적임)</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="commonjs-cjs">CommonJS (CJS)</h2>
+
+<p>CommonJS는 브라우저 이외의 환경에서 범용적으로 javascript을 사용하게 하자는 목표를 가진 표준화 단체 이다. CommonJS는 모질라의 엔지니어 Kevin Dangoor에 의해 2009년 1월 시작되었으며 처음 이름은 ServerJS 였습니다. Kevin은 JavaScript가 브라우저용 언어를 넘어 범용적으로 쓰이려면, Ruby나 Python과 같은 체계가 필요하다고 주장 하였습니다.</p>
+
+<ul>
+  <li>CommonJS는 javascript library가 아니고, ECMA, W3C와 같은 표준(Spec)지정단체 입니다.</li>
+  <li>CommonJS는 결국 일종의 Spec 입니다.</li>
+  <li>CommonJS가 해결하고자 한 핵심 문제
+    <ul>
+      <li>서로 호환되는 표준 라이브러리가 없다.</li>
+      <li>데이터베이스에 연결할 수 있는 표준 인터페이스가 없다.</li>
+      <li>다른 모듈을 삽입하는 표준적인 방법이 없다.</li>
+      <li>코드를 패키징해서 배포하고 설치하는 방법이 필요하다.</li>
+      <li>의존성 문제까지 해결하는 공통 패키지 모듈 저장소가 필요하다.</li>
+    </ul>
+  </li>
+  <li>CommonJS핵심 문제 해결법은 결국 ‘모듈화’
+    <ul>
+      <li>스코프(Scope): 모든 모듈은 자신만의 독립적인 실행 영역이 있어야 한다.</li>
+      <li>정의(Definition): 모듈 정의는 exports 객체를 이용한다.</li>
+      <li>사용(Usage): 모듈 사용은 require 함수를 이용한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="code"><strong>Code</strong></h3>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// a.js</span>
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">b</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span>
+
+<span class="c1">// sum 모듈정의, 다른데서 사용 가능</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">sum</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span> <span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">+</span> <span class="nx">c</span> <span class="o">+</span> <span class="nx">d</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// b.js</span>
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">moduleA</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./a.js</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// 모듈 사용</span>
+<span class="nx">moduleA</span><span class="p">.</span><span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span> <span class="c1">// 3+4+5+6 = 18</span>
+</code></pre></div></div>
+
+<ul>
+  <li>CommonJS의 모듈 명세는 모든 파일이 로컬 디스크에 있어 필요할 때 바로 불러올 수 있는 상황을 전제(즉 ServerSide)을 전제합니다.</li>
+  <li>동기화가 기본이라 브라우저에서 사용시 성능 문제가 있습니다. → 이를위해서 동적 <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> 태그 삽입등이 추가되었습니다.</li>
+  <li>JavaScript가 브라우저에서 동작할 때는 서버 사이드 JavaScript와 달리 파일 단위의 스코프가 없습니다.
+    <ul>
+      <li>동적 <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code>로 로딩시, 전통적인 방법과 동일하게, a.js와 b.js를 차례대로 로드하면, a.js의 변수가 b.js의 변수를 모두 덮어쓰게 되는 전역변수 문제도 발생합니다.</li>
+      <li>이런 문제를 해결하기 위해서, CommonJS는 서버 모듈을 비동기적으로 클라이언트에 전송할 수 있는 모듈 전송 포맷(module transport format)을 추가로 정의했습니다.</li>
+    </ul>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// complex-numbers/plus-two.js</span>
+  <span class="nx">require</span><span class="p">.</span><span class="nx">define</span><span class="p">({</span><span class="dl">"</span><span class="s2">complex-numbers/plus-two</span><span class="dl">"</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">//콜백 함수 안에 모듈을 정의한다.</span>
+      <span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./complex-number</span><span class="dl">"</span><span class="p">).</span><span class="nx">sum</span><span class="p">;</span>
+      <span class="nx">exports</span><span class="p">.</span><span class="nx">plusTwo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">){</span>
+          <span class="k">return</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+      <span class="p">};</span>
+  <span class="p">},[</span><span class="dl">"</span><span class="s2">complex-numbers/math</span><span class="dl">"</span><span class="p">]);</span> <span class="c1">//먼저 로드되어야 할 모듈을 기술한다.</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="구현체">구현체</h3>
+
+<p>대표적으로 node.js 와  FINF가 있습니다.</p>
+
+<ul>
+  <li>브라우저용
+    <ul>
+      <li>curl.js(<a href="http://github.com/unscriptable/curl">http://github.com/unscriptable/curl</a>)</li>
+      <li>SproutCore(<a href="http://sproutcore.com/">http://sproutcore.com</a>)</li>
+      <li>PINF(<a href="http://github.com/pinf/loader-js">http://github.com/pinf/loader-js</a>)</li>
+      <li>기타 등등</li>
+    </ul>
+  </li>
+  <li>서버사이드용
+    <ul>
+      <li>Node.js(<a href="http://nodejs.org/">http://nodejs.org</a>)</li>
+      <li>Narwhal(<a href="https://github.com/tlrobinson/narwhal">https://github.com/tlrobinson/narwhal</a>)</li>
+      <li>Persevere(<a href="http://www.persvr.org/">http://www.persvr.org</a>)</li>
+      <li>Wakanda(<a href="http://www.wakandasoft.com/">http://www.wakandasoft.com</a>)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>참고: node.js의 경우, v12부터는 esm와 cjs을 모두 지원합니다, 2021년 6월 기준 16.0.3 에서 둘다 지원 가능(<a href="https://nodejs.org/api/modules.html">https://nodejs.org/api/modules.html</a>, <a href="https://nodejs.org/api/esm.html">https://nodejs.org/api/esm.html</a>)</p>
+
+<hr />
+
+<h2 id="asynchronous-module-definition-amd">Asynchronous module definition (AMD)</h2>
+
+<p>AMD그룹은 CommonJS에서 독립한(갈라져나온) 그룹입니다. AMD는 네트웍을 통해 비동기형태로 파일을 내려받는 환경(브라우저환경)에서의 모듈화에 중접을 두고 있습니다. 이는 CommonJS 추구하는 브라우저 이외의 환경을 목표로 하는 부분과 중점요소가 달랐기 때문에 CommonJS에서 합의점을 도출하지 못하고 갈라져 나오게 되었습니다.</p>
+
+<p>CJS, AMD을 가지고 무었이 더 좋다고 이야기 하기 힘듭니다. 둘다 서버환경, 브라우저 환경에서 구동 가능합니다. 다만 중점 요소가 명확하기 때문에 Server(node)에서는 CJS가 좀더 적합하고, FE(Browser)환경에서는 AMD가 좀더 적합합니다.</p>
+
+<h3 id="code-1">Code</h3>
+
+<p><strong>모듈 정의</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// spec</span>
+<span class="nx">define</span><span class="p">(</span><span class="nx">id</span><span class="p">?,</span> <span class="nx">dependencies</span><span class="p">?,</span> <span class="nx">factory</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* js/a.js */</span>
+<span class="c1">// 모듈 정의의 기본 형태</span>
+<span class="nx">define</span><span class="p">([</span> <span class="c1">// 의존 모듈들을 나열한다. 모듈이 한 개라도 배열로 넘겨야 한다.</span>
+    <span class="dl">'</span><span class="s1">js/util</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">js/Ajax</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">js/Event</span><span class="dl">'</span>
+<span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">util</span><span class="p">,</span> <span class="nx">Ajax</span><span class="p">,</span> <span class="nx">Event</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 의존 모듈들은 순서대로 매개변수에 담긴다.</span>
+    <span class="c1">// 의존 모듈들이 모두 로딩 완료되면 이 함수를 실행한다.</span>
+    <span class="c1">// 초기화 영역</span>
+    <span class="kd">var</span> <span class="nx">callCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">callCount</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">getCallCount</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">i</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 외부에 노출할 함수들만 반환한다.</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="na">sum</span><span class="p">:</span> <span class="nx">sum</span><span class="p">,</span>
+        <span class="na">getCallCount</span><span class="p">:</span> <span class="nx">getCallCount</span>
+    <span class="p">};</span>
+<span class="p">});</span>
+
+<span class="c1">// AMD 명세에서 정의하는 전역변수는 define과</span>
+<span class="c1">// CommonJS에서 사용하는 require 객체, exports 객체가 있다.</span>
+<span class="c1">// 그리고 전역 모듈을 명시적으로 가리킬 때 사용하는 define.amd 프로퍼티도 사용할 수 있다</span>
+</code></pre></div></div>
+
+<p><strong>모듈사용</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* js/main.js */</span>
+<span class="nx">require</span><span class="p">([</span>
+    <span class="dl">'</span><span class="s1">js/a</span><span class="dl">'</span>
+<span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">));</span> <span class="c1">// 3</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">getCallCount</span><span class="p">());</span> <span class="c1">// 1</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p><strong>부가설명</strong></p>
+
+<ul>
+  <li>dependency(의존모듈)의 로딩 순서는 보장되지 않는다. (비동기로 받음)
+    <ul>
+      <li>dependency의 로딩 순서가 중요하다면 아래와 같이 중첩 require을 사용해야 한다.</li>
+    </ul>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">require</span><span class="p">([</span><span class="dl">'</span><span class="s1">js/a</span><span class="dl">'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">require</span><span class="p">([</span><span class="dl">'</span><span class="s1">js/b</span><span class="dl">'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+          <span class="c1">// a -&gt; b 로딩 순서 보장</span>
+      <span class="p">});</span>
+  <span class="p">});</span>
+</code></pre></div>    </div>
+  </li>
+  <li>define구문에 dependency는 한번만 로딩된다. (다른 어디선가 동일한 모듈 로딩시 바로 로딩됨)</li>
+</ul>
+
+<h3 id="구현체-1">구현체</h3>
+
+<p>대표적으로 Dojo1.7 나 EmberJS등의 framework에서 AMD형태의 loader을 제공합니다. requirejs는 가장 대표적인 amd module loader입니다.</p>
+
+<ul>
+  <li>브라우저용
+    <ul>
+      <li>RequireJS(<a href="http://requirejs.org/">http://requirejs.org</a>)</li>
+      <li>curl.js(<a href="http://github.com/unscriptable/curl">http://github.com/unscriptable/curl</a>)</li>
+      <li>bdLoad(<a href="http://bdframework.org/bdLoad/">http://bdframework.org/bdLoad/</a>)</li>
+      <li>Yabble(<a href="http://github.com/jbrantly/yabble">http://github.com/jbrantly/yabble</a>)</li>
+      <li>PINF(<a href="http://github.com/pinf/loader-js">http://github.com/pinf/loader-js</a>)</li>
+      <li>기타 등등</li>
+    </ul>
+  </li>
+  <li>서버사이드용
+    <ul>
+      <li>RequireJS(<a href="http://requirejs.org/">http://requirejs.org</a>)</li>
+      <li>PINF(<a href="http://github.com/pinf/loader-js">http://github.com/pinf/loader-js</a>)</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="universal-module-definition-umd">Universal Module Definition (UMD)</h2>
+
+<p>UMD는 CommonJS, AMD와 같이 javascript의 module에 대한 spec이 나누어져 있어서 나온 불편함을 한방에 해결하기 위해 나온 개념 입니다. CommonJS와 AMD와는 달리 spec은 아니고, CommonJS, AMD, 그리고 전통적인 방법(window 객체에 bind)을 모두 지원하는 형태(일종의 구현 패턴, 디자인패턴)으로 되어 있습니다.</p>
+
+<h3 id="code-2">Code</h3>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nb">global</span><span class="p">,</span> <span class="nx">factory</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">define</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">function</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">define</span><span class="p">.</span><span class="nx">amd</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// ADM</span>
+        <span class="nx">define</span><span class="p">([</span><span class="dl">'</span><span class="s1">jquery</span><span class="dl">'</span><span class="p">],</span> <span class="nx">factory</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">module</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">object</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// CommonJS</span>
+        <span class="c1">// Node/CommonJS</span>
+        <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">root</span><span class="p">,</span> <span class="nx">jQuery</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span> <span class="nx">jQuery</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span> <span class="k">typeof</span> <span class="nb">window</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">undefined</span><span class="dl">'</span> <span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">jQuery</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">jquery</span><span class="dl">'</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="k">else</span> <span class="p">{</span>
+                    <span class="nx">jQuery</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">jquery</span><span class="dl">'</span><span class="p">)(</span><span class="nx">root</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="nx">factory</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">jQuery</span><span class="p">;</span>
+        <span class="p">};</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">// window(Browser globals)</span>
+        <span class="nb">global</span><span class="p">.</span><span class="nx">$</span> <span class="o">=</span> <span class="nx">factory</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}(</span><span class="nb">window</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">jqueryPlugin</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span> <span class="p">};</span>
+<span class="p">}));</span>
+</code></pre></div></div>
+
+<ul>
+  <li>UMD형태를 제공하는 전형적인 패턴입니다.
+    <ul>
+      <li>참고: <a href="https://github.com/umdjs/umd/blob/master/templates">https://github.com/umdjs/umd/blob/master/templates</a></li>
+    </ul>
+  </li>
+  <li>UMD에서는, AMD는 define을 사용하고, CommonJS는 module.exports를 사용하는 차이점을 응용하여 모듈을 정의해줍니다. 둘다 아닌경우 전통적인 방식으로 global에 bind해줍니다.</li>
+</ul>
+
+<p><strong>부가설명</strong></p>
+
+<ul>
+  <li>umd는 현재 사용하는 javascript module 형태와 무관하게 어디서든 사용 가능한 구조로 되어 있습니다.</li>
+  <li>보통 webpack와 같은 bundler사용시에는 직접 구현할 필요없이 해당 형태로 만들어 줍니다.
+    <ul>
+      <li>참고: <a href="https://webpack.js.org/configuration/output/#outputglobalobject">https://webpack.js.org/configuration/output/#outputglobalobject</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="ecmascript-module-esm">ECMAScript Module (ESM)</h2>
+
+<p>ESM은 ECMAScript에서 지원하는 자바스크립트 공식 모듈 시스템입니다. es6 부터 추가되었으며, 현재 IE을 제외한, 대다수의 브라우저에서 지원 가능합니다. es6문법 이전의 브라우저에서는 당연 미지원하기 때문에 구 브라우저 지원이 필요한 경우 bundler을 통해서 umd나 cjs, amd등으로 변환하여 지원하여야 합니다.</p>
+
+<ul>
+  <li>browser support: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#browser_support">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#browser_support</a></li>
+</ul>
+
+<h3 id="동작"><strong>동작</strong></h3>
+
+<ul>
+  <li>참고: <a href="https://ui.toast.com/weekly-pick/ko_20180402">https://ui.toast.com/weekly-pick/ko_20180402</a></li>
+  <li>Browser기준 → 구성, 인스턴스화, 평가 → 모듈 인스턴스가 나옴
+    <ol>
+      <li>구성 - 모든 파일을 찾아 다운로드하고 모듈 레코드로 구문분석한다.</li>
+      <li>인스턴스 화 - export 된 값을 모두 배치하기 위해 메모리에 있는 공간들을 찾는다(아직 실제 값은 채우지 않음). 그다음 export와 import들이 이런 메모리 공간들을 가리키도록 한다. 이를 연결(linking) 이라고 한다.</li>
+      <li>평가 - 코드를 실행하여 상자의 값을 변수의 실제 값으로 채운다.</li>
+    </ol>
+  </li>
+</ul>
+
+<p><strong>구성</strong></p>
+
+<ol>
+  <li>모듈이 들어있는 파일을 어디서 다운로드 할 것인지 확인한다(module resolution이라고도 함).
+    <ul>
+      <li>파일의 진입점
+        <ul>
+          <li>브라우저의 경우 script태그의 type=”module” 로 구분</li>
+          <li>Node의 경우 script태그가 없기 때문에, .mjs 확장자 사용 (아직 논의중!!!)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>파일을 가져온다(URL을 통해 다운로드 하거나 파일 시스템에서 불러옴).
+    <ul>
+      <li>실제 파일을 불러오는 것은 로더(loader)가 하며, 브라우저에서는 ES 모듈 명세가 아닌 HTML 명세를 따른다.
+        <ul>
+          <li>
+            <p><a href="https://tc39.github.io/ecma262/#sec-modules">ES 모듈 명세</a>는 모듈 레코드에 파일을 구문분석하는 방법과 인스턴스 화 하는 방법, 그리고 그 모듈을 평가하는 방법을 알려준다. 하지만 파일을 처음에 어떻게 얻는지는 말하고 있지 않다.</p>
+
+            <p>파일을 불러오는 것은 로더(loader)이다. 로더는 다른 명세로 구성되어있다. 브라우저의 경우 <a href="https://html.spec.whatwg.org/#fetch-a-module-script-tree">HTML 명세</a>를 따른다. 그러나 사용 중인 플랫폼에 따라 다른 로더를 가질 수 있다.</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>파일을 모듈 레코드로 구문분석한다.
+    <ul>
+      <li>파일 진입점에서 파일을 받고, 모듈 레코드(Module Record)라고 하는 데이터 구조로 변환해야한다. 이 과정에서 해당 파일들의 모든 구문을 분석할 필요가 있다.</li>
+    </ul>
+  </li>
+</ol>
+
+<p><strong>인스턴스화</strong></p>
+
+<ul>
+  <li>인스턴스는 코드와 상태를 결합한다. 상태는 메모리에 있으므로 인스턴스 화 단계는 모든 것을 메모리에 연결(linking)하는 것이다.</li>
+  <li>모듈 그래프를 인스턴스 화하기 위해 엔진은 깊이 우선 순회를 수행</li>
+  <li>export의 값을 배치하기 위한 메모리 공간을 찾고 이를 가리키게 한다.
+    <ul>
+      <li>한 모듈에 대한 export와 import는 같은 메모리의 주소를 가리키게 한다.</li>
+    </ul>
+  </li>
+  <li>실제 값은 채우지 않는다. 실제 값은 평가 단계에서 채워진다.</li>
+</ul>
+
+<p><strong>평가</strong></p>
+
+<ul>
+  <li>JS 엔진은 함수 외부 코드인 최상위 레벨 코드를 실행하여 값을 채운다.</li>
+  <li>모듈은 한 번만 평가하도록 한다.</li>
+  <li>인스턴스 화와 마찬가지로 깊이 우선 탐색 순회을 한다.</li>
+  <li>모듈 맵은 표준 URL로 모듈을 캐시 하므로 각 모듈에 대해 하나의 모듈 레코드만 있다.</li>
+</ul>
+
+<h3 id="code-3">code</h3>
+
+<p><strong>export(named)</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">fn</span><span class="p">(){}</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">Class</span><span class="p">{}</span>
+
+<span class="kd">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="kd">function</span> <span class="nx">fn2</span><span class="p">(){}</span>
+<span class="kd">class</span> <span class="nx">Class2</span><span class="p">{}</span>
+
+<span class="k">export</span> <span class="p">{</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">fn2</span><span class="p">,</span> <span class="nx">Class2</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>export구문을 여러개 사용가능합니다.</li>
+  <li>변수, 함수, 클래스, 객체 모두 export가능합니다.</li>
+</ul>
+
+<p><strong>export default</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 변수값은 default로 선언, 내보내기가 동시에 되지 않는다</span>
+<span class="k">export</span> <span class="k">default</span> <span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// 안되요~!!</span>
+
+<span class="c1">// fn.js</span>
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">fn</span><span class="p">(){}</span>
+
+<span class="c1">// Class.js</span>
+<span class="k">export</span> <span class="k">default</span> <span class="kd">class</span> <span class="nx">Class</span><span class="p">{}</span>
+
+<span class="c1">//a.js</span>
+<span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">a</span>
+
+<span class="c1">// fn.js</span>
+<span class="kd">function</span> <span class="nx">fn</span><span class="p">(){}</span>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">fn</span>
+
+<span class="c1">// Class.js</span>
+<span class="kd">class</span> <span class="nx">Class</span><span class="p">{}</span>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">Class</span>
+</code></pre></div></div>
+
+<ul>
+  <li>변수를 제외하고, 선언과 동시에 export가 가능합니다.</li>
+  <li>선언과, export을 구분해서는 모두 가능합니다.</li>
+  <li>export default는 모듈당 한번만 가능합니다. (보통 파일에서 한번만 가능)</li>
+  <li>export default와 그냥 일반 export을 섞어서 사용 가능합니다.</li>
+</ul>
+
+<p><strong>import(named export을 import)</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">a</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">a.js</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">fn</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">fn.js</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Class</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">class.js</span><span class="dl">'</span>
+</code></pre></div></div>
+
+<p><strong>import(export default을 import)</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">a</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">a.js</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">fn</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">fn.js</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">Class</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">class.js</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">Change</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">class.js</span><span class="dl">'</span> <span class="c1">//default의 경우 import된 모듈 이름 변경 가능합니다.</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">a</span> <span class="p">},</span> <span class="nx">Class</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">some.js</span><span class="dl">'</span> <span class="c1">// default export와 export을 둘다 import 가능합니다.</span>
+</code></pre></div></div>
+
+<ul>
+  <li>그외 여러 esm형태의 import, export는 아래 링크  참고
+    <ul>
+      <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Modules">https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Modules</a></li>
+      <li><a href="https://github.com/mdn/js-examples/tree/master/modules">https://github.com/mdn/js-examples/tree/master/modules</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Entry</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>type=”module” 을 명시하면, main.js가 esm형태의 모듈을 따름을 브라우저에 알릴 수 있다.</li>
+</ul>
+
+<p><strong>부가설명</strong></p>
+
+<ul>
+  <li>node에서도 공식적으로 esm을 지원합니다.(현재 ems와 cjs을 모두 지원합니다)</li>
+  <li>es module(esm)의 동작 방식 아래 참고에 설명 꼭 읽으면 좋습니다.
+    <ul>
+      <li>참고: <a href="https://ui.toast.com/weekly-pick/ko_20180402">https://ui.toast.com/weekly-pick/ko_20180402</a></li>
+    </ul>
+  </li>
+  <li>
+    <p>script tag동작</p>
+
+    <p><img src="../../assets/post-images/2021-06-21-Javascript-Module-System/async-defer.svg" alt="" /></p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="참고">참고</h2>
+
+<p>CJS</p>
+
+<ul>
+  <li><a href="http://www.commonjs.org/">http://www.commonjs.org/</a></li>
+  <li><a href="https://ko.wikipedia.org/wiki/CommonJS">https://ko.wikipedia.org/wiki/CommonJS</a></li>
+  <li><a href="https://www.blueskyonmars.com/2009/01/29/what-server-side-javascript-needs/">https://www.blueskyonmars.com/2009/01/29/what-server-side-javascript-needs/</a></li>
+  <li><a href="https://groups.google.com/g/commonjs?pli=1">https://groups.google.com/g/commonjs?pli=1</a></li>
+  <li><a href="https://d2.naver.com/helloworld/12864">https://d2.naver.com/helloworld/12864</a></li>
+  <li><a href="http://wiki.commonjs.org/wiki/Modules/Transport">http://wiki.commonjs.org/wiki/Modules/Transport</a></li>
+</ul>
+
+<p>AMD</p>
+
+<ul>
+  <li><a href="https://www.oreilly.com/library/view/learning-javascript-design/9781449334840/ch11s02.html">https://www.oreilly.com/library/view/learning-javascript-design/9781449334840/ch11s02.html</a></li>
+  <li><a href="https://d2.naver.com/helloworld/591319">https://d2.naver.com/helloworld/591319</a></li>
+  <li><a href="https://requirejs.org/docs/whyamd.html">https://requirejs.org/docs/whyamd.html</a></li>
+  <li><a href="https://github.com/amdjs/amdjs-api/wiki/AMD">https://github.com/amdjs/amdjs-api/wiki/AMD</a></li>
+  <li><a href="https://github.com/amdjs/amdjs-api/blob/master/AMD.md">https://github.com/amdjs/amdjs-api/blob/master/AMD.md</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Asynchronous_module_definition">https://en.wikipedia.org/wiki/Asynchronous_module_definition</a></li>
+  <li><a href="https://www.slideshare.net/xMartin12/asynchronous-module-definition-amd">https://www.slideshare.net/xMartin12/asynchronous-module-definition-amd</a></li>
+</ul>
+
+<p>UMD</p>
+
+<ul>
+  <li><a href="https://github.com/umdjs/umd">https://github.com/umdjs/umd</a></li>
+  <li><a href="https://sub0709.tistory.com/49">https://sub0709.tistory.com/49</a></li>
+  <li><a href="https://www.zerocho.com/category/JavaScript/post/5b67e7847bbbd3001b43fd73">https://www.zerocho.com/category/JavaScript/post/5b67e7847bbbd3001b43fd73</a></li>
+</ul>
+
+<p>ESM</p>
+
+<ul>
+  <li><a href="https://yoeubi28.medium.com/commonjs-esm-%EB%AA%A8%EB%93%88-%EC%88%9C%ED%99%98-%EC%B0%B8%EC%A1%B0-%EC%B0%A8%EC%9D%B4-e5cd1047deaf">https://yoeubi28.medium.com/commonjs-esm-모듈-순환-참조-차이-e5cd1047deaf</a></li>
+  <li><a href="https://v8.dev/features/modules#mjs">https://v8.dev/features/modules#mjs</a></li>
+  <li><a href="https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/">https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/</a></li>
+  <li><a href="https://ui.toast.com/weekly-pick/ko_20180402">https://ui.toast.com/weekly-pick/ko_20180402</a></li>
+  <li><a href="https://velog.io/@jjunyjjuny/ES-Modules-%EC%A0%95%EB%A6%AC%ED%95%98%EA%B8%B0">https://velog.io/@jjunyjjuny/ES-Modules-정리하기</a></li>
+  <li><a href="https://yceffort.kr/2020/08/commonjs-esmodules">https://yceffort.kr/2020/08/commonjs-esmodules</a></li>
+  <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Modules">https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Modules</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export</a></li>
+  <li><a href="https://tc39.es/ecma262/#sec-modules">https://tc39.es/ecma262/#sec-modules</a></li>
+</ul>
+
+<p>ETC</p>
+
+<ul>
+  <li><a href="https://medium.com/sungthecoder/javascript-module-module-loader-module-bundler-es6-module-confused-yet-6343510e7bde">https://medium.com/sungthecoder/javascript-module-module-loader-module-bundler-es6-module-confused-yet-6343510e7bde</a></li>
+  <li><a href="https://lihautan.com/javascript-modules/">https://lihautan.com/javascript-modules/</a></li>
+  <li><a href="https://beomy.github.io/tech/javascript/cjs-amd-umd-esm/#:~:text=ESM%EC%9D%80%20ECMAScript%EC%97%90%EC%84%9C%20%EC%A7%80%EC%9B%90,%EB%93%A4%EB%9F%AC%EB%A5%BC%20%ED%95%A8%EA%BB%98%20%EC%82%AC%EC%9A%A9%ED%95%B4%EC%95%BC%20%ED%95%A9%EB%8B%88%EB%8B%A4">https://beomy.github.io/tech/javascript/cjs-amd-umd-esm/#:~:text=ESM은 ECMAScript에서 지원,들러를 함께 사용해야 합니다</a></li>
+  <li><a href="https://thebook.io/080203/ch22/04/">https://thebook.io/080203/ch22/04/</a></li>
+  <li><a href="https://defineall.tistory.com/916">https://defineall.tistory.com/916</a></li>
+</ul>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/javascript" rel="tag"># javascript</a>
+          
+            
+            <a href="/tag/#/cjs" rel="tag"># cjs</a>
+          
+            
+            <a href="/tag/#/amd" rel="tag"># amd</a>
+          
+            
+            <a href="/tag/#/umd" rel="tag"># umd</a>
+          
+            
+            <a href="/tag/#/esm" rel="tag"># esm</a>
+          
+            
+            <a href="/tag/#/tech%20basic" rel="tag"># tech basic</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/articles/2021-06/Image-size-optimize" rel="next" title="png, jpg, 이미지 용량 줄이기">
+                <i class="fa fa-chevron-left"></i> png, jpg, 이미지 용량 줄이기
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/articles/2021-06/pm2-logroate-not-working" rel="prev" title="pm2 logroate 가 pm2 멀티 인스턴스에서 이상동작">
+                pm2 logroate 가 pm2 멀티 인스턴스에서 이상동작 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            목차
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            흝어보기
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/gseok.jpg"
+               alt="GyeongSeok Seo" />
+          <p class="site-author-name" itemprop="name">GyeongSeok Seo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">포스트</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">카테고리</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">태그</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://github.com/gseok" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/assets/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-2"> <a class="nav-link" href="#소개"> <span class="nav-number">1</span> <span class="nav-text">소개</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#배경"> <span class="nav-number">2</span> <span class="nav-text">배경</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#전통적인-방법"> <span class="nav-number">2.1</span> <span class="nav-text">전통적인 방법</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#commonjs-cjs"> <span class="nav-number">3</span> <span class="nav-text">CommonJS (CJS)</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#code"> <span class="nav-number">3.1</span> <span class="nav-text">Code</strong</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#구현체"> <span class="nav-number">3.2</span> <span class="nav-text">구현체</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#asynchronous-module-definition-amd"> <span class="nav-number">4</span> <span class="nav-text">Asynchronous module definition (AMD)</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#code-1"> <span class="nav-number">4.1</span> <span class="nav-text">Code</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#구현체-1"> <span class="nav-number">4.2</span> <span class="nav-text">구현체</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#universal-module-definition-umd"> <span class="nav-number">5</span> <span class="nav-text">Universal Module Definition (UMD)</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#code-2"> <span class="nav-number">5.1</span> <span class="nav-text">Code</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#ecmascript-module-esm"> <span class="nav-number">6</span> <span class="nav-text">ECMAScript Module (ESM)</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#동작"> <span class="nav-number">6.1</span> <span class="nav-text">동작</strong</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#code-3"> <span class="nav-number">6.2</span> <span class="nav-text">code</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#참고"> <span class="nav-number">7</span> <span class="nav-text">참고</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GyeongSeok Seo</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://gseok.disqus.com/count.js" async></script>
+    
+
+    
+      
+      <script type="text/javascript">
+          var disqus_config = function () {
+              this.page.url = 'https://gseok.github.io/articles/2021-06/Javascript-Module-System-CJS-AMD-UMD-ESM';
+              this.page.identifier = '/articles/2021-06/Javascript-Module-System-CJS-AMD-UMD-ESM';
+              this.page.title = 'Javascript Module System (CJS, AMD, UMD, ESM)';
+          };
+          var d = document, s = d.createElement('script');
+          s.src = 'https://gseok.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', '' + +new Date());
+          (d.head || d.body).appendChild(s);
+      </script>
+      
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+

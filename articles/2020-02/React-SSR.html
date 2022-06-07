@@ -1,0 +1,1269 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="react,ssr,webpack,module-style," />
+
+
+<link rel="alternate" type="application/rss+xml" href="https://gseok.github.io/feed.xml" title="Gseok Blog">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Gseok Blog" type="application/atom+xml" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="소개">
+<meta name="keywords" content="react, ssr, webpack, module-style">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React SSR">
+<meta property="og:url" content="https://gseok.github.io/articles/2020-02/React-SSR">
+<meta property="og:site_name" content="Gseok Blog">
+<meta property="og:description" content="소개">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="../../assets/post-images/2020-02-17-React-SSR/01.png">
+<meta property="og:image" content="../../assets/post-images/2020-02-17-React-SSR/02.png">
+<meta property="og:updated_time" content="2021-06-22T19:05:00+09:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React SSR">
+<meta name="twitter:description" content="소개">
+<meta name="twitter:image" content="../../assets/post-images/2020-02-17-React-SSR/01.png">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '작성자'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://gseok.github.io/"/>
+
+
+
+
+
+  <title>React SSR | Gseok Blog</title>
+  
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-38849338-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-38849338-1');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ko">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gseok Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">GyeongSeok Seo story</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            홈
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            카테고리
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            아카이브
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            태그
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://gseok.github.io/articles/2020-02/React-SSR">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GyeongSeok Seo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/gseok.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gseok Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+          
+          
+            React SSR
+          
+        </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+              <time title="React SSR" itemprop="dateCreated datePublished" datetime="2020-02-18">
+                2020-02-18
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">수정일</span>
+              
+              <time title="React SSR" itemprop="dateModified" datetime="2021-06-22">
+                2021-06-22
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/react" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/articles/2020-02/React-SSR#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="/articles/2020-02/React-SSR" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  <h3 id="소개">소개</h3>
+
+<p>기본적인 SSR(Server Side Rendering)의 개념 이해 및 React의 SSR에 대해서 살펴보고, React에서 좀더 심화된 형태의 SSR을 지원하는 방법에 대해서 알아봅니다. 이를 통해서 직접 React SSR을 구성하거나, 이미 구성된 React SSR의 구조 및 코드 파악을 할 수 있게 합니다.</p>
+
+<h3 id="ssr-의-기본-개념">SSR 의 기본 개념</h3>
+
+<p><img src="../../assets/post-images/2020-02-17-React-SSR/01.png" alt="" /></p>
+
+<ul>
+  <li>기본적으로  SSR은 서버 연산을 통해서 Page(HTML)을 만들고, 해당 Page을 응답(response)하여서 그리는 형태입니다. 사실 static한 html을 응답하여서 화면이 그려지는 page는 SSR을 하였다고 봐도 크게 다르지 않습니다.</li>
+  <li>쉽게 이해하자면, React나 Vue등을 사용하여 Render하는 경우를 떠올리면 됩니다. 이 경우 아래와 같이 Render를 호출하여 그리게 되는데, 위 그림과 같이 사용자가 실제 화면(Content)을 보기까지 SSR에 비해서 시간이 좀 더 걸리게 됩니다.</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ReactDOM.render(<span class="nt">&lt;App&gt;</span>, document.getElementById('root'));
+</code></pre></div></div>
+
+<p>보통 SSR의 장단점은 아래와 같습니다.</p>
+
+<p><strong>SSR 장점</strong></p>
+
+<ul>
+  <li>SEO(Search Engine Optimization, 검색 엔진 최적화)</li>
+  <li>빠르게 사용자에게 기본적인 화면을 보여 줄 수 있다.</li>
+</ul>
+
+<p><strong>SSR 단점</strong></p>
+
+<ul>
+  <li>화면 이동시 화면 깜빡임(UX)
+    <ul>
+      <li>각 라우팅 별로 실제 서버와의 통신을 통해서 Page가 서빙 되기 때문에 발생합니다.</li>
+    </ul>
+  </li>
+  <li>프로젝트 구성이 복잡해진다.
+    <ul>
+      <li>먼저 서버 코드에 있어서도 JSX를 사용할 수 있도록 빌드나 변환하는 과정이 필요</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="react가-제공하는-ssr">React가 제공하는 SSR</h3>
+
+<p>React 공식 문서를 살펴보면, SSR기능을 제공하기 위해서 React는 SSR전용 Render함수들을 제공합니다.</p>
+
+<p>참고: <a href="https://reactjs.org/docs/react-dom-server.html">https://reactjs.org/docs/react-dom-server.html</a></p>
+
+<p>간략하게 살펴보면 다음과 같습니다.</p>
+
+<ul>
+  <li>ReactDOMServer.renderToString(element)
+    <ul>
+      <li>HTML string을 리턴 합니다. 사용자에게 빠르게 초기 화면 응답을 줄 수 있습니다.</li>
+      <li>ReactDOM.hydrate() 함수를 동일 element에 대해서 client에서 호출한 경우, 이미 그려진 dom을 그대로 사용하면서, event handler만 추가해 줍니다.</li>
+    </ul>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// 개념 이해를 위한 코드 입니다.</span>
+  <span class="kd">const</span> <span class="nx">Home</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      Home View !!!!@@@
+      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">Link</span> <span class="na">to</span><span class="p">=</span><span class="si">{</span><span class="nx">RoutesPath</span><span class="p">.</span><span class="nx">Search</span><span class="si">}</span><span class="p">&gt;</span>Go Search<span class="p">&lt;/</span><span class="nc">Link</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+
+  <span class="c1">// 위와 같은 Home React Component을 호출하면?</span>
+  <span class="kd">const</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">ReactDOMServer</span><span class="p">.</span><span class="nx">renderToString</span><span class="p">(</span><span class="nx">Home</span><span class="p">);</span>
+
+  <span class="c1">// html은 아래와 같이 설정됩니다.</span>
+  <span class="kd">const</span> <span class="nx">html</span> <span class="o">=</span>
+  <span class="s2">`&lt;div&gt;
+      Home View !!!!@@@
+      &lt;li&gt;
+        &lt;Link to={RoutesPath.Search}&gt;Go Search&lt;/Link&gt;
+      &lt;/li&gt;
+  &lt;/div&gt;`</span>
+</code></pre></div>    </div>
+  </li>
+  <li>ReactDOMServer.renderToStaticMarkup(element)
+    <ul>
+      <li>renderToString 와 동일하게 동작하지만, React가 내부적으로 사용하는 extra DOM attributes을 생성하지 않습니다. (e.g. data-reactroot)</li>
+      <li>React을 static page처럼 사용할때 유용하지만, interactive한 page을 만들때는 사용하지 말아야 합니다.</li>
+    </ul>
+  </li>
+  <li>ReactDOMServer.renderToNodeStream(element)
+    <ul>
+      <li>renderToString 와 동일하지만, 차이점이 있다면, HTML을 stream형태로 만들어 줍니다.</li>
+      <li>공식 문서상 해당 stream은 renderToString이 생성하는 결과와 완벽하게 일치합니다.
+        <ul>
+          <li>The HTML output by this stream is exactly equal to what ReactDOMServer.renderToString would return.</li>
+        </ul>
+      </li>
+      <li>리턴하는 stream은  utf-8 포멧으로 encoding되어 있습니다. 만약 다른 형태의 encoding을 사용하려면 별도의 encode, decode 라이브러리를 사용해야 합니다.</li>
+    </ul>
+  </li>
+  <li>ReactDOMServer.renderToStaticNodeStream(element)
+    <ul>
+      <li>renderToStaticMarkup의 stream버전입니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>위 함수들은 모두 Server에서 구동해야 합니다. 서버에서 구동해서 HTML을 받아서 response하는 형태 입니다.</p>
+
+<p>React에서는 기본적으로 위와 같이 SSR을 지원해주는 함수들을 제공 하고 있습니다. React는 Javascript Lib이기 때문에 보통 이러한 함수를 Server에서 구동 시에는 Node.js 서버를 통해서 구동하게 됩니다.</p>
+
+<p>SSR이 string 형태와 stream형태로 나누어 진다는 사실을 알 수 있습니다. 작은 크기의 html인 경우는 큰 차이가 없거나 string형태가 더 빠른 경우가 있지만, 어느정도 size가 큰 경우, stream 형태는 말 그대로 html stream을 response하기 때문에 성능 상 좀 더 빠른 이점이 있습니다.</p>
+
+<h3 id="react-ssr에서-code-split--code-lazy-loading하기">React SSR에서 Code Split &amp; Code Lazy Loading하기</h3>
+
+<p>React가 기본적으로 SSR을 지원하지만, Code Split이나 Code Lazy Loading등을 SSR에서 잘 지원하지 못해서, 해당 기능을 제공하는 별도의 Lib을 사용하는 것이 좋습니다. <strong>@loadable/component</strong> 는 React SSR + Code Split + Lazy Loading을 지원하는 대표적인 Lib중 하나입니다.</p>
+
+<p><strong>@loadable/component 소개</strong></p>
+
+<ul>
+  <li>참고: <a href="https://loadable-components.com/docs/getting-started/">https://loadable-components.com/docs/getting-started/</a></li>
+  <li>loadable/component는 사실 SSR에 앞서, Code Split와 Lazy Loading을 지원하기 위해 나왔습니다. 따라서 굳이 SSR을 하지 않더라도, 사용성 높은 Lib입니다.</li>
+  <li>추가적으로 React가 제공하는 기본 lazy보다 SSR및 Lazy Loading시 더 좋은 기능을 제공하고 있습니다.</li>
+</ul>
+
+<p><img src="../../assets/post-images/2020-02-17-React-SSR/02.png" alt="" /></p>
+
+<ul>
+  <li>또한 webpack 와 babel에 호환성이 높아 해당 형태의 프로젝트 구성을 쉽게 할 수 있습니다.</li>
+</ul>
+
+<p><strong>@loadable/component 로 React SSR하기</strong></p>
+
+<ul>
+  <li>React SSR을 구현하는 코드로 설명합니다.</li>
+</ul>
+
+<p>Client Code</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">loadableReady</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@loadable/component</span><span class="dl">'</span>
+<span class="nx">loadableReady</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">root</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">main</span><span class="dl">'</span><span class="p">)</span>
+  <span class="nx">hydrate</span><span class="p">(&lt;</span><span class="nc">App</span> <span class="p">/&gt;,</span> <span class="nx">root</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<ul>
+  <li>loadable component는 기본적으로 script을 async하게 load하고 동시에 필요한 script을 parallel하게 로딩 합니다. 따라서 해당 script의 사용가능(ready)을 체크하고 사용하도록 하고 있습니다.</li>
+</ul>
+
+<p>Webpack Config (client code)</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">LoadablePlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@loadable/webpack-plugin</span><span class="dl">'</span><span class="p">)</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span><span class="k">new</span> <span class="nx">LoadablePlugin</span><span class="p">()],</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>LoadablePlugin을 필수로 추가해 주어야 합니다. 해당 plugin은 Server에서 사용하게 되는, loadable-stats.json 파일을 생성합니다.</li>
+  <li>loadable-stats.json 파일은 클라이언트 build시 Code Split 되어지는 Component의 Chunk 관련 ‘이름’, ‘위치’, ‘크기’ 등의 정보를 가지게 됩니다.</li>
+</ul>
+
+<p>Babel Config</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">plugins</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">@loadable/babel-plugin</span><span class="dl">"</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>babel 변경시 정보를 추가하거나, 기존 정보가 누락되지 않도록 해당 플러그인을 추가 해줍니다.</li>
+</ul>
+
+<p>Server (Node) - Normal(String)</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">ChunkExtractor</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@loadable/server</span><span class="dl">'</span>
+
+<span class="c1">// This is the stats file generated by webpack loadable plugin</span>
+<span class="kd">const</span> <span class="nx">statsFile</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="dl">'</span><span class="s1">../dist/loadable-stats.json</span><span class="dl">'</span><span class="p">)</span>
+<span class="c1">// We create an extractor from the statsFile</span>
+<span class="kd">const</span> <span class="nx">extractor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ChunkExtractor</span><span class="p">({</span> <span class="nx">statsFile</span> <span class="p">})</span>
+<span class="c1">// Wrap your application using "collectChunks"</span>
+<span class="kd">const</span> <span class="nx">jsx</span> <span class="o">=</span> <span class="nx">extractor</span><span class="p">.</span><span class="nx">collectChunks</span><span class="p">(&lt;</span><span class="nc">YourApp</span> <span class="p">/&gt;)</span>
+<span class="c1">// Render your application</span>
+<span class="kd">const</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">ReactDOMServer</span><span class="p">.</span><span class="nx">renderToString</span><span class="p">(</span><span class="nx">jsx</span><span class="p">)</span>
+<span class="c1">// You can now collect your script tags</span>
+<span class="kd">const</span> <span class="nx">scriptTags</span> <span class="o">=</span> <span class="nx">extractor</span><span class="p">.</span><span class="nx">getScriptTags</span><span class="p">()</span> <span class="c1">// or extractor.getScriptElements();</span>
+<span class="c1">// You can also collect your "preload/prefetch" links</span>
+<span class="kd">const</span> <span class="nx">linkTags</span> <span class="o">=</span> <span class="nx">extractor</span><span class="p">.</span><span class="nx">getLinkTags</span><span class="p">()</span> <span class="c1">// or extractor.getLinkElements();</span>
+<span class="c1">// And you can even collect your style tags (if you use "mini-css-extract-plugin")</span>
+<span class="kd">const</span> <span class="nx">styleTags</span> <span class="o">=</span> <span class="nx">extractor</span><span class="p">.</span><span class="nx">getStyleTags</span><span class="p">()</span> <span class="c1">// or extractor.getStyleElements();</span>
+
+<span class="kd">const</span> <span class="nx">html</span> <span class="o">=</span> <span class="s2">`&lt;html&gt;
+  &lt;head&gt;</span><span class="p">${</span><span class="nx">linkTags</span><span class="p">}</span><span class="s2">&lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;</span><span class="p">${</span><span class="nx">html</span><span class="p">}</span><span class="s2">&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;`</span>
+
+<span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">html</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>loadable-stats.json 파일을 사용해서 서버에서 필요한 component을 extract합니다.</li>
+  <li>extract한 파일을 이용하여, ReactDOMServer의 SSR함수를 통해서 html을 생성합니다.</li>
+  <li>추가로, prefetch, style, SSR이후 Client Render(interactive page)을 위한 파일을 얻을 수 있습니다.</li>
+  <li>마지막으로 FULL HTML을 생성하여 response합니다.</li>
+</ul>
+
+<p>Server (Node) - Stream</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">renderToNodeStream</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-dom/server</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">ChunkExtractor</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@loadable/server</span><span class="dl">'</span>
+<span class="c1">// if you're using express.js, you'd have access to the response object "res"</span>
+<span class="c1">// typically you'd want to write some preliminary HTML, since React doesn't handle this</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">&lt;html&gt;&lt;head&gt;&lt;title&gt;Test&lt;/title&gt;&lt;/head&gt;&lt;body&gt;</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">statsFile</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="dl">'</span><span class="s1">../dist/loadable-stats.json</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">chunkExtractor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ChunkExtractor</span><span class="p">({</span> <span class="nx">statsFile</span> <span class="p">})</span>
+<span class="kd">const</span> <span class="nx">jsx</span> <span class="o">=</span> <span class="nx">chunkExtractor</span><span class="p">.</span><span class="nx">collectChunks</span><span class="p">(&lt;</span><span class="nc">YourApp</span> <span class="p">/&gt;)</span>
+<span class="kd">const</span> <span class="nx">stream</span> <span class="o">=</span> <span class="nx">ReactDOMServer</span><span class="p">.</span><span class="nx">renderToNodeStream</span><span class="p">(</span><span class="nx">jsx</span><span class="p">)</span>
+<span class="c1">// you'd then pipe the stream into the response object until it's done</span>
+<span class="nx">stream</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="p">{</span> <span class="na">end</span><span class="p">:</span> <span class="kc">false</span> <span class="p">})</span>
+<span class="c1">// and finalize the response with closing HTML</span>
+<span class="nx">stream</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">end</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">chunkExtractor</span><span class="p">.</span><span class="nx">getScriptTags</span><span class="p">()}</span><span class="s2">&lt;/body&gt;&lt;/html&gt;`</span><span class="p">),</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>stream형태의 경우 string형태와 조금 다르게 구동됩니다.</li>
+  <li>stream의 경우, React의 SSR 함수를 통해서 얻은 stream객체를 통해서 response을 수행합니다.</li>
+  <li>string형태와 동일하게 stream 완료  시점(stream.on(‘end’))에 script tag을 추가하여, SSR이후 Client Render(interactive page)을 구현 할 수 있습니다.</li>
+</ul>
+
+<p>Streaming rendering 의 경우  prefetch <link /> 은 지원하지 않습니다.</p>
+
+<h3 id="react-module-style-and-ssr">React Module Style And SSR</h3>
+
+<p><strong>Module Style 이란?</strong></p>
+
+<p>참고: <a href="https://create-react-app.dev/docs/adding-a-stylesheet">https://create-react-app.dev/docs/adding-a-stylesheet</a></p>
+
+<p>일반적으로 style(css)은 js코드와 별개로 html상에서 loading됩니다. module style은 이와 달리, js파일에서 style을 load 하고 해당 style을  bind(사용)하는 형태의 코드를 말합니다.</p>
+
+<p>Button.css</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.Button</span> <span class="p">{</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Button.js</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="dl">'</span><span class="s1">./Button.css</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// Tell webpack that Button.js uses these styles</span>
+<span class="kd">class</span> <span class="nx">Button</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// You can use them as regular CSS styles</span>
+    <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="s">"Button"</span> <span class="p">/&gt;;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>module style이 react에서 공식적으로 말하는 표준이나, 권장사항은 아닙니다. 하지만 많은 개발자들이 해당 형태의 구현의 편의성과 유용성 때문에 module style의 구현을 많이 사용하는 편입니다.</p>
+
+<p>참고: <a href="https://medium.com/seek-blog/block-element-modifying-your-javascript-components-d7f99fcab52b">https://medium.com/seek-blog/block-element-modifying-your-javascript-components-d7f99fcab52b</a></p>
+
+<p><strong>Module Style의 구동</strong></p>
+
+<p>module style은 사실 실제 module은 아니고 사실은 css text입니다. 따라서, css text가 module처럼 동작하게 하는 부분이 필요합니다. 해당 부분은 보통 webpack와 같은 bundler(compiler)에서 인식하여, module 형태로 만들어 줍니다.</p>
+
+<p>webpack.config</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">module</span><span class="se">\.(</span><span class="sr">scss|sass</span><span class="se">)</span><span class="sr">$/</span><span class="p">,</span>
+  <span class="na">use</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">target</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">web</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+				<span class="c1">// to inject the result into the DOM as a style block</span>
+        <span class="k">return</span> <span class="p">{</span> <span class="na">loader</span><span class="p">:</span> <span class="dl">'</span><span class="s1">style-loader</span><span class="dl">'</span> <span class="p">};</span>
+      <span class="p">}</span>
+
+			<span class="c1">// extract style(css) file</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="na">loader</span><span class="p">:</span> <span class="nx">MiniCssExtractPlugin</span><span class="p">.</span><span class="nx">loader</span><span class="p">,</span>
+      <span class="p">};</span>
+    <span class="p">})(),</span>
+    <span class="p">{</span>
+      <span class="na">loader</span><span class="p">:</span> <span class="dl">'</span><span class="s1">css-loader</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">options</span><span class="p">:</span> <span class="p">{</span> <span class="na">importLoaders</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">modules</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">},</span>
+</code></pre></div></div>
+
+<p>webpack에서, js코드 내부에 module style import구문이 존재하는경우, 해당 구문을 어떻게 처리해야 할지 module rules에 정의 할 수 있습니다.</p>
+
+<p>module style을 사용했을때, ‘style-loader’을 사용시, style 태그가 해당 js사용시  document.head.appendChild 형태로 동적으로 추가되게 됩니다.</p>
+
+<p><strong>Module Style SSR에서의 문제점 및 해결법</strong></p>
+
+<p>module style을 사용할때, SSR에서는 server side 는 node환경이고, 이때는 document 객체(host 객체)가 존재하지 않기때문에 syntax에러가 발생하게 됩니다.</p>
+
+<p>따라서, module style을 사용하고, SSR을 사용하는 경우, 이러한 문제를 해결하기 위해서는 server render용 module style 처리와 client render용 module style처리를 분리하거나, 또는 항상 css을 extract하는 처리가 필요합니다.</p>
+
+<ul>
+  <li>style 처리를 분리하는 경우, target node 형태의 webpack bundle 파일에서는 style import가 제외되고, targer web 형태의 webpack bundle 파일에서는 style-loader에 의해서 동적으로 style을 추가 하게 됩니다.</li>
+  <li>항상 css exteact하는 경우, js에 의해서 동적으로 style이 추가되지 않기 때문에  SSR시 style tag을 넣어주고, 해당 style 요청에 의해서 style이 load되도록 해주는 처리가 필요합니다. React의 SSR을 @loadable/component 형태로 구성하는 경우 style tags얻을 수 있기 때문에 SSR시 손쉽게 style을 넣어 줄 수 있습니다.</li>
+</ul>
+
+<p>module style 와  styled component는 약간 내용이 다릅니다. styled component는 module style 개념을 도입하여 style을 component화 하고, 해당 component을 통해서, style을 적용하는 방법입니다. 따라서 styled component는 별개의 모듈(dependency)을 node_modules에 설치해야 하고, 일종의 HoC(high order component)나 context(provider)처럼, style을 적용하려는 component을 감싸는 형태의 구현이 필요합니다.</p>
+
+<p>참고: styled component: <a href="https://styled-components.com/docs/basics#motivation">https://styled-components.com/docs/basics#motivation</a></p>
+
+<h3 id="react-router-and-ssr">React Router And SSR</h3>
+
+<p>참고: <a href="https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/server-rendering.md">https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/server-rendering.md</a></p>
+
+<p>일반적으로 React Router을 사용하는 경우와 달리 SSR을 사용하는 경우, StaticRouter을 사용해야 합니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// client</span>
+<span class="p">&lt;</span><span class="nc">BrowserRouter</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nc">App</span><span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nc">BrowserRouter</span><span class="p">&gt;</span>
+
+<span class="c1">// server (not the complete story)</span>
+<span class="p">&lt;</span><span class="nc">StaticRouter</span>
+  <span class="na">location</span><span class="p">=</span><span class="si">{</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span>
+  <span class="na">context</span><span class="p">=</span><span class="si">{</span><span class="nx">context</span><span class="si">}</span>
+<span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nc">App</span><span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nc">StaticRouter</span><span class="p">&gt;</span>
+</code></pre></div></div>
+
+<p>이는 동일 코드에 대해서, server용 client용 entry을 별개로 가져가거나, SSR시 staticRouter을 직접적으로 사용해야함을 의미 합니다. 따라서 webpack config 와 ssr(server code) 설정을 통해서 React Router사용시 SSR을 정상적으로 지원 가능하도록 코드를 구성해야 합니다.</p>
+
+<h3 id="기타">기타</h3>
+
+<ul>
+  <li>Next.js등을 사용하는 경우 client side render와 server side render을 코드에서 구분 가능합니다. 어떻게 가능할까요?
+    <ul>
+      <li>실제 React에서 Render의 Start Point는 React가 제공하는 Render함수를 호출하면서 시작됩니다. 즉 ReactDOM.render(), ReactDOM.hydrate(), ReactDOMServer.renderToString(), ReactDOMServer.renderToNodeStream() 을 통해서, 구분이 가능합니다.</li>
+      <li>실제 Component의 props으로의 구분의 경우, <strong>INITIAL_DATA</strong> <strong>**나 props을 통해 **</strong>data을 props 으로 넘겨서 clinet에서 그려진(호출된) render인지, server에서 그려진(호출된) render인지를 구별 할 수 있습니다.</li>
+    </ul>
+  </li>
+</ul>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/react" rel="tag"># react</a>
+          
+            
+            <a href="/tag/#/ssr" rel="tag"># ssr</a>
+          
+            
+            <a href="/tag/#/webpack" rel="tag"># webpack</a>
+          
+            
+            <a href="/tag/#/module-style" rel="tag"># module-style</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/articles/2020-02/shebang" rel="next" title="shebang?">
+                <i class="fa fa-chevron-left"></i> shebang?
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/articles/2020-02/Polyfill-Transform" rel="prev" title="Polyfill, Transform, 브라우저 하위호환 지원하기">
+                Polyfill, Transform, 브라우저 하위호환 지원하기 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            목차
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            흝어보기
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/gseok.jpg"
+               alt="GyeongSeok Seo" />
+          <p class="site-author-name" itemprop="name">GyeongSeok Seo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">포스트</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">카테고리</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">태그</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://github.com/gseok" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/assets/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-3"> <a class="nav-link" href="#소개"> <span class="nav-number">1</span> <span class="nav-text">소개</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#ssr-의-기본-개념"> <span class="nav-number">2</span> <span class="nav-text">SSR 의 기본 개념</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#react가-제공하는-ssr"> <span class="nav-number">3</span> <span class="nav-text">React가 제공하는 SSR</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#react-ssr에서-code-split--code-lazy-loading하기"> <span class="nav-number">4</span> <span class="nav-text">React SSR에서 Code Split &amp; Code Lazy Loading하기</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#react-module-style-and-ssr"> <span class="nav-number">5</span> <span class="nav-text">React Module Style And SSR</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#react-router-and-ssr"> <span class="nav-number">6</span> <span class="nav-text">React Router And SSR</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#기타"> <span class="nav-number">7</span> <span class="nav-text">기타</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GyeongSeok Seo</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://gseok.disqus.com/count.js" async></script>
+    
+
+    
+      
+      <script type="text/javascript">
+          var disqus_config = function () {
+              this.page.url = 'https://gseok.github.io/articles/2020-02/React-SSR';
+              this.page.identifier = '/articles/2020-02/React-SSR';
+              this.page.title = 'React SSR';
+          };
+          var d = document, s = d.createElement('script');
+          s.src = 'https://gseok.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', '' + +new Date());
+          (d.head || d.body).appendChild(s);
+      </script>
+      
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+

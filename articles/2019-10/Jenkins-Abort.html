@@ -1,0 +1,1076 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="jenkins,kubernates,unix,linux,devops," />
+
+
+<link rel="alternate" type="application/rss+xml" href="https://gseok.github.io/feed.xml" title="Gseok Blog">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Gseok Blog" type="application/atom+xml" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="소개">
+<meta name="keywords" content="jenkins, kubernates, unix, linux, devops">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jenkins Abort">
+<meta property="og:url" content="https://gseok.github.io/articles/2019-10/Jenkins-Abort">
+<meta property="og:site_name" content="Gseok Blog">
+<meta property="og:description" content="소개">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2021-06-22T18:20:00+09:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jenkins Abort">
+<meta name="twitter:description" content="소개">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '작성자'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://gseok.github.io/"/>
+
+
+
+
+
+  <title>Jenkins Abort | Gseok Blog</title>
+  
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-38849338-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-38849338-1');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ko">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gseok Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">GyeongSeok Seo story</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            홈
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            카테고리
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            아카이브
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            태그
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://gseok.github.io/articles/2019-10/Jenkins-Abort">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GyeongSeok Seo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/gseok.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gseok Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+          
+          
+            Jenkins Abort
+          
+        </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+              <time title="Jenkins Abort" itemprop="dateCreated datePublished" datetime="2019-10-22">
+                2019-10-22
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">수정일</span>
+              
+              <time title="Jenkins Abort" itemprop="dateModified" datetime="2021-06-22">
+                2021-06-22
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/ci" itemprop="url" rel="index">
+                    <span itemprop="name">ci</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/articles/2019-10/Jenkins-Abort#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="/articles/2019-10/Jenkins-Abort" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  <h2 id="소개">소개</h2>
+
+<p>약간 시대에 뒤떨어지는 UI/UX &amp; 사용법으로, 사용자들이 많이 이탈하였지만, 아직도 Top20 등으로 CI/CD Tool검색시 항상 포함되는 정통의 강자가 Jenkins 이다. 여기서는, Jenkins의 Abort(Cancel) action에 대한 후처리(post control or after control)를 별도의 plugin설치 없이 simple하게 하는 방법에 대하여 설명한다.</p>
+
+<h2 id="why-needed">why needed?</h2>
+
+<ul>
+  <li>현재 프로젝트에서, 서버로 API를 쏘는 CLI을 사용중인데, Jenkins에서 Cancel하여도, 실제 Build or Deploy동작은 Cancel되지 않는 문제가 있음.</li>
+  <li>해결방법으로, Jenkins에서 Cancel하면, 해당 동작을 감지하여 서버에 Cancel API을 호출하여 실제 Build or Deploy동작을 Cancel처리 하고자 함.</li>
+</ul>
+
+<h2 id="pre-required-knowledge">pre required knowledge</h2>
+
+<p><strong>Jenkins 관련</strong></p>
+
+<ul>
+  <li>Jenkins Basic
+    <ul>
+      <li>open source: <a href="https://github.com/jenkinsci/jenkins">https://github.com/jenkinsci/jenkins</a></li>
+      <li>Java Program (war), <code class="language-plaintext highlighter-rouge">java -jar jenkins.war --httpProt=8080</code></li>
+      <li>Java 8 이상 환경에서 어디서나 실행 가능(Multiple OS Support)</li>
+      <li><a href="https://blog.knoldus.com/setting-up-master-slave-machines-using-jenkins/">분산 빌드 지원</a></li>
+      <li><a href="https://plugins.jenkins.io/">다양한 플러그인 지원</a></li>
+      <li><a href="https://jenkins.io/doc/developer/tutorial/extend/">커스텀 플러그인 지원</a></li>
+    </ul>
+  </li>
+  <li>Jenkins Build Step (Execute Shell)
+    <ul>
+      <li>사실 Java에서 <code class="language-plaintext highlighter-rouge">Runtime.exec</code> or <code class="language-plaintext highlighter-rouge">ProcessBuilder</code>와 다를바 없음</li>
+      <li>즉 하나의 Execute Shell은 하나의 <code class="language-plaintext highlighter-rouge">Child Process</code>가 되어 독립적으로 수행됨</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Kubernetes 관련</strong></p>
+
+<ul>
+  <li>Kubectl CLI
+    <ul>
+      <li>쿠버네티스를 컨트롤 할수 있는 CLI Tool</li>
+      <li><code class="language-plaintext highlighter-rouge">kubectl</code> 명령어로 Kubernetes Cluster와 상호 작용 할 수 있다.</li>
+      <li><code class="language-plaintext highlighter-rouge">kubectl</code>은 실질적으로는 <a href="https://kubernetes.io/ko/docs/tutorials/kubernetes-basics/deploy-app/deploy-intro/">Kubernetes의 API</a>를 사용한다.
+        <ul>
+          <li><a href="https://kubernetes.io/ko/docs/concepts/overview/kubernetes-api/">API 설명</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="problem">problem</h2>
+
+<ul>
+  <li>jenkins의 build step에서 kubernetes의 helm등을 수행했을때, 사용자가 jenkins job을 <code class="language-plaintext highlighter-rouge">cancel(abort)</code> 한경우, jenins job은 stop되지만, <code class="language-plaintext highlighter-rouge">helm run은 cancel되지 않는</code> 문제가 있음</li>
+  <li>원인은 위 기본 개념에서 말했듯, 실질적으로 kubectl command가 api call이기때문에, 명령어가 kubernetes cluster에 들어가고 나서 취소 명령어가 들어오기 전까지는 계속 수행이 되고 있기 때문임</li>
+</ul>
+
+<h2 id="solution">solution</h2>
+
+<ul>
+  <li>jenkins의 cancel동작시 해당 동작을 감지하고, any action을 할 수 있게 하면 됨</li>
+</ul>
+
+<p><strong>Jenkins Abort Action</strong></p>
+
+<ul>
+  <li>jenkins에서 cancel을 누르면, <code class="language-plaintext highlighter-rouge">TERM</code> 시그널을 현재 Job의 process group에 발생시킨다.</li>
+  <li>이후 해당 job에서 수행(spawns)한 subprocess는 모두 <code class="language-plaintext highlighter-rouge">TERM</code>이 되고, “Finished: ABORTED” 메시지를 출력하면서, jenkins의 job 수행이 stop된다.</li>
+</ul>
+
+<p><strong>TERM Signal Handle</strong></p>
+
+<ul>
+  <li>singal은 unix계열의 운영체제에서, IPC용도 혹은, process control을 위해 만들어진 async한 event(signal)이다.</li>
+  <li>unix계열의 운영체제에서는 이러한 signal을 핸들링 할수 있는 <code class="language-plaintext highlighter-rouge">C</code>함수(System Call API) 및 CLI command(user command)명령어을 제공한다.</li>
+  <li>signal 핸들링 명령어중 <code class="language-plaintext highlighter-rouge">[trap](http://man7.org/linux/man-pages/man1/trap.1p.html)</code>은 시그널 발생을 감지하여, command을 실행하는게 가능한 명령어 이다.</li>
+</ul>
+
+<p><strong>Jenkins에서 Abort감지해서 사용자정의 동작하게 하기</strong></p>
+
+<ul>
+  <li>위 내용들을 조합하여 아래와 같은 간략한 script을 통해서, jenkins의 abort을 감지하고, 감지이후 사용자정의 동작을 구현 할 수 있다.</li>
+  <li>아래코드는 jenkins의 excutable script의 한 예이다.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="c"># abort control #######################################################</span>
+getAbort <span class="o">()</span> <span class="o">{</span>
+ <span class="nb">echo</span> <span class="s2">"--- Caution!! Abort detected ---"</span>
+ <span class="nb">echo</span> <span class="s2">"&gt; Launch The Post Script for Jenkins Aborted after 3sec"</span>
+
+ <span class="k">for </span>i <span class="k">in</span> <span class="o">{</span>1..3<span class="o">}</span>
+ <span class="k">do
+   </span><span class="nb">echo</span> <span class="s2">"."</span>
+   <span class="nb">sleep </span>1
+ <span class="k">done
+
+ </span><span class="nv">PENDING_NAME</span><span class="o">=</span><span class="sb">`</span>kubectl get build | <span class="nb">grep </span>some-dev- | <span class="nb">grep </span>Pending | <span class="nb">awk</span> <span class="s1">'{print $1}'</span><span class="sb">`</span>
+ <span class="k">if</span> <span class="o">[[</span> <span class="nt">-z</span> <span class="s2">"</span><span class="nv">$PENDING_NAME</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"PENDING_NAME is Empty"</span>
+ <span class="k">else
+    </span><span class="nb">echo</span> <span class="s1">'Build: '</span><span class="s2">"</span><span class="nv">$PENDING_NAME</span><span class="s2">"</span><span class="s1">' is Canceled'</span>
+    kubectl pipeline cancel <span class="nv">$PENDING_NAME</span>
+ <span class="k">fi</span>
+<span class="o">}</span>
+<span class="nb">trap</span> <span class="s1">'getAbort; exit'</span> SIGHUP SIGINT SIGTERM
+<span class="c">######################################################################</span>
+
+
+<span class="c"># check current cluster</span>
+kubectl get pods
+
+<span class="c"># This Step is real Build &amp; Deploy</span>
+<span class="c"># run pipeline</span>
+<span class="c"># 핵심은 jenkins로 아래와 같이 kubernates의 pipeline빌드를 돌리다가.</span>
+<span class="c"># kubernates가 아닌 jenkins에서 stop(cancel)을 시켯을때</span>
+<span class="c"># kubernates도 stop시키기임, jenkins의 stop버튼은 위의 getAbort가 감지하고</span>
+<span class="c"># kubectl pipeliine cancel로 stop시킨다.</span>
+<span class="c"># 따라서 jenkins도 stop되고, 실제 kubernates pipe도 stop된다.</span>
+kubectl pipeline run <span class="nt">--skip-approval</span> <span class="nt">--wait</span> some-dev-project
+
+<span class="c"># These Steps are checking the Build &amp; Deploy</span>
+<span class="c"># check pipeline result</span>
+kubectl get instance
+kubectl get service
+kubectl get pods
+
+<span class="c"># ping test</span>
+curl <span class="nt">--insecure</span> <span class="nt">-v</span> https://some-project/ping
+<span class="c"># 특이하게도, jenkins의 Execute shell step에서 trap 명령어 하위에, 또다른 명령어 하나가 있어야 정상 동작하는 경우가 있음. 간단히 print하는걸 넣어주면됨.</span>
+
+</code></pre></div></div>
+
+<ul>
+  <li>위와같은 상황에서, Jenkins UI상에서 Cancel수행시 정상적으로, abort을 감지하여 <code class="language-plaintext highlighter-rouge">getAbort</code>함수가 수행되는것을 확인 할 수 있다.</li>
+</ul>
+
+<h2 id="refrence">refrence</h2>
+
+<ul>
+  <li>Jenkins: <a href="https://jenkins.io/doc/">https://jenkins.io/doc/</a></li>
+  <li>Kubernetes: <a href="https://kubernetes.io/ko/docs">https://kubernetes.io/ko/docs</a></li>
+  <li>Jenkins Abort
+    <ul>
+      <li>stackoverflow: <a href="https://stackoverflow.com/questions/32065516/detect-jenkins-build-abort-event">https://stackoverflow.com/questions/32065516/detect-jenkins-build-abort-event</a></li>
+      <li>when you cancel a jenkins job: <a href="https://gist.github.com/datagrok/dfe9604cb907523f4a2f">https://gist.github.com/datagrok/dfe9604cb907523f4a2f</a></li>
+    </ul>
+  </li>
+  <li>signal: <a href="https://en.wikipedia.org/wiki/Signal_(IPC)">https://en.wikipedia.org/wiki/Signal_(IPC)</a></li>
+  <li>signal api: <a href="http://man7.org/linux/man-pages/man2/signal.2.html">http://man7.org/linux/man-pages/man2/signal.2.html</a></li>
+  <li>signal man 2 and 7: <a href="https://stackoverflow.com/questions/25828288/what-is-the-difference-between-signal7-and-signal2">https://stackoverflow.com/questions/25828288/what-is-the-difference-between-signal7-and-signal2</a></li>
+  <li>linux trap: <a href="https://www.joinc.co.kr/w/Site/Tip/Signal_trap">https://www.joinc.co.kr/w/Site/Tip/Signal_trap</a></li>
+  <li>linux trap man: <a href="http://man7.org/linux/man-pages/man1/trap.1p.html">http://man7.org/linux/man-pages/man1/trap.1p.html</a></li>
+</ul>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/jenkins" rel="tag"># jenkins</a>
+          
+            
+            <a href="/tag/#/kubernates" rel="tag"># kubernates</a>
+          
+            
+            <a href="/tag/#/unix" rel="tag"># unix</a>
+          
+            
+            <a href="/tag/#/linux" rel="tag"># linux</a>
+          
+            
+            <a href="/tag/#/devops" rel="tag"># devops</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/articles/2020-01/DOM-screenshot" rel="next" title="DOM 스샷찍기(Svg & Canvas & DOM)">
+                <i class="fa fa-chevron-left"></i> DOM 스샷찍기(Svg & Canvas & DOM)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            목차
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            흝어보기
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/gseok.jpg"
+               alt="GyeongSeok Seo" />
+          <p class="site-author-name" itemprop="name">GyeongSeok Seo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">포스트</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">카테고리</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">태그</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://github.com/gseok" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/assets/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-2"> <a class="nav-link" href="#소개"> <span class="nav-number">1</span> <span class="nav-text">소개</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#why-needed"> <span class="nav-number">2</span> <span class="nav-text">why needed?</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#pre-required-knowledge"> <span class="nav-number">3</span> <span class="nav-text">pre required knowledge</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#problem"> <span class="nav-number">4</span> <span class="nav-text">problem</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#solution"> <span class="nav-number">5</span> <span class="nav-text">solution</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#refrence"> <span class="nav-number">6</span> <span class="nav-text">refrence</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GyeongSeok Seo</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://gseok.disqus.com/count.js" async></script>
+    
+
+    
+      
+      <script type="text/javascript">
+          var disqus_config = function () {
+              this.page.url = 'https://gseok.github.io/articles/2019-10/Jenkins-Abort';
+              this.page.identifier = '/articles/2019-10/Jenkins-Abort';
+              this.page.title = 'Jenkins Abort';
+          };
+          var d = document, s = d.createElement('script');
+          s.src = 'https://gseok.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', '' + +new Date());
+          (d.head || d.body).appendChild(s);
+      </script>
+      
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+

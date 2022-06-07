@@ -1,0 +1,1356 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="nodejs,webpack,devops," />
+
+
+<link rel="alternate" type="application/rss+xml" href="https://gseok.github.io/feed.xml" title="Gseok Blog">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Gseok Blog" type="application/atom+xml" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="소개">
+<meta name="keywords" content="nodejs, webpack, devops">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSL, Https 설정 in Node.js And webpack dev server">
+<meta property="og:url" content="https://gseok.github.io/articles/2021-02/SSL,-Https-setting-in-Node-js-And-webpack-dev-server">
+<meta property="og:site_name" content="Gseok Blog">
+<meta property="og:description" content="소개">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="../../assets/post-images/2021-02-04-SSL/01.png">
+<meta property="og:image" content="../../assets/post-images/2021-02-04-SSL/02.png">
+<meta property="og:updated_time" content="2021-06-18T08:30:09+09:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SSL, Https 설정 in Node.js And webpack dev server">
+<meta name="twitter:description" content="소개">
+<meta name="twitter:image" content="../../assets/post-images/2021-02-04-SSL/01.png">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '작성자'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://gseok.github.io/"/>
+
+
+
+
+
+  <title>SSL, Https 설정 in Node.js And webpack dev server | Gseok Blog</title>
+  
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-38849338-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-38849338-1');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ko">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gseok Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">GyeongSeok Seo story</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            홈
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            카테고리
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            아카이브
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            태그
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://gseok.github.io/articles/2021-02/SSL,-Https-setting-in-Node-js-And-webpack-dev-server">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GyeongSeok Seo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/gseok.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gseok Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+          
+          
+            SSL, Https 설정 in Node.js And webpack dev server
+          
+        </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+              <time title="SSL, Https 설정 in Node.js And webpack dev server" itemprop="dateCreated datePublished" datetime="2021-02-05">
+                2021-02-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">수정일</span>
+              
+              <time title="SSL, Https 설정 in Node.js And webpack dev server" itemprop="dateModified" datetime="2021-06-17">
+                2021-06-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/bundler" itemprop="url" rel="index">
+                    <span itemprop="name">bundler</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/articles/2021-02/SSL,-Https-setting-in-Node-js-And-webpack-dev-server#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="/articles/2021-02/SSL,-Https-setting-in-Node-js-And-webpack-dev-server" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  <h2 id="소개"><strong>소개</strong></h2>
+
+<ul>
+  <li>Node.js 환경에서 https설정하는 방법을 설명한다.</li>
+  <li>현재 <code class="language-plaintext highlighter-rouge">my.example.com</code>은 이미 <code class="language-plaintext highlighter-rouge">cert</code>, <code class="language-plaintext highlighter-rouge">key</code> 가 존재한다.</li>
+  <li>다만 해당 파일이 <code class="language-plaintext highlighter-rouge">pem</code>파일로 되어있고, 현재는 <code class="language-plaintext highlighter-rouge">nginx</code>의 https의 설정용으로 되어 있다.
+    <ul>
+      <li>또한 현재 nginx용 ssl은 <code class="language-plaintext highlighter-rouge">pass</code>을 받게 되어 있다.</li>
+    </ul>
+  </li>
+  <li>따라서, node에서 해당 ssl(cert, key)을 바로 사용하는 경우 에러가 발생한다.</li>
+  <li>현재 이미 있는 nginx용 ssl을 node.js(webpack-dev-server)에서 사용하는 방법을 설명한다.</li>
+</ul>
+
+<h2 id="nodejs-에서-https설정하기"><strong>Node.js 에서 https설정하기</strong></h2>
+
+<ul>
+  <li>정상적인 ssl(cert, key)가 존재하는 경우 아래와 같은 코드로 https설정이 가능하다.</li>
+  <li>공식Doc - <a href="https://nodejs.org/api/https.html">https://nodejs.org/api/https.html</a></li>
+</ul>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// curl -k https://localhost:8000/</span>
+<span class="kd">const</span> <span class="nx">https</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">https</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">key</span><span class="p">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">test/fixtures/keys/agent2-key.pem</span><span class="dl">'</span><span class="p">),</span>
+  <span class="na">cert</span><span class="p">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">test/fixtures/keys/agent2-cert.pem</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">};</span>
+
+<span class="nx">https</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello world</span><span class="se">\n</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8000</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 또는</span>
+<span class="kd">const</span> <span class="nx">https</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">https</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">pfx</span><span class="p">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">test/fixtures/test_cert.pfx</span><span class="dl">'</span><span class="p">),</span>
+  <span class="na">passphrase</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sample</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">https</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello world</span><span class="se">\n</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8000</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Node의 공식 문서에서 알 수 있는 사실</p>
+
+<ul>
+  <li>확장자가 <code class="language-plaintext highlighter-rouge">pem</code>, <code class="language-plaintext highlighter-rouge">key</code>, <code class="language-plaintext highlighter-rouge">pfx</code>, <code class="language-plaintext highlighter-rouge">cert</code>을 다 지원 가능</li>
+  <li>ca을 넣지 않아도 무방</li>
+  <li>pass을 넣는 부분은 없음</li>
+</ul>
+
+<h2 id="express에서-https설정하기"><strong>Express에서 https설정하기</strong></h2>
+
+<ul>
+  <li>가장 기본이 되는 Node의 설정과 거의 동일하다.</li>
+  <li><code class="language-plaintext highlighter-rouge">webpack-dev-server</code>는 내부적으로 <code class="language-plaintext highlighter-rouge">express.js</code>을 사용하고 있기 때문에, <code class="language-plaintext highlighter-rouge">express.js</code>에서 정상 동작하면 사실상 <code class="language-plaintext highlighter-rouge">webpack-dev-server</code>에서 정상 동작한다.</li>
+  <li>이게 되면 사실상 거의 비슷한 구조인 <code class="language-plaintext highlighter-rouge">koa2.js</code>역시 동일한 형태로 <code class="language-plaintext highlighter-rouge">https</code>설정이 가능하다.</li>
+</ul>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">https</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">https</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="c1">// 더미 라우트 모든 req에 대해서 result을 res</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nx">json</span><span class="p">(</span><span class="dl">'</span><span class="s1">result</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">||</span> <span class="mi">4431</span><span class="p">;</span>   <span class="c1">// HTTPS 는 443 포트를 사용합니다</span>
+
+<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">key</span><span class="p">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/key.pem</span><span class="dl">'</span><span class="p">),</span>
+  <span class="na">cert</span><span class="p">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/cert.pem</span><span class="dl">'</span><span class="p">),</span>
+<span class="p">};</span>
+<span class="c1">// https 서버를 만들고 실행시킵니다</span>
+<span class="nx">https</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">app</span><span class="p">).</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Server start!!!</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 또는 아래와 같이 https와 http둘다 지원되는 서버 구축 가능</span>
+<span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">https</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">https</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">http</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">key</span><span class="p">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">key.pem</span><span class="dl">'</span><span class="p">),</span>
+  <span class="na">cert</span><span class="p">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">cert.cert</span><span class="dl">'</span><span class="p">),</span> <span class="c1">// pem이건 cert이건 확장과 관계없음, 이는 base인 node.js가 지원해서 가능</span>
+<span class="p">};</span>
+
+<span class="c1">// Create a service (the app object is just a callback).</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="c1">// Create an HTTP service.</span>
+<span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">app</span><span class="p">).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">80</span><span class="p">);</span>
+<span class="c1">// Create an HTTPS service identical to the HTTP service.</span>
+<span class="nx">https</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">app</span><span class="p">).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">443</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="webpack-dev-server의-https설정"><strong>webpack-dev-server의 https설정</strong></h2>
+
+<ul>
+  <li>참고: <a href="https://webpack.js.org/configuration/dev-server/#devserverhttps">https://webpack.js.org/configuration/dev-server/#devserverhttps</a></li>
+</ul>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">//...</span>
+  <span class="na">devServer</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">https</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">key</span><span class="p">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">/path/to/server.key</span><span class="dl">'</span><span class="p">),</span>
+      <span class="na">cert</span><span class="p">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">/path/to/server.crt</span><span class="dl">'</span><span class="p">),</span>
+      <span class="na">ca</span><span class="p">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">/path/to/ca.pem</span><span class="dl">'</span><span class="p">),</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<ul>
+  <li>문서상, webpack devServer설정상의 <code class="language-plaintext highlighter-rouge">https</code> object설정이 그대로, 더 위에서 설명한, node 혹은 express설정의 https생성(createServer) optioins로 들어간다.</li>
+  <li>This object is passed straight to Node.js HTTPS module, so see the <a href="https://nodejs.org/api/https.html">HTTPS documentation</a> for more information.</li>
+</ul>
+
+<h2 id="ssl키-local에서-생성해보기"><strong>ssl키 local에서 생성해보기</strong></h2>
+
+<ul>
+  <li>참고: <a href="https://www.notion.so/cbc326896d9cc4d240201e3f59690ac9">https://gist.github.com/gseok/cbc326896d9cc4d240201e3f59690ac9</a></li>
+</ul>
+
+<p><strong>pre-required</strong></p>
+
+<ul>
+  <li>openssl 이 있어야 한다.</li>
+</ul>
+
+<p><strong>ssl.conf</strong></p>
+
+<ul>
+  <li>cert파일 생성시 사용되는, ssl 설정 파일</li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span> <span class="nx">req</span> <span class="p">]</span>
+<span class="nx">default_bits</span>       <span class="o">=</span> <span class="mi">4096</span>
+<span class="nx">distinguished_name</span> <span class="o">=</span> <span class="nx">req_distinguished_name</span>
+<span class="nx">req_extensions</span>     <span class="o">=</span> <span class="nx">req_ext</span>
+
+<span class="p">[</span> <span class="nx">req_distinguished_name</span> <span class="p">]</span>
+<span class="nx">countryName</span>                 <span class="o">=</span> <span class="nx">IL</span>
+<span class="nx">countryName_default</span>         <span class="o">=</span> <span class="nx">GB</span>
+<span class="nx">stateOrProvinceName</span>         <span class="o">=</span> <span class="nx">Center</span>
+<span class="nx">stateOrProvinceName_default</span> <span class="o">=</span> <span class="nx">England</span>
+<span class="nx">localityName</span>                <span class="o">=</span> <span class="nx">Tel</span> <span class="nx">Aviv</span>
+<span class="nx">localityName_default</span>        <span class="o">=</span> <span class="nx">Brighton</span>
+<span class="nx">organizationName</span>            <span class="o">=</span> <span class="nx">CA</span>
+<span class="nx">organizationName_default</span>    <span class="o">=</span> <span class="nx">Hallmarkdesign</span>
+<span class="nx">organizationalUnitName</span>      <span class="o">=</span> <span class="nx">BlazeMeter</span>
+<span class="nx">commonName</span>                  <span class="o">=</span> <span class="nx">localhost</span>
+<span class="nx">commonName_max</span>              <span class="o">=</span> <span class="mi">64</span>
+<span class="nx">commonName_default</span>          <span class="o">=</span> <span class="nx">localhost</span>
+
+<span class="p">[</span> <span class="nx">req_ext</span> <span class="p">]</span>
+<span class="nx">subjectAltName</span> <span class="o">=</span> <span class="p">@</span><span class="nd">alt_names</span>
+
+<span class="p">[</span><span class="nx">alt_names</span><span class="p">]</span>
+<span class="nx">DNS</span><span class="p">.</span><span class="mi">1</span>   <span class="o">=</span> <span class="nx">localhost</span>
+</code></pre></div></div>
+
+<p><strong>Generate private key</strong></p>
+
+<ul>
+  <li>비공개키 생성</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ openssl genrsa -out private.key 4096
+</code></pre></div></div>
+
+<p><strong>Generate a Certificate Signing Request</strong></p>
+
+<ul>
+  <li>비공개키와, ssl.conf(ssl 설정 파일)을 이용해서, sign파일(csr) 생성</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl req -new -sha256 \
+    -out private.csr \
+    -key private.key \
+    -config ssl.conf
+
+</code></pre></div></div>
+
+<p><strong>Generate the certificate</strong></p>
+
+<ul>
+  <li>비공개키 + 키 sign 파일 두개를 이용해서, cert 파일 생성(실질적인 인증서 파일!)</li>
+  <li>이때도 ssl.conf는 동일하게 사용됨</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl x509 -req \
+    -days 3650 \
+    -in private.csr \
+    -signkey private.key \
+    -out private.crt \
+    -extensions req_ext \
+    -extfile ssl.conf
+</code></pre></div></div>
+
+<p><strong>Add the certificate to keychain and trust it:</strong></p>
+
+<ul>
+  <li>local에서 생성한 ssl용 cert파일은, 공식 인증기관에서 인증한 키가 아니기 때문에 실제 사용시 브라우저에서, ```알수없는 인증기관``에서 인증 과련 경고가 발생</li>
+  <li>아래 로직은 임의로, 본인 컴퓨터에서 해당 key을 <code class="language-plaintext highlighter-rouge">믿을만한</code>키로 인식 하는 방법(개발용) 이다.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain private.crt
+</code></pre></div></div>
+
+<p><strong>Create a pem file from crt</strong></p>
+
+<ul>
+  <li>위 과정상으로 확장자가 crt인 인증서파일을 생성하였는데, 이 확장자를 openssl명령어로 벼경 가능하다.</li>
+  <li>쉽게 이해하자면, 특정 유틸프로그램(openssl)로 <code class="language-plaintext highlighter-rouge">jpg &gt; png</code>하는것과 비슷하다.
+    <ul>
+      <li>즉 실질적인 기능은 동일한데, 확장자(내부 format)이 다른 type형태로 전환 가능</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl x509 -in private.crt -out private.pem -outform PEM
+</code></pre></div></div>
+
+<p><strong>Run webpack dev server</strong></p>
+
+<ul>
+  <li>로컬에서 생성한 ssl (key and cert)을 가지고 webpack-dev-server or node.js 에서 https로 사용 가능하다.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run webpack-dev-server -- --open --https --cert private.pem --key private.key
+</code></pre></div></div>
+
+<h2 id="ssl키-type-혹은-확장자-변경"><strong>ssl키 type 혹은 확장자 변경</strong></h2>
+
+<ul>
+  <li>위 간략한 ssl키 local에서 생성 과정에서 알수 있듯, openssl로 ssl이 생성한 파일의 type(pem, key, crt 등)을 변경하거나, pem 에서 key을 추출하는등의 동작이 가능하다.</li>
+  <li>참고: <a href="https://stackoverflow.com/questions/13732826/convert-pem-to-crt-and-key">https://stackoverflow.com/questions/13732826/convert-pem-to-crt-and-key</a></li>
+  <li>참고: <a href="https://stackoverflow.com/questions/991758/how-to-get-pem-file-from-key-and-crt-files">https://stackoverflow.com/questions/991758/how-to-get-pem-file-from-key-and-crt-files</a></li>
+  <li>여기서는 몇가지 방법반 소개한다. 더 많은 방법은 위 참고 부분을 확인</li>
+</ul>
+
+<p><strong>pem 파일에서 key &amp; cert추출</strong></p>
+
+<ul>
+  <li>즉 key.pem -&gt; key.key</li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">openssl</span> <span class="nx">pkey</span> <span class="o">-</span><span class="k">in</span> <span class="p">.</span><span class="o">/</span><span class="nx">cert</span><span class="o">/</span><span class="nx">key</span><span class="p">.</span><span class="nx">pem</span> <span class="o">-</span><span class="nx">out</span> <span class="nx">key</span><span class="p">.</span><span class="nx">key</span>
+<span class="c1">// 위 명령어 시도시, Enter pass phrase 요청이 나옴 이때, nginx에서 쓰는 ssl.pass 파일에 기록된 값을 사용</span>
+</code></pre></div></div>
+
+<ul>
+  <li>또는</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl rsa -in foo.pem -out foo.key
+</code></pre></div></div>
+
+<p><strong>Convert a DER file (.crt .cer .der) to PEM</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl x509 -inform der -in certificate.cer -out certificate.pem
+</code></pre></div></div>
+
+<p><strong>Convert a PEM file to DER</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl x509 -outform der -in certificate.pem -out certificate.der
+</code></pre></div></div>
+
+<p><strong>Convert PEM to CRT (.CRT file)</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl x509 -outform der -in certificate.pem -out certificate.crt
+</code></pre></div></div>
+
+<p><strong>Convert PEM to PFX</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile CACert.crt
+</code></pre></div></div>
+
+<p><strong>To remove the pass phrase on an RSA private key</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> openssl rsa -in key.pem -out keyout.pem
+</code></pre></div></div>
+
+<ul>
+  <li>pem 파일에서 key &amp; cert추출 와 동일</li>
+  <li>설명상 실질적으로는 pem에서 pass phrase을 제거(혹은 추가?) 하는 역할</li>
+</ul>
+
+<h2 id="이미-있는-nginx용-ssl을-nodejswebpack-dev-server에서-사용하는-방법"><strong>이미 있는 nginx용 ssl을 node.js(webpack-dev-server)에서 사용하는 방법</strong></h2>
+
+<ul>
+  <li>사실상 위의 openssl을 사용하여, pem -&gt; key 추출 등의 여러 명령어를 사용하여, node에서 사용가능하게 변경하면 된다.
+    <ul>
+      <li>각 nginx ssl환경에 맞는 파일을 -&gt; node 환경에서 사용가능하게 변경 후 사용하면됨…</li>
+    </ul>
+  </li>
+  <li>여기서는 my.example.com에서 사용하는 nginx용 인증서를 node용으로 바꾸는 부분만 간략하게 다룬다</li>
+</ul>
+
+<p><strong>nginx인증서</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">cert.pem</code>, <code class="language-plaintext highlighter-rouge">key.pem</code>, <code class="language-plaintext highlighter-rouge">ssl.pass</code> 3개의 파일로 구성되어 있음
+    <ul>
+      <li>주의!! - nginx하위에 현재 설정된, ssl.conf는 nginx용 conf이지 openssl에서 key, cert을 생성하기위한 conf가 아님!!!</li>
+    </ul>
+  </li>
+  <li>일단 cert와, key가 pem으로 되어 있고, pass(passwd)사용하는걸 알 수 있다.</li>
+  <li>node에서 사용하려면
+    <ul>
+      <li>A. <code class="language-plaintext highlighter-rouge">pfx</code> 형태로 바꾸고 node 쪽의 https설정(createServer)에서 pass을 넘겨주는 형태</li>
+      <li>B. <code class="language-plaintext highlighter-rouge">key.pem</code>에서 pass을 추출(혹은 합산)해서 key을 생성하고 사용하는 형태</li>
+    </ul>
+  </li>
+  <li>위와같이 2개의 방법을 사용 할 수 있다.
+    <ul>
+      <li>A.의 경우 CA인증서가 필요하고, cert.pem에서 crt파일로 변경이 필요함</li>
+      <li>B.의 경우, <code class="language-plaintext highlighter-rouge">key.pem -&gt; key.key</code> 형태로 변경 후 사용 가능.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>실제 적용</strong></p>
+
+<ul>
+  <li>실제 서버의 webpack-dev-server에서는 B 형태로 작업하였다.</li>
+  <li>pem -&gt; key 변경(pass추출or합산)</li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">openssl</span> <span class="nx">pkey</span> <span class="o">-</span><span class="k">in</span> <span class="p">.</span><span class="o">/</span><span class="nx">cert</span><span class="o">/</span><span class="nx">key</span><span class="p">.</span><span class="nx">pem</span> <span class="o">-</span><span class="nx">out</span> <span class="nx">key</span><span class="p">.</span><span class="nx">key</span>
+</code></pre></div></div>
+
+<ul>
+  <li>cert는 기존꺼 그대로 사용해도 됨(pem이여도됨)</li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">https</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">https</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nx">json</span><span class="p">(</span><span class="dl">'</span><span class="s1">result</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">||</span> <span class="mi">4431</span><span class="p">;</span>   <span class="c1">// HTTPS 는 443 포트를 사용합니다</span>
+
+<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="c1">// pem -&gt; key 확장자 만드는 위 명령어로 생성한놈, 생성시 pass잘 넣어야 정상 생서욈</span>
+  <span class="na">key</span><span class="p">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/key.key</span><span class="dl">'</span><span class="p">),</span>
+
+  <span class="c1">// cert는 기존 pem그대로 사용 가능</span>
+  <span class="na">cert</span><span class="p">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/cert/cert.pem</span><span class="dl">'</span><span class="p">),</span>
+<span class="p">};</span>
+<span class="c1">// https 서버를 만들고 실행시킵니다</span>
+<span class="nx">https</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">app</span><span class="p">).</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Server start!!!</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li>서버 구동됨</li>
+</ul>
+
+<p><img src="../../assets/post-images/2021-02-04-SSL/01.png" alt="" /></p>
+
+<ul>
+  <li>접속시 정상 동작</li>
+</ul>
+
+<p><img src="../../assets/post-images/2021-02-04-SSL/02.png" alt="" /></p>
+
+<ul>
+  <li>webpack-dev-server</li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">devServer</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nl">public</span><span class="p">:</span> <span class="dl">'</span><span class="s1">local-my.example.com:3132</span><span class="dl">'</span><span class="p">,</span>
+        <span class="nx">https</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nl">key</span><span class="p">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">__dirname</span><span class="p">}</span><span class="s2">/../../nginx-conf/certificate/key.key`</span><span class="p">),</span>
+          <span class="nx">cert</span><span class="p">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">__dirname</span><span class="p">}</span><span class="s2">/../../nginx-conf/certificate/cert.pem`</span><span class="p">),</span>
+        <span class="p">},</span>
+        <span class="nx">publicPath</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span>
+        <span class="nx">port</span><span class="p">:</span> <span class="mi">3132</span><span class="p">,</span>
+        <span class="nx">hot</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">open</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">inline</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">writeToDisk</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">disableHostCheck</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">historyApiFallback</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">compress</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="p">},</span>
+</code></pre></div></div>
+
+<h2 id="추가-내용"><strong>추가 내용</strong></h2>
+
+<ul>
+  <li>webpack-dev-server의 https 설정은, 그 설정 그대로 node의 설정에 들어간다고 생각해도 된다.</li>
+  <li>node 에서 <code class="language-plaintext highlighter-rouge">passphrase: 'sample'</code>와 같이 비번(passphrase)을 직접 입력하면, 굳이 pem 으로 (pass추출or합산) 하지 않아도 동작 가능하다.</li>
+  <li>다만 이 글에서는 코드내에 passwd 노출이 싫었고, 각 파일들 pem, crt, key을 추출 합산 하는게 가능하다는걸 소개하고 싶었다. 각 개발 환경에 맞게 응용해서 쓰면 될꺼 같다.</li>
+</ul>
+
+<h2 id="좀더알기"><strong>좀더알기</strong></h2>
+
+<ul>
+  <li>SSL?
+    <ul>
+      <li><a href="https://wiki.kldp.org/HOWTO/html/SSL-Certificates-HOWTO/x70.html">https://wiki.kldp.org/HOWTO/html/SSL-Certificates-HOWTO/x70.html</a></li>
+      <li><a href="https://offbyone.tistory.com/274">https://offbyone.tistory.com/274</a></li>
+    </ul>
+  </li>
+  <li>ssl 파일 포멧?
+    <ul>
+      <li><a href="https://www.sslcert.co.kr/guides/kb/54">https://www.sslcert.co.kr/guides/kb/54</a></li>
+      <li><a href="https://www.letmecompile.com/certificate-file-format-extensions-comparison/">https://www.letmecompile.com/certificate-file-format-extensions-comparison/</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/nodejs" rel="tag"># nodejs</a>
+          
+            
+            <a href="/tag/#/webpack" rel="tag"># webpack</a>
+          
+            
+            <a href="/tag/#/devops" rel="tag"># devops</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/articles/2021-06/pm2-logroate-not-working" rel="next" title="pm2 logroate 가 pm2 멀티 인스턴스에서 이상동작">
+                <i class="fa fa-chevron-left"></i> pm2 logroate 가 pm2 멀티 인스턴스에서 이상동작
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/articles/2020-03/Node-Env" rel="prev" title="Node Env?">
+                Node Env? <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            목차
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            흝어보기
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/gseok.jpg"
+               alt="GyeongSeok Seo" />
+          <p class="site-author-name" itemprop="name">GyeongSeok Seo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">포스트</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">카테고리</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">태그</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://github.com/gseok" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/assets/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-2"> <a class="nav-link" href="#소개"> <span class="nav-number">1</span> <span class="nav-text">소개</strong</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#nodejs-에서-https설정하기"> <span class="nav-number">2</span> <span class="nav-text">Node.js 에서 https설정하기</strong</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#express에서-https설정하기"> <span class="nav-number">3</span> <span class="nav-text">Express에서 https설정하기</strong</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#webpack-dev-server의-https설정"> <span class="nav-number">4</span> <span class="nav-text">webpack-dev-server의 https설정</strong</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#ssl키-local에서-생성해보기"> <span class="nav-number">5</span> <span class="nav-text">ssl키 local에서 생성해보기</strong</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#ssl키-type-혹은-확장자-변경"> <span class="nav-number">6</span> <span class="nav-text">ssl키 type 혹은 확장자 변경</strong</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#이미-있는-nginx용-ssl을-nodejswebpack-dev-server에서-사용하는-방법"> <span class="nav-number">7</span> <span class="nav-text">이미 있는 nginx용 ssl을 node.js(webpack-dev-server)에서 사용하는 방법</strong</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#추가-내용"> <span class="nav-number">8</span> <span class="nav-text">추가 내용</strong</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#좀더알기"> <span class="nav-number">9</span> <span class="nav-text">좀더알기</strong</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GyeongSeok Seo</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://gseok.disqus.com/count.js" async></script>
+    
+
+    
+      
+      <script type="text/javascript">
+          var disqus_config = function () {
+              this.page.url = 'https://gseok.github.io/articles/2021-02/SSL,-Https-setting-in-Node-js-And-webpack-dev-server';
+              this.page.identifier = '/articles/2021-02/SSL,-Https-setting-in-Node-js-And-webpack-dev-server';
+              this.page.title = 'SSL, Https 설정 in Node.js And webpack dev server';
+          };
+          var d = document, s = d.createElement('script');
+          s.src = 'https://gseok.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', '' + +new Date());
+          (d.head || d.body).appendChild(s);
+      </script>
+      
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+

@@ -1,0 +1,1117 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="pyscript,javascript,webassembly,tech basic," />
+
+
+<link rel="alternate" type="application/rss+xml" href="https://gseok.github.io/feed.xml" title="Gseok Blog">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Gseok Blog" type="application/atom+xml" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="소개">
+<meta name="keywords" content="pyscript, javascript, webassembly, tech basic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pyscript 소개">
+<meta property="og:url" content="https://gseok.github.io/articles/2022-06/pyscript">
+<meta property="og:site_name" content="Gseok Blog">
+<meta property="og:description" content="소개">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="../../assets/post-images/2022-06-07-pyscript/pyscript-f0.png">
+<meta property="og:image" content="../../assets/post-images/2022-06-07-pyscript/pyscript-f1.png">
+<meta property="og:image" content="../../assets/post-images/2022-06-07-pyscript/pyscript-f2.png">
+<meta property="og:image" content="../../assets/post-images/2022-06-07-pyscript/pyscript-f3.gif">
+<meta property="og:updated_time" content="2022-06-06T03:10:00+09:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pyscript 소개">
+<meta name="twitter:description" content="소개">
+<meta name="twitter:image" content="../../assets/post-images/2022-06-07-pyscript/pyscript-f0.png">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '작성자'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://gseok.github.io/"/>
+
+
+
+
+
+  <title>pyscript 소개 | Gseok Blog</title>
+  
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-38849338-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-38849338-1');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ko">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gseok Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">GyeongSeok Seo story</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            홈
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            카테고리
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            아카이브
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            태그
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://gseok.github.io/articles/2022-06/pyscript">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GyeongSeok Seo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/gseok.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gseok Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+          
+          
+            pyscript 소개
+          
+        </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+              <time title="pyscript 소개" itemprop="dateCreated datePublished" datetime="2022-06-04">
+                2022-06-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">수정일</span>
+              
+              <time title="pyscript 소개" itemprop="dateModified" datetime="2022-06-05">
+                2022-06-05
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/tech%20talk" itemprop="url" rel="index">
+                    <span itemprop="name">tech talk</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/articles/2022-06/pyscript#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="/articles/2022-06/pyscript" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  <h2 id="소개">소개</h2>
+
+<p>python을 html에서 구동하게 해주는, PyScript에 대하여 간략하게 알아봅니다.</p>
+
+<h3 id="pyscript-란">PyScript 란?</h3>
+
+<ul>
+  <li>python을 html에서 그대로 구동하게 하는것, 즉 javascript처럼 구동 가능하다.</li>
+  <li><a href="https://realpython.com/python-news-april-2022/#pycon-us-2022">PyCon US (2022-04-27 ~ 2022-05-03) 에서, 발표</a>(alpha 버전)되었다.
+    <ul>
+      <li>
+        <p>현재(2022-06) 발표된 버전(alpha)이고, 공식 페이지에서도 상업용 사이트에서의 사용은 주의하라고 되어 있다.</p>
+
+        <p><img src="../../assets/post-images/2022-06-07-pyscript/pyscript-f0.png" alt="" /></p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="hello-world">hello world</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width,initial-scale=1"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;title&gt;</span>PyScript Hello World<span class="nt">&lt;/title&gt;</span>
+
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"icon"</span> <span class="na">type=</span><span class="s">"image/png"</span> <span class="na">href=</span><span class="s">"favicon.png"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://pyscript.net/alpha/pyscript.css"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"https://pyscript.net/alpha/pyscript.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+
+  <span class="nt">&lt;body&gt;</span>
+    Hello world! <span class="nt">&lt;br&gt;</span>
+    This is the current date and time, as computed by Python:
+    <span class="nt">&lt;py-script&gt;</span>
+        from datetime import datetime
+        now = datetime.now()
+        now.strftime("%m/%d/%Y, %H:%M:%S")
+    <span class="nt">&lt;/py-script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>ref: <a href="https://github.com/pyscript/pyscript/blob/main/examples/hello_world.html">https://github.com/pyscript/pyscript/blob/main/examples/hello_world.html</a></li>
+  <li>위 코드를 생성하여 실제 구동해보면, javascripg처럼 실제 구동되어서 화면에 날자가 프린트 되는걸 확인 할 수 있다.</li>
+  <li>코드를 분석해보면, <code class="language-plaintext highlighter-rouge">pyscript.js 파일을</code> 로드하고 있음을 알 수 있다. 해당 파일이 <code class="language-plaintext highlighter-rouge">py-script</code>을 구동하게 해준다.</li>
+</ul>
+
+<details open="">
+  <summary>code and result 보기</summary>
+
+  <iframe width="100%" height="200" src="//jsfiddle.net/gseok/b76yove8/3/embedded/html,result/" allowfullscreen="allowfullscreen" allowpaymentrequest="" frameborder="0"></iframe>
+</details>
+
+<h3 id="pyscript-simple-architecture">PyScript simple architecture</h3>
+
+<p><strong>pyscript가 나오게된 배경</strong></p>
+
+<ul>
+  <li>javascript는 client언어로 시작하여, server언어(node.js)로 확장되었다.</li>
+  <li>그렇다면 server언어인 pyhton은 반대로 client언어(PyScript)로 확장 할 수 있지 않을까?
+    <ul>
+      <li>이러한 요구(잠재적 고객들 === python을 사용하는 개발자)가 있었다.</li>
+      <li><strong>기술의 발전(사실상 webassemble 발전)으로 가능하게 됨. === PyScript</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>pyscript의 의미</strong></p>
+
+<ul>
+  <li>python의 생태계(수많은 library, component 등등) 이 → web 생태계로, web생태계의 확장</li>
+  <li>anaconda 팀에서 말하길
+    <ul>
+      <li>PyScript(Pyhton)을 활용하여 FE개발자가 web application을 만들수 있게 될꺼다.</li>
+      <li>데이터 과학자 입장에서 html file을 이용하여, dashboard와 models을 공유하고, browser을 통해서 구동 할 수 있게 한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="../../assets/post-images/2022-06-07-pyscript/pyscript-f1.png" alt="" /></p>
+
+<p>Figuare 1. PyScript overview (ref: <a href="https://anaconda.cloud/api/files/de4b3735-17cf-4165-9dff-75102dbbd240">https://anaconda.cloud/api/files/de4b3735-17cf-4165-9dff-75102dbbd240</a>)</p>
+
+<p><strong>pyscript는 어떻게 구동되는가?</strong></p>
+
+<p><img src="../../assets/post-images/2022-06-07-pyscript/pyscript-f2.png" alt="" /></p>
+
+<p>Figure 2. PyScript Tech Stack. (ref: <a href="https://anaconda.cloud/api/files/31ea07ba-dadc-4d18-b79e-d309328762d0">https://anaconda.cloud/api/files/31ea07ba-dadc-4d18-b79e-d309328762d0</a>)</p>
+
+<ul>
+  <li><a href="https://pyodide.org/en/stable/index.html">Pyodide</a> 라고 불리는 <strong>webassembly</strong> 로 구성된 pyton용 wasm을 통해서 구동된다.</li>
+  <li>즉 webassembly을 이용하여 구동된다. 따라서 각 browser vendor가 javascript engine와 같은 어떤 별도의 python engine을 browser에 가지고 있지 않아도 구동된다! (일단 현재는…)
+    <ul>
+      <li>개인적으로는 만약 python 개발자의 유입이 많아지면 사실상 native(browser) 에서 직접 제공도 할 수 있다고 생각한다. (그럼 javascript + python 투트랙?!? ← 먼훗날 확인하기로)</li>
+    </ul>
+  </li>
+  <li>webassembly가 1.0을 발표(2019.12)하고, 약 2년만에 이렇게, python이 구동가능할 정도로 발전하다니 정말 놀랍다.
+    <ul>
+      <li>이런식이라면, 정말로, webassermbly는 다른 언어들, 특히나 script형 function형 언어들의 porting을 기대해볼만 할듯 하다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="pyscript-example">PyScript Example</h3>
+
+<p><strong>pyscript의 주요 구성 요소</strong></p>
+
+<ul>
+  <li>py-env: Python 코드를 실행하는데 필요한 Python 패키지를 정의한다.
+    <ul>
+      <li><a href="https://github.com/pyscript/pyscript/blob/main/examples/panel_stream.html#L38-L43">https://github.com/pyscript/pyscript/blob/main/examples/panel_stream.html#L38-L43</a></li>
+    </ul>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;py-env&gt;</span>
+      - bokeh
+      - numpy
+      - pandas
+      - panel==0.13.1
+  <span class="nt">&lt;/py-env&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>py-script: Python 코드를 작성할수 있는 영역 태그. 혹은 Pyton 코드 file을 src로 로드하는 태그.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> 태그와 유사하다.</li>
+      <li><a href="https://github.com/pyscript/pyscript/blob/main/examples/panel_stream.html#L69-L115">https://github.com/pyscript/pyscript/blob/main/examples/panel_stream.html#L69-L115</a></li>
+    </ul>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c">&lt;!-- 아래와 같이 python 파일을 로드 하던가 --&gt;</span>
+  <span class="nt">&lt;py-script</span> <span class="na">src=</span><span class="s">"/python_file.py"</span><span class="nt">&gt;&lt;/py-script&gt;</span>
+
+  <span class="c">&lt;!-- 또는 아래와 같이 python코드를 작성 할 수 있다.--&gt;</span>
+  <span class="nt">&lt;py-script&gt;</span>
+  	from datetime import datetime
+  	now = datetime.now()
+  	now.strftime("%m/%d/%Y, %H:%M:%S")
+  <span class="nt">&lt;/py-script&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>py-repl(Read Eval Print Loop): REPL을 바로 할 수 있게 해준다.
+    <ul>
+      <li><a href="https://github.com/pyscript/pyscript/blob/main/examples/panel_deckgl.html#L70">https://github.com/pyscript/pyscript/blob/main/examples/panel_deckgl.html#L70</a></li>
+    </ul>
+
+    <p><img src="../../assets/post-images/2022-06-07-pyscript/pyscript-f3.gif" alt="" /></p>
+
+    <details open="">
+  <summary>code and result 보기</summary>
+
+  <iframe width="100%" height="300" src="//jsfiddle.net/gseok/dorpsbk7/4/embedded/html,result/" allowfullscreen="allowfullscreen" allowpaymentrequest="" frameborder="0"></iframe>
+</details>
+  </li>
+</ul>
+
+<p><strong>그외 핵심요소</strong></p>
+
+<ul>
+  <li><strong>Python ecosystem:</strong> 유명하고, 유용한 아주 많은 Python 패키지를 사용할 수 있다. (such as numpy, pandas, scikit-learn, and more)</li>
+  <li><strong>Python with JavaScript:</strong> Javascript와 Python양방향으로 객체(objects)와 namespaces에 접근하고 통신(사용) 할 수 있다.(이 부분의 deep한 기술 내용은 Pyodied의 js ↔ python간 사용 관련 문서를 참고)</li>
+  <li><strong>Environment management:</strong> 사용자가 사용하고자하는 python패키지를 정의하고 관리할 수 있다.(py-env)</li>
+  <li><strong>Visual application development:</strong> 버튼, 컨테이너, 텍스트박스 등 즉시 사용가능한 UI요소를 제공하고 있다.</li>
+</ul>
+
+<h3 id="정리">정리</h3>
+
+<ul>
+  <li>PyScript 는 python을 on browser에서 구동하게 해준다. (PyScript brings Python to the browser.)</li>
+  <li>Browser에서 python엔진을 제공하는건 아니고 webassembly기술을 활용하여 제공되고 있다.</li>
+  <li>이제 alpha version으로 시작이지만, python의 미래이자 web기술(생태계)의 확장이다. (아직 tensorflow등은 구동 안된다고 한다…)</li>
+  <li>web(FE) 개발자라면 매우 관심있게 지켜볼 주제라고 본다.(python 도 공부해서 같이 쓰자~)</li>
+</ul>
+
+<h3 id="참고">참고</h3>
+
+<ul>
+  <li>공식홈페이지: <a href="https://pyscript.net/">https://pyscript.net/</a></li>
+  <li>아나콘다 문서: <a href="https://anaconda.cloud/pyscript-python-in-the-browser">https://anaconda.cloud/pyscript-python-in-the-browser</a></li>
+  <li>Getting Started: <a href="https://github.com/pyscript/pyscript/blob/main/docs/tutorials/getting-started.md">https://github.com/pyscript/pyscript/blob/main/docs/tutorials/getting-started.md</a></li>
+  <li>python 기사: <a href="https://realpython.com/python-news-april-2022/">https://realpython.com/python-news-april-2022/</a></li>
+  <li>git: <a href="https://github.com/pyscript?type=source">https://github.com/pyscript?type=source</a></li>
+  <li>examples: <a href="https://github.com/pyscript/pyscript/tree/main/examples">https://github.com/pyscript/pyscript/tree/main/examples</a></li>
+  <li>Pyodide: <a href="https://pyodide.org/en/stable/index.html">https://pyodide.org/en/stable/index.html</a>
+    <ul>
+      <li>js가 python사용하기: <a href="https://pyodide.org/en/stable/usage/quickstart.html#accessing-python-scope-from-javascript">https://pyodide.org/en/stable/usage/quickstart.html#accessing-python-scope-from-javascript</a></li>
+      <li>python이 js사용하기: <a href="https://pyodide.org/en/stable/usage/quickstart.html#accessing-javascript-scope-from-python">https://pyodide.org/en/stable/usage/quickstart.html#accessing-javascript-scope-from-python</a></li>
+    </ul>
+  </li>
+  <li>webassembly: <a href="https://webassembly.org/">https://webassembly.org/</a></li>
+</ul>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/pyscript" rel="tag"># pyscript</a>
+          
+            
+            <a href="/tag/#/javascript" rel="tag"># javascript</a>
+          
+            
+            <a href="/tag/#/webassembly" rel="tag"># webassembly</a>
+          
+            
+            <a href="/tag/#/tech%20basic" rel="tag"># tech basic</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/articles/2021-06/Image-size-optimize" rel="prev" title="png, jpg, 이미지 용량 줄이기">
+                png, jpg, 이미지 용량 줄이기 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            목차
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            흝어보기
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/gseok.jpg"
+               alt="GyeongSeok Seo" />
+          <p class="site-author-name" itemprop="name">GyeongSeok Seo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">포스트</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">카테고리</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">태그</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://github.com/gseok" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/assets/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-2"> <a class="nav-link" href="#소개"> <span class="nav-number">1</span> <span class="nav-text">소개</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#pyscript-란"> <span class="nav-number">1.1</span> <span class="nav-text">PyScript 란?</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#hello-world"> <span class="nav-number">1.2</span> <span class="nav-text">hello world</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#pyscript-simple-architecture"> <span class="nav-number">1.3</span> <span class="nav-text">PyScript simple architecture</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#pyscript-example"> <span class="nav-number">1.4</span> <span class="nav-text">PyScript Example</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#정리"> <span class="nav-number">1.5</span> <span class="nav-text">정리</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#참고"> <span class="nav-number">1.6</span> <span class="nav-text">참고</span> </a> </li> </ol> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GyeongSeok Seo</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://gseok.disqus.com/count.js" async></script>
+    
+
+    
+      
+      <script type="text/javascript">
+          var disqus_config = function () {
+              this.page.url = 'https://gseok.github.io/articles/2022-06/pyscript';
+              this.page.identifier = '/articles/2022-06/pyscript';
+              this.page.title = 'pyscript 소개';
+          };
+          var d = document, s = d.createElement('script');
+          s.src = 'https://gseok.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', '' + +new Date());
+          (d.head || d.body).appendChild(s);
+      </script>
+      
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+

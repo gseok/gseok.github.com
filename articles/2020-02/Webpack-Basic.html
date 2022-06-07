@@ -1,0 +1,1196 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="webpack," />
+
+
+<link rel="alternate" type="application/rss+xml" href="https://gseok.github.io/feed.xml" title="Gseok Blog">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Gseok Blog" type="application/atom+xml" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="소개">
+<meta name="keywords" content="webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Webpack Basic">
+<meta property="og:url" content="https://gseok.github.io/articles/2020-02/Webpack-Basic">
+<meta property="og:site_name" content="Gseok Blog">
+<meta property="og:description" content="소개">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="../../assets/post-images/2020-02-21-Webpack-Basic/01.png">
+<meta property="og:image" content="../../assets/post-images/2020-02-21-Webpack-Basic/02.png">
+<meta property="og:image" content="../../assets/post-images/2020-02-21-Webpack-Basic/03.png">
+<meta property="og:updated_time" content="2021-06-22T19:10:00+09:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Webpack Basic">
+<meta name="twitter:description" content="소개">
+<meta name="twitter:image" content="../../assets/post-images/2020-02-21-Webpack-Basic/01.png">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '작성자'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://gseok.github.io/"/>
+
+
+
+
+
+  <title>Webpack Basic | Gseok Blog</title>
+  
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-38849338-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-38849338-1');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ko">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gseok Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">GyeongSeok Seo story</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            홈
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            카테고리
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            아카이브
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            태그
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://gseok.github.io/articles/2020-02/Webpack-Basic">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GyeongSeok Seo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/gseok.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gseok Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+          
+          
+            Webpack Basic
+          
+        </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+              <time title="Webpack Basic" itemprop="dateCreated datePublished" datetime="2020-02-22">
+                2020-02-22
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">수정일</span>
+              
+              <time title="Webpack Basic" itemprop="dateModified" datetime="2021-06-22">
+                2021-06-22
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/bundler" itemprop="url" rel="index">
+                    <span itemprop="name">bundler</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/articles/2020-02/Webpack-Basic#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="/articles/2020-02/Webpack-Basic" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  <h3 id="소개">소개</h3>
+
+<p>webpack의 기본 개념과, webpack config을 구성하는 요소들을에 대한 개념을 이해합니다. 이를 통하여 직접 webpack 빌드 구조를 구현하거나, 이미 구현된 webpack 빌드를 이해할 수 있도록 합니다.</p>
+
+<h3 id="webpack-의-기본-개념">Webpack 의 기본 개념</h3>
+
+<p><strong>what is webpack?</strong></p>
+
+<p>참고:</p>
+
+<p><img src="../../assets/post-images/2020-02-21-Webpack-Basic/01.png" alt="" /></p>
+
+<p><strong>webpack</strong>은 최신 javascript application을 위한 module bundler 입니다. webpack은 내부적으로dependency graph 을 각각의 모듈별로 생성하고, 해당 정보를 이용하여 최종적으로 한개 또는 여러개의 bundle을 생성합니다.</p>
+
+<p>webpack은 node 프로그램입니다. 이는 webpack이 javascript로 구현되어 있고, 실질적으로는 node app.js을 수행하듯, node webpack.js 형태로 수행된다는 것을 의미합니다. 실제 webpack의 code을 살펴보면 shebang 형태로 webpack entry point가 구성되어 있음을 알 수 있습니다. 참고: <a href="https://github.com/webpack/webpack/blob/master/bin/webpack.js">https://github.com/webpack/webpack/blob/master/bin/webpack.js</a></p>
+
+<p><strong>webpack lifecycle?</strong></p>
+
+<p>react나 vue처럼 명확한 문서로 정의된 lifecycle은 없지만 webpack문서의 hook와 문서 내용을 통해서 개략적인 webpack lifecycle을 알 수 있습니다.</p>
+
+<p>참고</p>
+
+<ul>
+  <li><a href="https://raw.githubusercontent.com/sokra/slides/master/data/how-webpack-works.pdf">https://raw.githubusercontent.com/sokra/slides/master/data/how-webpack-works.pdf</a></li>
+  <li><a href="https://webpack.js.org/api/compiler-hooks/">https://webpack.js.org/api/compiler-hooks/</a></li>
+  <li><a href="https://github.com/fanjunzhi/lifecycle-webpack-plugin">https://github.com/fanjunzhi/lifecycle-webpack-plugin</a></li>
+</ul>
+
+<p><img src="../../assets/post-images/2020-02-21-Webpack-Basic/02.png" alt="" /></p>
+
+<ul>
+  <li>좀더 정리된 step으로 보면 아래와 같습니다.</li>
+</ul>
+
+<p><img src="../../assets/post-images/2020-02-21-Webpack-Basic/03.png" alt="" /></p>
+
+<p>webpack은 앞서 이야기 하였듯, javascript로 구현되어 있고, 내부적으로는 oop의 컨셉 및 plugin 구조을 사용하고 있습니다. 또한, 각 step별 hook을 제공하고 있어, 사용자가 필요한 번들 옵션이나 처리를 할 수 있도록 제공하고 있습니다.</p>
+
+<p>사실 일반적인 빌드 상황에서 hook이나 loader 혹은 plugin을 제작하는일은 거의 없을듯 합니다. 이미 대부분의 필요한 loader나 plugin이 구현되어 존재하고, 해당 구현체들의 이용으로 대다수의 문제가 해결 가능합니다.</p>
+
+<p>하지만 특이한 경우나, 특별한 경우, 기존 구현체로 해결 못하는 문제가 있을 수 있고, 이경우 webpack의 기본적인 개념과 컨셉을 이해하는것이 이러한 문제를 해결할때 도움이 됩니다. 물론 이러한 개념을 알고 있을대, 기존 webpack 설정을 이해하는데도 도움이 됩니다.</p>
+
+<h3 id="modules">Modules</h3>
+
+<p>webpack config 설정항목은 아니지만, webpack이 module bundler인 만큼 중요한 개념입니다.</p>
+
+<p>webpack에서의 modules은 아래와 같이 표현 가능하고, 해당 모듈간의 dependencies을 webpack이 해석하게 됩니다.(dependency graph)</p>
+
+<ul>
+  <li>An <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">ES2015 <code class="language-plaintext highlighter-rouge">import</code></a> statement</li>
+  <li>A <a href="http://www.commonjs.org/specs/modules/1.0/">CommonJS</a> <code class="language-plaintext highlighter-rouge">require()</code> statement</li>
+  <li>An <a href="https://github.com/amdjs/amdjs-api/blob/master/AMD.md">AMD</a> <code class="language-plaintext highlighter-rouge">define</code> and <code class="language-plaintext highlighter-rouge">require</code> statement</li>
+  <li>An <code class="language-plaintext highlighter-rouge">[@import</code> statement](https://developer.mozilla.org/en-US/docs/Web/CSS/@import) inside of a css/sass/less file.</li>
+  <li>An image url in a stylesheet <code class="language-plaintext highlighter-rouge">url(...)</code> or HTML <code class="language-plaintext highlighter-rouge">&lt;img src=...&gt;</code> file.</li>
+</ul>
+
+<p>또한 webpack은 loader을 통해서, non-javascript에 대한 module 처리도 가능합니다. 대표적으로 지원하는 non-javascript 모듈은 아래와 같습니다.</p>
+
+<ul>
+  <li><a href="http://coffeescript.org/">CoffeeScript,</a> <a href="https://www.typescriptlang.org/">TypeScript,</a> <a href="https://babeljs.io/">ESNext (Babel),</a> <a href="http://sass-lang.com/">Sass,</a> <a href="http://lesscss.org/">Less,</a> <a href="http://stylus-lang.com/">Stylus,</a> <a href="https://elm-lang.org/">Elm</a></li>
+</ul>
+
+<h3 id="webpack-concept-with-config">Webpack concept with config</h3>
+
+<p><strong>Entry</strong></p>
+
+<p>webpack에게 module의 entry point을 알려주는 항목입니다. webpack은 해당 포인트로 부터 <a href="https://webpack.js.org/concepts/dependency-graph/">dependency graph</a> 을 생성하게 됩니다. 위 기본 개념에 설명하였듯, webpack은 module 번들러이기 때문에 해당 graph을 통해서, 모듈을 파악하게 됩니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// webpack.config.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">entry</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./path/to/my/entry/file.js</span><span class="dl">'</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>entry값을 설정하지 않는경우 기본값음  <code class="language-plaintext highlighter-rouge">./src/index.js</code> 입니다. entry는 하나가 아니라 여러개도 가능하며 실질적인 설정은 다음 링크를 참고하면 됩니다. 참고: <a href="https://webpack.js.org/configuration/entry-context/#entry">webpack config entry</a></p>
+
+<p><strong>Output</strong></p>
+
+<p>webpack에서 생성한 bundle을 어디에 어떻게 출력(emit)할지 알려주는 항목입니다. 기본값은 <code class="language-plaintext highlighter-rouge">./dist/main.js</code> 으로 되어있습니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">entry</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./path/to/my/entry/file.js</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">path</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dist</span><span class="dl">'</span><span class="p">),</span>
+    <span class="na">filename</span><span class="p">:</span> <span class="dl">'</span><span class="s1">my-first-webpack.bundle.js</span><span class="dl">'</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>참고: <a href="https://webpack.js.org/configuration/output/">webpack config output</a></p>
+
+<p><strong>Loaders</strong></p>
+
+<p>webpack은 entry로 부터 모듈을 이해하는데, 이때 기본적으로 javascript와 JSON파일만 이해합니다. 따라서, 추가적인 type(e.g. typescript, scss 등등)에 대한 처리를 위해서 webpack은 config상 module와 rules라는 항목을 제공합니다.</p>
+
+<p>해당 항목을 통해서 loader을 설정할 수 있고 loader는 dependency graph에 추가적인 type의 처리를 적용 할 수 있습니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">sass$/</span><span class="p">,</span>
+        <span class="na">use</span><span class="p">:</span> <span class="p">[</span>
+          <span class="c1">// style-loader</span>
+          <span class="p">{</span> <span class="na">loader</span><span class="p">:</span> <span class="dl">'</span><span class="s1">style-loader</span><span class="dl">'</span> <span class="p">},</span>
+          <span class="c1">// css-loader</span>
+          <span class="p">{</span>
+            <span class="na">loader</span><span class="p">:</span> <span class="dl">'</span><span class="s1">css-loader</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">options</span><span class="p">:</span> <span class="p">{</span>
+              <span class="na">modules</span><span class="p">:</span> <span class="kc">true</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="c1">// sass-loader</span>
+          <span class="p">{</span> <span class="na">loader</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sass-loader</span><span class="dl">'</span> <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>loader(module)설정은 위 예시와 같이 배열 형태로 적용 가능합니다. 이는 동일한 파일에 대해서 여러개의 loader을 적용 할 수 있다는 것을 알려줍니다.</p>
+
+<p>이때 주의해야 할점은 적용한 loader가 배열상 뒤에서 부터(Stack처럼) 적용된다는 부분입니다.</p>
+
+<p>위 예시의 경우 sass-loader → css-loader → style-loader 순서로 loader가 적용됩니다.</p>
+
+<p>다시한번 remind해보면, webpack은 entry로 부터 module을 해석하는데 이때 module-rules에 적용한 loader을 통해서 추가적인 처리가 가능하다고 보면 됩니다.</p>
+
+<p>참고: <a href="https://webpack.js.org/concepts/loaders/">webpack concept loader</a>, <a href="https://webpack.js.org/configuration/module/">webpack config loader(module)</a></p>
+
+<p><strong>Plugins</strong></p>
+
+<p>loader가 특정 type(moule type)에 대해서 순차적으로 처리가 되는것과 달리, plugin은 module와 무관하게 혹은 전체 파일에 대한 처리나, loader이전의 전처리 등에 사용 가능합니다. 이는 전체 bundle구성 이후에, optimization나, minify등 원하는 동작을 추가 할 수 있음을 뜻합니다. webpack 공식 문서에서는 아래와 같이 plugin의 목적을 설명합니다.</p>
+
+<blockquote>
+  <p>They also serve the purpose of doing anything else that a loader cannot do.</p>
+</blockquote>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">ConsoleLogOnBuildWebpackPlugin</span> <span class="p">{</span>
+  <span class="nx">apply</span><span class="p">(</span><span class="nx">compiler</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">compiler</span><span class="p">.</span><span class="nx">hooks</span><span class="p">.</span><span class="nx">run</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="nx">pluginName</span><span class="p">,</span> <span class="nx">compilation</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">The webpack build process is starting!!!</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">entry</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./path/to/my/entry/file.js</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">filename</span><span class="p">:</span> <span class="dl">'</span><span class="s1">my-first-webpack.bundle.js</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">path</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dist</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">},</span>
+  <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.(</span><span class="sr">js|jsx</span><span class="se">)</span><span class="sr">$/</span><span class="p">,</span>
+        <span class="na">use</span><span class="p">:</span> <span class="dl">'</span><span class="s1">babel-loader</span><span class="dl">'</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+    <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">ProgressPlugin</span><span class="p">(),</span>
+    <span class="k">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">({</span><span class="na">template</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./src/index.html</span><span class="dl">'</span><span class="p">}),</span>
+    <span class="k">new</span> <span class="nx">ConsoleLogOnBuildWebpackPlugin</span><span class="p">(),</span>
+  <span class="p">]</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>plugin은 그 구현 방법에 따라서, 해당 plugin의 실행 시점을 조정 할 수 있습니다. 따라서 webpack config을 구성할때, loader와 plugin을 같이 구성하는 경우, loader는 entry point로 부터, plugin은 해당 플러그인의 구현에 따라 실제 config action이 수행되는 것을 이해하는게 중요합니다.</p>
+
+<p>plugin의 경우 각각의 plugin의 구현상 수행시점이 다르기 때문에 plugin 배열의 설정순서는 크게 중요하지는 않습니다.</p>
+
+<p>참고: <a href="https://webpack.js.org/configuration/plugins/">webpack config plugin</a>, <a href="https://webpack.js.org/concepts/plugins/#anatomy">webpack concept plugin</a></p>
+
+<p><strong>Resolve</strong></p>
+
+<p>webpack에서 module의 resolution을 설정하는 config값이다. 보통 확장자 정의를 사용하거나, alias정의를 사용하여 복잡한 import 구문을 간략하게 표현하는데 사용된다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">//...</span>
+  <span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">alias</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">Utilities</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">src/utilities/</span><span class="dl">'</span><span class="p">),</span>
+      <span class="na">Templates</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">src/templates/</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// resolve가 정의가 안된 경우 복잡한 형태의 사용</span>
+<span class="k">import</span> <span class="nx">Utility</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../utilities/utility</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// resolve가 정의된 경우 깔끔한 형태로 사용 가능</span>
+<span class="k">import</span> <span class="nx">Utility</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">Utilities/utility</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>참고: <a href="https://webpack.js.org/configuration/resolve/#resolvealias">webpack config resolve</a></p>
+
+<p><strong>Target</strong></p>
+
+<p>webpack이 최종적으로 컴파일하여서 출력하는 형태를 지정할 수 있습니다. 기본값은 web이고, 사용자 설정에 따라서 최종 결과물(bundle)이 구동되어지는 platform을 맞춰줄 수 있습니다.</p>
+
+<p><a href="https://www.notion.so/7f1f7edf45af451fabc5a6c79930a60e">target options</a></p>
+
+<p>참고: <a href="https://webpack.js.org/configuration/target/">webpack config target</a></p>
+
+<p><strong>Mode</strong></p>
+
+<p>webpack의 bulid-in optimization설정을 어떤식으로 구동할지에 대한 설정이다. 기본값은 production  입니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">mode</span><span class="p">:</span> <span class="dl">'</span><span class="s1">development</span><span class="dl">'</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><a href="https://www.notion.so/4ab5d66ca37a43428396409686b26bf5">mode options</a></p>
+
+<p>참고: <a href="https://webpack.js.org/configuration/mode/">webpack config mode</a></p>
+
+<p>production mode일때, 코드 optimization및 unglufy등을 기본적으로 수행해 줍니다.</p>
+
+<p><strong>devServer</strong></p>
+
+<p>webpack 번들링 완료 이후, output에 출력되는 결과물을 테스트 하려면, 독립적인 server을 구동하고, 해당 거버로 부터 실제 html이나 js을 호출 하면서 테스트 해야 한다. 이러한 동작을 webpack에서는 devServer로 제공하고 있다. devServer 옵션 사용시, webpack 명령어 대신 webpack-dev-server 명령어를 사용해야 하고, 내부적으로 Express 서버에 in-memory disk로 output을 생성하여 구동된다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">//...</span>
+  <span class="na">devServer</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">contentBase</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dist</span><span class="dl">'</span><span class="p">),</span>
+    <span class="na">compress</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">port</span><span class="p">:</span> <span class="mi">9000</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>보통 개발 환경에서 사용하고, in-memory로 구동된다는 점을 주의해야 한다.</p>
+
+<p>참고: <a href="https://webpack.js.org/configuration/dev-server/">webpack config devServer</a></p>
+
+<p>writeToDisk 옵션 조정으로 in-memory가 아니라 실제 file을 write 도 가능하다.</p>
+
+<h3 id="webpack-programmatically">webpack programmatically</h3>
+
+<p>webpack이 node프로그램으로 구현되어 있기때문에 또다른 node application에서 webpack을 programmatically하게 구동 가능하다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">webpack</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">webpack</span><span class="p">({</span>
+  <span class="c1">// Configuration Object</span>
+<span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">stats</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// Stats Object</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="o">||</span> <span class="nx">stats</span><span class="p">.</span><span class="nx">hasErrors</span><span class="p">())</span> <span class="p">{</span>
+    <span class="c1">// Handle errors here</span>
+  <span class="p">}</span>
+  <span class="c1">// Done processing</span>
+<span class="p">});</span>
+
+<span class="c1">// run</span>
+<span class="nx">compiler</span><span class="p">.</span><span class="nx">run</span><span class="p">((</span><span class="nx">err</span><span class="p">,</span> <span class="nx">stats</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// Stats Object</span>
+  <span class="c1">// ...</span>
+<span class="p">});</span>
+
+<span class="c1">// watch</span>
+<span class="kd">const</span> <span class="nx">watching</span> <span class="o">=</span> <span class="nx">compiler</span><span class="p">.</span><span class="nx">watch</span><span class="p">({</span>
+  <span class="c1">// Example watchOptions</span>
+  <span class="na">aggregateTimeout</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+  <span class="na">poll</span><span class="p">:</span> <span class="kc">undefined</span>
+<span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">stats</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// Stats Object</span>
+  <span class="c1">// Print watch/build result here...</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">stats</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>참고: <a href="https://webpack.js.org/api/node/">webpack node interface</a></p>
+
+<p>해당 기능을 이용해서, server에서 실시간 build나, webpack build을 해주는 api등의 구현이 가능하고, 그외 빌드 구성 자체를 config파일이 아닌 형태로 구현하는 것 또한 가능하다.</p>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/webpack" rel="tag"># webpack</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/articles/2020-03/React-Typescript-svg-mport" rel="next" title="react + typescript에서 svg import로 사용하기">
+                <i class="fa fa-chevron-left"></i> react + typescript에서 svg import로 사용하기
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/articles/2020-02/shebang" rel="prev" title="shebang?">
+                shebang? <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            목차
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            흝어보기
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/gseok.jpg"
+               alt="GyeongSeok Seo" />
+          <p class="site-author-name" itemprop="name">GyeongSeok Seo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">포스트</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">카테고리</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">태그</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://github.com/gseok" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/assets/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-3"> <a class="nav-link" href="#소개"> <span class="nav-number">1</span> <span class="nav-text">소개</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#webpack-의-기본-개념"> <span class="nav-number">2</span> <span class="nav-text">Webpack 의 기본 개념</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#modules"> <span class="nav-number">3</span> <span class="nav-text">Modules</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#webpack-concept-with-config"> <span class="nav-number">4</span> <span class="nav-text">Webpack concept with config</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#webpack-programmatically"> <span class="nav-number">5</span> <span class="nav-text">webpack programmatically</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GyeongSeok Seo</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://gseok.disqus.com/count.js" async></script>
+    
+
+    
+      
+      <script type="text/javascript">
+          var disqus_config = function () {
+              this.page.url = 'https://gseok.github.io/articles/2020-02/Webpack-Basic';
+              this.page.identifier = '/articles/2020-02/Webpack-Basic';
+              this.page.title = 'Webpack Basic';
+          };
+          var d = document, s = d.createElement('script');
+          s.src = 'https://gseok.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', '' + +new Date());
+          (d.head || d.body).appendChild(s);
+      </script>
+      
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
