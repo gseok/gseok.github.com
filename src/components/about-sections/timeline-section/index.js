@@ -4,9 +4,9 @@ import { Card } from 'antd';
 import { Flex, Box } from 'reflexbox';
 import Constants from './timeLineConstants';
 import { getShortUUID } from './helpers';
-import SectionHeader from '../section-header';
-import Image from '../image';
 import './style.scss';
+import SectionHeader from '../../section-header';
+import Image from '../../image';
 
 const TimeLineSection = () => {
   const [index, setIndex] = useState(() => {
@@ -86,7 +86,7 @@ const TimeLineSection = () => {
   }, [setIndex]);
 
   return (
-    <Card>
+    <Card className="my-ant-card">
       <div className="timestamp-section">
         <SectionHeader title="Timestamps" />
         <div className="body">
