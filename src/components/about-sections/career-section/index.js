@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Card, Table } from 'antd';
 import MobileDetect from 'mobile-detect';
 import Constants from './carrerConstants';
 import { getShortUUID } from '../timeline-section/helpers';
 import SectionHeader from '../../section-header';
-
+import useIsClient from '../../../hooks/useIsClient';
+import useIsFirstRender from '../../../hooks/useIsFirstRender';
 
 const CareerSection = () => {
-  const md = new MobileDetect((window && window.navigator && window.navigator.userAgent) || '');
-  const isMobile = md.mobile();
+  const isFirst = useIsFirstRender();
+  const isClient = useIsClient();
+  const isMobile = useMemo(() => {
+    if (!isClient) return false;
+    const md = new MobileDetect((window && window.navigator && window.navigator.userAgent) || '');
+    return md.mobile();
+  }, [isClient]);
+
   const columns = [
     {
       title: 'Period',
@@ -32,7 +39,7 @@ const CareerSection = () => {
   return (
     <Card className="my-ant-card">
       <SectionHeader title="Career" />
-      {isMobile && (
+      {!isFirst && isMobile && (
         <div className="my-career-table-warp">
           <ul className="my-career-mobile-ul">
             {Constants.CARRER_TABLE_VALUES.map(({ period, name, contents }) => {
@@ -48,7 +55,7 @@ const CareerSection = () => {
           </ul>
         </div>
       )}
-      {!isMobile && (
+      {!isFirst && !isMobile && (
         <div className="my-career-table-warp">
           <Table
             columns={columns}
