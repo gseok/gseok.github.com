@@ -2,6 +2,7 @@ import React from 'react';
 import Graph from 'react-graph-vis';
 import { Card, Tooltip } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
+import SectionHeader from '../../section-header';
 
 const graph = {
   nodes: [
@@ -252,6 +253,7 @@ const zoomInfo = 'mouse wheel zooming in and out';
 const TechSkillSection = () => {
   return (
     <Card className="my-ant-card">
+      <SectionHeader title="Tech Skill" />
       <div>
         <Tooltip placement="right" title={zoomInfo}>
           <InfoCircleOutlined className="my-about-info-icon" />
