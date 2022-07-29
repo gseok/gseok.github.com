@@ -18,8 +18,8 @@ module.exports = {
         '기술탐구를 좋아하는',
         '사람에 가치를 두는',
         '능동적으로 일하는',
+        '기술 공유를 좋아하는',
         '이로운 것을 만드는',
-        '기술 공유를 좋아하는'
       ],
       thumbnail: 'gseok.jpeg', // Path to the image in the 'asset' folder
     },
@@ -27,6 +27,7 @@ module.exports = {
       github: `https://github.com/gseok`,
       linkedIn: `https://www.linkedin.com/in/gyeongseok-seo-77607510a/`,
       email: `gseok.seo@gmail.com`,
+      person: `https://gseok.github.io/ppt/aboutme`,
     },
   },
 
