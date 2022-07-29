@@ -1,5 +1,6 @@
 import React, { useCallback, useState, useMemo } from 'react';
 import HorizontalTimeline from 'react-horizontal-timeline';
+import { Card } from 'antd';
 import { Flex, Box } from 'reflexbox';
 import Constants from './timeLineConstants';
 import { getShortUUID } from './helpers';
@@ -18,8 +19,8 @@ const TimeLineSection = () => {
   const views = useMemo(() => {
     return Constants.TIME_LINE_VALUES.map((entry, index) => {
       const imageExists = (
-        <Flex wrap="true" align="center" justify="center">
-          <Box col={12} lg={6} md={6} sm={12}>
+        <Flex wrap="true" align="center" justify="center" className="flex">
+          <Box col={12} lg={6} md={6} sm={12} className="box">
             <div className="my-timeline-desc-image-warp">
               <Image
                 src={`about-images/about/${entry.image}`}
@@ -28,7 +29,7 @@ const TimeLineSection = () => {
               />
             </div>
           </Box>
-          <Box col={12} lg={6} md={6} sm={12}>
+          <Box col={12} lg={6} md={6} sm={12} className="box">
             <div className="my-timeline-descs-warp" style={{ textAlign: 'center' }}>
               <h4>{entry.term}</h4>
               <h5>{entry.title}</h5>
@@ -39,7 +40,7 @@ const TimeLineSection = () => {
         </Flex>
       );
       const noImageExists = (
-        <Flex wrap="true" align="center" justify="center">
+        <Flex wrap="true" align="center" justify="center" className="flex">
           <Box col={12} lg={12} md={12} sm={12}>
             <div className="my-timeline-descs-warp" style={{ textAlign: 'center' }}>
               <h4>{entry.term}</h4>
@@ -57,9 +58,26 @@ const TimeLineSection = () => {
       );
     });
   }, []);
-
-  const curStatus = Constants.TIME_LINE_VALUES[index.value].date;
-  const prevStatus = index.previous >= 0 ? Constants.TIME_LINE_VALUES[index.previous].date : "";
+  const timelineConfig = useMemo(() => {
+    return {
+      // timelineConfig
+      minEventPadding: 20,
+      maxEventPadding: 120,
+      linePadding: 100,
+      labelWidth: 100,
+      fillingMotionStiffness: 150,
+      fillingMotionDamping: 25,
+      slidingMotionStiffness: 150,
+      slidingMotionDamping: 25,
+      stylesBackground: '#f8f8f8',
+      stylesForeground: '#7b9d6f',
+      stylesOutline: '#dfdfdf',
+      isTouchEnabled: true,
+      isKeyboardEnabled: true,
+      isOpenEnding: true,
+      isOpenBeginning: true,
+    }
+  }, []);
 
   const onClickHandler = useCallback((prev) => {
     return (cur) => {
@@ -68,33 +86,46 @@ const TimeLineSection = () => {
   }, [setIndex]);
 
   return (
-    <div className="timestamp-section">
-      <SectionHeader title="Timestamps" />
-      <div className="body">
-        <div
-          style={{
-            width: "100%",
-            height: "100px",
-            margin: "0 auto",
-            marginTop: "20px"
-          }}
-        >
-          <HorizontalTimeline
-            styles={{
-              background: "#f8f8f8",
-              foreground: "#1A79AD",
-              outline: "#dfdfdf"
+    <Card>
+      <div className="timestamp-section">
+        <SectionHeader title="Timestamps" />
+        <div className="body">
+          <div
+            style={{
+              width: "100%",
+              height: "100px",
+              margin: "0 auto"
             }}
-            index={index.value}
-            indexClick={onClickHandler(index.value)}
-            values={dates}
-          />
-        </div>
-        <div className="text-center">
-          {views[index.value]}
+          >
+            <HorizontalTimeline
+              styles={{
+                background: "#f8f8f8",
+                foreground: "#1A79AD",
+                outline: "#dfdfdf"
+              }}
+              index={index.value}
+              indexClick={onClickHandler(index.value)}
+              values={dates}
+              minEventPadding={timelineConfig.minEventPadding}
+              maxEventPadding={timelineConfig.maxEventPadding}
+              linePadding={timelineConfig.linePadding}
+              labelWidth={timelineConfig.labelWidth}
+              fillingMotion={{
+                stiffness: timelineConfig.fillingMotionStiffness,
+                damping: timelineConfig.fillingMotionDamping,
+              }}
+              slidingMotion={{
+                stiffness: timelineConfig.slidingMotionStiffness,
+                damping: timelineConfig.slidingMotionDamping,
+              }}
+            />
+          </div>
+          <div className="my-timeline-desc">
+            {views[index.value]}
+          </div>
         </div>
       </div>
-    </div>
+    </Card>
   );
 }
 
