@@ -164,3 +164,13 @@ overflow: hidden;
 .my-ppt-descs-warp {
   min-height: 150px;
 }
+
+.my-ppt-top-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.slider-control-bottomcenter {
+  position: absolute;
+  top: -10px;
+}
