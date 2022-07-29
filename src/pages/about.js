@@ -7,6 +7,7 @@ import Seo from '../components/seo';
 import Bio from '../components/bio';
 import TimeLineSection from '../components/about-sections/timeline-section';
 import CareerSection from '../components/about-sections/career-section';
+import TechSkillSection from '../components/about-sections/techskill-section';
 
 import TimeStampSection from '../components/timestamp-section';
 import ProjectSection from '../components/project-section';
@@ -30,6 +31,11 @@ function AboutPage({ data }) {
       <Row className="my-ant-row">
         <Col span={24}>
           <CareerSection />
+        </Col>
+      </Row>
+      <Row className="my-ant-row">
+        <Col span={24}>
+          <TechSkillSection />
         </Col>
       </Row>
       {/* <TimeStampSection timestamps={timestamps} />
