@@ -74,6 +74,7 @@
   },
   "devDependencies": {
     "gh-pages": "^3.2.3",
+    "netlify-cli": "^10.12.1",
     "prettier": "2.2.1"
   },
   "keywords": [
