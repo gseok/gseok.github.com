@@ -1,7 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useMemo } from 'react';
 import HorizontalTimeline from 'react-horizontal-timeline';
+import { Flex, Box } from 'reflexbox';
 import Constants from './timeLineConstants';
+import { getShortUUID } from './helpers';
 import SectionHeader from '../section-header';
+import Image from '../image';
 import './style.scss';
 
 const TimeLineSection = () => {
@@ -12,6 +15,48 @@ const TimeLineSection = () => {
     };
   });
   const dates = Constants.TIME_LINE_VALUES.map((entry) => entry.date);
+  const views = useMemo(() => {
+    return Constants.TIME_LINE_VALUES.map((entry, index) => {
+      const imageExists = (
+        <Flex wrap="true" align="center" justify="center">
+          <Box col={12} lg={6} md={6} sm={12}>
+            <div className="my-timeline-desc-image-warp">
+              <Image
+                src={`about-images/about/${entry.image}`}
+                className="my-timeline-desc-image"
+                alt={entry.title}
+              />
+            </div>
+          </Box>
+          <Box col={12} lg={6} md={6} sm={12}>
+            <div className="my-timeline-descs-warp" style={{ textAlign: 'center' }}>
+              <h4>{entry.term}</h4>
+              <h5>{entry.title}</h5>
+              <p />
+              <p>{entry.desc}</p>
+            </div>
+          </Box>
+        </Flex>
+      );
+      const noImageExists = (
+        <Flex wrap="true" align="center" justify="center">
+          <Box col={12} lg={12} md={12} sm={12}>
+            <div className="my-timeline-descs-warp" style={{ textAlign: 'center' }}>
+              <h4>{entry.term}</h4>
+              <h5>{entry.title}</h5>
+              <p />
+              <p>{entry.desc}</p>
+            </div>
+          </Box>
+        </Flex>
+      );
+      return (
+        <div className="my-timeline-desc-container" key={getShortUUID()}>
+          {entry.image && entry.image.length > 0 ? imageExists : noImageExists}
+        </div>
+      );
+    });
+  }, []);
 
   const curStatus = Constants.TIME_LINE_VALUES[index.value].date;
   const prevStatus = index.previous >= 0 ? Constants.TIME_LINE_VALUES[index.previous].date : "";
@@ -31,8 +76,7 @@ const TimeLineSection = () => {
             width: "100%",
             height: "100px",
             margin: "0 auto",
-            marginTop: "20px",
-            fontSize: "15px"
+            marginTop: "20px"
           }}
         >
           <HorizontalTimeline
@@ -47,8 +91,7 @@ const TimeLineSection = () => {
           />
         </div>
         <div className="text-center">
-          {/* Prevoius:-{prevStatus} - Current Select:-{curStatus} */}
-          {curStatus}
+          {views[index.value]}
         </div>
       </div>
     </div>
