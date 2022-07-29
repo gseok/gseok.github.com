@@ -156,7 +156,32 @@ ko_2020_11:
 기차예매, 서울역 와 같은 기차역 키워드 검색에 대한 컨텐츠를 제공하고, mobile, pc, in-app end을 모두 제공하는,
 프로젝트 입니다. 동시에 Nave Pay와 연동하여, Korail기차 예매를 Naver화면에서 제공하는 프로젝트 입니다.
 제가 담당한 부분은, End(메인홈, 지도, 라우팅), CollectionUI, Presentation Server 입니다.
-`
+`,
+ko_2020_11_2:
+`Naver Map Open api 서버 개선 프로젝트에 참여하였습니다. 호갱노노 같은 외부 밴더 및 개인사용자들이,
+네이버 지도 Open api사용시, auth 체크 및 SDK을 서빙하는 서버입니다. 구 서버가 python2 로 되어 있어서,
+FE팀에서 유지보수 가능한 Deno형태로 교체 작업을 하였습니다. 전체 아키텍쳐 및 api구현을 담당하였습니다.
+`,
+ko_2022_01:
+`Naver Map app-end 하프뷰 프로젝트에 참여하였습니다. 네이버 지도 App 내의 교통(버스, 지하철, 공항, 길찾기)엔드는,
+WebView로 구성되어 있습니다. 해당 WebView의 구현을 Full View모드와 Half View모드로 이원화 하여 지도를 좀 더 노출하고,
+해당 기능으로 사용성을 높이는 프로젝트 입니다. 교통엔드 페이지의 하프뷰 구현을 담당하였습니다.
+`,
+ko_2022_03:
+`Naver 지하철, 컨검,통검 엔드 개발 프로젝트에 참여하였습니다. 네이버 기본검색(초록창) 및 네이버 지도앱에서,
+지하철 정보에 대한 컨텐츠를 제공하는 프로젝트 입니다. 이번 개편에서 지하철 실시간 도착정보를 추가하여 사용성을 높였습니다.
+제가 담당한 부분은, End(메인홈, 지도, 라우팅, 다크모드), CollectionUI, Presentation Server 입니다.
+`,
+ko_2021_11_3:
+`Naver Map pc v5 react개선 작업 프로젝트에 참여하였습니다. map.naver.com으로 대표되는 pc향 네이버 지도 서비스 입니다.
+해당 서비스가 기존 angular구현체를, react향 구현체로 변경하여, 성능 및 유지보수 향상을 시키는 내용입니다.
+제가 담당한 부분은, devOps 및 아키텍쳐 부분을 담당하였습니다.
+`,
+ko_2022_07:
+`Naver Map 내차등록 프로젝트 프로젝트에 참여하였습니다. 네이버 지도 및 지도앱에서, 내 차량을 등록 및 편집하는 서비스 입니다.
+내차 등록을 통해서, 네이버 지도 및 지도앱에서 길찾기(네비) 기능을 수행할때, 좀더 정확한 정보를 주게 됩니다.
+제라 담당한 부분은 FE팀에서 관리하는 전체 End Page 통합화 및 내차등록 페이지 구현 부분입니다. nx을 사용하여 mono repo로 구성하였습니다.
+`,
 }
 
 const timeLineValues = [
@@ -303,8 +328,36 @@ const timeLineValues = [
     date: '2020-11-01',
     title: 'Naver KTX(Korail), 컨검,통검 엔드',
     desc: DESC_ME.ko_2020_11,
-    term: 'November 01, 2020 - June 31, 2021',
+    term: 'November 01, 2020 - December 31, 2021',
     image: 'naver-train.png'
+}, {
+    date: '2021-11-01',
+    title: 'Naver Map Open API',
+    desc: DESC_ME.ko_2020_11_2,
+    term: 'November 01, 2021 - December 31, 2021',
+}, {
+    date: '2022-01-01',
+    title: 'Naver Map app-end 하프뷰',
+    desc: DESC_ME.ko_2022_01,
+    term: 'January 01, 2022 - March 01, 2022',
+    image: 'naver-pt-halfview.jpeg'
+}, {
+    date: '2022-03-01',
+    title: 'Naver 지하철, 컨검,통검 엔드 개발',
+    desc: DESC_ME.ko_2022_03,
+    term: 'March 01, 2022 - July 01, 2022',
+    image: 'naver-pt-subway.png'
+}, {
+    date: '2021-11-03',
+    title: 'Naver Map pc v5 react개선 작업(Now)',
+    desc: DESC_ME.ko_2021_11_3,
+    term: 'November 01, 2021 - July 01, 2022'
+}, {
+    date: '2022-07-01',
+    title: 'Naver Map 내차등록 프로젝트 수행(Now)',
+    desc: DESC_ME.ko_2022_07,
+    term: 'July 01, 2022 - August 31, 2022',
+    image: 'naver-mycar.png'
 }];
 
 module.exports = {
