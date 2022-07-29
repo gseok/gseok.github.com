@@ -8,9 +8,10 @@ import Bio from '../components/bio';
 import TimeLineSection from '../components/about-sections/timeline-section';
 import CareerSection from '../components/about-sections/career-section';
 import TechSkillSection from '../components/about-sections/techskill-section';
+import TechPPTSection from '../components/about-sections/techppt-section';
 
-import TimeStampSection from '../components/timestamp-section';
-import ProjectSection from '../components/project-section';
+// import TimeStampSection from '../components/timestamp-section';
+// import ProjectSection from '../components/project-section';
 import './style.scss';
 import './antd.min.css';
 
@@ -38,6 +39,12 @@ function AboutPage({ data }) {
           <TechSkillSection />
         </Col>
       </Row>
+      <Row className="my-ant-row">
+        <Col span={24}>
+          <TechPPTSection />
+        </Col>
+      </Row>
+
       {/* <TimeStampSection timestamps={timestamps} />
       <ProjectSection projects={projects} /> */}
     </Layout>
