@@ -7,7 +7,7 @@ categories: tech-talk
 tags: javascript nodejs tech-basic
 ---
 
-## 소개
+### 소개
 
 web환경에서 resource의 용량은 성능에 매우 큰 영향을 준다. 따라서 여러가지 기법을 이용해서 이를 해결하게 된다. 이런 기법에는 splite image사용, resource cache, device rosolution에 따른 resource 서빙, image crop, image reszie 등등이 있다. 실제 매우 많은 사람이 사용하는 포털 서비스에서도 이러한 기법을 사용한다.
 
@@ -49,7 +49,7 @@ web환경에서 resource의 용량은 성능에 매우 큰 영향을 준다. 따
 
 대형 포탈이 아닌 개인이 서비스(블로그 등) 할때, 위의 예와 같은 처리를 하려면, 이미지 캐시 서버 혹은 이미지 처리 서버를 직접 구현하여야 한다. 하지만 개인 서비스에서 이런 추가 서비스를 별개로 구현하기는 쉽지 않다. 따라서 이러한 이미지 처리 서버 서비스를 이용해야한다. 본 글에서는, 이러한 이미지 최적화 처리를 개인이 쉽게 할 수 있는, [TinyPNG](https://tinypng.com/) 서비스를 소개한다.
 
-## TinyPNG
+### TinyPNG
 
 ![](../../assets/post-images/2021-06-23-Image-size-optimize/05.png)
 
@@ -294,3 +294,8 @@ web환경에서 resource의 용량은 성능에 매우 큰 영향을 준다. 따
     - REST API나 대중적인 언어의 lib도 제공되고 있다.
     - 해당 방법을 응용하면 본인의 서비스의 image 서비스를 최적화하여, 서비스의 품질을 높일 수 있다!!
     - 꼭 해당 서비스가 아니여도, 실제 서비스 전에 resource최적화(e.g. java의 image 최적화 lib을 쓴다던가.... 하는등의 작업)는 꼭 해주는게 좋을듯 하다.!
+
+
+```toc
+
+```

@@ -128,3 +128,8 @@ curl --insecure -v https://some-project/ping
 - signal man 2 and 7: [https://stackoverflow.com/questions/25828288/what-is-the-difference-between-signal7-and-signal2](https://stackoverflow.com/questions/25828288/what-is-the-difference-between-signal7-and-signal2)
 - linux trap: [https://www.joinc.co.kr/w/Site/Tip/Signal_trap](https://www.joinc.co.kr/w/Site/Tip/Signal_trap)
 - linux trap man: [http://man7.org/linux/man-pages/man1/trap.1p.html](http://man7.org/linux/man-pages/man1/trap.1p.html)
+
+
+```toc
+
+```

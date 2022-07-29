@@ -224,3 +224,8 @@ document.body.appendChild(canvas);
 
 - html2canvas의 경우, 내부적으로 target이 되는 dom tree만 clone하는게 아니라. full window(document)을 모두 clone하여 동작합니다. 따라서 document의 크기에 따라서, document의 dom tree가 매우 복잡하고 많은 경우, 500ms 이상 느리게 동작 할 수 있습니다.
 - 이미지 생성을 해야하는 부분에 DOM보다는 SVG나 Image로만 되어 있다면, 직접 SVG, Image를 Canvas에 그려서 이미지로 생성하는게 성능상 이점이 큽니다.
+
+
+```toc
+
+```

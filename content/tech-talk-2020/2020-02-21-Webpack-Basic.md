@@ -284,3 +284,8 @@ const watching = compiler.watch({
 참고: [webpack node interface](https://webpack.js.org/api/node/)
 
 해당 기능을 이용해서, server에서 실시간 build나, webpack build을 해주는 api등의 구현이 가능하고, 그외 빌드 구성 자체를 config파일이 아닌 형태로 구현하는 것 또한 가능하다.
+
+
+```toc
+
+```
