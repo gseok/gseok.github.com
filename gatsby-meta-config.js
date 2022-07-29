@@ -14,7 +14,13 @@ module.exports = {
     name: `서경석`,
     bio: {
       role: `개발자`,
-      description: ['사람에 가치를 두는', '능동적으로 일하는', '이로운 것을 만드는'],
+      description: [
+        '기술탐구를 좋아하는',
+        '사람에 가치를 두는',
+        '능동적으로 일하는',
+        '이로운 것을 만드는',
+        '기술 공유를 좋아하는'
+      ],
       thumbnail: 'gseok.jpeg', // Path to the image in the 'asset' folder
     },
     social: {
