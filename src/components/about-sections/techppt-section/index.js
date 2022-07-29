@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useMemo, useEffect } from 'react';
+import React, { useCallback, useState, useMemo } from 'react';
 import { Card } from 'antd';
 import { Flex, Box } from 'reflexbox';
 import Carousel from 'nuka-carousel';
@@ -7,13 +7,6 @@ import SectionHeader from '../../section-header';
 import Image from '../../image';
 
 const pptData = Constants.PPT_DATA;
-const contentStyle = {
-  height: '160px',
-  color: '#fff',
-  lineHeight: '160px',
-  textAlign: 'center',
-  background: '#364d79',
-};
 
 const TechPPTSection = () => {
   const [pptIndex, setPPTIndex] = useState(0);
@@ -50,7 +43,7 @@ const TechPPTSection = () => {
         </div>
       );
     });
-  }, []);
+  }, [onClick]);
 
   return (
     <Card className="my-ant-card">

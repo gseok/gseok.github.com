@@ -17,8 +17,8 @@ import './antd.min.css';
 
 function AboutPage({ data }) {
   const metaData = data.site.siteMetadata;
-  const { author, about, language } = metaData;
-  const { timestamps, projects } = about;
+  const { author, language } = metaData;
+  // const { timestamps, projects } = about;
   return (
     <Layout className="about">
       <Seo title="About" />
