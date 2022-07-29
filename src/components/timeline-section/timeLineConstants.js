@@ -159,13 +159,15 @@ ko_2020_11:
 `
 }
 
-const timeLineValues = [{
-    date: '1983-02-26',
-    title: 'GyeongSeok Seo\' profile',
-    desc: DESC_ME.ko_1983,
-    descEn: DESC_ME.en_1983,
-    term: ''
-}, {
+const timeLineValues = [
+    // {
+    // date: '1983-02-26',
+    // title: 'GyeongSeok Seo\' profile',
+    // desc: DESC_ME.ko_1983,
+    // descEn: DESC_ME.en_1983,
+    // term: ''
+    // },
+{
     date: '2009-02-13',
     title: 'My First Job',
     desc: DESC_ME.ko_2009_02,
