@@ -85,10 +85,40 @@ const carrerTableValues = [
       'Naver 버스터미널, 컨검,통검 엔드 개발 - End구현(메인홈, 지도, 라우팅), CollectionUI구현(메인홈, 액션버튼, 달력, 터미널선택, 내부시설, 외부시설), PR(Presentation Server) 개발',
   },
   {
-    period: '2020.11 - 2021.06(Now)',
+    period: '2020.11 - 2021.12',
     name: 'Naver KTX(Korail), 컨검,통검 엔드',
     contents:
       'Naver KTX(Korail), 컨검,통검 엔드 - End구현(메인홈, 지도, 라우팅), CollectionUI구현(메인홈, 액션버튼, 달력, 터미널선택, 내부시설, 외부시설), PR(Presentation Server) 개발',
+  },
+  {
+    period: '2021.11 - 2021.12',
+    name: 'Naver Map Open api 서버 개선 작업(1달작업후 홀딩)',
+    contents:
+      'Naver Map Open api 서버 개선 작업 - 구 phython서버를 deno서버로 교체',
+  },
+  {
+    period: '2022.01 - 2022.03',
+    name: 'Naver Map app-end 하프뷰 구현',
+    contents:
+      'Naver Map app-end 하프뷰 구현 - App 내의 webview end을 하프뷰 형태로 구현',
+  },
+  {
+    period: '2022.03 - 2022.07',
+    name: 'Naver 지하철, 컨검,통검 엔드 개발',
+    contents:
+      'Naver 지하철, 실시간 알림, 컨검,통검 엔드 개발 - End구현, CollectionUI구현, PR(Presentation Server) 개발',
+  },
+  {
+    period: '2021.11 - 2022.07(진행중)',
+    name: 'Naver Map pc v5 react개선 작업',
+    contents:
+      'Naver Map pc v5 react개선 작업 - 구 anguler구현체를 react(nest.js)형태로 교체',
+  },
+  {
+    period: '2022.07 - 2022.08(진행중)',
+    name: 'Naver Map 내차등록 프로젝트 수행',
+    contents:
+      'Naver Map 내차등록 프로젝트 수행 - End구현, Nx(모노레포)도입',
   },
 ]
   .map((item, index) => {
@@ -98,7 +128,12 @@ const carrerTableValues = [
 
 const carrerSummaryValues =
   '\n \
-2020.11 ~ 2021.06(Now) : Naver KTX(Korail), 컨검,통검 엔드 개발 - End구현, CollectionUI구현, PR(Presentation Server) 개발\n \
+2022.07 ~ 2022.08 : Naver Map 내차등록 프로젝트 수행 \n \
+2021.11 ~ 2022.07 : Naver Map pc v5 react개선 작업 \n \
+2022.03 ~ 2022.07 : Naver 지하철, 컨검,통검 엔드 개발 - End구현, CollectionUI구현, PR(Presentation Server) 개발\n \
+2022.01 ~ 2022.03 : Naver Map app-end 하프뷰 구현 \n \
+2021.11 ~ 2021.12 : Naver Map Open api 서버 개선 작업 - Deno 향 구현(홀딩) \n \
+2020.11 ~ 2021.12 : Naver KTX(Korail), 컨검,통검 엔드 개발 - End구현, CollectionUI구현, PR(Presentation Server) 개발\n \
 2020.01 ~ 2020.10 : Naver 버스터미널, 컨검,통검 엔드 개발 - End구현, CollectionUI구현, PR(Presentation Server) 개발\n \
 2019.11 ~ 2019.12 : Naver Ketch App 개발 - Maps App WebView 대중교통 요소(지하철, 공항, 항만, 터미널) App의 web view개발\n \
 2019.05 ~ 2019.12 : Naver MyPlace 개발 - ClientUI(메인홈, 즐겨찾기, 리스트 상세, 장소편집, 지도보기), GraphQL서버 개발, MyPlace 발견하기 관리툴 개발\n \
