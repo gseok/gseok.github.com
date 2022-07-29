@@ -2,11 +2,11 @@ module.exports = {
   title: `Gseok Blog`,
   description: `GyeongSeok Seo story`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
-  siteUrl: `http://gseok.github.io`,
+  siteUrl: `https://gseok.github.io`,
   ogImage: `/og-image.png`, // Path to your in the 'static' folder
   comments: {
     utterances: {
-      repo: ``, // `zoomkoding/zoomkoding-gatsby-blog`,
+      repo: `gseok/gseok.github.com`, // `zoomkoding/zoomkoding-gatsby-blog`,
     },
   },
   ga: '0', // Google Analytics Tracking ID
