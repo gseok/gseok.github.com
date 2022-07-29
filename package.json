@@ -1,6 +1,6 @@
 {
   "name": "gseok-homepage",
-  "description": "gseok homepage, this page made jekyll and react",
+  "description": "gseok homepage, this page made by gatsby with zoomkoding/zoomkoding-gatsby-blog",
   "version": "3.0.0",
   "private": true,
   "author": "gyeongseok.seo <gseok.seo@gmail.com>",
@@ -10,61 +10,59 @@
     "url": "git://github.com/gseok/gseok.github.com.git"
   },
   "engines": {
-    "node": ">=12.17.0"
+    "node": ">=16.13.2"
   },
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
-    "clear:dep": "lerna clean",
-    "build:local": "lerna run build:local",
-    "build:real": "lerna run build:real"
+    "build": "gatsby clean && gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "deploy": "gatsby clean && gatsby build && gh-pages -d public",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
-  "husky": {
-    "hooks": {
-      "pre-push": "yarn workspace v3.0 build:real"
-    }
+  "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/icons-material": "^5.1.0",
+    "@mui/material": "^5.1.0",
+    "gatsby": "^4.9.3",
+    "gatsby-plugin-advanced-sitemap": "^2.0.0",
+    "gatsby-plugin-google-analytics": "^4.9.0",
+    "gatsby-plugin-image": "^2.9.1",
+    "gatsby-plugin-manifest": "^4.9.1",
+    "gatsby-plugin-offline": "^5.9.1",
+    "gatsby-plugin-react-helmet": "^5.9.0",
+    "gatsby-plugin-robots-txt": "^1.7.0",
+    "gatsby-plugin-sass": "^5.9.0",
+    "gatsby-plugin-sharp": "^4.9.1",
+    "gatsby-remark-autolink-headers": "^5.9.0",
+    "gatsby-remark-copy-linked-files": "^5.9.0",
+    "gatsby-remark-images": "^6.9.1",
+    "gatsby-remark-prismjs": "^6.9.0",
+    "gatsby-remark-responsive-iframe": "^5.9.0",
+    "gatsby-remark-smartypants": "^5.9.0",
+    "gatsby-remark-table-of-contents": "^2.0.0",
+    "gatsby-source-filesystem": "^4.9.1",
+    "gatsby-theme-material-ui": "^5.1.0",
+    "gatsby-transformer-remark": "^5.9.1",
+    "gatsby-transformer-sharp": "^4.9.0",
+    "prismjs": "^1.24.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-rotating-text": "^1.4.1",
+    "sass": "^1.43.4",
+    "typeface-montserrat": "^1.1.13"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/preset-env": "^7.8.4",
-    "@babel/preset-react": "^7.8.3",
-    "@typescript-eslint/eslint-plugin": "^4.27.0",
-    "@typescript-eslint/parser": "^4.27.0",
-    "babel-loader": "^8.2.2",
-    "babel-preset-es2015": "^6.24.1",
-    "clean-webpack-plugin": "^4.0.0-alpha.0",
-    "compression-webpack-plugin": "^8.0.0",
-    "copy-webpack-plugin": "^9.0.0",
-    "core-js": "^3.14.0",
-    "eslint": "^7.28.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-react": "^7.24.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "html-webpack-plugin": "^5.3.1",
-    "husky": "^6.0.0",
-    "prettier": "^2.3.1",
-    "prop-types": "^15.7.2",
-    "terser-webpack-plugin": "^5.1.3",
-    "tinify": "^1.6.0-beta.2",
-    "typescript": "^4.3.4",
-    "webpack": "^5.39.1",
-    "webpack-bundle-analyzer": "^4.4.2",
-    "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2",
-    "webpack-hot-middleware": "^2.25.0"
+    "gh-pages": "^3.2.3",
+    "prettier": "2.2.1"
   },
-  "browserslist": [
-    "iOS >= 9",
-    "Android >= 4",
-    "and_chr > 0",
-    "and_ff > 0",
-    "last 2 versions"
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-theme"
   ],
-  "dependencies": {}
+  "license": "0BSD"
 }
