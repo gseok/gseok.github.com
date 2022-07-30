@@ -21,7 +21,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "optimize:image": "TEMP=$(echo $PWD/assets/post-images && echo $PWD/assets/about-images) && node ./scripts/image-optimize/image-optimize.js $TEMP"
+    "optimize:image": "TEMP=$(echo $PWD/assets/post-images && echo $PWD/assets/about-images && echo $PWD/static) && node ./scripts/image-optimize/image-optimize.js $TEMP"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
