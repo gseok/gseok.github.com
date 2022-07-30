@@ -156,7 +156,6 @@ utterances는 블로그 포스트의 댓글달기를 github의 issue와 연동�
 
         </aside>
 
-    - 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
 - 이제 프로젝트에 가서 → 프로젝트 Action용 Secrets을 저장합니다.
     - 이름은 아무거나 해도 됩니다.
     - 토큰값을 위 개인토큰으로 생성한걸 활용합니다.
