@@ -66,6 +66,7 @@ export const pageQuery = graphql`
             role
             description
             thumbnail
+            gravata
           }
           social {
             github

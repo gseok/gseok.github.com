@@ -22,6 +22,7 @@ module.exports = {
         '이로운 것을 만드는',
       ],
       thumbnail: 'gseok.jpeg', // Path to the image in the 'asset' folder
+      gravata: `https://www.gravatar.com/avatar/f667bba300015ff621f1b4f30f900cc1?s=250&r=x`,
     },
     social: {
       github: `https://github.com/gseok`,

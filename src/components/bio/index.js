@@ -7,6 +7,8 @@ import './style.scss';
 function Bio({ author, language = 'ko' }) {
   if (!author) return null;
   const { bio, social, name } = author;
+  const { gravata } = bio || {};
+
   return (
     <div className="bio">
       {language === 'ko' ? (
@@ -43,7 +45,10 @@ function Bio({ author, language = 'ko' }) {
         </div>
       )}
       <div className="thumbnail-wrapper">
-        <Image style={{ width: 250, height: 250 }} src={bio.thumbnail} alt="thumbnail" />
+        {gravata && (<img style={{ width: 250, height: 250 }} src={gravata} alt="thumbnail" />)}
+        {!gravata && (
+          <Image style={{ width: 250, height: 250 }} src={bio.thumbnail} alt="thumbnail" />
+        )}
       </div>
     </div>
   );
