@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+// 내 토큰 - QccbxWdt85mL3BrFPhrw94tbRKwsHpS1
 const fs = require('fs');
 const path = require('path');
 const tinify = require('tinify');
