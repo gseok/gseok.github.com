@@ -1,0 +1,6 @@
+**/build
+**/node_modules
+webpack.config.js
+nclk_*.js
+**/middlewares/lib/*
+**/scripts/*.js
