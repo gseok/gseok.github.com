@@ -7,9 +7,7 @@ categories: tech-talk troubleshooting
 tags: pm2 devops
 ---
 
-# pm2 logroate 가 pm2 멀티 인스턴스에서 이상동작
-
-문제점
+# 문제점
 
 ![](../../assets/post-images/2021-06-11-Pm2-logroate/01.png)
 

@@ -6,7 +6,6 @@ categories: tech-talk
 tags: gatsby
 ---
 
-# Jekyll 을 Gatsby로 마이그레이션 하기
 
 ### 왜 바꾸었나요!
 

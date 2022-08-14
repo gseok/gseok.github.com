@@ -6,8 +6,6 @@ categories: tech-talk
 tags: gatsby
 ---
 
-# Gatsby RSS Feed 추가하기
-
 ### 소개
 
 gatsby에서 stie의 [RSS](https://namu.wiki/w/RSS) feed을 생성하는 방법을 소개합니다.
