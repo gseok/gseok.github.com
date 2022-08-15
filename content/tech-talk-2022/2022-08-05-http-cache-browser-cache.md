@@ -247,5 +247,8 @@ web을 사용할때, server, client로 사용자(consumer), 제공자(provider)�
 - http cache validate
     - [https://withbundo.blogspot.com/2017/07/http-13-http-iii-if-match-if-modified.html](https://withbundo.blogspot.com/2017/07/http-13-http-iii-if-match-if-modified.html)
     - [https://goddaehee.tistory.com/171](https://goddaehee.tistory.com/171)
-
 - toss- [https://toss.tech/article/smart-web-service-cache](https://toss.tech/article/smart-web-service-cache)
+
+```toc
+
+```
