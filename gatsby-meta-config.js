@@ -3,7 +3,7 @@ module.exports = {
   description: `GyeongSeok Seo story`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
   siteUrl: `https://gseok.github.io`,
-  ogImage: `/og-image.png`, // Path to your in the 'static' folder
+  ogImage: `https://gseok.github.io/og-image.png`, // Path to your in the 'static' folder
   comments: {
     utterances: {
       repo: `gseok/gseok.github.com`, // `zoomkoding/zoomkoding-gatsby-blog`,
