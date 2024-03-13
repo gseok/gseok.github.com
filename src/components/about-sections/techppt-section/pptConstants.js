@@ -1,6 +1,6 @@
 const pptDatas = [
   {
-    title: 'Deno',
+    title: 'Bun',
     url: 'https://gseok.github.io/ppt/bun',
     image: 'about-images/ppt/bun.png',
     desc: 'This is my bun study web-ppt. Bun is a all-in-one infrastructural toolkit for JavaScript and TypeScript',
