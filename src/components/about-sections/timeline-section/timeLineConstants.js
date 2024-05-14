@@ -182,6 +182,55 @@ ko_2022_07:
 내차 등록을 통해서, 네이버 지도 및 지도앱에서 길찾기(네비) 기능을 수행할때, 좀더 정확한 정보를 주게 됩니다.
 제라 담당한 부분은 FE팀에서 관리하는 전체 End Page 통합화 및 내차등록 페이지 구현 부분입니다. nx을 사용하여 mono repo로 구성하였습니다.
 `,
+ko_2022_09:
+`Naver Map 즐겨찾기 widget 프로젝트에 참여하였습니다. 네이버 지도의 저장(즐겨찾기)을 네이버 전사 서비스에서 사용 할 수 있게 하는 라이브러리성 서비스 입니다.
+작은 용량을 위해서 preact, signal을 활용하였고, cdn 및 내장형 lib파일을 제공합니다. 네이버 검색의 구 프로젝트에서 활용 가능하도록 es5도 지원합니다.
+전체 기능 구현, devOps(배포, 유지보수)을 담당 하였습니다.
+`,
+ko_2022_11:
+`Naver Map Open api 서버 개선 작업 프로젝트에 참여하였습니다. 호갱노노 같은 외부 밴더 및 개인사용자들이,
+네이버 지도 Open api사용시, auth 체크 및 SDK을 서빙하는 서버입니다. 구 서버가 python2 로 되어 있어서,
+FE팀에서 유지보수 가능한 Deno형태로 교체 작업을 하였습니다. 전체 아키텍쳐 및 api구현을 담당하였습니다.
+배포역시 개선하여 n2c(kubernates, hpa)을 도입하여, 실시간성 신규 버전 배포를 적용하였습니다.
+`,
+ko_2023_04:
+`Naver Map 즐겨찾기 페이지 개발 프로젝트에 참여하였습니다. 저장리스트, 저장상세, 저장편집 페이지을 개발하였습니다.
+solid.js, vite, fastify 기술을 도입하였습니다.
+`,
+ko_2023_06:
+`Naver Map 실시간 교통정보 페이지 개발 프로젝트에 참여하였습니다. 실시간 교통정보 및 사고 정보, CCTV viewer을 구현하였습니다.
+react, vite, fastify, pnpm 을 사용하였습니다.
+`,
+ko_2023_07:
+`Naver Map 약관 페이지 개발 프로젝트에 참여하였습니다.
+지도서비스, 지도위치서비스, 사용자 이동이력, ubi등의 약관을 관리하는 페이지 입니다.
+전체 기능 구현 및 devOps을 담당하였습니다.
+`,
+ko_2024_01:
+`Naver Map 약관 이벤트 페이지 개발 프로젝트에 참여하였습니다.
+ubi 약관 활성화를 하여 보험사 연동 강화를 위한 이벤트 였습니다.
+전체 기능 구현 및 devOps을 담당하였습니다.
+`,
+ko_2024_01_02:
+`Naver Map 공항 엔드 개편 프로젝트에 참여하였습니다.
+기존 레거시(바닐라js)을 react향으로 개편하였습니다.
+전체 기능 구현 및 devOps을 담당하였습니다.
+`,
+ko_2024_01_03:
+`Naver Map 지하철 엔드 실시간 위치 개편 프로젝트에 참여하였습니다.
+지하철역 상세 엔드 화면에서, 실시간 지하철 위치 정보를 제공하여, 사용성을 높여주는 프로젝트입니다.
+기능 구현 및 devOps을 담당하였습니다.
+`,
+ko_2024_04_01:
+`Naver Map 저장페이지 광고 추가 및 사용자 공개 리스트 개발 프로젝트에 참여하였습니다.
+사용자 리스트에 광고를 추가하고, 사용자 공개 리스트 화면을 제공하여, 사용자들간 공개 저장 리스트를 쉽게 공유 할 수 있도록 하였습니다.
+기능 구현 및 devOps을 담당하였습니다.
+`,
+ko_2024_04_02:
+`Naver Map ubi 약관 개편 개발 프로젝트에 참여하였습니다.
+운전자 점수를 활용하여, 보험사와 연계, 보험상품 개발 및 제공을 하는 프로젝트 입니다.
+기능 구현 및 devOps을 담당하였습니다.
+`
 }
 
 const timeLineValues = [
@@ -349,15 +398,75 @@ const timeLineValues = [
     image: 'naver-pt-subway.png'
 }, {
     date: '2021-11-03',
-    title: 'Naver Map pc v5 react개선 작업(Now)',
+    title: 'Naver Map pc v5 react개선 작업',
     desc: DESC_ME.ko_2021_11_3,
-    term: 'November 01, 2021 - July 01, 2022'
+    term: 'November 01, 2021 - September 01, 2023',
+    image: 'naver-pc-map.png'
 }, {
     date: '2022-07-01',
-    title: 'Naver Map 내차등록 프로젝트 수행(Now)',
+    title: 'Naver Map 내차등록 프로젝트 수행',
     desc: DESC_ME.ko_2022_07,
     term: 'July 01, 2022 - August 31, 2022',
     image: 'naver-mycar.png'
+}, {
+    date: '2022-09-01',
+    title: 'Naver Map 즐겨찾기 widget 개발',
+    desc: DESC_ME.ko_2022_09,
+    term: 'September 01, 2022 - January 31, 2023',
+    image: 'naver-save-widget.png'
+}, {
+    date: '2022-11-01',
+    title: 'Naver Map Open api 서버 개선',
+    desc: DESC_ME.ko_2022_11,
+    term: 'November 01, 2022 - April 31, 2023'
+}, {
+    date: '2023-04-01',
+    title: 'Naver Map 즐겨찾기 페이지 개발',
+    desc: DESC_ME.ko_2023_04,
+    term: 'April 01, 2023 - June 31, 2023',
+    image: 'naver-save-page.png'
+}, {
+    date: '2023-06-01',
+    title: 'Naver Map 실시간 교통정보 페이지 개발',
+    desc: DESC_ME.ko_2023_06,
+    term: 'June 01, 2023 - September 31, 2023',
+    image: 'naver-realtime-traffic.png'
+}, {
+    date: '2023-07-01',
+    title: 'Naver Map 약관 페이지 개발',
+    desc: DESC_ME.ko_2023_07,
+    term: 'July 01, 2023 - December 31, 2023',
+    image: 'naver-agreeterm.png'
+}, {
+    date: '2024-01-01',
+    title: 'Naver Map 약관 이벤트 페이지 개발',
+    desc: DESC_ME.ko_2024_01,
+    term: 'January 01, 2024 - March 31, 2024',
+    image: 'naver-agreeterm-event.png'
+}, {
+    date: '2024-01-01',
+    title: 'Naver Map 공항 엔드 개편',
+    desc: DESC_ME.ko_2024_01_02,
+    term: 'January 01, 2024 - March 31, 2024',
+    image: 'naver-airport.png'
+}, {
+    date: '2024-01-01',
+    title: 'Naver Map 지하철 엔드 실시간 위치 개편',
+    desc: DESC_ME.ko_2024_01_03,
+    term: 'January 01, 2024 - April 31, 2024',
+    image: 'naver-realtime-subway.png'
+}, {
+    date: '2024-04-01',
+    title: 'Naver Map 저장페이지 광고 추가 및 사용자 공개 리스트 개발',
+    desc: DESC_ME.ko_2024_04_01,
+    term: 'April 01, 2024 - (진행중)',
+    image: 'naver-ad-save-page.png'
+}, {
+    date: '2024-04-01',
+    title: 'Naver Map ubi 약관 개편 개발',
+    desc: DESC_ME.ko_2024_04_02,
+    term: 'April 01, 2024 - (진행중)',
+    image: 'naver-ubi-302.png'
 }];
 
 module.exports = {

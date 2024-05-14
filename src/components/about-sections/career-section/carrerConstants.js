@@ -170,9 +170,9 @@ const carrerTableValues = [
   },
   {
     period: '2024.04 - 2024.05(진행중)',
-    name: 'Naver Map 저장페이지 광고 추가 개발',
+    name: 'Naver Map 저장페이지 광고 추가 및 사용자 공개 리스트 개발',
     contents:
-      'Naver Map 저장페이지 광고 추가 개발 - solid.js, vite, fastify, pnpm',
+      'Naver Map 저장페이지 광고 추가 및 사용자 공개 리스트 개발- solid.js, vite, fastify, pnpm',
   },
   {
     period: '2024.04 - 2024.05(진행중)',
@@ -188,7 +188,7 @@ const carrerTableValues = [
 
 const carrerSummaryValues =
   '\n \
-2024.04 ~ 2024.05 : Naver Map 저장페이지 광고 추가 개발, ubi 약관 개편 개발 \n \
+2024.04 ~ 2024.05 : Naver Map 저장페이지 광고 추가 및 사용자 공개 리스트 개발, ubi 약관 개편 개발 \n \
 2024.01 ~ 2024.04 : Naver Map 지하철 엔드 실시간 위치 개편 \n \
 2024.01 ~ 2024.03 : Naver Map 공항 엔드 개편 \n \
 2024.01 ~ 2024.03 : Naver Map 약관 이벤트 페이지 개발 \n \
