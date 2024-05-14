@@ -38,7 +38,9 @@ const CareerSection = () => {
 
   return (
     <Card className="my-ant-card">
-      <SectionHeader title="Career" />
+      <SectionHeader title="Career" onClick={() => {
+        console.log('hwi.. section header click');
+      }} />
       {!isFirst && isMobile && (
         <div className="my-career-table-warp">
           <ul className="my-career-mobile-ul">
