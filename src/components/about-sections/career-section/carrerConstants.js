@@ -166,19 +166,19 @@ const carrerTableValues = [
     period: '2024.01 - 2024.04',
     name: 'Naver Map 지하철 엔드 실시간 위치 개편',
     contents:
-      'Naver Map 지하철 엔드 실시간 위치 개편',
+      'Naver Map 지하철 엔드 실시간 위치 개편 - react',
   },
   {
     period: '2024.04 - 2024.05(진행중)',
     name: 'Naver Map 저장페이지 광고 추가 개발',
     contents:
-      'Naver Map 저장페이지 광고 추가 개발',
+      'Naver Map 저장페이지 광고 추가 개발 - solid.js, vite, fastify, pnpm',
   },
   {
     period: '2024.04 - 2024.05(진행중)',
     name: 'Naver Map ubi 약관 개편 개발',
     contents:
-      'Naver Map ubi 약관 개편 개발',
+      'Naver Map ubi 약관 개편 개발 - react',
   },
 ]
   .map((item, index) => {
