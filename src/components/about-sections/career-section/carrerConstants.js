@@ -109,16 +109,76 @@ const carrerTableValues = [
       'Naver 지하철, 실시간 알림, 컨검,통검 엔드 개발 - End구현, CollectionUI구현, PR(Presentation Server) 개발',
   },
   {
-    period: '2021.11 - 2022.07(진행중)',
-    name: 'Naver Map pc v5 react개선 작업',
+    period: '2021.11 - 2023.09',
+    name: 'Naver Map pc v5 react전환 개발',
     contents:
-      'Naver Map pc v5 react개선 작업 - 구 anguler구현체를 react(nest.js)형태로 교체',
+      'Naver Map pc v5 react전환 개발 작업 - 구 anguler구현체를 react(nest.js)형태로 교체',
   },
   {
-    period: '2022.07 - 2022.08(진행중)',
+    period: '2022.07 - 2022.09',
     name: 'Naver Map 내차등록 프로젝트 수행',
     contents:
       'Naver Map 내차등록 프로젝트 수행 - End구현, Nx(모노레포)도입',
+  },
+  {
+    period: '2022.09 - 2023.01',
+    name: 'Naver Map 즐겨찾기 widget 개발',
+    contents:
+      'Naver Map 즐겨찾기 widget 개발 - 공통lib구현, preact, signal',
+  },
+  {
+    period: '2022.11 - 2023.04',
+    name: 'Naver Map Open api 서버 개선',
+    contents:
+      'Naver Map Open api 서버 개선 작업 - 구 phython서버를 deno서버로 교체',
+  },
+  {
+    period: '2023.04 - 2023.06',
+    name: 'Naver Map 즐겨찾기 페이지 개발',
+    contents:
+      'Naver Map 즐겨찾기 페이지 개발 - solid.js, vite, fastify',
+  },
+  {
+    period: '2023.06 - 2023.09',
+    name: 'Naver Map 실시간 교통정보 페이지 개발',
+    contents:
+      'Naver Map 실시간 교통정보 페이지 개발 - react, vite, fastify, pnpm',
+  },
+  {
+    period: '2023.07 - 2023.12',
+    name: 'Naver Map 약관 페이지 개발',
+    contents:
+      'Naver Map 약관 페이지 개발 - react',
+  },
+  {
+    period: '2024.01 - 2024.03',
+    name: 'Naver Map 약관 이벤트 페이지 개발',
+    contents:
+      'Naver Map 약관 이벤트 페이지 개발 - react',
+  },
+  {
+    period: '2024.01 - 2024.03',
+    name: 'Naver Map 공항 엔드 개편',
+    contents:
+      'Naver Map 공항 엔드 개편 - 구 바닐라 js을 react로 교체',
+  },
+  {
+    period: '2024.01 - 2024.04',
+    name: 'Naver Map 지하철 엔드 실시간 위치 개편',
+    contents:
+      'Naver Map 지하철 엔드 실시간 위치 개편',
+  },
+  {
+    period: '2024.04 - 2024.05(진행중)',
+    name: 'Naver Map 저장페이지 광고 추가 개발',
+    contents:
+      'Naver Map 저장페이지 광고 추가 개발',
+  },
+  {
+    period: '2024.04 - 2024.05(진행중)',
+    name: 'Naver Map ubi 약관 개편 개발',
+    contents:
+      'Naver Map ubi 약관 개편 개발',
   },
 ]
   .map((item, index) => {
@@ -128,7 +188,16 @@ const carrerTableValues = [
 
 const carrerSummaryValues =
   '\n \
-2022.07 ~ 2022.08 : Naver Map 내차등록 프로젝트 수행 \n \
+2024.04 ~ 2024.05 : Naver Map 저장페이지 광고 추가 개발, ubi 약관 개편 개발 \n \
+2024.01 ~ 2024.04 : Naver Map 지하철 엔드 실시간 위치 개편 \n \
+2024.01 ~ 2024.03 : Naver Map 공항 엔드 개편 \n \
+2024.01 ~ 2024.03 : Naver Map 약관 이벤트 페이지 개발 \n \
+2023.07 ~ 2023.12 : Naver Map 약관 페이지 개발 \n \
+2023.06 ~ 2023.09 : Naver Map 실시간 교통정보 페이지 개발 \n \
+2023.04 ~ 2023.06 : Naver Map 즐겨찾기 페이지 개발 \n \
+2022.11 ~ 2023.04 : Naver Map Open api 서버 개선 \n \
+2022.09 ~ 2023.01 : Naver Map 즐겨찾기 widget 개발 수행 \n \
+2022.07 ~ 2022.09 : Naver Map 내차등록 프로젝트 수행 \n \
 2021.11 ~ 2022.07 : Naver Map pc v5 react개선 작업 \n \
 2022.03 ~ 2022.07 : Naver 지하철, 컨검,통검 엔드 개발 - End구현, CollectionUI구현, PR(Presentation Server) 개발\n \
 2022.01 ~ 2022.03 : Naver Map app-end 하프뷰 구현 \n \
