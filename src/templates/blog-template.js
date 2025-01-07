@@ -29,6 +29,8 @@ function BlogTemplate({ data }) {
     ).then(async (result) => {
       const data = await result.json();
       setViewCount(data.value);
+    }).catch(() => {
+      setViewCount(null);
     });
   }, [siteUrl, curPost.slug]);
 
